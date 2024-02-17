@@ -1,34 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { createBrowserRouter,createRoutesFromElements,Route,RouterProvider} from "react-router-dom";
+import FrameLayout from "./layouts/FrameLayout";
+import AuthRequired from "./components/utils/AuthRequired";
+import { lazy } from "react";
+// import ProtectedRoute from "./components/utils/ProtectedRoute";
 
-function App() {
-  const [count, setCount] = useState(0)
+const HomePage = lazy(() => import("./pages/HomePage"));
+const AuthenticatePage = lazy(() => import("./pages/Utils/Authenticate"));
 
+
+
+const router = createBrowserRouter(
+  createRoutesFromElements([
+    <Route path="/" element={<FrameLayout />}>
+      <Route element={<AuthRequired/>}>
+        <Route index element={<HomePage/>} />
+      </Route>,
+      {/* <Route element={<ProtectedRoute/> }> */}
+        <Route path="authenticate-user" element={<AuthenticatePage />} />
+      {/* </Route> */}
+    </Route>
+  ])
+)
+
+
+
+
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <RouterProvider router={router} />
   )
 }
 
