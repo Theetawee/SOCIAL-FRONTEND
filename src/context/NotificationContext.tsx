@@ -12,7 +12,7 @@ export const NotificationContext = createContext<NotificationContextType>({
 
 const NotificationProvider = ({ children }: { children: ReactNode }) => {
 
-    const [notifications] = useState<number>(1)
+    const [notifications] = useState<number>(1);
 
     const context_data = {
         notifications,
