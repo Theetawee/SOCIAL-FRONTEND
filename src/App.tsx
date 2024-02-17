@@ -6,14 +6,15 @@ import { lazy } from "react";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const AuthenticatePage = lazy(() => import("./pages/Utils/Authenticate"));
-
+const Friends = lazy(() => import("./pages/Friends"))
 
 
 const router = createBrowserRouter(
   createRoutesFromElements([
     <Route path="/" element={<FrameLayout />}>
       <Route element={<AuthRequired/>}>
-        <Route index element={<HomePage/>} />
+        <Route index element={<HomePage />} />
+        <Route path="/friends" element={<Friends />} />
       </Route>,
       {/* <Route element={<ProtectedRoute/> }> */}
         <Route path="authenticate-user" element={<AuthenticatePage />} />
