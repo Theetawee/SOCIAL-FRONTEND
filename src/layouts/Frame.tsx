@@ -20,7 +20,7 @@ const Frame = () => {
                 aria-label="Sidebar"
             >
                 {/* Sidebar Content */}
-                <div className="h-full px-3 relative pt-20   bg-white dark:bg-gray-900">
+                <div className="h-full px-3 relative sm:pt-20 pt-6   bg-white dark:bg-gray-900">
                     <Aside/>
                 </div>
             </aside>

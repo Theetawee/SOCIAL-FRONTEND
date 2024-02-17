@@ -10,7 +10,7 @@ const Aside = () => {
 
     return (
         <section className="grid grid-cols-1 gap-6">
-            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-md shadow">
+            <div className="p-4 bg-gray-50/20 dark:bg-gray-800 rounded-md shadow-sm">
                 <Link to="/" className="block">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center">
