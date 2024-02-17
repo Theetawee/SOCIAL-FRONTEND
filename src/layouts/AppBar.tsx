@@ -36,13 +36,13 @@ const AppBar = () => {
                         </div>
                     </div>
                     <div className="grid grid-cols-2 gap-3">
-                        <div className="bg-gray-50 relative dark:bg-gray-800 p-2 flex items-center justify-center rounded-full">
+                        <div className="bg-gray-50 relative dark:bg-gray-800 p-1 flex items-center justify-center rounded-full">
                             {notifications > 0 && (
                                 <span className="absolute top-0 right-0 bg-rose-500 text-white w-5 h-5 p-1 rounded-full flex items-center justify-center text-xs">
                                     {notifications}
                                 </span>
                             )}
-                            <RiNotification3Fill className="w-6 h-6 text-gray-700 dark:text-gray-100" />
+                            <RiNotification3Fill className="w-5 h-5 text-gray-700 dark:text-gray-100" />
                         </div>
                         <div>
                         <button
