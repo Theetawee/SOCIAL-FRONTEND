@@ -1,4 +1,5 @@
 import useDrawer from "../hooks/useDrawer";
+import Aside from "./Aside";
 
 const Frame = () => {
     const {isOpen,showDrawer,toggleSidebar } = useDrawer();
@@ -19,8 +20,8 @@ const Frame = () => {
                 aria-label="Sidebar"
             >
                 {/* Sidebar Content */}
-                <div className="h-full px-3 relative py-4   bg-white dark:bg-gray-900">
-                    <div>Home</div>
+                <div className="h-full px-3 relative pt-20   bg-white dark:bg-gray-900">
+                    <Aside/>
                 </div>
             </aside>
         </>
