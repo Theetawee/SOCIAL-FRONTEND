@@ -2,9 +2,21 @@ import { Link } from "react-router-dom";
 import Input from "../../components/common/Input";
 import Seo from "../../components/utils/Seo";
 import { FcGoogle } from "react-icons/fc";
+import useLogin from "../../hooks/Auth/useLogin";
+import { FormEvent } from "react";
 
 const LoginPage = () => {
-    const isLoading = false;
+  const { loging:isLoading, LoginUser } = useLogin();
+
+  const handleSubmit = async(e:FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const username = e.currentTarget.username.value;
+    const password = e.currentTarget.password.value;
+    await LoginUser(username, password);
+  }
+
+
+
     return (
         <Seo
             title="Waanverse - Sign in"
@@ -12,7 +24,7 @@ const LoginPage = () => {
         >
             <section className="flex items-center flex-col justify-center py-20 px-2">
                 <div className="max-w-md mx-auto rounded-md shadow w-full bg-gray-800 p-4">
-                    <form method="post">
+                    <form onSubmit={handleSubmit} method="post">
                         <h1 className="text-white mb-4 font-bold text-center text-xl">
                             Sign in to Waanverse
                         </h1>

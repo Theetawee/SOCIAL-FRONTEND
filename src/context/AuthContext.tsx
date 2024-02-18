@@ -19,6 +19,8 @@ interface AuthContextType {
     setIsAuthenticated: Dispatch<SetStateAction<boolean>>;
     setUser: Dispatch<SetStateAction<UserType | null>>;
     setFastRefresh: Dispatch<SetStateAction<boolean>>;
+    unauthenticateUser: () => void;
+    authenticateUser:(access:string)=>void
 }
 
 export const AuthContext = createContext<AuthContextType>({
@@ -26,7 +28,9 @@ export const AuthContext = createContext<AuthContextType>({
     isAuthenticated: false,
     setIsAuthenticated: () => {},
     setUser: () => {},
-    setFastRefresh: () => {},
+    setFastRefresh: () => { },
+    unauthenticateUser: () => { },
+    authenticateUser:()=>{},
 });
 
 const AuthContextProvider = ({ children }: { children: ReactNode }) => {
@@ -37,6 +41,30 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [fastRefresh, setFastRefresh] = useState(false);
     const isOnline = useIsOnline();
+
+    const authenticateUser = (access:string) => {
+        const token_data: TokenData = jwtDecode(access);
+        const user = {
+            username: token_data.username,
+            email: token_data.email,
+            name: token_data.name,
+            image: token_data.image,
+            image_hash: token_data.image_hash,
+            user_id: token_data.user_id,
+        };
+        setUser(user);
+        setIsLoading(false);
+        localStorage.setItem("user", "true");
+    }
+
+    const unauthenticateUser = () => {
+        localStorage.clear();
+        setUser(null);
+        setIsLoading(false);
+        setIsAuthenticated(false);
+    }
+
+
     useEffect(() => {
         const RefreshTokens = async () => {
             const response = await fetch(`${baseURL}/accounts/token/refresh/`, {
@@ -44,24 +72,10 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
                 credentials: "include",
             });
             if (response.status !== 200) {
-                localStorage.clear();
-                setUser(null);
-                setIsLoading(false);
-                setIsAuthenticated(false);
+                unauthenticateUser();
             } else {
                 const data = await response.json();
-                const token_data: TokenData = jwtDecode(data.access);
-                const user = {
-                    username: token_data.username,
-                    email: token_data.email,
-                    name: token_data.name,
-                    image: token_data.image,
-                    image_hash: token_data.image_hash,
-                    user_id: token_data.user_id,
-                };
-                setUser(user);
-                setIsLoading(false);
-                localStorage.setItem("user", "true");
+                authenticateUser(data.access)
             }
         };
 
@@ -75,24 +89,10 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
                 credentials: "include",
             });
             if (response.status !== 200) {
-                localStorage.clear();
-                setUser(null);
-                setIsLoading(false);
-                setIsAuthenticated(false);
+                unauthenticateUser();
             } else {
                 const data = await response.json();
-                const token_data: TokenData = jwtDecode(data.access);
-                const user = {
-                    username: token_data.username,
-                    email: token_data.email,
-                    name: token_data.name,
-                    image: token_data.image,
-                    image_hash: token_data.image_hash,
-                    user_id: token_data.user_id,
-                };
-                setUser(user);
-                setIsLoading(false);
-                localStorage.setItem("user", "true");
+                authenticateUser(data.access);
             }
         };
 
@@ -108,6 +108,8 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         setIsAuthenticated,
         setUser,
         setFastRefresh,
+        authenticateUser,
+        unauthenticateUser
     };
 
     return (
