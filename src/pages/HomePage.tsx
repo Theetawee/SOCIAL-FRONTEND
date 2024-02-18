@@ -1,12 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Post from "../components/Post/Post";
+import useSidebar from "../hooks/useSidebar";
 
 const HomePage = () => {
 
     const [all, setAll] = useState(true);
 
+    const {setComponent } = useSidebar();
 
-
+    useEffect(() => {
+        setComponent(<>Home page</>);
+        return () => {
+            setComponent(null);
+        }
+    },[setComponent])
 
 
     return (

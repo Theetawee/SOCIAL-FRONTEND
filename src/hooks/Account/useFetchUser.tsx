@@ -7,7 +7,7 @@ const useFetchUser = (username:string) => {
 
 
     const {data,isPending,isError } = useQuery({
-        queryKey: ["userInfo", username],
+        queryKey: ["profile", username],
         queryFn: () => getUserInfo(username),
     })
 
