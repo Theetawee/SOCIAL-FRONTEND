@@ -8,6 +8,9 @@ import useFetchUser from "../../hooks/Account/useFetchUser";
 import Loader from "../../components/common/Loader";
 import Seo from "../../components/utils/Seo";
 import NotFound from "../../components/common/NotFound";
+import VerifiedSvg from "../../components/Partials/Account/VerifiedSvg";
+
+
 
 const ProfilePage = () => {
 
@@ -42,10 +45,13 @@ const ProfilePage = () => {
                 <div className="px-4 pt-4 grid bg-white dark:bg-gray-950 grid-cols-1 gap-3">
                     <div className="items-center sm:flex-nowrap flex-wrap flex">
                         <div className="w-full sm:w-auto">
-                            <Image src={DefaultAvater} alt="User" className="w-32 mx-auto h-32 rounded-full" />
+                            <Image src={DefaultAvater} alt="User" className="w-24 mx-auto h-24 rounded-full" />
                         </div>
                         <div className="ml-5 py-4">
-                            <h1 className="text-2xl font-medium">{profile?.name}</h1>
+                            <h1 className="text-2xl flex items-center font-medium">{profile?.name}
+                                {profile?.verified && (
+                                    <VerifiedSvg />)}
+                            </h1>
                             <p className="leading-4 italic">@{profile?.username}</p>
                         </div>
                     </div>

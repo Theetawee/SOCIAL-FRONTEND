@@ -51,6 +51,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
             image: token_data.image,
             image_hash: token_data.image_hash,
             user_id: token_data.user_id,
+            verified: token_data.verified
         };
         setUser(user);
         setIsLoading(false);

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import SideBarLink from "./SideBarLink";
 import { FaUserFriends, FaUser, FaSignOutAlt } from "react-icons/fa";
 import Switch from "../components/common/Switch";
+import VerifiedSvg from "../components/Partials/Account/VerifiedSvg";
 const Aside = () => {
     const { user } = useAuth();
 
@@ -24,8 +25,12 @@ const Aside = () => {
                             </Link>
                             <Link to={`/${user?.username}`} className="block">
                                 <div className="ml-3  flex flex-col">
-                                    <p className="text-lg font-medium">
+                                    <p className="text-lg flex items-center font-medium">
                                         {user?.name}
+                                        {user?.verified && (
+                                            <span>
+                                                <VerifiedSvg />
+                                            </span>)}
                                     </p>
                                     <p className="leading-3">
                                         @{user?.username}
