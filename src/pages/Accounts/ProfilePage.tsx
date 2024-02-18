@@ -9,10 +9,12 @@ import Loader from "../../components/common/Loader";
 import Seo from "../../components/utils/Seo";
 import NotFound from "../../components/common/NotFound";
 import VerifiedSvg from "../../components/Partials/Account/VerifiedSvg";
+import ProfileActionBtn from "../../components/Partials/Account/ProfileActionBtn";
 
 
 
 const ProfilePage = () => {
+
 
     const { username } = useParams();
 
@@ -31,7 +33,7 @@ const ProfilePage = () => {
                 <NotFound type="profile"/>
             </Seo>
         )
-    } else {
+    } else if(profile) {
 
 
         return (
@@ -56,7 +58,7 @@ const ProfilePage = () => {
                         </div>
                     </div>
                     <div className="text-center my-6 px-4">
-                        <button className="bg-primary-500 w-full max-w-sm mx-auto text-white px-4 py-2">Edit profile</button>
+                        <ProfileActionBtn profile={profile}/>
                     </div>
                     <div>
                         <div className="grid grid-cols-2 gap-4 sm:gap-6">
