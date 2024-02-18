@@ -15,6 +15,7 @@ interface DataType {
 
 const useSignup = () => {
     const navigate = useNavigate();
+    const [errors, setErrors] = useState<string[]>([]);
 
     const [isLoading, setIsLoading] = useState(false);
     const api = useAxios();
@@ -27,14 +28,27 @@ const useSignup = () => {
             toast.success("Signup successful");
 
         } catch (error: any) {
-            console.log(error);
+            const errorList=[];
+            if (error.response.data.email) {
+                errorList.push(error.response.data.email[0]);
+                setErrors(errorList);
+            } if (error.response.data.username) {
+                errorList.push(error.response.data.username[0]);
+                setErrors(errorList);
+            }if(error.response.data.password1){
+                errorList.push(error.response.data.password1[0]);
+                setErrors(errorList);
+            }if(error.response.data.non_field_errors){
+                errorList.push(error.response.data.non_field_errors[0]);
+                setErrors(errorList);
+            }
             toast.error("Signup failed");
         } finally {
             setIsLoading(false);
         }
     };
 
-    return { signup, isLoading };
+    return { signup, isLoading,errors };
 };
 
 export default useSignup;

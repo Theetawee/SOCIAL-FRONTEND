@@ -9,7 +9,7 @@ const SignUpPage = () => {
     useEffect(() => {
         localStorage.setItem("out", "true");
     }, []);
-    const { isLoading, signup } = useSignup();
+    const { isLoading, signup,errors } = useSignup();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -27,12 +27,24 @@ const SignUpPage = () => {
             description="Join our community by creating an account on our signup page! Discover new connections, share your passions, and embark on a journey of exploration."
         >
             <section className="flex items-center flex-col justify-center py-20 px-2">
+
                 <div className="max-w-md mx-auto rounded-md shadow w-full bg-gray-800 p-4">
                     <form onSubmit={handleSubmit} method="post">
                         <h1 className="text-white mb-4 font-bold text-center text-xl">
                             Create Waanverse account
                         </h1>
                         <div className="grid grid-cols-1 gap-6 p-4 sm:p-6">
+                            <div>
+                                {errors &&errors.length > 0 && (
+                                    <div>
+                                        <ul className="text-red-500 list-disc pl-4">
+                                        {errors.map((error) => (
+                                            <li className="text-sm font-medium" key={errors.indexOf(error)}>{error}</li>
+                                        ))}
+                                            </ul>
+                                    </div>
+                                )}
+                            </div>
                             <Input
                                 type="email"
                                 name="email"
