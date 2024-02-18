@@ -38,7 +38,7 @@ const AppBar = () => {
                     <div className="grid grid-cols-2 gap-3">
                         <div className="bg-gray-50 relative dark:bg-gray-800 p-1 flex items-center justify-center rounded-full">
                             {notifications > 0 && (
-                                <span className="absolute top-0 right-0 bg-rose-500 text-white w-5 h-5 p-1 rounded-full flex items-center justify-center text-xs">
+                                <span className="absolute -top-1 -right-1 bg-rose-500 text-white w-4 h-4 p-0.5 rounded-full flex items-center justify-center text-xs">
                                     {notifications}
                                 </span>
                             )}
