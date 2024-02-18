@@ -16,6 +16,8 @@ const LoginPage = lazy(() => import("./pages/Accounts/LoginPage"));
 const LogoutPage = lazy(() => import("./pages/Accounts/LogoutPage"));
 const SignUpPage = lazy(() => import("./pages/Accounts/SignUpPage"));
 const VerifyEmailPage = lazy(() => import("./pages/Accounts/VerifyEmailPage"));
+const GoogleLoginPage = lazy(() => import('./pages/Accounts/GoogleLoginPage'));
+
 
 
 
@@ -33,6 +35,7 @@ const router = createBrowserRouter(
             <Route path="/accounts/login" element={<LoginPage />} />
             <Route path="/accounts/signup" element={<SignUpPage />} />
             <Route path="/accounts/verify-email" element={<VerifyEmailPage />} />
+            <Route path="/accounts/oauth2/google" element={<GoogleLoginPage/>} />
             </Route>
         </Route>,
     ])

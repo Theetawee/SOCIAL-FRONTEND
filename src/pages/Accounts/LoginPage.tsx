@@ -4,8 +4,14 @@ import Seo from "../../components/utils/Seo";
 import { FcGoogle } from "react-icons/fc";
 import useLogin from "../../hooks/Auth/useLogin";
 import { FormEvent, useEffect } from "react";
+const redirect_url = import.meta.env.VITE_GOOGLE_REDIRECT
+const google_id = import.meta.env.VITE_GOOGLE_ID
 
 const LoginPage = () => {
+
+  const GOOGLE_URL=`https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${redirect_url}&prompt=consent&response_type=code&client_id=${google_id}&scope=openid%20email%20profile&access_type=offline`
+
+
     useEffect(() => {
         localStorage.setItem("out", "true");
     }, []);
@@ -84,10 +90,10 @@ const LoginPage = () => {
                                 </span>
                             </div>
 
-                            <button className="w-full flex items-center justify-center text-white border border-gray-600 font-medium rounded text-sm px-5 py-2.5 text-center">
+                            <Link to={GOOGLE_URL} className="w-full flex items-center justify-center text-white border border-gray-600 font-medium rounded text-sm px-5 py-2.5 text-center">
                                 <FcGoogle className="w-5 h-5 mr-3" />
                                 Sign in with Google
-                            </button>
+                            </Link>
                         </div>
                     </form>
                 </div>

@@ -38,7 +38,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(() => {
         return localStorage.getItem("user") === "true";
     });
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [fastRefresh, setFastRefresh] = useState(false);
     const isOnline = useIsOnline();
 
@@ -55,6 +55,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         setUser(user);
         setIsLoading(false);
         localStorage.setItem("user", "true");
+        setIsAuthenticated(true);
     }
 
     const unauthenticateUser = () => {
@@ -72,6 +73,8 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
                 credentials: "include",
             });
             if (response.status !== 200) {
+                const new_data = await response.json();
+                console.log(new_data)
                 unauthenticateUser();
             } else {
                 const data = await response.json();
