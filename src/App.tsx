@@ -14,6 +14,10 @@ const HomePage = lazy(() => import("./pages/HomePage"));
 const Friends = lazy(() => import("./pages/Friends"));
 const LoginPage = lazy(() => import("./pages/Accounts/LoginPage"));
 const LogoutPage = lazy(() => import("./pages/Accounts/LogoutPage"));
+const SignUpPage = lazy(() => import("./pages/Accounts/SignUpPage"));
+const VerifyEmailPage = lazy(() => import("./pages/Accounts/VerifyEmailPage"));
+
+
 
 const router = createBrowserRouter(
     createRoutesFromElements([
@@ -26,7 +30,9 @@ const router = createBrowserRouter(
         </Route>,
         <Route path="/accounts" element={<MainLayout />}>
             <Route element={<ProtectedRoute />}>
-                <Route path="/accounts/login" element={<LoginPage />} />
+            <Route path="/accounts/login" element={<LoginPage />} />
+            <Route path="/accounts/signup" element={<SignUpPage />} />
+            <Route path="/accounts/verify-email" element={<VerifyEmailPage />} />
             </Route>
         </Route>,
     ])
