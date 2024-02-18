@@ -3,9 +3,12 @@ import Input from "../../components/common/Input";
 import Seo from "../../components/utils/Seo";
 import { FcGoogle } from "react-icons/fc";
 import useLogin from "../../hooks/Auth/useLogin";
-import { FormEvent } from "react";
+import { FormEvent, useEffect } from "react";
 
 const LoginPage = () => {
+  useEffect(() => {
+    localStorage.setItem("out", "true");
+  },[])
     const { loging: isLoading, LoginUser } = useLogin();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {

@@ -58,7 +58,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     }
 
     const unauthenticateUser = () => {
-        localStorage.clear();
+        localStorage.removeItem("user");
         setUser(null);
         setIsLoading(false);
         setIsAuthenticated(false);
@@ -78,29 +78,13 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
                 authenticateUser(data.access)
             }
         };
-
-        RefreshTokens();
-    }, []);
-
-    useEffect(() => {
-        const RefreshTokens = async () => {
-            const response = await fetch(`${baseURL}/accounts/token/refresh/`, {
-                method: "POST",
-                credentials: "include",
-            });
-            if (response.status !== 200) {
-                unauthenticateUser();
-            } else {
-                const data = await response.json();
-                authenticateUser(data.access);
-            }
-        };
-
-        if (fastRefresh) {
+        if (isAuthenticated && isOnline || fastRefresh && isOnline) {
             RefreshTokens();
-            setFastRefresh(false);
+        } else {
+            setIsLoading(false);
         }
-    }, [fastRefresh]);
+    }, [fastRefresh, isAuthenticated, isOnline]);
+
 
     const contextData = {
         isAuthenticated,
