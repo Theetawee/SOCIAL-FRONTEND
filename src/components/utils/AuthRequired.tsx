@@ -3,7 +3,6 @@ import useAuth from "../../hooks/Auth/useAuth";
 
 const AuthRequired = () => {
     const { isAuthenticated } = useAuth();
-    console.log(isAuthenticated);
 
     if (isAuthenticated) {
         return <Outlet />;

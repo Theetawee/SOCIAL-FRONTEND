@@ -39,3 +39,8 @@ export interface TopBarContextType {
     back: boolean;
     setBack: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+
+export interface UserDetailType extends UserType{
+    bio:string
+}

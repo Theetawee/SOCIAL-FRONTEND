@@ -17,7 +17,7 @@ const LogoutPage = lazy(() => import("./pages/Accounts/LogoutPage"));
 const SignUpPage = lazy(() => import("./pages/Accounts/SignUpPage"));
 const VerifyEmailPage = lazy(() => import("./pages/Accounts/VerifyEmailPage"));
 const GoogleLoginPage = lazy(() => import('./pages/Accounts/GoogleLoginPage'));
-
+const ProfilePage = lazy(() => import("./pages/Accounts/ProfilePage"));
 
 
 
@@ -26,7 +26,8 @@ const router = createBrowserRouter(
         <Route path="/" element={<FrameLayout />}>
             <Route element={<AuthRequired />}>
                 <Route index element={<HomePage />} />
-          <Route path="/friends" element={<Friends />} />
+                <Route path="/friends" element={<Friends />} />
+                <Route path="/:username" element={<ProfilePage />} />
           <Route path="/logout" element={<LogoutPage />} />
             </Route>
         </Route>,

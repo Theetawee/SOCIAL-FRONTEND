@@ -12,7 +12,7 @@ const FrameLayout = () => {
             <AppBar />
             <section>
                 <Frame />
-                <main className="sm:ml-72 lg:mr-[32%] bg-white/90 dark:bg-gray-950 min-h-screen pt-20 md:ml-[25%]">
+                <main className="sm:ml-72 lg:mr-[32%] bg-white/90 dark:bg-gray-950 min-h-screen pt-20 lg:ml-[25%]">
                     <ErrorBoundary fallback={<CommonError />}>
                         <SuspenseLoader>
                             <Outlet />

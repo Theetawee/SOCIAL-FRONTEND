@@ -3,7 +3,7 @@ import useAuth from "../hooks/Auth/useAuth";
 import DefaultAvater from "../assets/default.webp";
 import { Link } from "react-router-dom";
 import SideBarLink from "./SideBarLink";
-import { FaUserFriends,FaUser,FaSignOutAlt } from "react-icons/fa";
+import { FaUserFriends, FaUser, FaSignOutAlt } from "react-icons/fa";
 import Switch from "../components/common/Switch";
 const Aside = () => {
     const { user } = useAuth();
@@ -11,27 +11,33 @@ const Aside = () => {
     return (
         <section className="grid grid-cols-1 gap-6">
             <div className="p-4 bg-gray-50/20 dark:bg-gray-800 rounded-md shadow-sm">
-                <Link to="/" className="block">
+                <div>
                     <div className="flex items-center justify-between">
                         <div className="flex items-center">
-                            <Image
-                                src={user?.image || DefaultAvater}
-                                hash={user?.image_hash}
-                                alt={user?.name || "user image"}
-                                className="w-12 h-12 rounded-full"
-                            />
-                            <div className="ml-3  flex flex-col">
-                                <p className="text-lg font-medium">
-                                    {user?.name}
-                                </p>
-                                <p className="leading-3">@{user?.username}</p>
-                            </div>
+                            <Link to={`/${user?.username}`} className="block">
+                                <Image
+                                    src={user?.image || DefaultAvater}
+                                    hash={user?.image_hash}
+                                    alt={user?.name || "user image"}
+                                    className="w-12 h-12 rounded-full"
+                                />
+                            </Link>
+                            <Link to={`/${user?.username}`} className="block">
+                                <div className="ml-3  flex flex-col">
+                                    <p className="text-lg font-medium">
+                                        {user?.name}
+                                    </p>
+                                    <p className="leading-3">
+                                        @{user?.username}
+                                    </p>
+                                </div>
+                            </Link>
                         </div>
                         <div className="flex justify-center">
                             <Switch />
                         </div>
                     </div>
-                </Link>
+                </div>
             </div>
             <div>
                 <SideBarLink icon={FaUser} path="/profile" label="Profile" />
