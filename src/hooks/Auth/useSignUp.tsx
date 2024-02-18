@@ -21,7 +21,6 @@ const useSignup = () => {
 
     const signup = async (data: DataType) => {
         setIsLoading(true);
-
         try {
             await api.post("/accounts/signup/", data);
             navigate("/accounts/verify-email?redirect_login=false");

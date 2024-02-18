@@ -18,7 +18,7 @@ const SignUpPage = () => {
         const password2 = e.currentTarget.password.value;
         const email = e.currentTarget.email.value;
         const name = e.currentTarget.set_name.value;
-        await signup({ username, password1, password2, email, name });
+        await signup({email,password1,password2,username,name});
     };
 
     return (
