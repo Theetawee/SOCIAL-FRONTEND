@@ -6,16 +6,14 @@ import useLogin from "../../hooks/Auth/useLogin";
 import { FormEvent } from "react";
 
 const LoginPage = () => {
-  const { loging:isLoading, LoginUser } = useLogin();
+    const { loging: isLoading, LoginUser } = useLogin();
 
-  const handleSubmit = async(e:FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const username = e.currentTarget.username.value;
-    const password = e.currentTarget.password.value;
-    await LoginUser(username, password);
-  }
-
-
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const username = e.currentTarget.username.value;
+        const password = e.currentTarget.password.value;
+        await LoginUser(username, password);
+    };
 
     return (
         <Seo
@@ -34,14 +32,16 @@ const LoginPage = () => {
                                 name="username"
                                 label="Username"
                                 disabled={isLoading}
-                                id="username"
+                  id="username"
+                  auto_on={true}
                             />
                             <Input
                                 type="password"
                                 name="password"
                                 label="Password"
                                 disabled={isLoading}
-                                id="password"
+                  id="password"
+                  auto_on={false}
                             />
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center mb-4">
@@ -69,9 +69,10 @@ const LoginPage = () => {
                             </div>
                             <button
                                 type="submit"
+                                disabled={isLoading}
                                 className="w-full  text-white bg-primary-600 hover:bg-primary-600/90 font-medium rounded text-sm px-5 py-2.5 text-center"
                             >
-                                Sign in
+                                {isLoading ? "Signing in..." : "Sign in"}
                             </button>
                             <div className="inline-flex items-center justify-center w-full">
                                 <hr className="w-64 h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
