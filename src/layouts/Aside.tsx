@@ -40,7 +40,7 @@ const Aside = () => {
                 </div>
             </div>
             <div>
-                <SideBarLink icon={FaUser} path="/profile" label="Profile" />
+                <SideBarLink icon={FaUser} path={`/${user?.username}`} label="Profile" />
                 <SideBarLink
                     icon={FaUserFriends}
                     path="/friends"

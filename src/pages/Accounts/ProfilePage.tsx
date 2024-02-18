@@ -6,6 +6,8 @@ import { GiGingerbreadMan } from "react-icons/gi";
 import { useParams } from "react-router-dom";
 import useFetchUser from "../../hooks/Account/useFetchUser";
 import Loader from "../../components/common/Loader";
+import Seo from "../../components/utils/Seo";
+import NotFound from "../../components/common/NotFound";
 
 const ProfilePage = () => {
 
@@ -22,9 +24,9 @@ const ProfilePage = () => {
         )
     } else if (isError) {
         return (
-            <div>
-                <h1>Profile not found</h1>
-            </div>
+            <Seo title="Error!" description="Profile not Found">
+                <NotFound type="profile"/>
+            </Seo>
         )
     } else {
 
