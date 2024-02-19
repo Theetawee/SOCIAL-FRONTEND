@@ -45,13 +45,21 @@ const Endpoints = () => {
         return response.data
     }
 
+    //update profile info
+
+    const updateProfileInfo = async (data:{name:string, bio:string, location:string}) => {
+        const response = await api.post(`/accounts/update/info/`, data)
+        return response.data
+    }
+
 
     return {
         getUserInfo,
         sendFriendRequest,
         getFriendRequests,
         acceptFriendRequest,
-        declineFriendRequest
+        declineFriendRequest,
+        updateProfileInfo
     }
 
 

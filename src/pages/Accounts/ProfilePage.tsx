@@ -64,9 +64,10 @@ const ProfilePage = () => {
                             <div className="flex mb-4 justify-center items-center">
                                 <div className="">
                                     <Image
-                                        src={DefaultAvater}
+                                        src={profile.image||DefaultAvater}
                                         alt="User"
-                                        className="w-24 h-24 rounded-full"
+                                        hash={profile.profile_image_hash}
+                                        className="w-24 h-24 border border-gray-300 dark:bg-gray-800 rounded-full"
                                     />
                                 </div>
                                 <div className="ml-3 sm:ml-5 py-4">
