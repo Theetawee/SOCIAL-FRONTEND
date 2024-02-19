@@ -1,4 +1,4 @@
-import { UserDetailType } from "../types";
+import { FriendRequestType, UserDetailType } from "../types";
 import useAxios from "../useAxios"
 
 const Endpoints = () => {
@@ -21,10 +21,18 @@ const Endpoints = () => {
         return response.data
     }
 
+    //get friend requests
+    const getFriendRequests = async ():Promise<FriendRequestType[]> => {
+        const response = await api.get(`/accounts/friend-requests/`)
+        return response.data
+    }
+
+
 
     return {
         getUserInfo,
-        sendFriendRequest
+        sendFriendRequest,
+        getFriendRequests
     }
 
 

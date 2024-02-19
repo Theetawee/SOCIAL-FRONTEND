@@ -42,3 +42,12 @@ export interface UserDetailType  {
     user_sent_friend_request: boolean;
     account_sent_friend_request: boolean;
 }
+
+
+export interface FriendRequestType{
+    id: number;
+    sender: UserDetailType
+    recipient: UserDetailType
+    status: string
+    date_sent: string
+}

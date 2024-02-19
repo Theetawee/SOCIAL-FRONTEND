@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Post from "../components/Post/Post";
 import useSidebar from "../hooks/useSidebar";
+import FriendRequest from "../components/Partials/Sidebars/FriendRequest";
 
 const HomePage = () => {
 
@@ -9,7 +10,7 @@ const HomePage = () => {
     const {setComponent } = useSidebar();
 
     useEffect(() => {
-        setComponent(<>Home page</>);
+        setComponent(<><FriendRequest/></>);
         return () => {
             setComponent(null);
         }
