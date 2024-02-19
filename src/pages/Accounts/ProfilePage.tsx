@@ -3,16 +3,16 @@ import Image from "../../components/common/Image";
 import DefaultAvater from "../../assets/default.webp";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { GiGingerbreadMan } from "react-icons/gi";
-import { Link, useParams } from "react-router-dom";
+import {useParams } from "react-router-dom";
 import useFetchUser from "../../hooks/Account/useFetchUser";
 import Loader from "../../components/common/Loader";
 import Seo from "../../components/utils/Seo";
 import NotFound from "../../components/common/NotFound";
 import VerifiedSvg from "../../components/Partials/Account/VerifiedSvg";
 import ProfileActionBtn from "../../components/Partials/Account/ProfileActionBtn";
-import { CiEdit } from "react-icons/ci";
 import Modal from "../../components/common/Modal";
 import UpdateProfilePage from "./UpdateProfilePage";
+import Hobbies from "../../components/Partials/Account/Hobbies";
 
 
 const ProfilePage = () => {
@@ -22,7 +22,7 @@ const ProfilePage = () => {
 
     const user_name = username || ""
 
-    const { profile, isLoading, isError } = useFetchUser(user_name);
+    const { profile, isLoading, isError,hobbies,isHobbiesError,isHobbiesLoading,update_hobbies,isHobbiesUpdating,isSuccess } = useFetchUser(user_name);
 
 
     if (isLoading) {
@@ -118,11 +118,8 @@ const ProfilePage = () => {
                                         Hobbies
                                     </p>
                                 </div>
-                                <Link to={"/update/hobbies"}>
-                                    <CiEdit className="w-6 h-6 text-primary-500" />
-                                </Link>
                             </div>
-                            <div className="p-4 flex items-center justify-center"></div>
+                            <Hobbies isSuccess={isSuccess} isUpdatingHobbies={isHobbiesUpdating} update_hobbies={update_hobbies} profile_hobbies={profile.hobbies} hobbies={hobbies} isHobbiesLoading={isHobbiesLoading} isHobbiesError={isHobbiesError}/>
                         </div>
                     </div>
                 </section>

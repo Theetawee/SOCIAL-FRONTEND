@@ -20,7 +20,7 @@ export interface TokenData extends JwtPayload {
     verified:boolean
 }
 
-export interface Hobby {
+export interface HobbyType {
     id: number;
     name: string;
 }
@@ -46,7 +46,7 @@ export interface UserDetailType  {
     user_is_friend: boolean;
     user_sent_friend_request: boolean;
     account_sent_friend_request: boolean;
-    hobbies:Hobby[]
+    hobbies:HobbyType[]
 }
 
 

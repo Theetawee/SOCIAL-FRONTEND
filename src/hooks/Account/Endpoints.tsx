@@ -1,4 +1,4 @@
-import { FriendRequestType, UserDetailType } from "../types";
+import { FriendRequestType, HobbyType, UserDetailType } from "../types";
 import useAxios from "../useAxios"
 
 const Endpoints = () => {
@@ -65,6 +65,22 @@ const Endpoints = () => {
         return response.data;
     };
 
+    //get Hobbies
+
+    const getHobbies = async (): Promise<HobbyType[]> => {
+        const response = await api.get("/accounts/hobbies/")
+        return response.data
+    }
+
+    //update Hobbies
+
+    const updateHobbies = async (data: number[]) => {
+        const response = await api.post("/accounts/hobbies/update/", {
+            hobbies: data,
+        })
+        return response.data
+    }
+
 
     return {
         getUserInfo,
@@ -73,7 +89,9 @@ const Endpoints = () => {
         acceptFriendRequest,
         declineFriendRequest,
         updateProfileInfo,
-        updateProfileImage
+        updateProfileImage,
+        getHobbies,
+        updateHobbies
     }
 
 
