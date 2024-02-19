@@ -10,7 +10,7 @@ const useUpdateProfile = (username:string) => {
     const client = useQueryClient();
     const { toggleModal} = useModal();
 
-    const { updateProfileInfo} = Endpoints();
+    const { updateProfileInfo,updateProfileImage} = Endpoints();
 
     const { mutateAsync:updateInfo, isPending} = useMutation({
         mutationFn: updateProfileInfo,
@@ -26,9 +26,23 @@ const useUpdateProfile = (username:string) => {
         }
     })
 
+
+    const {mutateAsync:updateImage,isPending:updatingImage,isSuccess} = useMutation({
+        mutationFn: (data: Blob) => updateProfileImage(data),
+        onSuccess: () => {
+            client.invalidateQueries({ queryKey: ["profile", username] }),
+                toast.success("Profile image updated");
+        },
+        onError: () => {
+            toast.error("Profile image update failed");
+        },
+    });
+
     return {
         updateInfo,
-        isPending
+        isPending,
+        updateImage,
+        updatingImage,isSuccess
   }
 }
 

@@ -52,6 +52,19 @@ const Endpoints = () => {
         return response.data
     }
 
+    //update profile Image
+
+    const updateProfileImage = async (data: Blob) => {
+        const formData = new FormData();
+        formData.append("profile_image", data, "profile_image.webp");
+        const response = await api.post("/accounts/update/image/", formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        });
+        return response.data;
+    };
+
 
     return {
         getUserInfo,
@@ -59,7 +72,8 @@ const Endpoints = () => {
         getFriendRequests,
         acceptFriendRequest,
         declineFriendRequest,
-        updateProfileInfo
+        updateProfileInfo,
+        updateProfileImage
     }
 
 

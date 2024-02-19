@@ -43,6 +43,7 @@ const ProfilePage = () => {
                 title={`${profile.name}(@${profile.username})`}
                 description={`Profile Page for @${profile.username}`}
             >
+
                 <Modal title="Edit Profile">
                     <UpdateProfilePage profile={profile}/>
                 </Modal>
