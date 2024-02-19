@@ -7,7 +7,7 @@ const useFriendRequests = () => {
 
     const {data:friend_requests,isPending,isError}=useQuery({
         queryKey: ["friend_requests"],
-        queryFn:getFriendRequests,
+        queryFn:()=>getFriendRequests(3),
     })
 
     return {

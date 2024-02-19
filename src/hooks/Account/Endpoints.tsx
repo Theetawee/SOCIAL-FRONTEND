@@ -22,8 +22,14 @@ const Endpoints = () => {
     }
 
     //get friend requests
-    const getFriendRequests = async ():Promise<FriendRequestType[]> => {
-        const response = await api.get(`/accounts/friend-requests/`)
+    const getFriendRequests = async (value?: number): Promise<FriendRequestType[]> => {
+        let response
+        if (value) {
+            response = await api.get(`/accounts/friend-requests/?value=${value}`)
+        }
+        else {
+            response = await api.get(`/accounts/friend-requests/`)
+        }
         return response.data
     }
 

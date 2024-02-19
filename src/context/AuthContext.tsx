@@ -82,12 +82,12 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
                 authenticateUser(data.access)
             }
         };
-        if (isAuthenticated && isOnline || fastRefresh && isOnline) {
+        if (isAuthenticated  || fastRefresh) {
             RefreshTokens();
         } else {
             setIsLoading(false);
         }
-    }, [fastRefresh, isAuthenticated, isOnline]);
+    }, [fastRefresh, isAuthenticated]);
 
 
     const contextData = {

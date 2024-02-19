@@ -29,7 +29,7 @@ const LogoutPage = () => {
 
     return (
         <section className="flex items-center flex-col justify-center py-20 px-2">
-            <div className="max-w-sm grid grid-cols-1 gap-3 mx-auto rounded-md shadow w-full bg-gray-800 px-4 py-10">
+            <div className="max-w-sm grid grid-cols-1 gap-3 mx-auto rounded-md shadow w-full dark:bg-gray-800 bg-gray-50 px-4 py-10">
                 <h1 className="text-xl">Are you sure you want to log out?</h1>
                 <p className="mb-6">You can log in again at any time</p>
                 <div className="grid grid-cols-1 gap-4">

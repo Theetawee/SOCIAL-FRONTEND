@@ -22,10 +22,9 @@ const FriendRequest = () => {
             </div>
         );
     } else {
-        const limitedRequests = friend_requests.slice(0, 3); // Take only the first three requests
         content = (
             <div className="p-4 grid grid-cols-1 gap-4">
-                {limitedRequests.map((request) => (
+                {friend_requests.map((request) => (
                     <FriendRequestCard key={request.id} request={request} />
                 ))}
             </div>

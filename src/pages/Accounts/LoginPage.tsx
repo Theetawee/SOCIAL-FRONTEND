@@ -30,7 +30,7 @@ const LoginPage = () => {
             description="Sign in to access your account and unlock a world of possibilities. Seamlessly connect with friends, explore personalized content, and stay updated on the latest news. Your journey begins here."
         >
             <section className="flex items-center flex-col justify-center py-20 px-2">
-                <div className="max-w-md mx-auto rounded-md shadow w-full bg-gray-800 p-4">
+                <div className="max-w-md mx-auto rounded-md shadow w-full bg-white dark:bg-gray-800 p-4">
                     <form onSubmit={handleSubmit} method="post">
                         <h1 className="text-white mb-4 font-bold text-center text-xl">
                             Sign in to Waanverse
@@ -90,7 +90,7 @@ const LoginPage = () => {
                                 </span>
                             </div>
 
-                            <Link to={GOOGLE_URL} className="w-full flex items-center justify-center text-white border border-gray-600 font-medium rounded text-sm px-5 py-2.5 text-center">
+                            <Link to={GOOGLE_URL} className="w-full flex items-center justify-center text-gray-700 dark:text-white border border-gray-600 font-medium rounded text-sm px-5 py-2.5 text-center">
                                 <FcGoogle className="w-5 h-5 mr-3" />
                                 Sign in with Google
                             </Link>
