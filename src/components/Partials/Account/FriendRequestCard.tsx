@@ -12,10 +12,14 @@ import Loader from "../../common/Loader";
 
 const FriendRequestCard = ({ request }: { request: FriendRequestType }) => {
   const { naturalDay } = useDate();
-  const { accept_friend_request, accepting_friend_request } = useProfileActions(request.sender.username);
+  const { accept_friend_request, accepting_friend_request,decline_friend_request,declining_friend_request } = useProfileActions(request.sender.username);
 
   const handleAccept=async()=>{
     await accept_friend_request(request.id)
+  }
+
+  const handleDecline=async()=>{
+    await decline_friend_request(request.id)
   }
 
 
@@ -47,11 +51,11 @@ const FriendRequestCard = ({ request }: { request: FriendRequestType }) => {
           </span>
           </div>
             <div className="mt-4 flex gap-x-3 items-center">
-                <button onClick={handleAccept} disabled={accepting_friend_request} className="bg-primary-600  text-white rounded-full text-sm py-1.5 px-5">
+                <button onClick={handleAccept} disabled={accepting_friend_request||declining_friend_request} className="bg-primary-600  text-white rounded-full text-sm py-1.5 px-5">
                   {accepting_friend_request ? (<Loader fill="white"/>) : "Accept"}
                 </button>
-                <button disabled={accepting_friend_request} className="bg-red-600 text-white rounded-full py-1.5 text-sm px-5">
-                    Decline
+                <button onClick={handleDecline} disabled={accepting_friend_request||declining_friend_request} className="bg-red-600 text-white rounded-full py-1.5 text-sm px-5">
+                  {declining_friend_request ? (<Loader fill="white"/>) : "Decline"}
                 </button>
             </div>
         </div>

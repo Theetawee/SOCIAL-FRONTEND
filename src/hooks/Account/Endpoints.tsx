@@ -39,13 +39,19 @@ const Endpoints = () => {
         return response.data
     }
 
+    //decline friend request
+    const declineFriendRequest = async (requestId: number) => {
+        const response = await api.post(`/accounts/decline-friend-request/${requestId}/`)
+        return response.data
+    }
 
 
     return {
         getUserInfo,
         sendFriendRequest,
         getFriendRequests,
-        acceptFriendRequest
+        acceptFriendRequest,
+        declineFriendRequest
     }
 
 

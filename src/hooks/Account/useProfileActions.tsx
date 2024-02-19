@@ -11,7 +11,7 @@ interface ErrorType {
 const useProfileActions = (username:string) => {
 
     const client = useQueryClient();
-    const { sendFriendRequest,acceptFriendRequest} = Endpoints();
+    const { sendFriendRequest,acceptFriendRequest,declineFriendRequest} = Endpoints();
 
     const {mutateAsync:send_friend_request,isPending:sending_friend_request } = useMutation({
         mutationFn: () => sendFriendRequest(username),
@@ -51,6 +51,23 @@ const useProfileActions = (username:string) => {
         }
     })
 
+    const {
+        mutateAsync: decline_friend_request,
+        isPending: declining_friend_request,
+        isError: declining_friend_request_error,
+    } = useMutation({
+        mutationFn: (requestId: number) => declineFriendRequest(requestId),
+        mutationKey: ["declineFriendRequest", username],
+        onSuccess: async () => {
+            await client.invalidateQueries({ queryKey: ["friend_requests"] });
+            toast.success("Friend request declined");
+        },
+        onError: async () => {
+            toast.error("Failed to decline friend request");
+        },
+    });
+
+
 
 
     return {
@@ -58,7 +75,10 @@ const useProfileActions = (username:string) => {
         sending_friend_request,
         accepting_friend_request,
         accepting_friend_request_error,
-        accept_friend_request
+        accept_friend_request,
+        decline_friend_request,
+        declining_friend_request,
+        declining_friend_request_error
   }
 }
 
