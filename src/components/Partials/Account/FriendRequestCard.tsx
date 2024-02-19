@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import DefaultAvatar from "../../../assets/default.webp";
 import { FriendRequestType } from "../../../hooks/types";
 import useDate from "../../../hooks/useDate";
+import useProfileActions from "../../../hooks/Account/useProfileActions";
+import Loader from "../../common/Loader";
 
 
 
@@ -9,7 +11,19 @@ import useDate from "../../../hooks/useDate";
 
 
 const FriendRequestCard = ({ request }: { request: FriendRequestType }) => {
-  const {naturalDay } = useDate();
+  const { naturalDay } = useDate();
+  const { accept_friend_request, accepting_friend_request } = useProfileActions(request.sender.username);
+
+  const handleAccept=async()=>{
+    await accept_friend_request(request.id)
+  }
+
+
+
+
+
+
+
     return (
       <div className="pb-2">
         <div className="flex items-center justify-between">
@@ -33,10 +47,10 @@ const FriendRequestCard = ({ request }: { request: FriendRequestType }) => {
           </span>
           </div>
             <div className="mt-4 flex gap-x-3 items-center">
-                <button className="bg-primary-600  text-white rounded-full text-sm py-1.5 px-5">
-                    Accept
+                <button onClick={handleAccept} disabled={accepting_friend_request} className="bg-primary-600  text-white rounded-full text-sm py-1.5 px-5">
+                  {accepting_friend_request ? (<Loader fill="white"/>) : "Accept"}
                 </button>
-                <button className="bg-red-600 text-white rounded-full py-1.5 text-sm px-5">
+                <button disabled={accepting_friend_request} className="bg-red-600 text-white rounded-full py-1.5 text-sm px-5">
                     Decline
                 </button>
             </div>

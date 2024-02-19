@@ -27,12 +27,19 @@ const Endpoints = () => {
         return response.data
     }
 
+    //accept friend request
+    const acceptFriendRequest = async (requestId: number) => {
+        const response = await api.post(`/accounts/accept-friend-request/${requestId}/`)
+        return response.data
+    }
+
 
 
     return {
         getUserInfo,
         sendFriendRequest,
-        getFriendRequests
+        getFriendRequests,
+        acceptFriendRequest
     }
 
 

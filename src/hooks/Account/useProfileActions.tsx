@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Endpoints from "./Endpoints"
 import { UserDetailType } from "../types";
+import toast from "react-hot-toast";
 
 
 interface ErrorType {
@@ -10,7 +11,7 @@ interface ErrorType {
 const useProfileActions = (username:string) => {
 
     const client = useQueryClient();
-    const { sendFriendRequest} = Endpoints();
+    const { sendFriendRequest,acceptFriendRequest} = Endpoints();
 
     const {mutateAsync:send_friend_request,isPending:sending_friend_request } = useMutation({
         mutationFn: () => sendFriendRequest(username),
@@ -38,9 +39,26 @@ const useProfileActions = (username:string) => {
     })
 
 
+    const {mutateAsync:accept_friend_request, isPending:accepting_friend_request ,isError:accepting_friend_request_error} = useMutation({
+        mutationFn: (requestId: number) => acceptFriendRequest(requestId),
+        mutationKey: ["acceptFriendRequest", username],
+        onSuccess: async () => {
+            await client.invalidateQueries({ queryKey: ["friend_requests"] });
+            toast.success("Friend request accepted");
+        },
+        onError: async () => {
+            toast.error("Failed to accept friend request");
+        }
+    })
+
+
+
     return {
         send_friend_request,
-        sending_friend_request
+        sending_friend_request,
+        accepting_friend_request,
+        accepting_friend_request_error,
+        accept_friend_request
   }
 }
 
