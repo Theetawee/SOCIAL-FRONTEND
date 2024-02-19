@@ -20,7 +20,6 @@ const GoogleLoginPage = lazy(() => import('./pages/Accounts/GoogleLoginPage'));
 const ProfilePage = lazy(() => import("./pages/Accounts/ProfilePage"));
 
 
-
 const router = createBrowserRouter(
     createRoutesFromElements([
         <Route path="/" element={<FrameLayout />}>

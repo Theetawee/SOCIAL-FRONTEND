@@ -3,14 +3,16 @@ import Image from "../../components/common/Image";
 import DefaultAvater from "../../assets/default.webp";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { GiGingerbreadMan } from "react-icons/gi";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useFetchUser from "../../hooks/Account/useFetchUser";
 import Loader from "../../components/common/Loader";
 import Seo from "../../components/utils/Seo";
 import NotFound from "../../components/common/NotFound";
 import VerifiedSvg from "../../components/Partials/Account/VerifiedSvg";
 import ProfileActionBtn from "../../components/Partials/Account/ProfileActionBtn";
-
+import { CiEdit } from "react-icons/ci";
+import Modal from "../../components/common/Modal";
+import UpdateProfilePage from "./UpdateProfilePage";
 
 
 const ProfilePage = () => {
@@ -41,8 +43,12 @@ const ProfilePage = () => {
                 title={`${profile.name}(@${profile.username})`}
                 description={`Profile Page for @${profile.username}`}
             >
+                <Modal title="Edit Profile">
+                    <UpdateProfilePage profile={profile}/>
+                </Modal>
+
                 <section>
-                    <div className="pb-4 px-4">
+                    <div className="py-4 px-4">
                         <button
                             onClick={() => {
                                 window.history.back();
@@ -56,23 +62,23 @@ const ProfilePage = () => {
                     <div className="px-2 sm:px-4 pt-4 grid bg-white dark:bg-gray-950 grid-cols-1 gap-3">
                         <div className="items-center  justify-center flex">
                             <div className="flex mb-4 justify-center items-center">
-                            <div className="">
-                                <Image
-                                    src={DefaultAvater}
-                                    alt="User"
-                                    className="w-24 h-24 rounded-full"
-                                />
+                                <div className="">
+                                    <Image
+                                        src={DefaultAvater}
+                                        alt="User"
+                                        className="w-24 h-24 rounded-full"
+                                    />
+                                </div>
+                                <div className="ml-3 sm:ml-5 py-4">
+                                    <h1 className="text-2xl flex items-center font-medium">
+                                        {profile?.name}
+                                        {profile?.verified && <VerifiedSvg />}
+                                    </h1>
+                                    <p className="leading-4 italic">
+                                        @{profile?.username}
+                                    </p>
+                                </div>
                             </div>
-                            <div className="ml-3 sm:ml-5 py-4">
-                                <h1 className="text-2xl flex items-center font-medium">
-                                    {profile?.name}
-                                    {profile?.verified && <VerifiedSvg />}
-                                </h1>
-                                <p className="leading-4 italic">
-                                    @{profile?.username}
-                                </p>
-                                </div>
-                                </div>
                             <div className="text-center py-4 mt-4 ml-8">
                                 <ProfileActionBtn profile={profile} />
                             </div>
@@ -103,11 +109,16 @@ const ProfilePage = () => {
                             </div>
                         </div>
                         <div>
-                            <div className="flex mb-2 items-center">
-                                <GiGingerbreadMan className="w-6 h-6 text-primary-500" />
-                                <p className="ml-2 text-lg font-medium">
-                                    Hobbies
-                                </p>
+                            <div className="flex items-center justify-between">
+                                <div className="flex mb-2 items-center">
+                                    <GiGingerbreadMan className="w-6 h-6 text-primary-500" />
+                                    <p className="ml-2 text-lg font-medium">
+                                        Hobbies
+                                    </p>
+                                </div>
+                                <Link to={"/update/hobbies"}>
+                                    <CiEdit className="w-6 h-6 text-primary-500" />
+                                </Link>
                             </div>
                             <div className="p-4 flex items-center justify-center"></div>
                         </div>

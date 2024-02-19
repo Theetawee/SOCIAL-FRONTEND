@@ -5,6 +5,7 @@ import DrawerProvider from "./DrawerContext";
 import { ThemeProvider } from "./ThemeContext";
 import NotificationProvider from "./NotificationContext";
 import SideBarContextProvider from "./SidebarContext";
+import ModalProvider from "./ModalContext";
 
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
     return (
@@ -15,7 +16,7 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
                         <HelmetProvider>
                             <QueryClientProvider client={new QueryClient()}>
                                 <NotificationProvider>
-                                    {children}
+                                    <ModalProvider>{children}</ModalProvider>
                                 </NotificationProvider>
                             </QueryClientProvider>
                         </HelmetProvider>

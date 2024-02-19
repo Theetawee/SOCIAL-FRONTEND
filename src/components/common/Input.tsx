@@ -12,6 +12,7 @@ interface Props {
     type: string;
     inref?: any;
     auto_on?: boolean;
+    className?: string;
 }
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
@@ -29,6 +30,7 @@ const Input = ({
     type,
     inref,
     auto_on = true,
+    className = "bg-white dark:bg-gray-800",
 }: Props) => {
     const [passwordType, setPasswordType] = useState("password");
 
@@ -96,7 +98,7 @@ const Input = ({
 
                     <label
                         htmlFor={id}
-                        className="absolute  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4   scale-75 top-3 z-10 origin-[0] bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-5 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                        className={`absolute  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4   scale-75 top-3 z-10 origin-[0]  ${className} px-2 peer-focus:px-2 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-5 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1`}
                     >
                         {label}
                     </label>
