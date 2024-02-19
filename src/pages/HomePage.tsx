@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Post from "../components/Post/Post";
 import useSidebar from "../hooks/useSidebar";
 import FriendRequest from "../components/Partials/Sidebars/FriendRequest";
+import PopularHashtags from "../components/Partials/Sidebars/PopularHashtags";
 
 const HomePage = () => {
 
@@ -10,7 +11,7 @@ const HomePage = () => {
     const {setComponent } = useSidebar();
 
     useEffect(() => {
-        setComponent(<><FriendRequest/></>);
+        setComponent(<section className="grid grid-cols-1 gap-4"><FriendRequest/><PopularHashtags/></section>);
         return () => {
             setComponent(null);
         }
