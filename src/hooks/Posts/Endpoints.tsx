@@ -1,6 +1,5 @@
 import { PostResponseType } from "../types";
-import useAxios from "../useAxios"
-
+import useAxios from "../useAxios";
 
 export interface PostFormDataType {
     content: string;
@@ -9,11 +8,6 @@ export interface PostFormDataType {
     open_to: string;
     // taged_accounts: UserResponseType[];
 }
-
-
-
-
-
 
 const Endpoints = () => {
     const api = useAxios();
@@ -57,10 +51,25 @@ const Endpoints = () => {
         return response.data;
     };
 
+    //like a post
+    const likePost = async (id: number, type: string) => {
+        const response = await api.post(`/like/${id}/${type}/`);
+        return response.data;
+    };
+
+    const dislikePost = async (id:number, type:string) => {
+        const response = await api.post(`/unlike/${id}/${type}/`);
+        return response.data;
+    };
+
+
+
     return {
         createPost,
-        GetAllPosts
+        GetAllPosts,
+        likePost,
+        dislikePost
     };
-}
+};
 
-export default Endpoints
+export default Endpoints;

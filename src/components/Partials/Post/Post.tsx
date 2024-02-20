@@ -12,7 +12,7 @@ const Post = ({ post }: { post: PostType }) => {
                     <PostBody content={post.content}/>
                 </section>
                 <section>
-                    <PostFooter />
+                    <PostFooter post_id={post.id} is_disliked={post.is_disliked} is_liked={post.is_liked}/>
                 </section>
             </article>
             <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700" />
