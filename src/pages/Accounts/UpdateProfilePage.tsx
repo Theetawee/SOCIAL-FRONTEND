@@ -84,7 +84,7 @@ const UpdateProfilePage = ({ profile }: { profile: UserDetailType }) => {
                         type="text"
                         required={false}
             />
-            <Select defaultValue={info.gender} label="Gender" name="gender" required={false} options={[{label:"Male",value:"male"},{label:"Female",value:"female"},{label:"Other",value:"other"}]}/>
+            <Select defaultValue={info.gender} disabled={isPending} label="Gender" name="gender" required={false} options={[{label:"Male",value:"male"},{label:"Female",value:"female"},{label:"Other",value:"other"}]}/>
                 </div>
                 <div>
                     <button

@@ -3,6 +3,7 @@ import Post from "../components/Post/Post";
 import useSidebar from "../hooks/useSidebar";
 import FriendRequest from "../components/Partials/Sidebars/FriendRequest";
 import PopularHashtags from "../components/Partials/Sidebars/PopularHashtags";
+import WhatsOnYourMind from "../components/Partials/Home/WhatsOnYourMind";
 
 const HomePage = () => {
 
@@ -21,11 +22,23 @@ const HomePage = () => {
     return (
         <section>
             <div className="grid px-4 py-3  text-center grid-cols-2">
-                <button className={`${all?"text-primary-500 font-medium":""}`} onClick={() => setAll(true)}>All Posts</button>
-                <button className={`${!all?"text-primary-500 font-medium":""}`} onClick={() => setAll(false)}>My Friends</button>
+                <button
+                    className={`${all ? "text-primary-500 font-medium" : ""}`}
+                    onClick={() => setAll(true)}
+                >
+                    All Posts
+                </button>
+                <button
+                    className={`${!all ? "text-primary-500 font-medium" : ""}`}
+                    onClick={() => setAll(false)}
+                >
+                    My Friends
+                </button>
             </div>
             <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700" />
-
+            <div>
+            <WhatsOnYourMind />
+</div>
             <div>
                 <Post />
                 <Post />
