@@ -9,11 +9,13 @@ import TopBarBtn from "./TopBarBtn";
 import { FaUserFriends } from "react-icons/fa";
 import { RiNotification3Fill } from "react-icons/ri";
 import useNotification from "../hooks/useNotification";
+import useAuth from "../hooks/Auth/useAuth";
 
 const AppBar = () => {
     const { notifications} = useNotification();
     const { toggleSidebar } = useDrawer();
     const { theme} = useTheme();
+    const {user,userInfo}=useAuth();
 
     return (
         <header
@@ -50,8 +52,9 @@ const AppBar = () => {
                             onClick={toggleSidebar}
                         >
                             <Image
-                                src={DefaultAvater}
-                                alt="Waanverse plus"
+                                src={userInfo?.image||user?.image||DefaultAvater}
+                                    alt={user?.name || "user image"}
+                                    hash={userInfo?.profile_image_hash || user?.image_hash}
                                 className="w-10 h-10 rounded-full"
                             />
                             </button>
