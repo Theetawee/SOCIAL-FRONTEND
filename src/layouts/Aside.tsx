@@ -27,7 +27,7 @@ const Aside = () => {
                                 <div className="ml-3  flex flex-col">
                                     <p className="text-lg flex items-center font-medium">
                                         {user?.name}
-                                        {user?.verified && (
+                                        {user?.verified || userInfo?.verified && (
                                             <span>
                                                 <VerifiedSvg />
                                             </span>)}

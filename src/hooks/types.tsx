@@ -57,3 +57,45 @@ export interface FriendRequestType{
     status: string
     date_sent: string
 }
+
+export interface ImageDataType {
+    content_image: string;
+    image_hash: string;
+    id: number;
+}
+
+interface PostAccountType{
+    username: string
+    id: number
+    name: string
+    image: string | null
+    profile_image_hash: string
+    verified: boolean
+}
+
+interface BaseStructure {
+    content: string;
+    account: PostAccountType;
+    timestamp: string;
+    last_edited: string;
+    total_likes: number;
+    views: number;
+    id: number;
+    is_liked: boolean;
+    is_disliked: boolean;
+    post_images: ImageDataType[];
+    taged_accounts: PostAccountType[];
+}
+
+export interface PostType extends BaseStructure {
+    open_to: string;
+    total_comments: number;
+}
+
+
+export interface PostResponseType {
+    next: number | null;
+    previous: number | null;
+    count: number;
+    results: PostType[];
+}

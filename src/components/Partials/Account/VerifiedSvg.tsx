@@ -8,7 +8,7 @@ const VerifiedSvg = () => {
       <svg
           aria-label="Verified Account"
           role="img"
-          className="max-w-[18px] max-h-[18px] ml-0.5 inline-block w-full h-full"
+          className="max-w-[15px] max-h-[15px] ml-0.5 inline-block w-full h-full"
           viewBox="0 0 512 512"
           xmlns="http://www.w3.org/2000/svg"
       >

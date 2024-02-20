@@ -1,3 +1,4 @@
+import { PostResponseType } from "../types";
 import useAxios from "../useAxios"
 
 
@@ -15,9 +16,7 @@ export interface PostFormDataType {
 
 
 const Endpoints = () => {
-
     const api = useAxios();
-
 
     //create a post
 
@@ -41,12 +40,27 @@ const Endpoints = () => {
         return response.data;
     };
 
+    //get All Posts
+    const GetAllPosts = async (
+        pageNum = 1,
+        account?: string
+    ): Promise<PostResponseType> => {
+        let response;
+        if (account) {
+            response = await api.get(
+                `/posts/?page=${pageNum}&account=${account}`
+            );
+        } else {
+            response = await api.get(`/posts/?page=${pageNum}`);
+        }
 
-
+        return response.data;
+    };
 
     return {
-      createPost
-  }
+        createPost,
+        GetAllPosts
+    };
 }
 
 export default Endpoints

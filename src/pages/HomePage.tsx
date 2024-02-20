@@ -1,23 +1,26 @@
 import { useEffect, useState } from "react";
-import Post from "../components/Post/Post";
 import useSidebar from "../hooks/useSidebar";
 import FriendRequest from "../components/Partials/Sidebars/FriendRequest";
 import PopularHashtags from "../components/Partials/Sidebars/PopularHashtags";
 import WhatsOnYourMind from "../components/Partials/Home/WhatsOnYourMind";
+import Posts from "../components/Partials/Home/Posts";
 
 const HomePage = () => {
-
     const [all, setAll] = useState(true);
 
-    const {setComponent } = useSidebar();
+    const { setComponent } = useSidebar();
 
     useEffect(() => {
-        setComponent(<section className="grid grid-cols-1 gap-4"><FriendRequest/><PopularHashtags/></section>);
+        setComponent(
+            <section className="grid grid-cols-1 gap-4">
+                <FriendRequest />
+                <PopularHashtags />
+            </section>
+        );
         return () => {
             setComponent(null);
-        }
-    },[setComponent])
-
+        };
+    }, [setComponent]);
 
     return (
         <section>
@@ -37,17 +40,10 @@ const HomePage = () => {
             </div>
             <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700" />
             <div>
-            <WhatsOnYourMind />
-</div>
+                <WhatsOnYourMind />
+            </div>
             <div>
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
+                <Posts/>
             </div>
         </section>
     );
