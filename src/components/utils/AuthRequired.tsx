@@ -4,6 +4,7 @@ import useAuth from "../../hooks/Auth/useAuth";
 const AuthRequired = () => {
     const { isAuthenticated } = useAuth();
 
+
     if (isAuthenticated) {
         return <Outlet />;
     } else {

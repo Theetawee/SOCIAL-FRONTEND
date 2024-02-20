@@ -8,7 +8,7 @@ import {
 } from "react";
 import { jwtDecode } from "jwt-decode";
 import LoadingState from "../components/common/LoadingState";
-import { UserType, TokenData } from "../hooks/types";
+import { UserType, TokenData, UserDetailType } from "../hooks/types";
 const baseURL = import.meta.env.VITE_BASE_URL;
 import useIsOnline from "../hooks/useIsOnline";
 import OfflineAlert from "../components/utils/OfflineAlert";
@@ -20,7 +20,8 @@ interface AuthContextType {
     setUser: Dispatch<SetStateAction<UserType | null>>;
     setFastRefresh: Dispatch<SetStateAction<boolean>>;
     unauthenticateUser: () => void;
-    authenticateUser:(access:string)=>void
+    authenticateUser: (access: string) => void,
+    userInfo: UserDetailType | null
 }
 
 export const AuthContext = createContext<AuthContextType>({
@@ -30,11 +31,13 @@ export const AuthContext = createContext<AuthContextType>({
     setUser: () => {},
     setFastRefresh: () => { },
     unauthenticateUser: () => { },
-    authenticateUser:()=>{},
+    authenticateUser: () => { },
+    userInfo: null
 });
 
 const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<UserType | null>(null);
+    const [userInfo, setUserInfo] = useState<UserDetailType | null>(null);
     const [isAuthenticated, setIsAuthenticated] = useState(() => {
         return localStorage.getItem("user") === "true";
     });
@@ -68,18 +71,32 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
 
     useEffect(() => {
-        const RefreshTokens = async () => {
-            const response = await fetch(`${baseURL}/accounts/token/refresh/`, {
-                method: "POST",
-                credentials: "include",
-            });
-            if (response.status !== 200) {
-                const new_data = await response.json();
-                console.log(new_data)
-                unauthenticateUser();
-            } else {
+        const getUserInfo = async () => {
+            try {
+                const response = await fetch(`${baseURL}/accounts/me/`, {
+                    method: "GET",
+                    credentials: "include",
+                })
                 const data = await response.json();
-                authenticateUser(data.access)
+                setUserInfo(data);
+
+            }catch {
+                unauthenticateUser();
+            }
+        }
+        const RefreshTokens = async () => {
+            try {
+                const response = await fetch(`${baseURL}/accounts/token/refresh/`, {
+                    method: "POST",
+                    credentials: "include",
+                });
+                    const data = await response.json();
+                    authenticateUser(data.access)
+                setFastRefresh(false);
+                await getUserInfo();
+
+            } catch {
+                unauthenticateUser();
             }
         };
         if (isAuthenticated  || fastRefresh) {
@@ -97,7 +114,8 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         setUser,
         setFastRefresh,
         authenticateUser,
-        unauthenticateUser
+        unauthenticateUser,
+        userInfo
     };
 
     return (

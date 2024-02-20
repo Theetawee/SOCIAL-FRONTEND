@@ -20,6 +20,7 @@ const useLogin = () => {
             });
 
             const data = response.data;
+            console.log(data);
             toast.success("Login successful");
             authenticateUser(data.access)
             navigate("/");

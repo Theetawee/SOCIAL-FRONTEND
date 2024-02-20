@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Endpoints from "./Endpoints"
 import toast from "react-hot-toast";
 import useModal from "../useModal";
+import useAuth from "../Auth/useAuth";
 
 
 
@@ -9,7 +10,7 @@ import useModal from "../useModal";
 const useUpdateProfile = (username:string) => {
     const client = useQueryClient();
     const { toggleModal} = useModal();
-
+    const { setFastRefresh} = useAuth();
     const { updateProfileInfo,updateProfileImage} = Endpoints();
 
     const { mutateAsync:updateInfo, isPending} = useMutation({
@@ -20,6 +21,7 @@ const useUpdateProfile = (username:string) => {
         },
         onSuccess: async () => {
             toast.success("Profile updated")
+            setFastRefresh(true)
             toggleModal();
         },onSettled: async () => {
             await client.invalidateQueries({ queryKey: ["profile", username] })
@@ -31,6 +33,8 @@ const useUpdateProfile = (username:string) => {
         mutationFn: (data: Blob) => updateProfileImage(data),
         onSuccess: () => {
             client.invalidateQueries({ queryKey: ["profile", username] }),
+                client.invalidateQueries({ queryKey: ["profile"] }),
+                setFastRefresh(true),
                 toast.success("Profile image updated");
         },
         onError: () => {

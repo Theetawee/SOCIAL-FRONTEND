@@ -7,7 +7,7 @@ import { FaUserFriends, FaUser, FaSignOutAlt } from "react-icons/fa";
 import Switch from "../components/common/Switch";
 import VerifiedSvg from "../components/Partials/Account/VerifiedSvg";
 const Aside = () => {
-    const { user } = useAuth();
+    const { user,userInfo } = useAuth();
 
     return (
         <section className="grid grid-cols-1 gap-6">
@@ -17,8 +17,8 @@ const Aside = () => {
                         <div className="flex items-center">
                             <Link to={`/${user?.username}`} className="block">
                                 <Image
-                                    src={user?.image || DefaultAvater}
-                                    hash={user?.image_hash}
+                                    src={userInfo?.image||user?.image || DefaultAvater}
+                                    hash={userInfo?.profile_image_hash || user?.image_hash}
                                     alt={user?.name || "user image"}
                                     className="w-12 h-12 rounded-full"
                                 />
