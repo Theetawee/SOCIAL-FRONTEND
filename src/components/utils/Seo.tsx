@@ -1,7 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
-const baseUrl = import.meta.env.VITE_BASE_URL;
-
+const baseUrl="https://www.waanverse.com"
 const Seo = ({
     children,
     title,
