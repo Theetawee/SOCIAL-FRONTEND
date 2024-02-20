@@ -47,7 +47,7 @@ const Endpoints = () => {
 
     //update profile info
 
-    const updateProfileInfo = async (data:{name:string, bio:string, location:string}) => {
+    const updateProfileInfo = async (data:{name:string, bio:string, location:string, gender:string}) => {
         const response = await api.post(`/accounts/update/info/`, data)
         return response.data
     }

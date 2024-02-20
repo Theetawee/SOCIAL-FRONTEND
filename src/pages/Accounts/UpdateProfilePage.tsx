@@ -4,6 +4,7 @@ import Loader from "../../components/common/Loader";
 import { useState } from "react";
 import UpdateProfileImage from "../../components/Partials/Account/UpdateProfileImage";
 import Input from "../../components/common/Input";
+import Select from "../../components/common/Select";
 
 const UpdateProfilePage = ({ profile }: { profile: UserDetailType }) => {
 
@@ -13,6 +14,7 @@ const UpdateProfilePage = ({ profile }: { profile: UserDetailType }) => {
     name: profile.name,
     bio: profile.bio,
     location: profile.location,
+    gender: profile.gender||"",
   })
 
 
@@ -27,10 +29,12 @@ const UpdateProfilePage = ({ profile }: { profile: UserDetailType }) => {
     const name = formData.get("name") as string;
     const bio = formData.get("bio") as string;
     const location = formData.get("location") as string;
+    const gender = formData.get("gender") as string;
     const data = {
       name,
       bio,
       location,
+      gender
     }
 
     updateInfo(data)
@@ -79,7 +83,8 @@ const UpdateProfilePage = ({ profile }: { profile: UserDetailType }) => {
                         label="Location"
                         type="text"
                         required={false}
-                    />
+            />
+            <Select defaultValue={info.gender} label="Gender" name="gender" required={false} options={[{label:"Male",value:"male"},{label:"Female",value:"female"},{label:"Other",value:"other"}]}/>
                 </div>
                 <div>
                     <button
