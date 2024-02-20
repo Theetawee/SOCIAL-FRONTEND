@@ -17,7 +17,7 @@ const AppBar = () => {
 
     return (
         <header
-            style={{ paddingTop: "env(safe-area-inset-top)" }}
+            style={{ paddingTop: "env(safe-area-inset-top),0" }}
             className="fixed z-20 top-0 left-0 w-full bg-white dark:bg-gray-900 border-b dark:border-gray-800 border-gray-200"
         >
             <nav className="px-4 py-2">
