@@ -23,7 +23,6 @@ const useLikePost = (postId: number, type: string) => {
                 queryClient.setQueryData<PostType>([queryName, postId], {
                     ...previousPost,
                     is_liked: true,
-                    is_disliked: false,
                 });
             }
             return { previousPost };
@@ -38,8 +37,8 @@ const useLikePost = (postId: number, type: string) => {
         },
     });
 
-    const handleLike = async () => {
-        await mutateAsync();
+    const handleLike = () => {
+        mutateAsync();
     }
 
 

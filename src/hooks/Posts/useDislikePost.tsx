@@ -25,7 +25,6 @@ const useDislikePost = (postId: number, type: string) => {
             if (previousPost) {
                 queryClient.setQueryData<PostType>([queryName, postId], {
                     ...previousPost,
-                    is_liked: false,
                     is_disliked: true,
                 });
             }
@@ -41,8 +40,8 @@ const useDislikePost = (postId: number, type: string) => {
         },
     });
 
-    const handleDisLike=async() => {
-        await mutateAsync();
+    const handleDisLike=() => {
+        mutateAsync();
     }
 
     return {
