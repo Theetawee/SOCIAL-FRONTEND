@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { HobbyType } from "../../../hooks/types";
 import Loader from "../../common/Loader";
 import HobbyChecked from "./HobbyChecked";
+import { GiGingerbreadMan } from "react-icons/gi";
 
 interface Props {
     hobbies: HobbyType[] | undefined;
@@ -60,44 +61,61 @@ const Hobbies = ({
 
     return (
         <div className="min-h-[30vh]">
+            <div className="flex items-center justify-between">
+                <div className="flex mb-2 items-center">
+                    <GiGingerbreadMan className="w-6 h-6 text-primary-500" />
+                    <p className="ml-2 text-lg font-medium">Hobbies</p>
+                </div>
+                {changed && (
+                    <div className="py-6 text-right">
+                        <button
+                            onClick={handleClick}
+                            disabled={isUpdatingHobbies}
+                            className="bg-white hover:bg-gray-50 text-gray-700 py-1.5 px-5 rounded-full"
+                        >
+                            {isUpdatingHobbies ? <Loader /> : "Save"}
+                        </button>
+                    </div>
+                )}
+            </div>
+
             {isHobbiesLoading ? (
                 <Loader />
             ) : isHobbiesError ? (
                 <p>Unable to fetch data!</p>
             ) : (
-                        <div className="">
-                            <ul className="flex flex-wrap gap-3">
-
-                    {hobbies?.map((hobby) => {
-                        // Check if the current hobby is in the profile's hobbies
-                        const isInProfileHobbies = profile_hobbies.some(
-                            (profileHobby) => profileHobby.id === hobby.id
-                        );
-
-                        // Render the hobby only if it's in the profile's hobbies
-                        if (isInProfileHobbies) {
-                            return (
-                                <HobbyChecked   checked={true} key={hobby.id} hobby={hobby}/>
+                <div className="">
+                    <ul className="flex flex-wrap gap-3">
+                        {hobbies?.map((hobby) => {
+                            // Check if the current hobby is in the profile's hobbies
+                            const isInProfileHobbies = profile_hobbies.some(
+                                (profileHobby) => profileHobby.id === hobby.id
                             );
-                        }
 
-                        // Return null if the hobby is not in the profile's hobbies
-                        return (
-                            <HobbyChecked    checked={false} key={hobby.id} hobby={hobby}/>
-                        );
-                    })}</ul>
+                            // Render the hobby only if it's in the profile's hobbies
+                            if (isInProfileHobbies) {
+                                return (
+                                    <HobbyChecked
+                                        checked={true}
+                                        key={hobby.id}
+                                        hobby={hobby}
+                                    />
+                                );
+                            }
+
+                            // Return null if the hobby is not in the profile's hobbies
+                            return (
+                                <HobbyChecked
+                                    checked={false}
+                                    key={hobby.id}
+                                    hobby={hobby}
+                                />
+                            );
+                        })}
+                    </ul>
                 </div>
             )}
-            {changed  && (
-                <div className="py-6 text-right">
-                    <button onClick={handleClick} disabled={isUpdatingHobbies} className="bg-white hover:bg-gray-50 text-gray-700 py-2 px-5 rounded-full">
-                        {isUpdatingHobbies ? <Loader /> : "Update"}
-                    </button>
-                </div>
-            )}
-
         </div>
-
     );
 };
 

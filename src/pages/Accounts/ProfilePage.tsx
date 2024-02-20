@@ -2,7 +2,6 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import Image from "../../components/common/Image";
 import DefaultAvater from "../../assets/default.webp";
 import { FaRegQuestionCircle } from "react-icons/fa";
-import { GiGingerbreadMan } from "react-icons/gi";
 import {useParams } from "react-router-dom";
 import useFetchUser from "../../hooks/Account/useFetchUser";
 import Loader from "../../components/common/Loader";
@@ -61,8 +60,8 @@ const ProfilePage = () => {
                         </button>
                     </div>
                     <div className="px-2 sm:px-4 pt-4 grid bg-white dark:bg-gray-950 grid-cols-1 gap-3">
-                        <div className="items-center  justify-center flex">
-                            <div className="flex mb-4 justify-center items-center">
+                        <div className="items-center flex-wrap justify-between flex">
+                            <div className="flex px-4  justify-center items-center">
                                 <div className="">
                                     <Image
                                         src={profile.image||DefaultAvater}
@@ -81,11 +80,11 @@ const ProfilePage = () => {
                                     </p>
                                 </div>
                             </div>
-                            <div className="text-center py-4 mt-4 ml-8">
+                            <div className="text-center   w-full py-4  ml-8">
                                 <ProfileActionBtn profile={profile} />
                             </div>
                         </div>
-                        <div>
+                        <div className="mt-4">
                             <div className="grid grid-cols-2 gap-4 sm:gap-6">
                                 <button className="border-b-2 border-primary-600">
                                     Profile
@@ -95,7 +94,7 @@ const ProfilePage = () => {
                         </div>
                     </div>
                     <div className="px-4 grid grid-cols-1 gap-5 py-8 dark:bg-gray-900 bg-gray-50 h-full">
-                        <div>
+                        <div className="mb-6">
                             <div className="flex mb-2 items-center">
                                 <FaRegQuestionCircle className="w-6 h-6 text-primary-500" />
                                 <p className="ml-2 text-lg font-medium">
@@ -111,14 +110,6 @@ const ProfilePage = () => {
                             </div>
                         </div>
                         <div>
-                            <div className="flex items-center justify-between">
-                                <div className="flex mb-2 items-center">
-                                    <GiGingerbreadMan className="w-6 h-6 text-primary-500" />
-                                    <p className="ml-2 text-lg font-medium">
-                                        Hobbies
-                                    </p>
-                                </div>
-                            </div>
                             <Hobbies isSuccess={isSuccess} isUpdatingHobbies={isHobbiesUpdating} update_hobbies={update_hobbies} profile_hobbies={profile.hobbies} hobbies={hobbies} isHobbiesLoading={isHobbiesLoading} isHobbiesError={isHobbiesError}/>
                         </div>
                     </div>

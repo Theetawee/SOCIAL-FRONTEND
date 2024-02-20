@@ -130,7 +130,7 @@ function UpdateProfileImage({ profile }: {profile: UserDetailType }): JSX.Elemen
                                         alt="User"
                                         hash={profile.profile_image_hash}
                                 />
-                                <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                <div className="absolute z-20 top-0 left-0 w-full h-full flex items-center justify-center">
                                     <span className="dark:bg-gray-800/55 bg-gray-100/55 w-full h-full rounded-full p-2 flex items-center justify-center">
                                         <label
                                             htmlFor="profile_image"
