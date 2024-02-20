@@ -29,8 +29,8 @@ const LoginPage = () => {
             title="Waanverse - Sign in"
             description="Sign in to access your account and unlock a world of possibilities. Seamlessly connect with friends, explore personalized content, and stay updated on the latest news. Your journey begins here."
         >
-            <section className="flex items-center flex-col justify-center py-20 px-2">
-                <div className="max-w-md mx-auto rounded-md shadow w-full bg-white dark:bg-gray-800 p-4">
+            <section className="flex h-screen items-center flex-col justify-center py-20 px-2">
+                <div className="max-w-md py-6  mx-auto rounded-0 dark:shadow-gray-700 shadow w-full bg-white dark:bg-gray-800 px-4">
                     <form onSubmit={handleSubmit} method="post">
                         <h1 className="text-white mb-4 font-bold text-center text-xl">
                             Sign in to Waanverse
@@ -84,8 +84,7 @@ const LoginPage = () => {
                                 {isLoading ? "Signing in..." : "Sign in"}
                             </button>
                             <div className="inline-flex items-center justify-center w-full">
-                                <hr className="w-64 h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-                                <span className="absolute px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-gray-800">
+                                <span className=" px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-gray-800">
                                     or
                                 </span>
                             </div>
