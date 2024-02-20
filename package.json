@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
-    "@tanstack/react-query": "^5.20.5",
+    "@tanstack/react-query": "^5.22.2",
+    "@tanstack/react-query-devtools": "^5.24.0",
     "axios": "^1.6.7",
     "blurhash": "^2.0.5",
     "cropperjs": "^1.6.1",

@@ -1,61 +1,63 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { PostType } from "../types";
-import Endpoints from "./Endpoints";
-interface OnError {
-    previousPost: PostType;
-}
+import useDislikePost from "./useDislikePost";
+import useLikePost from "./useLikePost";
+import LikeButton from "../../components/Partials/Post/LikeButton";
 
-const usePostActions = (postId: number, type: string) => {
+const usePostAction = (
+    post_id: number,
+    total_likes: number,
+    is_liked: boolean,
+    type = "post"
+) => {
+    const { dislikePending, handleDisLike,dislikeError } = useDislikePost(
+        post_id,
+        type
+    );
 
 
-    const queryClient = useQueryClient();
 
-    const { dislikePost } = Endpoints();
+    const { likePending, handleLike, likeError } = useLikePost(post_id, type);
 
-    let queryName: string;
+    let content;
 
-
-    if (type === "post") {
-        queryName = "posts";
-    } else if (type === "comment") {
-        queryName = "comments";
+    if (likePending) {
+        content = <LikeButton type="like" likes={total_likes + 1} />;
+    } else if (dislikePending) {
+        content = <LikeButton type="dislike" likes={total_likes - 1} />;
+    } else if (likeError) {
+        content = (
+            <>
+                <LikeButton type="dislike" likes={total_likes} />
+            </>
+        );
+    } else if (dislikeError) {
+        content = (
+            <>
+                <LikeButton type="like" likes={total_likes} />
+            </>
+        );
+    } else {
+        if (is_liked) {
+            content = (
+                <LikeButton
+                    type="like"
+                    likes={total_likes}
+                    onclick={handleDisLike}
+                />
+            );
+        } else {
+            content = (
+                <LikeButton
+                    type="dislike"
+                    likes={total_likes}
+                    onclick={handleLike}
+                />
+            );
+        }
     }
 
-    const {
-        mutateAsync: dislikeAction,
-        isPending: dislikePending,
-        isError: dislikeError,
-    } = useMutation({
-        mutationFn: () => dislikePost(postId, type),
-        onMutate: async () => {
-            await queryClient.cancelQueries({ queryKey: [queryName, postId] });
-            const previousPost = queryClient.getQueryData([queryName, postId]);
-
-            // Update the is_liked property optimistically
-            queryClient.setQueryData([queryName, postId], (old: PostType) => ({
-                ...old,
-                is_liked: false,
-                is_disliked: true,
-            }));
-
-            return { previousPost };
-        },
-        onError: (context: OnError) => {
-            // Rollback to the previous state on error
-            queryClient.setQueryData([queryName, postId], context.previousPost);
-        },
-        onSettled: async () => {
-            // Invalidate the query after the mutation is settled
-            await queryClient.invalidateQueries({ queryKey: [queryName] });
-        },
-    });
-
-    const handleDisLike = async() => {
-        // Trigger the like mutation
-        await dislikeAction();
+    return {
+        likeStatus: content,
     };
-
-    return { handleDisLike, dislikePending, dislikeError };
 };
 
-export default usePostActions;
+export default usePostAction;

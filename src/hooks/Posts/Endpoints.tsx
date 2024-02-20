@@ -1,4 +1,4 @@
-import { PostResponseType } from "../types";
+import { PostResponseType, PostType } from "../types";
 import useAxios from "../useAxios";
 
 export interface PostFormDataType {
@@ -57,18 +57,23 @@ const Endpoints = () => {
         return response.data;
     };
 
-    const dislikePost = async (id:number, type:string) => {
+    const dislikePost = async (id: number, type: string) => {
         const response = await api.post(`/unlike/${id}/${type}/`);
         return response.data;
     };
 
-
+    //get Post by id
+    const getPostById = async (id: number): Promise<PostType> => {
+        const response = await api.get(`/post/${id}/`);
+        return response.data;
+    };
 
     return {
         createPost,
         GetAllPosts,
         likePost,
-        dislikePost
+        dislikePost,
+        getPostById,
     };
 };
 
