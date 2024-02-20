@@ -32,7 +32,8 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-router-dom": "^6.22.1",
     "react-toggle-dark-mode": "^1.1.1",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "terser": "^5.27.2"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
