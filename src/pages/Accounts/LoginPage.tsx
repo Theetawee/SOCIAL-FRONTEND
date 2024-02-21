@@ -24,7 +24,7 @@ const LoginPage = () => {
         e.preventDefault();
         const username = e.currentTarget.username.value;
         const password = e.currentTarget.password.value;
-        await LoginUser(username, password);
+        await LoginUser(username, password)
     };
 
     return (
