@@ -25,6 +25,7 @@ const useLogin = () => {
             navigate("/");
         } catch (error: any) {
             if (error.response.data.non_field_errors) {
+                toast.error(error.response.data.non_field_errors[0]);
                 if (
                     error.response.data.non_field_errors[0] ===
                     "E-mail is not verified."
