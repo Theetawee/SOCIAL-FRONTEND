@@ -30,7 +30,7 @@ const Input = ({
     type,
     inref,
     auto_on = true,
-    className = "bg-white dark:bg-gray-800",
+    className = "bg-white dark:bg-gray-900",
 }: Props) => {
     const [passwordType, setPasswordType] = useState("password");
 
@@ -83,14 +83,14 @@ const Input = ({
                                     onClick={() => setPasswordType("password")}
                                     className="cursor-pointer"
                                 >
-                                    <FaEyeSlash className="w-5 text-gray-600 h-5" />
+                                    <FaEyeSlash className="w-4 text-gray-600 h-4" />
                                 </span>
                             ) : (
                                 <span
                                     onClick={() => setPasswordType("text")}
                                     className="cursor-pointer"
                                 >
-                                    <FaEye className="w-5 h-5 text-gray-600" />
+                                    <FaEye className="w-4 h-4 text-gray-600" />
                                 </span>
                             )}
                         </div>
