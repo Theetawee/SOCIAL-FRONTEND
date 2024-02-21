@@ -25,15 +25,14 @@ const useLogin = () => {
             navigate("/");
         } catch (error: any) {
             if (error.response.data.non_field_errors) {
-                toast.error(error.response.data.non_field_errors[0]);
                 if (
                     error.response.data.non_field_errors[0] ===
                     "E-mail is not verified."
                 ) {
                     navigate("/accounts/verify-email?redirect_login=true");
-                } 
+                }
             } else {
-                toast.error("Unable to login, please try again.");
+                toast.error("Unable to login with the provided credentials");
             }
         } finally {
             setLoging(false);
