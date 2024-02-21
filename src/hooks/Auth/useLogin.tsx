@@ -24,7 +24,6 @@ const useLogin = () => {
             authenticateUser(data.access)
             navigate("/");
         } catch (error: any) {
-            console.log(error)
             if (error.response.data.non_field_errors) {
                 toast.error(error.response.data.non_field_errors[0]);
                 if (
