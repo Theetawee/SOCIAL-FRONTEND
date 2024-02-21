@@ -31,7 +31,7 @@ const SignUpPage = () => {
             <section className="flex h-screen items-center flex-col justify-center py-20 px-2">
                 <div className="max-w-md mx-auto dark:shadow-primary-900 h-full overflow-y-auto rounded-xl bg-white shadow w-full dark:bg-gray-900 dark:border-gray-800 px-2 py-6">
                     <form onSubmit={handleSubmit} method="post">
-                        <h1 className="text-white dark:text-sky-500 mb-4 font-bold text-center text-xl">
+                        <h1 className="text-sky-500 mb-4 font-bold text-center text-2xl">
                             Create Waanverse account
                         </h1>
                         <SuspenseLoader>
@@ -93,7 +93,7 @@ const SignUpPage = () => {
                                             id="remember_me"
                                             type="checkbox"
                                             value=""
-                                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-0 dark:bg-gray-700 dark:border-gray-600"
+                                            className="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-0 dark:bg-gray-900 dark:border-gray-600"
                                         />
                                         <label
                                             htmlFor="remember_me"

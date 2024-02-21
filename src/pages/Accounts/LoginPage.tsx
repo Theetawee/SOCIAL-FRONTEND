@@ -33,9 +33,9 @@ const LoginPage = () => {
             description="Sign in to access your account and unlock a world of possibilities. Seamlessly connect with friends, explore personalized content, and stay updated on the latest news. Your journey begins here."
         >
             <section className="flex h-screen items-center flex-col justify-center py-20 px-4">
-                <div className="max-w-md py-6  mx-auto rounded-0  shadow w-full bg-white dark:bg-gray-900 shadow-primary-950 border border-gray-100 dark:border-gray-800 rounded-xl px-2">
+                <div className="max-w-md py-6  mx-auto rounded-0  shadow w-full bg-white dark:bg-gray-900 shadow-primary-100 dark:shadow-primary-950 border border-gray-100 dark:border-gray-800 rounded-xl px-2">
                     <form onSubmit={handleSubmit} method="post">
-                        <h1 className="text-white mb-4 dark:text-sky-500 font-medium text-center text-2xl">
+                        <h1 className="text-primary-500 mb-4  font-medium text-center text-2xl">
                             Sign in to Waanverse
                         </h1>
                         <div className="grid grid-cols-1 gap-6 p-4 sm:p-6">
@@ -63,7 +63,7 @@ const LoginPage = () => {
                                         id="remember_me"
                                         type="checkbox"
                                         value=""
-                                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-0 dark:bg-gray-700 dark:border-gray-600"
+                                        className="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-0 dark:bg-gray-900 dark:border-gray-600"
                                     />
                                     <label
                                         htmlFor="remember_me"
