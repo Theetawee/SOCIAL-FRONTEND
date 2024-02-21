@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { lazy } from "react";
 const Input = lazy(() => import("../../components/common/Input"));
-import Seo from "../../components/utils/Seo";
+const Seo = lazy(() => import("../../components/utils/Seo"));
 import { FcGoogle } from "react-icons/fc";
 import { FormEvent, useEffect } from "react";
 import useSignup from "../../hooks/Auth/useSignUp";
@@ -11,7 +11,7 @@ const SignUpPage = () => {
     useEffect(() => {
         localStorage.setItem("out", "true");
     }, []);
-    const { isLoading, signup,errors } = useSignup();
+    const { isLoading, signup, errors } = useSignup();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -20,7 +20,7 @@ const SignUpPage = () => {
         const password2 = e.currentTarget.password.value;
         const email = e.currentTarget.email.value;
         const name = e.currentTarget.set_name.value;
-        await signup({email,password1,password2,username,name});
+        await signup({ email, password1, password2, username, name });
     };
 
     return (
@@ -34,23 +34,26 @@ const SignUpPage = () => {
                         <h1 className="text-white dark:text-sky-500 mb-4 font-bold text-center text-xl">
                             Create Waanverse account
                         </h1>
-                        <SuspenseLoader><div className="grid grid-cols-1 gap-6 p-4 ">
-                            <div>
-                                {errors && errors.length > 0 && (
-                                    <div>
-                                        <ul className="text-red-500 list-disc pl-4">
-                                            {errors.map((error) => (
-                                                <li
-                                                    className="text-sm font-medium"
-                                                    key={errors.indexOf(error)}
-                                                >
-                                                    {error}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
-                            </div>
+                        <SuspenseLoader>
+                            <div className="grid grid-cols-1 gap-6 p-4 ">
+                                <div>
+                                    {errors && errors.length > 0 && (
+                                        <div>
+                                            <ul className="text-red-500 list-disc pl-4">
+                                                {errors.map((error) => (
+                                                    <li
+                                                        className="text-sm font-medium"
+                                                        key={errors.indexOf(
+                                                            error
+                                                        )}
+                                                    >
+                                                        {error}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
+                                </div>
                                 <Input
                                     type="email"
                                     name="email"
@@ -101,44 +104,46 @@ const SignUpPage = () => {
                                     </div>
                                 </div>
 
-                            <button
-                                type="submit"
-                                disabled={isLoading}
-                                className="w-full  text-white dark:bg-sky-700 dark:hover:bg-primary-700/90 bg-primary-600 hover:bg-primary-600/90 font-medium rounded text-sm px-5 py-2.5 text-center"
-                            >
-                                {isLoading ? "Creating..." : "Create account"}
-                            </button>
-                            <div className="inline-flex items-center justify-center w-full">
-                                <span className="px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-gray-900">
-                                    or
-                                </span>
-                            </div>
+                                <button
+                                    type="submit"
+                                    disabled={isLoading}
+                                    className="w-full  text-white dark:bg-sky-700 dark:hover:bg-primary-700/90 bg-primary-600 hover:bg-primary-600/90 font-medium rounded text-sm px-5 py-2.5 text-center"
+                                >
+                                    {isLoading
+                                        ? "Creating..."
+                                        : "Create account"}
+                                </button>
+                                <div className="inline-flex items-center justify-center w-full">
+                                    <span className="px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-gray-900">
+                                        or
+                                    </span>
+                                </div>
 
-                            <button className="w-full flex items-center justify-center dark:text-white text-gray-700 border dark:border-gray-800 dark:bg-gray-800 dark:hover:bg-gray-800/90 border-gray-600 font-medium rounded text-sm px-5 py-2.5 text-center">
-                                <FcGoogle className="w-5 h-5 mr-3" />
-                                Sign in with Google
-                            </button>
-                            <div>
-                                <p className="text-center text-xs ">
-                                    By creating an account, you agree to our{" "}
-                                    <Link
-                                        className="text-primary-500 hover:underline"
-                                        to={"/"}
-                                    >
-                                        terms
-                                    </Link>{" "}
-                                    and{" "}
-                                    <Link
-                                        to={"/"}
-                                        className="text-primary-500 hover:underline"
-                                    >
-                                        privacy policy
-                                    </Link>
-                                    .
-                                </p>
+                                <button className="w-full flex items-center justify-center dark:text-white text-gray-700 border dark:border-gray-800 dark:bg-gray-800 dark:hover:bg-gray-800/90 border-gray-600 font-medium rounded text-sm px-5 py-2.5 text-center">
+                                    <FcGoogle className="w-5 h-5 mr-3" />
+                                    Sign in with Google
+                                </button>
+                                <div>
+                                    <p className="text-center text-xs ">
+                                        By creating an account, you agree to our{" "}
+                                        <Link
+                                            className="text-primary-500 hover:underline"
+                                            to={"/"}
+                                        >
+                                            terms
+                                        </Link>{" "}
+                                        and{" "}
+                                        <Link
+                                            to={"/"}
+                                            className="text-primary-500 hover:underline"
+                                        >
+                                            privacy policy
+                                        </Link>
+                                        .
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                            </SuspenseLoader>
+                        </SuspenseLoader>
                     </form>
                 </div>
                 <Link
