@@ -7,26 +7,23 @@ import useAuth from "../../../hooks/Auth/useAuth";
 import Select from "../../common/Select";
 import Loader from "../../common/Loader";
 const WhatsOnYourMind = () => {
-
     const { createPost } = Endpoints();
     const client = useQueryClient();
     const { user } = useAuth();
-    const formRef=useRef<HTMLFormElement>(null)
+    const formRef = useRef<HTMLFormElement>(null);
 
-    const { mutateAsync,isPending} = useMutation({
+    const { mutateAsync, isPending } = useMutation({
         mutationFn: createPost,
         onSuccess: () => {
             toast.success("Post created successfully");
             client.invalidateQueries({ queryKey: ["posts"] });
             setText("");
-            formRef.current?.reset()
+            formRef.current?.reset();
         },
         onError: () => {
             toast.error("Something went wrong");
-        }
-    })
-
-
+        },
+    });
 
     const [text, setText] = useState("");
 
@@ -36,13 +33,12 @@ const WhatsOnYourMind = () => {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const open_to= e.currentTarget.open_to.value
+        const open_to = e.currentTarget.open_to.value;
         const data = {
             content: text,
-            account: user?.user_id.toString()||"",
-            open_to:open_to
-
-        }
+            account: user?.user_id.toString() || "",
+            open_to: open_to,
+        };
         if (text.trim() !== "") {
             mutateAsync(data);
         }
@@ -53,21 +49,21 @@ const WhatsOnYourMind = () => {
             <div className="border-gray-100 dark:border-gray-800 border-b p-4 grid grid-cols-1 gap-4 dark:bg-gray-900 bg-white">
                 <div>
                     <div className="max-w-sm">
-                    <Select
+                        <Select
                             className="px-4 py-1.5 w-auto text-sm"
                             disabled={isPending}
-                        name="open_to"
+                            name="open_to"
                             label="Who can see your post"
-                        required
-                        defaultValue="E"
-                        options={[
-                            { label: "Everyone", value: "E" },
-                            { label: "Friends", value: "AF" },
-                            { label: "Followers", value: "F" },
-                            { label: "Only me", value: "O" },
-                        ]}
+                            required
+                            defaultValue="E"
+                            options={[
+                                { label: "Everyone", value: "E" },
+                                { label: "Friends", value: "AF" },
+                                { label: "Followers", value: "F" },
+                                { label: "Only me", value: "O" },
+                            ]}
                         />
-                        </div>
+                    </div>
                 </div>
 
                 <textarea
@@ -85,7 +81,7 @@ const WhatsOnYourMind = () => {
                         className="px-6 py-2 bg-primary-600 text-white rounded-full hover:bg-primary-600/90 transition-colors"
                         type="submit"
                     >
-                        {isPending ? <Loader fill="white" /> : "Post"}
+                        {isPending ? <Loader /> : "Post"}
                     </button>
                     <div>
                         <label htmlFor="File" className="p-2 cursor-pointer">

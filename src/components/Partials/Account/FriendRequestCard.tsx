@@ -52,10 +52,10 @@ const FriendRequestCard = ({ request }: { request: FriendRequestType }) => {
           </div>
             <div className="mt-4 flex gap-x-3 items-center">
                 <button onClick={handleAccept} disabled={accepting_friend_request||declining_friend_request} className="bg-primary-600  text-white rounded-full text-sm py-1.5 px-5">
-                  {accepting_friend_request ? (<Loader fill="white"/>) : "Accept"}
+                  {accepting_friend_request ? (<Loader />) : "Accept"}
                 </button>
                 <button onClick={handleDecline} disabled={accepting_friend_request||declining_friend_request} className="bg-red-600 text-white rounded-full py-1.5 text-sm px-5">
-                  {declining_friend_request ? (<Loader fill="white"/>) : "Decline"}
+                  {declining_friend_request ? (<Loader />) : "Decline"}
                 </button>
             </div>
         </div>
