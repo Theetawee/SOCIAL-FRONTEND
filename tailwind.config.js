@@ -5,6 +5,9 @@ export default {
 
     theme: {
         extend: {
+            boxShadow: {
+                shadow: "3px 5px 60px -10px rgba(14, 165, 233, 0.3)",
+            },
             colors: {
                 primary: {
                     50: "#f0f9ff",
@@ -35,8 +38,6 @@ export default {
             },
         },
     },
-    plugins: [
-        require("@tailwindcss/forms"),
-    ],
+    plugins: [require("@tailwindcss/forms")],
 };
 

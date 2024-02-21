@@ -33,7 +33,7 @@ const LoginPage = () => {
             description="Sign in to access your account and unlock a world of possibilities. Seamlessly connect with friends, explore personalized content, and stay updated on the latest news. Your journey begins here."
         >
             <section className="flex h-screen items-center flex-col justify-center py-20 px-4">
-                <div className="max-w-md py-6  mx-auto rounded-0  shadow w-full bg-white dark:bg-gray-900 shadow-primary-100 dark:shadow-primary-950 border border-gray-100 dark:border-gray-800 rounded-xl px-2">
+                <div className="max-w-md py-6 shadow-shadow mx-auto rounded-0   w-full bg-white dark:bg-gray-900 shadow-primary-100 dark:shadow-primary-950  rounded-xl px-2">
                     <form onSubmit={handleSubmit} method="post">
                         <h1 className="text-primary-500 mb-4  font-medium text-center text-2xl">
                             Sign in to Waanverse

@@ -28,12 +28,12 @@ const LogoutPage = () => {
 
 
     return (
-        <section className="flex items-center flex-col justify-center py-20 px-2">
-            <div className="max-w-sm grid grid-cols-1 gap-3 mx-auto rounded-md shadow w-full dark:bg-gray-800 bg-gray-50 px-4 py-10">
+        <section className="flex items-center flex-col justify-center h-screen px-2">
+            <div className="max-w-sm grid grid-cols-1 gap-3 mx-auto rounded-md shadow-shadow w-full dark:bg-gray-800 bg-white px-4 py-10">
                 <h1 className="text-xl">Are you sure you want to log out?</h1>
                 <p className="mb-6">You can log in again at any time</p>
-                <div className="grid grid-cols-1 gap-4">
-                    <button onClick={handleLogout} disabled={logingout} className="bg-white border border-gray-100 text-gray-700 px-5 py-2 rounded-full hover:bg-white/90">
+                <div className="grid grid-cols-1 gap-6 font-medium">
+                    <button onClick={handleLogout} disabled={logingout} className="bg-white border border-gray-100 text-gray-700 w-full px-5 py-2 rounded-full hover:bg-white/90">
                         {logingout ? "Logging out..." : "Log out"}
                     </button>
                     <button disabled={logingout} className="bg-gray-700 text-white px-5 py-2 rounded-full hover:bg-gray-700/90">
