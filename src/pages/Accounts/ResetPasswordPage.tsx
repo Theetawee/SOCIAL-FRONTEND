@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import Loader from "../../components/common/Loader";
 import { useState } from "react";
+import Seo from '../../components/utils/Seo';
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const ResetPasswordPage = () => {
@@ -47,7 +48,7 @@ const ResetPasswordPage = () => {
     };
 
     return (
-        <>
+        <Seo title="Reset Password - Waanverse" description="Reset your password securely and regain access to your account. Follow the simple steps to reset your password and ensure the security of your account on Waanverse. Don't worry if you've forgotten your password; we've got you covered.">
             <section className="flex items-center justify-center h-screen px-4">
                 <div className="w-full max-w-md">
                     <h1 className="mb-10 text-xl">
@@ -66,20 +67,20 @@ const ResetPasswordPage = () => {
                             name="email"
                             label="Email Address"
                             disabled={isLoading}
-                            id='email'
-                            className='bg-gray-50 dark:bg-gray-900'
+                            id="email"
+                            className="bg-gray-50 dark:bg-gray-900"
                         />
                         <button
                             type="submit"
                             disabled={isLoading}
                             className="text-white dark:bg-gray-700 hover:bg-gray-900/90 bg-gray-900 py-2 px-5 mt-8 rounded"
                         >
-                            {isLoading ? <Loader  /> : "Submit"}
+                            {isLoading ? <Loader /> : "Submit"}
                         </button>
                     </form>
                 </div>
             </section>
-        </>
+        </Seo>
     );
 };
 

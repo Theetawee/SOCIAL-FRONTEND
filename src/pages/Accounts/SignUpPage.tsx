@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { lazy } from "react";
 const Input = lazy(() => import("../../components/common/Input"));
 const Seo = lazy(() => import("../../components/utils/Seo"));
-import { FcGoogle } from "react-icons/fc";
 import { FormEvent, useEffect } from "react";
 import useSignup from "../../hooks/Auth/useSignUp";
 import { CgLogIn } from "react-icons/cg";
@@ -112,16 +111,6 @@ const SignUpPage = () => {
                                     {isLoading
                                         ? "Creating..."
                                         : "Create account"}
-                                </button>
-                                <div className="inline-flex items-center justify-center w-full">
-                                    <span className="px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-gray-900">
-                                        or
-                                    </span>
-                                </div>
-
-                                <button className="w-full flex items-center justify-center dark:text-white text-gray-700 border dark:border-gray-800 dark:bg-gray-800 dark:hover:bg-gray-800/90 border-gray-600 font-medium rounded text-sm px-5 py-2.5 text-center">
-                                    <FcGoogle className="w-5 h-5 mr-3" />
-                                    Sign in with Google
                                 </button>
                                 <div>
                                     <p className="text-center text-xs ">
