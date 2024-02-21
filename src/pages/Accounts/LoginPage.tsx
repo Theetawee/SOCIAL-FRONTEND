@@ -74,7 +74,7 @@ const LoginPage = () => {
                                 </div>
                                 <div>
                                     <Link
-                                        to={"/"}
+                                        to={"/accounts/reset-password"}
                                         className="text-sm text-primary-500 hover:underline"
                                     >
                                         Forgot Password?
