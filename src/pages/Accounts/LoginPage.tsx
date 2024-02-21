@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
-import Input from "../../components/common/Input";
-import Seo from "../../components/utils/Seo";
 import { FcGoogle } from "react-icons/fc";
+import { lazy } from "react";
+const Seo = lazy(() => import("../../components/utils/Seo"));
+const Input =lazy(() => import("../../components/common/Input"));
 import useLogin from "../../hooks/Auth/useLogin";
 import { FormEvent, useEffect } from "react";
 const redirect_url = import.meta.env.VITE_GOOGLE_REDIRECT
 const google_id = import.meta.env.VITE_GOOGLE_ID
 import { HiOutlineUserAdd } from "react-icons/hi";
+import SuspenseLoader from "../../components/utils/SuspenseLoader";
 
 const LoginPage = () => {
 
@@ -37,6 +39,7 @@ const LoginPage = () => {
                             Sign in to Waanverse
                         </h1>
                         <div className="grid grid-cols-1 gap-6 p-4 sm:p-6">
+                            <SuspenseLoader>
                             <Input
                                 type="text"
                                 name="username"
@@ -44,8 +47,8 @@ const LoginPage = () => {
                                 disabled={isLoading}
                                 id="username"
                                 auto_on={true}
-                            />
-                            <Input
+                                /></SuspenseLoader>
+                            <SuspenseLoader><Input
                                 type="password"
                                 name="password"
                                 label="Password"
@@ -53,6 +56,7 @@ const LoginPage = () => {
                                 id="password"
                                 auto_on={false}
                             />
+                            </SuspenseLoader>
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center">
                                     <input
@@ -85,7 +89,6 @@ const LoginPage = () => {
                                 {isLoading ? "Signing in..." : "Sign in"}
                             </button>
                             <div className="inline-flex items-center justify-center w-full">
-
                                 <span className=" px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-gray-900">
                                     or
                                 </span>
@@ -106,7 +109,6 @@ const LoginPage = () => {
                     className="text-primary-500 flex items-center gap-1 text-sm mt-3 hover:underline"
                 >
                     <HiOutlineUserAdd className="w-5 h-5 inline-block" />
-
                     Create account
                 </Link>
             </section>
