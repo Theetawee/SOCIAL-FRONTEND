@@ -72,7 +72,7 @@ const ResendEmail = () => {
     }, [canSend]);
 
     return (
-        <div className="w-[96]">
+        <div>
             <p className=" text-xl mb-4">Activate your account</p>
             <p className="  mb-4">Resend Account activation link</p>
             {canSend ? (
