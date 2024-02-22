@@ -92,23 +92,7 @@ const SignUpPage = () => {
                                     auto_on={false}
                                 />
                             </SuspenseLoader>
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center mb-4">
-                                    <input
-                                        id="remember_me"
-                                        type="checkbox"
-                                        value=""
-                                        className="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-0 dark:bg-gray-900 dark:border-gray-600"
-                                    />
-                                    <label
-                                        htmlFor="remember_me"
-                                        className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                    >
-                                        Remember me
-                                    </label>
-                                </div>
-                            </div>
-
+                            
                             <button
                                 type="submit"
                                 disabled={isLoading}

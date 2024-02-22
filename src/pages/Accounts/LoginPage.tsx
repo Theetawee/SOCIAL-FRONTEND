@@ -57,21 +57,7 @@ const LoginPage = () => {
                                 auto_on={false}
                             />
                             </SuspenseLoader>
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center">
-                                    <input
-                                        id="remember_me"
-                                        type="checkbox"
-                                        value=""
-                                        className="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-0 dark:bg-gray-900 dark:border-gray-600"
-                                    />
-                                    <label
-                                        htmlFor="remember_me"
-                                        className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                    >
-                                        Remember me
-                                    </label>
-                                </div>
+                            <div className="flex justify-between">
                                 <div>
                                     <Link
                                         to={"/accounts/reset-password"}
@@ -81,6 +67,7 @@ const LoginPage = () => {
                                     </Link>
                                 </div>
                             </div>
+                            <div className="grid grid-cols-1 gap-2">
                             <button
                                 type="submit"
                                 disabled={isLoading}
@@ -89,7 +76,7 @@ const LoginPage = () => {
                                 {isLoading ? "Signing in..." : "Sign in"}
                             </button>
                             <div className="inline-flex items-center justify-center w-full">
-                                <span className=" px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-gray-900">
+                                <span className="font-medium">
                                     or
                                 </span>
                             </div>
@@ -100,7 +87,7 @@ const LoginPage = () => {
                             >
                                 <FcGoogle className="w-5 h-5 mr-3" />
                                 Sign in with Google
-                            </Link>
+                            </Link></div>
                         </div>
                     </form>
                 </div>
