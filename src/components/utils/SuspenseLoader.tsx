@@ -6,7 +6,7 @@ const SuspenseLoader = ({ children }: { children: ReactNode }) => {
             <Suspense
                 fallback={
                     <>
-                        <div className="flex items-center py-6 justify-center">
+                        <div className="flex h-screen items-center py-6 justify-center">
                             <span>
                                 <span>
                                     <svg
