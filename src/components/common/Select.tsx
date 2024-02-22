@@ -24,7 +24,7 @@ const Select = ({
             name={name}
             defaultValue={defaultValue}
             disabled={disabled}
-            className={`block w-full ${className}  text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:ring-1 dark:bg-gray-800 dark:border-gray-700 dark:text-white`}
+            className={`block w-full ${className}  text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:ring-1 dark:bg-gray-900 dark:border-gray-700 dark:text-white`}
             required={required}
         >
             <option value="" disabled>{label}</option>

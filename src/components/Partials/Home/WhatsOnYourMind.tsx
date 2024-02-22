@@ -47,10 +47,11 @@ const WhatsOnYourMind = () => {
     return (
         <form method="post" onSubmit={handleSubmit} className="w-full">
             <div className="border-gray-100 dark:border-gray-800 border-b p-4 grid grid-cols-1 gap-4 dark:bg-gray-900 bg-white">
-                <div>
-                    <div className="max-w-sm">
+                <div className="flex items-center gap-6">
+                    <p className="font-medium">Who can see post</p>
+                    <div className="max-w-40">
                         <Select
-                            className="px-4 py-1.5 w-auto text-sm"
+                            className="px-4 py-1.5  text-sm"
                             disabled={isPending}
                             name="open_to"
                             label="Who can see your post"
@@ -67,7 +68,7 @@ const WhatsOnYourMind = () => {
                 </div>
 
                 <textarea
-                    className="block p-2.5 mb-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 resize-none"
+                    className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 resize-none"
                     rows={4}
                     placeholder="What's on your mind?"
                     value={text}

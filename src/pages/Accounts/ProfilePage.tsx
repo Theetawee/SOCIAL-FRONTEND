@@ -12,6 +12,7 @@ import ProfileActionBtn from "../../components/Partials/Account/ProfileActionBtn
 import Modal from "../../components/common/Modal";
 import UpdateProfilePage from "./UpdateProfilePage";
 import Hobbies from "../../components/Partials/Account/Hobbies";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 
 const ProfilePage = () => {
@@ -79,6 +80,11 @@ const ProfilePage = () => {
                                         @{profile?.username}
                                     </p>
                                 </div>
+                            </div>
+                            <div>
+                                <button>
+                                    <BsThreeDotsVertical />
+                                    </button>
                             </div>
                             <div className="text-center   w-full py-4  ml-8">
                                 <ProfileActionBtn profile={profile} />

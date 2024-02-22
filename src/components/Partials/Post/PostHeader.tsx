@@ -25,7 +25,7 @@ const PostHeader = ({ post}: { post: PostType }) => {
                             <p className="italic font-light leading-3">
                                 @{post.account.username}
                             </p>
-                            <p className="w-1 h-1 bg-white rounded-full"></p>
+                            <p className="w-1 h-1 bg-gray-700 dark:bg-white rounded-full"></p>
                             <span className="text-xs font-light">
                                 {post.timestamp}
                             </span>
