@@ -43,7 +43,7 @@ const UpdateProfilePage = ({ profile }: { profile: UserDetailType }) => {
 
 
     return (
-        <section >
+        <section className="h-full overflow-y-auto">
         <div>
           <UpdateProfileImage profile={profile}/>
         </div>

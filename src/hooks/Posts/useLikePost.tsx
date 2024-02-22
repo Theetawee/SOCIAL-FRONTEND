@@ -9,40 +9,47 @@ interface OnError {
 const useLikePost = (postId: number, type: string) => {
     const queryClient = useQueryClient();
     const { likePost } = Endpoints();
-    const queryName = type === "post" ? "posts" : "comments";
 
-    const {isPending:likePending,mutateAsync,isError:likeError} = useMutation({
+    let queryName: string;
+    if (type === "post") {
+        queryName = "posts";
+    } else if (type === "comment") {
+        queryName = "comments";
+    }
+
+    const {
+        mutate,
+        isPending: likePending,
+        isError: likeError,
+    } = useMutation({
         mutationFn: () => likePost(postId, type),
         onMutate: async () => {
             await queryClient.cancelQueries({ queryKey: [queryName, postId] });
-            const previousPost = queryClient.getQueryData<PostType>([
-                queryName,
-                postId,
-            ]);
-            if (previousPost) {
-                queryClient.setQueryData<PostType>([queryName, postId], {
-                    ...previousPost,
-                    is_liked: true,
-                });
-            }
+            const previousPost = queryClient.getQueryData([queryName, postId]);
+            // Update the is_liked property optimistically
+            queryClient.setQueryData([queryName, postId], (old: PostType) => ({
+                ...old,
+                is_liked: true,
+            }));
+
             return { previousPost };
         },
         onError: (context: OnError) => {
+            // Rollback to the previous state on error
             queryClient.setQueryData([queryName, postId], context.previousPost);
         },
-        onSettled: () => {
-            queryClient.invalidateQueries({
-                queryKey: [queryName],
-            });
+        onSettled: async () => {
+            // Invalidate the query after the mutation is settled
+            await queryClient.invalidateQueries({ queryKey: [queryName] });
         },
     });
 
     const handleLike = () => {
-        mutateAsync();
-    }
+        // Trigger the like mutation
+        mutate();
+    };
 
-
-    return {handleLike,likePending,likeError}
+    return { handleLike, likePending, likeError };
 };
 
 export default useLikePost;
