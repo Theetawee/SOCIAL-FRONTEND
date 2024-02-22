@@ -33,26 +33,24 @@ const SignUpPage = () => {
                         <h1 className="text-sky-500 mb-4 font-bold text-center text-2xl">
                             Create Waanverse account
                         </h1>
-                        <SuspenseLoader>
-                            <div className="grid grid-cols-1 gap-6 p-4 ">
-                                <div>
-                                    {errors && errors.length > 0 && (
-                                        <div>
-                                            <ul className="text-red-500 list-disc pl-4">
-                                                {errors.map((error) => (
-                                                    <li
-                                                        className="text-sm font-medium"
-                                                        key={errors.indexOf(
-                                                            error
-                                                        )}
-                                                    >
-                                                        {error}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    )}
-                                </div>
+                        <div className="grid grid-cols-1 gap-6 p-4 ">
+                            <div>
+                                {errors && errors.length > 0 && (
+                                    <div>
+                                        <ul className="text-red-500 list-disc pl-4">
+                                            {errors.map((error) => (
+                                                <li
+                                                    className="text-sm font-medium"
+                                                    key={errors.indexOf(error)}
+                                                >
+                                                    {error}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>
+                            <SuspenseLoader>
                                 <Input
                                     type="email"
                                     name="email"
@@ -61,6 +59,8 @@ const SignUpPage = () => {
                                     id="email"
                                     auto_on={true}
                                 />
+                            </SuspenseLoader>
+                            <SuspenseLoader>
                                 <Input
                                     type="text"
                                     name="set_name"
@@ -69,7 +69,9 @@ const SignUpPage = () => {
                                     id="name"
                                     auto_on={false}
                                 />
-
+                            </SuspenseLoader>
+                            <SuspenseLoader>
+                                {" "}
                                 <Input
                                     type="text"
                                     name="username"
@@ -78,6 +80,9 @@ const SignUpPage = () => {
                                     id="username"
                                     auto_on={false}
                                 />
+                            </SuspenseLoader>
+                            <SuspenseLoader>
+                                {" "}
                                 <Input
                                     type="password"
                                     name="password"
@@ -86,53 +91,51 @@ const SignUpPage = () => {
                                     id="password"
                                     auto_on={false}
                                 />
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center mb-4">
-                                        <input
-                                            id="remember_me"
-                                            type="checkbox"
-                                            value=""
-                                            className="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-0 dark:bg-gray-900 dark:border-gray-600"
-                                        />
-                                        <label
-                                            htmlFor="remember_me"
-                                            className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                        >
-                                            Remember me
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    disabled={isLoading}
-                                    className="w-full  text-white dark:bg-sky-700 dark:hover:bg-primary-700/90 bg-primary-600 hover:bg-primary-600/90 font-medium rounded text-sm px-5 py-2.5 text-center"
-                                >
-                                    {isLoading
-                                        ? "Creating..."
-                                        : "Create account"}
-                                </button>
-                                <div>
-                                    <p className="text-center text-xs ">
-                                        By creating an account, you agree to our{" "}
-                                        <Link
-                                            className="text-primary-500 hover:underline"
-                                            to={"/"}
-                                        >
-                                            terms
-                                        </Link>{" "}
-                                        and{" "}
-                                        <Link
-                                            to={"/"}
-                                            className="text-primary-500 hover:underline"
-                                        >
-                                            privacy policy
-                                        </Link>
-                                        .
-                                    </p>
+                            </SuspenseLoader>
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center mb-4">
+                                    <input
+                                        id="remember_me"
+                                        type="checkbox"
+                                        value=""
+                                        className="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-0 dark:bg-gray-900 dark:border-gray-600"
+                                    />
+                                    <label
+                                        htmlFor="remember_me"
+                                        className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                    >
+                                        Remember me
+                                    </label>
                                 </div>
                             </div>
-                        </SuspenseLoader>
+
+                            <button
+                                type="submit"
+                                disabled={isLoading}
+                                className="w-full  text-white dark:bg-sky-700 dark:hover:bg-primary-700/90 bg-primary-600 hover:bg-primary-600/90 font-medium rounded text-sm px-5 py-2.5 text-center"
+                            >
+                                {isLoading ? "Creating..." : "Create account"}
+                            </button>
+                            <div>
+                                <p className="text-center text-xs ">
+                                    By creating an account, you agree to our{" "}
+                                    <Link
+                                        className="text-primary-500 hover:underline"
+                                        to={"/"}
+                                    >
+                                        terms
+                                    </Link>{" "}
+                                    and{" "}
+                                    <Link
+                                        to={"/"}
+                                        className="text-primary-500 hover:underline"
+                                    >
+                                        privacy policy
+                                    </Link>
+                                    .
+                                </p>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <Link
