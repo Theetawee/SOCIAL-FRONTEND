@@ -22,7 +22,7 @@ const PostDetailPage = lazy(() => import('./pages/Posts/PostDetailPage'));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const ResetPasswordPage= lazy(() => import('./pages/Accounts/ResetPasswordPage'));
 const PasswordResetConfirmPage= lazy(() => import('./pages/Accounts/PasswordResetConfirmPage'));
-
+const AccountActivationPage= lazy(() => import('./pages/Accounts/AccountActivationPage'));
 
 
 
@@ -48,6 +48,7 @@ const router = createBrowserRouter(
                 <Route path="/accounts/oauth2/google" element={<GoogleLoginPage />} />
                 <Route path="/accounts/reset-password" element={<ResetPasswordPage />} />
                 <Route path="/accounts/password/reset/confirm/:uid/:token" element={<PasswordResetConfirmPage />} />
+                <Route path="/accounts/activate/:token" element={<AccountActivationPage />} />
             </Route>
         </Route>,
         <Route path="*" element={<NotFoundPage />} />
