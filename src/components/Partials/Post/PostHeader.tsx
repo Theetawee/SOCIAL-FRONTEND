@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import DefaultAvater from "../../../assets/default.webp";
 import { PostType } from "../../../hooks/types";
 import Image from "../../common/Image";
@@ -6,15 +7,18 @@ import HeaderMenu from "./HeaderMenu";
 
 const PostHeader = ({ post}: { post: PostType }) => {
     return (
-        <header>
+        <header onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between">
+                <Link to={`/${post.account.username}`}>
+
                 <div className="flex items-center">
                     <Image
                         src={post.account.image || DefaultAvater}
                         hash={post.account.profile_image_hash}
                         alt="User"
                         className="w-10 h-10 rounded-full"
-                    />
+                        />
+
                     <div className="flex flex-col ml-3">
                         <p className="text-lg font-medium flex items-center">{post.account.name}
                         {post.account.verified && (
@@ -30,8 +34,9 @@ const PostHeader = ({ post}: { post: PostType }) => {
                                 {post.timestamp}
                             </span>
                         </span>
+                        </div>
                     </div>
-                </div>
+                    </Link>
                 <div>
                     <HeaderMenu />
                 </div>
