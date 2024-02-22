@@ -1,11 +1,13 @@
 import Image from "../components/common/Image";
 import useAuth from "../hooks/Auth/useAuth";
+import { lazy } from "react";
 import DefaultAvater from "../assets/default.webp";
 import { Link } from "react-router-dom";
-import SideBarLink from "./SideBarLink";
+const SideBarLink=lazy(()=>import("./SideBarLink"))
 import { FaUserFriends, FaUser, FaSignOutAlt } from "react-icons/fa";
 import Switch from "../components/common/Switch";
 import VerifiedSvg from "../components/Partials/Account/VerifiedSvg";
+import SuspenseLoader from "../components/utils/SuspenseLoader";
 const Aside = () => {
     const { user,userInfo } = useAuth();
 
@@ -45,17 +47,18 @@ const Aside = () => {
                 </div>
             </div>
             <div>
+                <SuspenseLoader className="h-auto">
                 <SideBarLink icon={FaUser} path={`/${user?.username}`} label="Profile" />
-                <SideBarLink
+                </SuspenseLoader><SuspenseLoader className="h-auto"><SideBarLink
                     icon={FaUserFriends}
                     path="/friends"
                     label="Find Friends"
-                />
+                /></SuspenseLoader><SuspenseLoader className="h-auto">
                 <SideBarLink
                     icon={FaSignOutAlt}
                     path="/logout"
                     label="Logout"
-                />
+                /></SuspenseLoader>
             </div>
         </section>
     );

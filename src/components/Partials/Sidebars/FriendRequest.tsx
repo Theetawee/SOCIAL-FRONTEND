@@ -37,7 +37,7 @@ const FriendRequest = () => {
                 !friend_requests || friend_requests.length === 0 ? "hidden" : ""
             }`}
         >
-            <div className="w-full bg-white rounded-lg  shadow">
+            <div className="w-full bg-white dark:bg-gray-800 rounded-lg  shadow">
                 <div className="flex p-4 items-center justify-between">
                     <h2>Friend requests</h2>
                     <div>
@@ -46,7 +46,7 @@ const FriendRequest = () => {
                         </Link>
                     </div>
                 </div>
-                <hr />
+                <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700" />
                 <div >{content}</div>
             </div>
         </section>

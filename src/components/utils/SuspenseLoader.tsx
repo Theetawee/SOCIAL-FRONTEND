@@ -1,12 +1,12 @@
 import { ReactNode, Suspense } from "react";
 
-const SuspenseLoader = ({ children }: { children: ReactNode }) => {
+const SuspenseLoader = ({ children,className="h-screen" }: { children: ReactNode,className?:string }) => {
     return (
         <>
             <Suspense
                 fallback={
                     <>
-                        <div className="flex h-screen items-center py-6 justify-center">
+                        <div className={`flex ${className} items-center py-6 justify-center`}>
                             <span>
                                 <span>
                                     <svg

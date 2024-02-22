@@ -1,25 +1,38 @@
 import { Outlet } from "react-router-dom";
+import { lazy } from "react";
 import ContextProvider from "../context/ContextProvider";
 import { ErrorBoundary } from "react-error-boundary";
-import CommonError from "../components/common/CommonError";
-import AppBar from "./AppBar";
-import Frame from "./Frame";
-import SideBar from "./SideBar";
+const CommonError = lazy(() => import("../components/common/CommonError"));
+const AppBar = lazy(() => import("./AppBar"));
+const Frame = lazy(() => import("./Frame"));
+const SideBar = lazy(() => import("./SideBar"));
 import SuspenseLoader from "../components/utils/SuspenseLoader";
 const FrameLayout = () => {
     return (
         <ContextProvider>
-            <AppBar />
+            <SuspenseLoader className="h-auto">
+                <AppBar />
+            </SuspenseLoader>
             <section>
-                <Frame />
+                <SuspenseLoader className="h-auto">
+                    <Frame />
+                </SuspenseLoader>
                 <main className="sm:ml-72 pt-16 lg:mr-[32%] bg-white/90 dark:bg-gray-950 min-h-screen  lg:ml-[25%]">
-                    <ErrorBoundary fallback={<CommonError />}>
+                    <ErrorBoundary
+                        fallback={
+                            <SuspenseLoader>
+                                <CommonError />
+                            </SuspenseLoader>
+                        }
+                    >
                         <SuspenseLoader>
                             <Outlet />
                         </SuspenseLoader>
                     </ErrorBoundary>
                 </main>
-                <SideBar />
+                <SuspenseLoader className="h-auto">
+                    <SideBar />
+                </SuspenseLoader>
             </section>
         </ContextProvider>
     );
