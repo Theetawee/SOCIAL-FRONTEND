@@ -36,7 +36,7 @@ const LogoutPage = () => {
                     <button onClick={handleLogout} disabled={logingout} className="bg-white border border-gray-100 text-gray-700 w-full px-5 py-2 rounded-full hover:bg-white/90">
                         {logingout ? "Logging out..." : "Log out"}
                     </button>
-                    <button disabled={logingout} className="bg-gray-700 text-white px-5 py-2 rounded-full hover:bg-gray-700/90">
+                    <button disabled={logingout} onClick={() => navigate(-1)} className="bg-gray-700 text-white px-5 py-2 rounded-full hover:bg-gray-700/90">
                         Cancel
                     </button>
                 </div>
