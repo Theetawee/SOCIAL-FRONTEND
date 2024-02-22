@@ -61,13 +61,13 @@ const Hobbies = ({
 
     return (
         <div className="min-h-[30vh]">
-            <div className="flex items-center justify-between">
+            <div className="flex mb-6 items-center justify-between">
                 <div className="flex mb-2 items-center">
                     <GiGingerbreadMan className="w-6 h-6 text-primary-500" />
                     <p className="ml-2 text-lg font-medium">Hobbies</p>
                 </div>
                 {changed && (
-                    <div className="py-6 text-right">
+                    <div className="text-right">
                         <button
                             onClick={handleClick}
                             disabled={isUpdatingHobbies}

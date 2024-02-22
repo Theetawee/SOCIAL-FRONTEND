@@ -13,12 +13,16 @@ import Modal from "../../components/common/Modal";
 import UpdateProfilePage from "./UpdateProfilePage";
 import Hobbies from "../../components/Partials/Account/Hobbies";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import useAuth from "../../hooks/Auth/useAuth";
+import HobbyChecked from "../../components/Partials/Account/HobbyChecked";
+import { GiGingerbreadMan } from "react-icons/gi";
 
 
 const ProfilePage = () => {
 
 
     const { username } = useParams();
+    const {user } = useAuth();
 
     const user_name = username || ""
 
@@ -43,9 +47,8 @@ const ProfilePage = () => {
                 title={`${profile.name}(@${profile.username})`}
                 description={`Profile Page for @${profile.username}`}
             >
-
                 <Modal title="Edit Profile">
-                    <UpdateProfilePage profile={profile}/>
+                    <UpdateProfilePage profile={profile} />
                 </Modal>
 
                 <section>
@@ -65,7 +68,7 @@ const ProfilePage = () => {
                             <div className="flex px-4  justify-center items-center">
                                 <div className="">
                                     <Image
-                                        src={profile.image||DefaultAvater}
+                                        src={profile.image || DefaultAvater}
                                         alt="User"
                                         hash={profile.profile_image_hash}
                                         className="w-24 h-24 border border-gray-300 dark:bg-gray-800 rounded-full"
@@ -84,7 +87,7 @@ const ProfilePage = () => {
                             <div>
                                 <button>
                                     <BsThreeDotsVertical />
-                                    </button>
+                                </button>
                             </div>
                             <div className="text-center   w-full py-4  ml-8">
                                 <ProfileActionBtn profile={profile} />
@@ -115,9 +118,43 @@ const ProfilePage = () => {
                                 )}
                             </div>
                         </div>
-                        <div>
-                            <Hobbies isSuccess={isSuccess} isUpdatingHobbies={isHobbiesUpdating} update_hobbies={update_hobbies} profile_hobbies={profile.hobbies} hobbies={hobbies} isHobbiesLoading={isHobbiesLoading} isHobbiesError={isHobbiesError}/>
-                        </div>
+                        {profile.username === user?.username ? (
+                            <div>
+                                <Hobbies
+                                    isSuccess={isSuccess}
+                                    isUpdatingHobbies={isHobbiesUpdating}
+                                    update_hobbies={update_hobbies}
+                                    profile_hobbies={profile.hobbies}
+                                    hobbies={hobbies}
+                                    isHobbiesLoading={isHobbiesLoading}
+                                    isHobbiesError={isHobbiesError}
+                                />
+                            </div>
+                        ) : (
+                            <>
+                                <div className="flex mb-2 items-center">
+                                    <GiGingerbreadMan className="w-6 h-6 text-primary-500" />
+                                    <p className="ml-2 text-lg font-medium">
+                                        Hobbies
+                                    </p>
+                                </div>
+
+                                {profile.hobbies.length > 0 ? (
+                                    <ul className="flex items-center gap-2 flex-wrap">
+                                        {profile.hobbies.map((hobby) => (
+                                            <HobbyChecked
+                                                editable={false}
+                                                key={hobby.id}
+                                                checked
+                                                hobby={hobby}
+                                            />
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <></>
+                                )}
+                            </>
+                        )}
                     </div>
                 </section>
             </Seo>
