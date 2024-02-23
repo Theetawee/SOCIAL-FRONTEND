@@ -9,7 +9,6 @@ const Post = ({ post }: { post: PostType }) => {
 
 
     const {likeStatus } = usePostAction(post.id, post.total_likes, post.is_liked);
-    console.log(post)
     const navigate = useNavigate();
     const handleClick = () => {
         navigate(`/posts/${post.id}`)

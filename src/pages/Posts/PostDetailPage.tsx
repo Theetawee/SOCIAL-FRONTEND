@@ -65,6 +65,7 @@ const PostDetailPage = () => {
                                         <PostBody
                                             // taged={post.taged_accounts}
                                             files={post.post_images}
+                                            open_image
                                             content={post.content}
                                             id={post.id}
                                             cut={false}

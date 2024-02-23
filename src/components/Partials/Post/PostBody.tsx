@@ -1,23 +1,47 @@
 import Image from "../../common/Image";
-import { Link } from "react-router-dom";
 import { ImageDataType } from "../../../hooks/types";
-
+import FsLightbox from "fslightbox-react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 interface Props {
     files: ImageDataType[];
     content: string;
     id: number;
-
+    open_image?: boolean;
     cut?: boolean;
 }
 
-const PostBody = ({ files, cut = true, content, id }: Props): JSX.Element => {
+const PostBody = ({ files, cut = true, content,open_image=false,id }: Props): JSX.Element => {
+    const [images, setImages] = useState<string[]>();
+    const [toggler, setToggler] = useState(false);
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (files) {
+            const images_strings: string[] = [];
+            files.forEach((file) => {
+                images_strings.push(file.content_image);
+            })
+            setImages(images_strings)
+        }
+    }, [files])
+    const handleOnclick = () => {
+        if(open_image){
+            setToggler(!toggler)
+        } else {
+            navigate(`/posts/${id}`)
+        }
+    }
     return (
         <>
+            <FsLightbox
+                toggler={toggler}
+                sources={images}
+            />
             <div>
                 {cut ? (
                     <div className="mb-2">
                         <p className="whitespace-pre-wrap line-clamp-3">
-                {content}
+                            {content}
                         </p>
                     </div>
                 ) : (
@@ -32,8 +56,8 @@ const PostBody = ({ files, cut = true, content, id }: Props): JSX.Element => {
                     >
                         <div className="flex h-72 border border-gray-100 dark:border-gray-800 w-full rounded-2xl items-center overflow-hidden flex-wrap justify-center">
                             {files.slice(0, 2).map((file, index) => (
-                                <Link
-                                    to={`/post/file/${id}`}
+                                <button
+                                    onClick={handleOnclick}
                                     className={`block h-full overflow-hidden ${
                                         index === files.length - 1 &&
                                         files.length % 2 === 1
@@ -56,7 +80,7 @@ const PostBody = ({ files, cut = true, content, id }: Props): JSX.Element => {
                                             hash={file.image_hash}
                                         />
                                     </div>
-                                </Link>
+                                </button>
                             ))}
                         </div>
                     </span>
