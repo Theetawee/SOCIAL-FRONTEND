@@ -9,6 +9,7 @@ const redirect_url = import.meta.env.VITE_GOOGLE_REDIRECT
 const google_id = import.meta.env.VITE_GOOGLE_ID
 import { HiOutlineUserAdd } from "react-icons/hi";
 import SuspenseLoader from "../../components/utils/SuspenseLoader";
+import Loader from "../../components/common/Loader";
 
 const LoginPage = () => {
 
@@ -70,7 +71,7 @@ const LoginPage = () => {
                                 disabled={isLoading}
                                 className="w-full  text-white bg-primary-600 hover:bg-primary-600/90 dark:bg-primary-700 dark:hover:bg-primary-700/90 font-medium rounded text-sm px-5 py-2.5 text-center"
                             >
-                                {isLoading ? "Signing in..." : "Sign in"}
+                                {isLoading ? <Loader/> : "Sign in"}
                             </button>
                             <div className="inline-flex items-center justify-center w-full">
                                 <span className="font-medium">
