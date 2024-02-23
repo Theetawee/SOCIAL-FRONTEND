@@ -70,7 +70,7 @@ const PostDetailPage = () => {
                                             cut={false}
                                         />
                                     </main>
-                                    <footer className="px-4 flex items-center gap-5">
+                                    <footer className="px-4">
                                         <PostFooter
                                             postAction={likeStatus}
 

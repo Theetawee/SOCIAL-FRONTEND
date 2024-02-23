@@ -9,7 +9,7 @@ const PostFooter = ({postAction}:{postAction:JSX.Element}
                 onClick={(e) => e.stopPropagation()}
                 className="flex items-center justify-between"
             >
-                <div className="">{postAction}</div>
+                <div>{postAction}</div>
                 <div>
                     <ShareMenu />
                 </div>

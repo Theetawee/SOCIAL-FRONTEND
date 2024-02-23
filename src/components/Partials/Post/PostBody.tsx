@@ -21,7 +21,7 @@ const PostBody = ({ files, cut = true, content, id }: Props): JSX.Element => {
                         </p>
                     </div>
                 ) : (
-                    <div className="whitespace-pre-wrap">{content}</div>
+                    <div className="mb-2 whitespace-pre-wrap">{content}</div>
                 )}
                 {files && files.length > 0 && (
                     <span
