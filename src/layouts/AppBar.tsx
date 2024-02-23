@@ -15,7 +15,7 @@ const AppBar = () => {
     const { notifications} = useNotification();
     const { toggleSidebar } = useDrawer();
     const { theme} = useTheme();
-    const {user,userInfo}=useAuth();
+    const {user}=useAuth();
 
     return (
         <header
@@ -52,9 +52,9 @@ const AppBar = () => {
                             onClick={toggleSidebar}
                         >
                             <Image
-                                src={userInfo?.image||user?.image||DefaultAvater}
+                                src={user?.image||DefaultAvater}
                                     alt={user?.name || "user image"}
-                                    hash={userInfo?.profile_image_hash || user?.image_hash}
+                                    hash={user?.profile_image_hash}
                                 className="w-10 h-10 rounded-full"
                             />
                             </button>
