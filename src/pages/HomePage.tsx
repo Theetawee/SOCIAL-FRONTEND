@@ -3,7 +3,6 @@ import useSidebar from "../hooks/useSidebar";
 import FriendRequest from "../components/Partials/Sidebars/FriendRequest";
 import PopularHashtags from "../components/Partials/Sidebars/PopularHashtags";
 import Posts from "../components/Partials/Home/Posts";
-import { Link } from "react-router-dom";
 
 const HomePage = () => {
     const [all, setAll] = useState(true);

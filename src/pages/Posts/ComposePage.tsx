@@ -112,7 +112,7 @@ const ComposePage = () => {
                             <div>
                                 <p>Who can see your post</p>
                             </div>
-                            <div className="w-full sm:w-1/2">
+                            <div className="w-full sm:w-1/2 ">
                                 <Select
                                     className="px-4 py-2"
                                     disabled={isPending}
