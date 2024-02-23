@@ -58,7 +58,10 @@ const Aside = () => {
                     icon={FaSignOutAlt}
                     path="/logout"
                     label="Logout"
-                /></SuspenseLoader>
+                    /></SuspenseLoader>
+                <Link to={"/compose"} className=" bg-primary-600 text-white p-3 w-[80%] mx-auto mt-20 text-lg font-medium rounded-full flex items-center justify-center">
+                    Compose
+                </Link>
             </div>
         </section>
     );

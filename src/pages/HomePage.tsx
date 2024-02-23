@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import useSidebar from "../hooks/useSidebar";
 import FriendRequest from "../components/Partials/Sidebars/FriendRequest";
 import PopularHashtags from "../components/Partials/Sidebars/PopularHashtags";
-import WhatsOnYourMind from "../components/Partials/Home/WhatsOnYourMind";
 import Posts from "../components/Partials/Home/Posts";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
     const [all, setAll] = useState(true);
@@ -40,10 +40,7 @@ const HomePage = () => {
             </div>
             <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700" />
             <div>
-                <WhatsOnYourMind />
-            </div>
-            <div>
-                <Posts/>
+                <Posts />
             </div>
         </section>
     );

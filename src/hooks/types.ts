@@ -99,3 +99,19 @@ export interface PostResponseType {
     count: number;
     results: PostType[];
 }
+
+export interface UserResponseType {
+    next: number | null;
+    previous: number | null;
+    count: number;
+    results: UserType[];
+}
+
+
+export interface PostFormDataType {
+    content: string;
+    account: string;
+    files?: Blob[] | File[]; // Updated to handle multiple files
+    open_to: string;
+    taged_accounts: UserResponseType[];
+}
