@@ -41,7 +41,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(() => {
         return localStorage.getItem("user") === "true";
     });
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [fastRefresh, setFastRefresh] = useState(false);
     const isOnline = useIsOnline();
 

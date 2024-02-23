@@ -3,7 +3,7 @@ import { MdRunningWithErrors } from "react-icons/md";
 
 const LoadingState = () => {
     const [showRefreshButton, setShowRefreshButton] = useState(false);
-    const [text, setText] = useState("Connecting Chirp");
+    const [text, setText] = useState("Connecting Waanverse");
 
     const Loader = (
         <svg
@@ -136,7 +136,7 @@ const LoadingState = () => {
             setIcon(
                 <MdRunningWithErrors className=" text-rose-600 mb-20 w-20 h-20" />
             );
-        }, 100000);
+        }, 50000);
 
         return () => clearTimeout(timeout);
     }, []);

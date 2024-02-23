@@ -4,7 +4,7 @@ import { lazy } from "react";
 const Seo = lazy(() => import("../../components/utils/Seo"));
 const Input =lazy(() => import("../../components/common/Input"));
 import useLogin from "../../hooks/Auth/useLogin";
-import { FormEvent, useEffect } from "react";
+import { FormEvent} from "react";
 const redirect_url = import.meta.env.VITE_GOOGLE_REDIRECT
 const google_id = import.meta.env.VITE_GOOGLE_ID
 import { HiOutlineUserAdd } from "react-icons/hi";
@@ -15,9 +15,6 @@ const LoginPage = () => {
   const GOOGLE_URL=`https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${redirect_url}&prompt=consent&response_type=code&client_id=${google_id}&scope=openid%20email%20profile&access_type=offline`
 
 
-    useEffect(() => {
-        localStorage.setItem("out", "true");
-    }, []);
     const { loging: isLoading, LoginUser } = useLogin();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {

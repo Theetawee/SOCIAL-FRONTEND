@@ -2,14 +2,11 @@ import { Link } from "react-router-dom";
 import { lazy } from "react";
 const Input = lazy(() => import("../../components/common/Input"));
 const Seo = lazy(() => import("../../components/utils/Seo"));
-import { FormEvent, useEffect } from "react";
+import { FormEvent } from "react";
 import useSignup from "../../hooks/Auth/useSignUp";
 import { CgLogIn } from "react-icons/cg";
 import SuspenseLoader from "../../components/utils/SuspenseLoader";
 const SignUpPage = () => {
-    useEffect(() => {
-        localStorage.setItem("out", "true");
-    }, []);
     const { isLoading, signup, errors } = useSignup();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -92,7 +89,7 @@ const SignUpPage = () => {
                                     auto_on={false}
                                 />
                             </SuspenseLoader>
-                            
+
                             <button
                                 type="submit"
                                 disabled={isLoading}
