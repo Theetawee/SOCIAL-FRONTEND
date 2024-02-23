@@ -24,8 +24,8 @@ export default function ShareMenu() {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                     >
-                        <Menu.Items className="absolute  bottom-0 mb-8 right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-gray-700 shadow-lg  focus:outline-none">
-                            <div className="px-1 py-1 ">
+                        <Menu.Items className="absolute z-40 bottom-0 mb-8 right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-gray-800 shadow-lg p-1 focus:outline-none">
+                            <div >
                                 <Menu.Item>
                                     {({ active }) => (
                                         <button

@@ -23,8 +23,8 @@ export default function HeaderMenu() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                 >
-                    <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-gray-700 shadow-lg  focus:outline-none">
-                        <div className="px-1 py-1 border border-gray-100 rounded-md">
+                    <Menu.Items className="absolute z-30 right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 dark:divide-gray-800 rounded-md bg-white dark:bg-gray-800 shadow-lg  focus:outline-none">
+                        <div className="px-1 py-1 border border-gray-100 dark:border-gray-700 rounded-md">
                             <Menu.Item>
                                 {({ active }) => (
                                     <button
