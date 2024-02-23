@@ -143,7 +143,7 @@ function UpdateProfileImage({ profile }: {profile: UserDetailType }): JSX.Elemen
                                             id="profile_image"
                                             className="hidden"
                                             onChange={(e) => handleUpload(e)}
-                                            accept="image/*"
+                                            accept="image/png, image/jpeg, image/jpg, image/webp"
                                             hidden
                                         />
                                     </span>
