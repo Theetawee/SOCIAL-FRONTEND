@@ -94,3 +94,5 @@ export interface PostFormDataType {
     open_to: string;
     taged_accounts: UserResponseType[];
 }
+
+

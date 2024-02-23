@@ -1,4 +1,4 @@
-import { PostResponseType, PostType } from "../types";
+import { ImageDataType, PostResponseType, PostType } from "../types";
 import useAxios from "../useAxios";
 
 export interface PostFormDataType {
@@ -68,12 +68,20 @@ const Endpoints = () => {
         return response.data;
     };
 
+
+    //get post images
+    const   getPostImages = async (id: number):Promise<ImageDataType[]> => {
+        const response = await api.get(`/post/images/${id}`);
+        return response.data;
+    }
+
     return {
         createPost,
         GetAllPosts,
         likePost,
         dislikePost,
         getPostById,
+        getPostImages
     };
 };
 

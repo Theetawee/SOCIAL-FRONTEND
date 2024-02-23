@@ -24,7 +24,7 @@ const ResetPasswordPage= lazy(() => import('./pages/Accounts/ResetPasswordPage')
 const PasswordResetConfirmPage= lazy(() => import('./pages/Accounts/PasswordResetConfirmPage'));
 const AccountActivationPage= lazy(() => import('./pages/Accounts/AccountActivationPage'));
 const ComposePage = lazy(() => import("./pages/Posts/ComposePage"));
-
+const ImageViewPage = lazy(() => import('./pages/Posts/ImageViewPage'));
 
 
 
@@ -37,7 +37,8 @@ const router = createBrowserRouter(
                 <Route path="/friends" element={<Friends />} />
                 <Route path="/compose" element={<ComposePage />} />
                 <Route path="/:username" element={<ProfilePage />} />
-                <Route path="/posts/:id" element={<PostDetailPage/>}/>
+                <Route path="/posts/:id" element={<PostDetailPage />} />
+                <Route path="post/file/:id" element={<ImageViewPage/>}/>
           <Route path="/logout" element={<LogoutPage />} />
             </Route>
         </Route>,
