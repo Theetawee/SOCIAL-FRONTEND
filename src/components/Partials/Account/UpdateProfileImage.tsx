@@ -7,15 +7,11 @@ import { BsCardImage } from "react-icons/bs";
 import { FaCheck } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 import Loader from "../../common/Loader";
-import { UserDetailType } from "../../../hooks/types";
+import { UserType } from "../../../hooks/types";
 import useUpdateProfile from "../../../hooks/Account/useUpdateProfile";
 import ImageComp from "../../common/Image";
 
-
-
-
-
-function UpdateProfileImage({ profile }: {profile: UserDetailType }): JSX.Element {
+function UpdateProfileImage({ profile }: { profile: UserType }): JSX.Element {
     const { dataURLtoBlob } = utils();
 
     const profile_image = profile?.image || DefaultAvater;
@@ -30,7 +26,9 @@ function UpdateProfileImage({ profile }: {profile: UserDetailType }): JSX.Elemen
         setDataUrl(cropper?.getCroppedCanvas()?.toDataURL() || null);
     };
 
-    const { updateImage,updatingImage,isSuccess } = useUpdateProfile(profile.username);
+    const { updateImage, updatingImage, isSuccess } = useUpdateProfile(
+        profile.username
+    );
 
     const handleUpload = (e: ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files) return;
@@ -127,8 +125,8 @@ function UpdateProfileImage({ profile }: {profile: UserDetailType }): JSX.Elemen
                                 <ImageComp
                                     src={profile_image}
                                     className="w-full h-full"
-                                        alt="User"
-                                        hash={profile.profile_image_hash}
+                                    alt="User"
+                                    hash={profile.profile_image_hash}
                                 />
                                 <div className="absolute z-20 top-0 left-0 w-full h-full flex items-center justify-center">
                                     <span className="dark:bg-gray-800/55 bg-gray-100/55 w-full h-full rounded-full p-2 flex items-center justify-center">
@@ -150,7 +148,9 @@ function UpdateProfileImage({ profile }: {profile: UserDetailType }): JSX.Elemen
                                 </div>
                             </div>
                         </div>
-                        {error && <p className="text-red-500 text-center">{error}</p>}
+                        {error && (
+                            <p className="text-red-500 text-center">{error}</p>
+                        )}
                     </div>
                 )}
             </section>

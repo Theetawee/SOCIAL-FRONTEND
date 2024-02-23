@@ -1,56 +1,68 @@
-import { FriendRequestType, HobbyType, UserDetailType } from "../types";
-import useAxios from "../useAxios"
+import { FriendRequestType, HobbyType, UserType } from "../types";
+import useAxios from "../useAxios";
 
 const Endpoints = () => {
-
     const api = useAxios();
-
 
     //get profile info
 
-    const getUserInfo = async (username:string):Promise<UserDetailType> => {
+    const getUserInfo = async (username: string): Promise<UserType> => {
         const response = await api.get(`/accounts/user/${username}/`);
-        return response.data
-    }
+        return response.data;
+    };
 
     // send friend request
 
     const sendFriendRequest = async (username: string) => {
-        const response = await api.post(`/accounts/send-friend-request/${username}/`)
+        const response = await api.post(
+            `/accounts/send-friend-request/${username}/`
+        );
 
-        return response.data
-    }
+        return response.data;
+    };
 
     //get friend requests
-    const getFriendRequests = async (value?: number): Promise<FriendRequestType[]> => {
-        let response
+    const getFriendRequests = async (
+        value?: number
+    ): Promise<FriendRequestType[]> => {
+        let response;
         if (value) {
-            response = await api.get(`/accounts/friend-requests/?value=${value}`)
+            response = await api.get(
+                `/accounts/friend-requests/?value=${value}`
+            );
+        } else {
+            response = await api.get(`/accounts/friend-requests/`);
         }
-        else {
-            response = await api.get(`/accounts/friend-requests/`)
-        }
-        return response.data
-    }
+        return response.data;
+    };
 
     //accept friend request
     const acceptFriendRequest = async (requestId: number) => {
-        const response = await api.post(`/accounts/accept-friend-request/${requestId}/`)
-        return response.data
-    }
+        const response = await api.post(
+            `/accounts/accept-friend-request/${requestId}/`
+        );
+        return response.data;
+    };
 
     //decline friend request
     const declineFriendRequest = async (requestId: number) => {
-        const response = await api.post(`/accounts/decline-friend-request/${requestId}/`)
-        return response.data
-    }
+        const response = await api.post(
+            `/accounts/decline-friend-request/${requestId}/`
+        );
+        return response.data;
+    };
 
     //update profile info
 
-    const updateProfileInfo = async (data:{name:string, bio:string, location:string, gender:string}) => {
-        const response = await api.post(`/accounts/update/info/`, data)
-        return response.data
-    }
+    const updateProfileInfo = async (data: {
+        name: string;
+        bio: string;
+        location: string;
+        gender: string;
+    }) => {
+        const response = await api.post(`/accounts/update/info/`, data);
+        return response.data;
+    };
 
     //update profile Image
 
@@ -68,19 +80,18 @@ const Endpoints = () => {
     //get Hobbies
 
     const getHobbies = async (): Promise<HobbyType[]> => {
-        const response = await api.get("/accounts/hobbies/")
-        return response.data
-    }
+        const response = await api.get("/accounts/hobbies/");
+        return response.data;
+    };
 
     //update Hobbies
 
     const updateHobbies = async (data: number[]) => {
         const response = await api.post("/accounts/hobbies/update/", {
             hobbies: data,
-        })
-        return response.data
-    }
-
+        });
+        return response.data;
+    };
 
     return {
         getUserInfo,
@@ -91,10 +102,8 @@ const Endpoints = () => {
         updateProfileInfo,
         updateProfileImage,
         getHobbies,
-        updateHobbies
-    }
+        updateHobbies,
+    };
+};
 
-
-}
-
-export default Endpoints
+export default Endpoints;

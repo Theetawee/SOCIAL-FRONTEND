@@ -1,45 +1,47 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import Endpoints from "./Endpoints"
-import { UserDetailType } from "../types";
+import Endpoints from "./Endpoints";
+import { UserType } from "../types";
 import toast from "react-hot-toast";
 
-
 interface ErrorType {
-    previousProfile: UserDetailType;
+    previousProfile: UserType;
 }
 
-const useProfileActions = (username:string) => {
-
+const useProfileActions = (username: string) => {
     const client = useQueryClient();
-    const { sendFriendRequest,acceptFriendRequest,declineFriendRequest} = Endpoints();
+    const { sendFriendRequest, acceptFriendRequest, declineFriendRequest } =
+        Endpoints();
 
-    const {mutateAsync:send_friend_request,isPending:sending_friend_request } = useMutation({
+    const {
+        mutateAsync: send_friend_request,
+        isPending: sending_friend_request,
+    } = useMutation({
         mutationFn: () => sendFriendRequest(username),
         mutationKey: ["sendFriendRequest", username],
         onMutate: async () => {
             await client.cancelQueries({
-                queryKey: ["profile",username],
-            })
+                queryKey: ["profile", username],
+            });
             const previousProfile = client.getQueryData(["profile", username]);
-            client.setQueryData(
-                ["profile", username],
-                (old: UserDetailType) => ({
-                    ...old,
-                    user_sent_friend_request: true,
-                })
-            );
+            client.setQueryData(["profile", username], (old: UserType) => ({
+                ...old,
+                user_sent_friend_request: true,
+            }));
             return { previousProfile };
-
-        },onError: (context: ErrorType) => {
+        },
+        onError: (context: ErrorType) => {
             client.setQueryData(["profile", username], context.previousProfile);
         },
         onSettled: async () => {
             await client.invalidateQueries({ queryKey: ["profile", username] });
         },
-    })
+    });
 
-
-    const {mutateAsync:accept_friend_request, isPending:accepting_friend_request ,isError:accepting_friend_request_error} = useMutation({
+    const {
+        mutateAsync: accept_friend_request,
+        isPending: accepting_friend_request,
+        isError: accepting_friend_request_error,
+    } = useMutation({
         mutationFn: (requestId: number) => acceptFriendRequest(requestId),
         mutationKey: ["acceptFriendRequest", username],
         onSuccess: async () => {
@@ -48,8 +50,8 @@ const useProfileActions = (username:string) => {
         },
         onError: async () => {
             toast.error("Failed to accept friend request");
-        }
-    })
+        },
+    });
 
     const {
         mutateAsync: decline_friend_request,
@@ -67,13 +69,6 @@ const useProfileActions = (username:string) => {
         },
     });
 
-
-
-
-
-
-
-
     return {
         send_friend_request,
         sending_friend_request,
@@ -82,8 +77,8 @@ const useProfileActions = (username:string) => {
         accept_friend_request,
         decline_friend_request,
         declining_friend_request,
-        declining_friend_request_error
-  }
-}
+        declining_friend_request_error,
+    };
+};
 
-export default useProfileActions
+export default useProfileActions;
