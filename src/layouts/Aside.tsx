@@ -9,7 +9,7 @@ import Switch from "../components/common/Switch";
 import VerifiedSvg from "../components/Partials/Account/VerifiedSvg";
 import SuspenseLoader from "../components/utils/SuspenseLoader";
 const Aside = () => {
-    const { user,userInfo } = useAuth();
+    const { user } = useAuth();
 
     return (
         <section className="grid grid-cols-1 gap-6">
@@ -19,8 +19,8 @@ const Aside = () => {
                         <div className="flex items-center">
                             <Link to={`/${user?.username}`} className="block">
                                 <Image
-                                    src={userInfo?.image||user?.image || DefaultAvater}
-                                    hash={userInfo?.profile_image_hash || user?.image_hash}
+                                    src={user?.image || DefaultAvater}
+                                    hash={user?.profile_image_hash}
                                     alt={user?.name || "user image"}
                                     className="w-12 h-12 rounded-full"
                                 />
@@ -29,7 +29,7 @@ const Aside = () => {
                                 <div className="ml-3  flex flex-col">
                                     <p className="text-lg flex items-center font-medium">
                                         {user?.name}
-                                        {user?.verified || userInfo?.verified && (
+                                        {user?.verified  && (
                                             <span>
                                                 <VerifiedSvg />
                                             </span>)}

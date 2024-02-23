@@ -21,7 +21,7 @@ const useLogin = () => {
 
             const data = response.data;
             toast.success("Login successful");
-            authenticateUser(data.access)
+            authenticateUser(data.user)
             navigate("/");
         } catch (error: any) {
             if (error.response.data.non_field_errors) {

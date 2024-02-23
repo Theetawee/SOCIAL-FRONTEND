@@ -6,9 +6,8 @@ import {
     useEffect,
     useState,
 } from "react";
-import { jwtDecode } from "jwt-decode";
 import LoadingState from "../components/common/LoadingState";
-import { UserType, TokenData, UserDetailType } from "../hooks/types";
+import { UserType } from "../hooks/types";
 const baseURL = import.meta.env.VITE_BASE_URL;
 import useIsOnline from "../hooks/useIsOnline";
 import OfflineAlert from "../components/utils/OfflineAlert";
@@ -20,8 +19,7 @@ interface AuthContextType {
     setUser: Dispatch<SetStateAction<UserType | null>>;
     setFastRefresh: Dispatch<SetStateAction<boolean>>;
     unauthenticateUser: () => void;
-    authenticateUser: (access: string) => void,
-    userInfo: UserDetailType | null
+    authenticateUser: (user: UserType) => void,
 }
 
 export const AuthContext = createContext<AuthContextType>({
@@ -32,12 +30,10 @@ export const AuthContext = createContext<AuthContextType>({
     setFastRefresh: () => { },
     unauthenticateUser: () => { },
     authenticateUser: () => { },
-    userInfo: null
 });
 
 const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<UserType | null>(null);
-    const [userInfo, setUserInfo] = useState<UserDetailType | null>(null);
     const [isAuthenticated, setIsAuthenticated] = useState(() => {
         return localStorage.getItem("user") === "true";
     });
@@ -45,19 +41,10 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const [fastRefresh, setFastRefresh] = useState(false);
     const isOnline = useIsOnline();
 
-    const authenticateUser = (access:string) => {
-        const token_data: TokenData = jwtDecode(access);
-        const user = {
-            username: token_data.username,
-            email: token_data.email,
-            name: token_data.name,
-            image: token_data.image,
-            image_hash: token_data.image_hash,
-            user_id: token_data.user_id,
-            verified: token_data.verified
-        };
+    const authenticateUser = (user:UserType) => {
         setUser(user);
         setIsLoading(false);
+        setFastRefresh(false);
         localStorage.setItem("user", "true");
         setIsAuthenticated(true);
     }
@@ -78,7 +65,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
                     credentials: "include",
                 })
                 const data = await response.json();
-                setUserInfo(data);
+                authenticateUser(data);
 
             }catch {
                 unauthenticateUser();
@@ -86,13 +73,10 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         }
         const RefreshTokens = async () => {
             try {
-                const response = await fetch(`${baseURL}/accounts/token/refresh/`, {
+                await fetch(`${baseURL}/accounts/token/refresh/`, {
                     method: "POST",
                     credentials: "include",
                 });
-                    const data = await response.json();
-                    authenticateUser(data.access)
-                setFastRefresh(false);
                 await getUserInfo();
 
             } catch {
@@ -115,7 +99,6 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         setFastRefresh,
         authenticateUser,
         unauthenticateUser,
-        userInfo
     };
 
     return (

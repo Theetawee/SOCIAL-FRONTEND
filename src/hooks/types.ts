@@ -1,24 +1,3 @@
-import { JwtPayload } from "jwt-decode";
-
-export interface UserType {
-    username: string;
-    email: string;
-    name: string;
-    image: string | null;
-    image_hash: string;
-    user_id: number;
-    verified:boolean
-}
-
-export interface TokenData extends JwtPayload {
-    user_id: number;
-    username: string;
-    email: string;
-    name: string;
-    image: string | null;
-    image_hash: string;
-    verified:boolean
-}
 
 export interface HobbyType {
     id: number;
@@ -26,7 +5,7 @@ export interface HobbyType {
 }
 
 
-export interface UserDetailType  {
+export interface UserType  {
     id: number;
     username: string;
     email: string;
@@ -52,8 +31,8 @@ export interface UserDetailType  {
 
 export interface FriendRequestType{
     id: number;
-    sender: UserDetailType
-    recipient: UserDetailType
+    sender: UserType
+    recipient: UserType
     status: string
     date_sent: string
 }
