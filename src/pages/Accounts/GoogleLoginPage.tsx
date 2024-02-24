@@ -29,12 +29,10 @@ const GoogleLoginPage = () => {
 
                 })
                 const data = await response.json();
-                console.log(data)
 
                 authenticateUser(data.access);
                 navigate('/');
             } catch (error){
-                console.log(error);
                 toast.error('Unable to login, please try again.');
                 navigate('/accounts/login');
             }
