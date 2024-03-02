@@ -29,14 +29,15 @@ const Aside = () => {
                             </Link>
                             <Link to={`/${user?.username}`} className="block">
                                 <div className="ml-3  flex flex-col">
-                                    <p className="text-lg flex items-center font-medium">
-                                        {user?.name}
-                                        {user?.verified  && (
+                                    <div className="flex items-center">
+                                        <p className="text-lg font-medium max-w-36 truncate"> {user?.name}</p>
+                                        {user?.verified && (
                                             <span>
                                                 <VerifiedSvg />
-                                            </span>)}
-                                    </p>
-                                    <p className="leading-3">
+                                            </span>
+                                        )}
+                                    </div>
+                                    <p className="leading-3 truncate max-w-32">
                                         @{user?.username}
                                     </p>
                                 </div>
@@ -51,18 +52,30 @@ const Aside = () => {
             <div>
                 <SuspenseLoader className="h-auto">
                     <SideBarLink icon={GoHomeFill} path="/" label="Home" />
-                <SideBarLink icon={FaUser} path={`/${user?.username}`} label="Profile" />
-                </SuspenseLoader><SuspenseLoader className="h-auto"><SideBarLink
-                    icon={FaUserFriends}
-                    path="/friends"
-                    label="Find Friends"
-                /></SuspenseLoader><SuspenseLoader className="h-auto">
-                <SideBarLink
-                    icon={FaSignOutAlt}
-                    path="/logout"
-                    label="Logout"
-                    /></SuspenseLoader>
-                <Link to={"/compose"} className=" bg-primary-600 text-white p-3 w-[80%] mx-auto mt-20 text-lg font-medium rounded-full flex items-center justify-center">
+                    <SideBarLink
+                        icon={FaUser}
+                        path={`/${user?.username}`}
+                        label="Profile"
+                    />
+                </SuspenseLoader>
+                <SuspenseLoader className="h-auto">
+                    <SideBarLink
+                        icon={FaUserFriends}
+                        path="/friends"
+                        label="Find Friends"
+                    />
+                </SuspenseLoader>
+                <SuspenseLoader className="h-auto">
+                    <SideBarLink
+                        icon={FaSignOutAlt}
+                        path="/logout"
+                        label="Logout"
+                    />
+                </SuspenseLoader>
+                <Link
+                    to={"/compose"}
+                    className=" bg-primary-600 text-white p-3 w-[80%] mx-auto mt-20 text-lg font-medium rounded-full flex items-center justify-center"
+                >
                     Compose
                 </Link>
             </div>
