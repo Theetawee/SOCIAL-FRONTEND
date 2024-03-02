@@ -9,8 +9,6 @@ import { useState } from "react";
 import { BsX } from "react-icons/bs";
 import { TagedAccount } from "../../hooks/types";
 
-
-
 const ComposePage = () => {
     const [taged_accounts, setTaged_accounts] = useState<TagedAccount[]>([]);
 
@@ -31,38 +29,32 @@ const ComposePage = () => {
         data,
         isPending: dataPending,
         isError,
-        setSuggest
+        setSuggest,
     } = useSuggestions();
 
-    
-const addToList = (username: string, id: number) => {
-    // Check if the account already exists in the taged_accounts array
-    const accountExists = taged_accounts.some(
-        (account) => account.id === id && account.username === username
-    );
-    if (accountExists) {
+    const addToList = (username: string, id: number) => {
+        // Check if the account already exists in the taged_accounts array
+        const accountExists = taged_accounts.some(
+            (account) => account.id === id && account.username === username
+        );
+        if (accountExists) {
+            setSuggest("");
+            return;
+        }
+
+        // If the account does not exist, add it to the taged_accounts array
+        const newAccount = { username, id };
+        const newAccountsList = [...taged_accounts, newAccount];
+        setTaged_accounts(newAccountsList);
         setSuggest("");
-        return;
-    }
+    };
 
-    // If the account does not exist, add it to the taged_accounts array
-    const newAccount = { username, id };
-    const newAccountsList = [...taged_accounts, newAccount];
-    setTaged_accounts(newAccountsList);
-    setSuggest("");
-};
-
-    const removeFromList = ( id: number) => {
-
+    const removeFromList = (id: number) => {
         const new_accounts_list = taged_accounts.filter(
             (account) => account.id !== id
-        )
+        );
         setTaged_accounts(new_accounts_list);
-    }
-
-
-
-
+    };
 
     let content;
 
@@ -77,7 +69,7 @@ const addToList = (username: string, id: number) => {
             <div>
                 {data?.map((account) => (
                     <button
-                        onClick={() => addToList(account.username,account.id)}
+                        onClick={() => addToList(account.username, account.id)}
                         type="button"
                         key={account.id}
                         className="block w-full text-left border-b border-gray-100 dark:border-gray-700 rounded-xl p-4"
@@ -114,7 +106,11 @@ const addToList = (username: string, id: number) => {
                                 placeholder="What's on your mind?"
                                 required
                             ></textarea>
-                            <input type="hidden" name="taged" value={JSON.stringify(taged_accounts)} />
+                            <input
+                                type="hidden"
+                                name="taged"
+                                value={JSON.stringify(taged_accounts)}
+                            />
                             {files !== undefined && files && (
                                 <span className="flex flex-wrap mb-4">
                                     {files.map((file) => (
@@ -183,7 +179,10 @@ const addToList = (username: string, id: number) => {
                                 key={account.id}
                             >
                                 @{account.username}
-                                <button onClick={() => removeFromList(account.id)} type="button">
+                                <button
+                                    onClick={() => removeFromList(account.id)}
+                                    type="button"
+                                >
                                     <BsX className="w-6 h-6" />
                                 </button>
                             </div>
@@ -192,12 +191,10 @@ const addToList = (username: string, id: number) => {
                             <input
                                 type="text"
                                 id="tagged_accounts"
-
                                 onChange={handleGetSuggestion}
                                 value={suggest}
                                 className="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block  p-2.5 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="@Tag account"
-
                             />
                             {suggest && (
                                 <div className="max-w-sm top-16 rounded-md border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800  w-full absolute">
