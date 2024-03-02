@@ -10,6 +10,8 @@ import { lazy } from "react";
 import ProtectedRoute from "./components/utils/ProtectedRoute";
 import MainLayout from "./layouts/MainLayout";
 import { Toaster } from "react-hot-toast";
+import { ErrorBoundary } from "react-error-boundary";
+import CommonError from "./components/common/CommonError";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const Friends = lazy(() => import("./pages/Friends"));
 const LoginPage = lazy(() => import("./pages/Accounts/LoginPage"));
@@ -77,10 +79,10 @@ const router = createBrowserRouter(
 
 const App = () => {
     return (
-        <>
+        <ErrorBoundary fallback={<CommonError/>}>
             <RouterProvider router={router} />
             <Toaster />
-        </>
+        </ErrorBoundary>
     );
 };
 

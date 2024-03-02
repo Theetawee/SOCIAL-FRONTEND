@@ -34,17 +34,23 @@ const ComposePage = () => {
         setSuggest
     } = useSuggestions();
 
-    const addToList = (username: string, id: number) => {
-        const selected_account = { id: id, username: username };
-        const accounts_list = taged_accounts;
-        if (accounts_list.includes(selected_account)) {
-            setSuggest("");
-            return;
-        }
-        const new_accounts_list = [...accounts_list,selected_account ];
-        setTaged_accounts(new_accounts_list);
+    
+const addToList = (username: string, id: number) => {
+    // Check if the account already exists in the taged_accounts array
+    const accountExists = taged_accounts.some(
+        (account) => account.id === id && account.username === username
+    );
+    if (accountExists) {
         setSuggest("");
-    };
+        return;
+    }
+
+    // If the account does not exist, add it to the taged_accounts array
+    const newAccount = { username, id };
+    const newAccountsList = [...taged_accounts, newAccount];
+    setTaged_accounts(newAccountsList);
+    setSuggest("");
+};
 
     const removeFromList = ( id: number) => {
 
@@ -189,12 +195,12 @@ const ComposePage = () => {
 
                                 onChange={handleGetSuggestion}
                                 value={suggest}
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block  p-2.5 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                className="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block  p-2.5 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="@Tag account"
 
                             />
                             {suggest && (
-                                <div className="max-w-sm shadow top-16 rounded-xl bg-gray-800  w-full absolute">
+                                <div className="max-w-sm top-16 rounded-md border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800  w-full absolute">
                                     {content}
                                 </div>
                             )}
