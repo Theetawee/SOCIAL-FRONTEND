@@ -21,8 +21,8 @@ const HomePage = () => {
     }, [setComponent]);
 
     return (
-        <section>
-            <div className="grid px-4 py-3  text-center grid-cols-2">
+        <section className="relative">
+            <div className="grid  px-4 py-3  text-center grid-cols-2">
                 <button
                     className={`${all ? "text-primary-500 font-medium" : ""}`}
                     onClick={() => setAll(true)}
