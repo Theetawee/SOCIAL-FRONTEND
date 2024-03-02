@@ -1,4 +1,3 @@
-import { IoMdArrowRoundBack } from "react-icons/io";
 import Image from "../../components/common/Image";
 import DefaultAvater from "../../assets/default.webp";
 import { FaRegQuestionCircle } from "react-icons/fa";
@@ -16,11 +15,12 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import useAuth from "../../hooks/Auth/useAuth";
 import HobbyChecked from "../../components/Partials/Account/HobbyChecked";
 import { GiGingerbreadMan } from "react-icons/gi";
+import useTopbar from "../../hooks/useTopbar";
 
 
 const ProfilePage = () => {
 
-
+    useTopbar("Profile", true);
     const { username } = useParams();
     const {user } = useAuth();
 
@@ -52,17 +52,6 @@ const ProfilePage = () => {
                 </Modal>
 
                 <section>
-                    <div className="py-4 px-4">
-                        <button
-                            onClick={() => {
-                                window.history.back();
-                            }}
-                            className="flex items-center"
-                        >
-                            <IoMdArrowRoundBack className="w-6 h-6 mr-2" />
-                            <span>Back</span>
-                        </button>
-                    </div>
                     <div className="px-2 sm:px-4 pt-4 grid bg-white dark:bg-gray-950 grid-cols-1 gap-3">
                         <div className="items-center flex-wrap justify-between flex">
                             <div className="flex px-4  justify-center items-center">

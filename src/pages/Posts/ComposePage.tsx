@@ -3,12 +3,18 @@ import { MdClose } from "react-icons/md";
 import Loader from "../../components/common/Loader";
 import Seo from "../../components/utils/Seo";
 import useCompose from "../../hooks/Posts/useCompose";
-import Select from "../../components/common/Select";
+import useTopbar from "../../hooks/useTopbar";
+import useSuggestions from "../../hooks/Posts/useSuggestions";
+import { useState } from "react";
+import { BsX } from "react-icons/bs";
+import { TagedAccount } from "../../hooks/types";
 
-// import PostPrivacy from "../../components/Posts/PostPrivacy";
-// import TagPerson from "../../components/Posts/TagPerson";
+
 
 const ComposePage = () => {
+    const [taged_accounts, setTaged_accounts] = useState<TagedAccount[]>([]);
+
+    useTopbar("Compose", true);
     const user_id = 1;
     const {
         isPending,
@@ -18,6 +24,64 @@ const ComposePage = () => {
         handleChange,
         files,
     } = useCompose(user_id!);
+
+    const {
+        handleGetSuggestion,
+        suggest,
+        data,
+        isPending: dataPending,
+        isError,
+        setSuggest
+    } = useSuggestions();
+
+    const addToList = (username: string, id: number) => {
+        const selected_account = { id: id, username: username };
+        const accounts_list = taged_accounts;
+        if (accounts_list.includes(selected_account)) {
+            setSuggest("");
+            return;
+        }
+        const new_accounts_list = [...accounts_list,selected_account ];
+        setTaged_accounts(new_accounts_list);
+        setSuggest("");
+    };
+
+    const removeFromList = ( id: number) => {
+
+        const new_accounts_list = taged_accounts.filter(
+            (account) => account.id !== id
+        )
+        setTaged_accounts(new_accounts_list);
+    }
+
+
+
+
+
+    let content;
+
+    if (dataPending) {
+        content = <Loader />;
+    } else if (isError) {
+        content = <p>Error</p>;
+    } else if (data?.length === 0) {
+        content = <p className="italic p-4 text-sm">No account found!</p>;
+    } else {
+        content = (
+            <div>
+                {data?.map((account) => (
+                    <button
+                        onClick={() => addToList(account.username,account.id)}
+                        type="button"
+                        key={account.id}
+                        className="block w-full text-left border-b border-gray-100 dark:border-gray-700 rounded-xl p-4"
+                    >
+                        <p>@{account.username}</p>
+                    </button>
+                ))}
+            </div>
+        );
+    }
 
     return (
         <Seo title={"Compose"} description={"Compose new post"}>
@@ -37,13 +101,14 @@ const ComposePage = () => {
                                 id="editor"
                                 disabled={isPending}
                                 rows={8}
+                                defaultValue={""}
                                 style={{ whiteSpace: "pre-line" }}
                                 name="content"
                                 className="block w-full  px-2 py-4 resize-none focus:dark:border-gray-800 focus:border-gray-100 text-lg text-gray-800 bg-white border-0 dark:bg-gray-900 focus:ring-0 dark:text-white dark:placeholder-gray-400"
                                 placeholder="What's on your mind?"
-                                defaultValue={""}
                                 required
                             ></textarea>
+                            <input type="hidden" name="taged" value={JSON.stringify(taged_accounts)} />
                             {files !== undefined && files && (
                                 <span className="flex flex-wrap mb-4">
                                     {files.map((file) => (
@@ -105,30 +170,34 @@ const ComposePage = () => {
                             </button>
                         </div>
                     </div>
-
-                    <div className="p-4">
-                        <div className="mb-6">{/* <TagPerson /> */}</div>
-                        <div className="flex flex-wrap items-center justify-between gap-4">
-                            <div>
-                                <p>Who can see your post</p>
+                    <div className="px-4 flex items-center gap-2 flex-wrap">
+                        {taged_accounts?.map((account) => (
+                            <div
+                                className="mr-2 flex items-center gap-4 justify-between border rounded px-4 py-2"
+                                key={account.id}
+                            >
+                                @{account.username}
+                                <button onClick={() => removeFromList(account.id)} type="button">
+                                    <BsX className="w-6 h-6" />
+                                </button>
                             </div>
-                            <div className="w-full sm:w-1/2 ">
-                                <Select
-                                    className="px-4 py-2"
-                                    disabled={isPending}
-                                    name="open_to"
-                                    label="Who can see your post"
-                                    required
-                                    defaultValue="E"
-                                    options={[
-                                        { label: "Everyone", value: "E" },
-                                        { label: "Friends", value: "AF" },
-                                        { label: "Followers", value: "F" },
-                                        { label: "Only me", value: "O" },
-                                    ]}
-                                />
-                            </div>
+                        ))}
+                        <div className="  relative flex items-center justify-center gap-4">
+                            <input
+                                type="text"
+                                id="tagged_accounts"
 
+                                onChange={handleGetSuggestion}
+                                value={suggest}
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block  p-2.5 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="@Tag account"
+
+                            />
+                            {suggest && (
+                                <div className="max-w-sm shadow top-16 rounded-xl bg-gray-800  w-full absolute">
+                                    {content}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </form>

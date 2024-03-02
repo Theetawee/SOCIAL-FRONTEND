@@ -67,10 +67,14 @@ interface BaseStructure {
 }
 
 export interface PostType extends BaseStructure {
-    open_to: string;
     total_comments: number;
+    
 }
 
+export interface TagedAccount{
+    id: number,
+    username:string
+}
 
 export interface PostResponseType {
     next: number | null;
@@ -91,8 +95,17 @@ export interface PostFormDataType {
     content: string;
     account: string;
     files?: Blob[] | File[]; // Updated to handle multiple files
-    open_to: string;
-    taged_accounts: UserResponseType[];
+    taged_accounts: string[];
 }
 
 
+export interface SuggestedAccount{
+    username: string
+    image: string | null;
+    name: string;
+    verified: string;
+    id: number;
+    profile_image_hash: string;
+
+
+}

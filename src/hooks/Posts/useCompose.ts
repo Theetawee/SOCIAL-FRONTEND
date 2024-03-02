@@ -4,8 +4,10 @@ import { useQueryClient, useMutation } from "@tanstack/react-query";
 
 import { PostFormDataType } from "../types";
 import { toast } from "react-hot-toast";
-import { UserResponseType } from "../types";
 import Endpoints from "./Endpoints";
+
+
+
 const useCompose = (user_id: number) => {
     const navigate = useNavigate();
     const [files, setFiles] = useState<string[]>([]);
@@ -13,7 +15,6 @@ const useCompose = (user_id: number) => {
         content: "",
         account: user_id.toString(),
         files: undefined,
-        open_to: "",
         taged_accounts: [],
     });
 
@@ -85,10 +86,10 @@ const useCompose = (user_id: number) => {
         const formData = new FormData(e.currentTarget);
 
         const taged = formData.get("taged") as string;
-        const taged_accounts: UserResponseType[] = JSON.parse(taged);
+
+        const taged_accounts: string[] = JSON.parse(taged);
 
         const content = formData.get("content") as string;
-        const open_toVal = formData.get("open_to") as string;
 
         // Retrieve all files for the "file" key
         const filesData = imageList;
@@ -106,9 +107,10 @@ const useCompose = (user_id: number) => {
             content,
             account: user_id.toString(),
             files: filesArray,
-            open_to: open_toVal,
             taged_accounts: taged_accounts,
         });
+
+
 
         mutate();
     };

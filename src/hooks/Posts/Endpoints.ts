@@ -1,13 +1,6 @@
-import { ImageDataType, PostResponseType, PostType } from "../types";
+import { ImageDataType, PostFormDataType, PostResponseType, PostType, SuggestedAccount } from "../types";
 import useAxios from "../useAxios";
 
-export interface PostFormDataType {
-    content: string;
-    account: string;
-    files?: Blob[] | File[]; // Updated to handle multiple files
-    open_to: string;
-    // taged_accounts: UserResponseType[];
-}
 
 const Endpoints = () => {
     const api = useAxios();
@@ -18,13 +11,14 @@ const Endpoints = () => {
         const formData = new FormData();
         formData.append("content", data.content);
         formData.append("account", data.account);
-        formData.append("open_to", data.open_to);
-        // formData.append("taged_accounts", JSON.stringify(data.taged_accounts));
+        formData.append("taged_accounts", JSON.stringify(data.taged_accounts));
         if (data.files) {
             data.files.forEach((file) => {
                 formData.append(`files`, file);
             });
         }
+        const datas = Object.fromEntries(formData)
+        console.log(datas)
         const response = await api.post("/compose/", formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
@@ -75,13 +69,23 @@ const Endpoints = () => {
         return response.data;
     }
 
+    //get Tag Suggestions
+    const getTagSuggestions = async (account: string): Promise<SuggestedAccount[]> => {
+
+        if(account === "") return [];
+        const response = await api.get(`/s/accounts/?account=${account}`);
+        return response.data;
+    }
+
+
     return {
         createPost,
         GetAllPosts,
         likePost,
         dislikePost,
         getPostById,
-        getPostImages
+        getPostImages,
+        getTagSuggestions
     };
 };
 
