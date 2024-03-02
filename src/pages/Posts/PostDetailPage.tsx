@@ -9,10 +9,12 @@ import PostFooter from "../../components/Partials/Post/PostFooter";
 import { isAxiosError } from "axios";
 import NotFound from "../../components/common/NotFound";
 import Loader from "../../components/common/Loader";
+import useTopbar from "../../hooks/useTopbar";
 
 
 
 const PostDetailPage = () => {
+    useTopbar("Post",true)
     const { id } = useParams();
     const post_id = parseInt(id!);
     const { post, isPending, isError, error,likeStatus } = usePostDetail(post_id);

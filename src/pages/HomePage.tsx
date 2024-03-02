@@ -3,11 +3,9 @@ import useSidebar from "../hooks/useSidebar";
 import FriendRequest from "../components/Partials/Sidebars/FriendRequest";
 import PopularHashtags from "../components/Partials/Sidebars/PopularHashtags";
 import Posts from "../components/Partials/Home/Posts";
-import useTopbar from "../hooks/useTopbar";
 
 const HomePage = () => {
     const [all, setAll] = useState(true);
-    useTopbar("Home",false);
     const { setComponent } = useSidebar();
 
     useEffect(() => {
