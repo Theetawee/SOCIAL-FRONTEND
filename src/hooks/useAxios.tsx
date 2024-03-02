@@ -36,11 +36,11 @@ const useAxios = () => {
             ) {
                 originalRequest._retry = true;
                 try {
-                    // Wait for the token refresh to complete before retrying the request
                     await fetch(`${baseUrl}/accounts/token/refresh/`, {
                         method: "POST",
                         credentials: "include",
                     });
+
                 } catch (err) {
                     logout();
                     return Promise.reject(error);

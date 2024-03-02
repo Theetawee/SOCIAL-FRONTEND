@@ -8,12 +8,14 @@ import { FaUserFriends, FaUser, FaSignOutAlt } from "react-icons/fa";
 import Switch from "../components/common/Switch";
 import VerifiedSvg from "../components/Partials/Account/VerifiedSvg";
 import SuspenseLoader from "../components/utils/SuspenseLoader";
+import { GoHomeFill } from "react-icons/go";
+
 const Aside = () => {
     const { user } = useAuth();
 
     return (
         <section className="grid grid-cols-1 gap-6">
-            <div className="p-4 bg-gray-50/20 dark:bg-gray-800 rounded-md shadow-sm">
+            <div className="p-4 bg-gray-50/20 dark:bg-gray-800 border border-gray-100 dark:border-gray-900 rounded-md shadow-sm">
                 <div>
                     <div className="flex items-center justify-between">
                         <div className="flex items-center">
@@ -48,6 +50,7 @@ const Aside = () => {
             </div>
             <div>
                 <SuspenseLoader className="h-auto">
+                    <SideBarLink icon={GoHomeFill} path="/" label="Home" />
                 <SideBarLink icon={FaUser} path={`/${user?.username}`} label="Profile" />
                 </SuspenseLoader><SuspenseLoader className="h-auto"><SideBarLink
                     icon={FaUserFriends}

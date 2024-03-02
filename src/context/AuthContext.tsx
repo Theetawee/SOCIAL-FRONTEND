@@ -73,11 +73,15 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         }
         const RefreshTokens = async () => {
             try {
-                await fetch(`${baseURL}/accounts/token/refresh/`, {
+                const resp=await fetch(`${baseURL}/accounts/token/refresh/`, {
                     method: "POST",
                     credentials: "include",
                 });
-                await getUserInfo();
+                if (resp.ok) {
+                    await getUserInfo();
+                } else {
+                    unauthenticateUser();
+                }
 
             } catch {
                 unauthenticateUser();

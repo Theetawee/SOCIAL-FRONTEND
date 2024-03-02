@@ -4,18 +4,23 @@ import useDrawer from "../hooks/useDrawer";
 import DarkLogo from '../assets/logb.svg';
 import LightLogo from "../assets/logw.svg";
 import useTheme from "../hooks/useTheme";
-import { GoHomeFill } from "react-icons/go";
-import TopBarBtn from "./TopBarBtn";
-import { FaUserFriends } from "react-icons/fa";
 import { RiNotification3Fill } from "react-icons/ri";
 import useNotification from "../hooks/useNotification";
 import useAuth from "../hooks/Auth/useAuth";
+import { useContext } from "react";
+import { TopBarContext } from "../context/TopBarContext";
+import { FaArrowLeft } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
+
+
 
 const AppBar = () => {
+    const navigate = useNavigate();
     const { notifications} = useNotification();
     const { toggleSidebar } = useDrawer();
     const { theme} = useTheme();
-    const {user}=useAuth();
+    const { user } = useAuth();
+    const { title,back} = useContext(TopBarContext);
 
     return (
         <header
@@ -32,9 +37,9 @@ const AppBar = () => {
                         />
                     </div>
                     <div>
-                        <div className="grid grid-cols-2 gap-3 sm:gap-6">
-                            <TopBarBtn path="/" icon={GoHomeFill} />
-                            <TopBarBtn path="/friends" icon={FaUserFriends} />
+                        <div className="flex items-center justify-start">
+                            {back && (<button onClick={()=>navigate(-1)}><FaArrowLeft className="w-5 mr-2 h-5"/></button>)}
+                            <p className="text-base font-medium">{title}</p>
                         </div>
                     </div>
                     <div className="grid grid-cols-2 gap-3">
