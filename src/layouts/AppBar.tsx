@@ -25,7 +25,7 @@ const AppBar = () => {
     return (
         <header
             style={{ paddingTop: "env(safe-area-inset-top),0" }}
-            className="fixed z-20 h-16 flex backdrop-filter backdrop-blur-lg bg-opacity-30 items-center justify-center top-0 left-0 w-full  border-b dark:border-gray-800 border-gray-200"
+            className="fixed z-20 h-16 flex backdrop-filter firefox:bg-opacity-90 backdrop-blur-lg bg-opacity-30 items-center justify-center top-0 left-0 w-full  border-b dark:border-gray-800 border-gray-200"
         >
             <nav className="px-4 py-2  w-full">
                 <div className="flex justify-between items-center">
