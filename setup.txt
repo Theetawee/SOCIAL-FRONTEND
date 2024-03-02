@@ -1,0 +1,5 @@
+.env variables
+- VITE_APP_URL;
+- VITE_BASE_URL;
+- VITE_GOOGLE_ID;
+- VITE_GOOGLE_REDIRECT

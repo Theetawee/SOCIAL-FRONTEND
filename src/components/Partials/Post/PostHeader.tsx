@@ -25,11 +25,11 @@ const PostHeader = ({ post}: { post: PostType }) => {
                             <VerifiedSvg/>
                         )}
                         </p>
-                        <span className="flex gap-1 items-center">
+                        <span className="flex gap-2 items-center">
                             <p className="italic font-light leading-3">
                                 @{post.account.username}
                             </p>
-                            <p className="w-1 h-1 bg-gray-700 dark:bg-white rounded-full"></p>
+                            <p className="w-1 h-1 bg-gray-500 dark:bg-gray-500 rounded-full"></p>
                             <span className="text-xs font-light">
                                 {post.timestamp}
                             </span>

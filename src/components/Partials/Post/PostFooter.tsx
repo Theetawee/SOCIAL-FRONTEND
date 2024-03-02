@@ -1,6 +1,6 @@
 import ShareMenu from "./ShareMenu";
 
-const PostFooter = ({postAction}:{postAction:JSX.Element}
+const PostFooter = ({postAction,postId}:{postAction:JSX.Element,postId:number}
 ) => {
 
     return (
@@ -11,7 +11,7 @@ const PostFooter = ({postAction}:{postAction:JSX.Element}
             >
                 <div>{postAction}</div>
                 <div>
-                    <ShareMenu />
+                    <ShareMenu postId={postId}/>
                 </div>
             </div>
         </div>

@@ -21,7 +21,7 @@ const Post = ({ post }: { post: PostType }) => {
                     <PostBody files={post.post_images} content={post.content} id={post.id}/>
                 </section>
                 <section>
-                    <PostFooter postAction={likeStatus} />
+                    <PostFooter postId={post.id} postAction={likeStatus} />
                 </section>
             </article>
             <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700" />

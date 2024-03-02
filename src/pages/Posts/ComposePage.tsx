@@ -39,7 +39,7 @@ const ComposePage = () => {
                                 rows={8}
                                 style={{ whiteSpace: "pre-line" }}
                                 name="content"
-                                className="block w-full  px-2 py-4 resize-none focus:dark:border-gray-800 focus:border-gray-100 text-lg text-gray-800 bg-white border-0 dark:bg-gray-800/10 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+                                className="block w-full  px-2 py-4 resize-none focus:dark:border-gray-800 focus:border-gray-100 text-lg text-gray-800 bg-white border-0 dark:bg-gray-900 focus:ring-0 dark:text-white dark:placeholder-gray-400"
                                 placeholder="What's on your mind?"
                                 defaultValue={""}
                                 required
