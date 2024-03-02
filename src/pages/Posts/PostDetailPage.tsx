@@ -73,6 +73,7 @@ const PostDetailPage = () => {
                                     </main>
                                     <footer className="px-4">
                                         <PostFooter
+                                            post={post}
                                             postAction={likeStatus}
 
                                         />

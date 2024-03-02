@@ -1,6 +1,7 @@
+import { PostType } from "../../../hooks/types";
 import ShareMenu from "./ShareMenu";
 
-const PostFooter = ({postAction,postId}:{postAction:JSX.Element,postId:number}
+const PostFooter = ({postAction,post}:{postAction:JSX.Element,post:PostType}
 ) => {
 
     return (
@@ -11,7 +12,7 @@ const PostFooter = ({postAction,postId}:{postAction:JSX.Element,postId:number}
             >
                 <div>{postAction}</div>
                 <div>
-                    <ShareMenu postId={postId}/>
+                    <ShareMenu post={post}/>
                 </div>
             </div>
         </div>

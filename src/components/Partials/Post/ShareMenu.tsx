@@ -4,13 +4,40 @@ import { RiShareForward2Fill } from "react-icons/ri"; import { FiLink } from "re
 const app_url = import.meta.env.VITE_APP_URL;
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import toast from "react-hot-toast";
+import { PostType } from "../../../hooks/types";
 
 
 
 
 
 
-export default function ShareMenu({postId}:{postId:number}) {
+export default function ShareMenu({post}:{post:PostType}) {
+
+
+
+function shareContent() {
+    if (navigator.share) {
+        // Check if the Web Share API is supported
+        navigator
+            .share({
+                title: `Post by ${post.account.name} (@${post.account.username}) on Waanverse`,
+                text: `Check out this post by ${post.account.name} (@${post.account.username}) on Waanverse`,
+                url: `${app_url}/posts/${post.id}`,
+            })
+            .then(() => {
+                console.log("Content shared successfully!");
+            })
+            .catch((error) => {
+                console.error("Failed to share content: ", error);
+            });
+    } else {
+        toast.error("Device does not support sharing content, copy link instead");
+    }
+}
+
+
+
+
 
 
     return (
@@ -38,7 +65,7 @@ export default function ShareMenu({postId}:{postId:number}) {
                             <div>
                                 <Menu.Item>
                                     <div>
-                                    <CopyToClipboard onCopy={()=>{toast.success("Link copied to clipboard")}} text={`${app_url}/post/${postId}`}>
+                                    <CopyToClipboard onCopy={()=>{toast.success("Link copied to clipboard")}} text={`${app_url}/posts/${post.id}`}>
                                     <button
 
                                         className={
@@ -55,6 +82,7 @@ export default function ShareMenu({postId}:{postId:number}) {
                                 </Menu.Item><hr/>
                                 <Menu.Item>
                                     <button
+                                        onClick={shareContent}
                                         className={
                                             "dark:text-white  text-gray-700 group  flex w-full items-center rounded-md px-2 py-2 text-sm"
                                         }
