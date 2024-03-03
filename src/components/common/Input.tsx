@@ -45,13 +45,14 @@ const Input = ({
                         <input
                             type={type === "password" ? passwordType : type}
                             ref={inref}
+
                             name={name}
                             disabled={disabled}
                             required={required}
                             className={textClass}
                             placeholder=" "
                             autoCapitalize="off"
-                            autoComplete="off"
+                            autoComplete="new-password"
                             minLength={minLength}
                             value={value}
                             onChange={onChange}
@@ -69,7 +70,7 @@ const Input = ({
                             className={textClass}
                             placeholder=" "
                             autoCapitalize="off"
-                            autoComplete="off"
+                            autoComplete="new-password"
                             minLength={minLength}
                             aria-label={label}
                             autoFocus={auto_on}
@@ -96,7 +97,7 @@ const Input = ({
                     )}
 
                     <label
-                        
+
                         className={`absolute  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4   scale-75 top-3 z-10 origin-[0]  ${className} px-2 peer-focus:px-2 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-5 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1`}
                     >
                         {label}
