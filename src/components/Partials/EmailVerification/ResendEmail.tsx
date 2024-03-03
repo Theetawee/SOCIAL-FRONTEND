@@ -80,7 +80,7 @@ const ResendEmail = () => {
                     <form method="post" onSubmit={handleResend}>
                         <Input
                             type="email"
-                            id="waanverse_email"
+                            
                             name="email"
                             label="Email"
                             disabled={isLoading}
