@@ -45,47 +45,53 @@ const Posts = () => {
                 <Seo
                     title={"Home / Waanverse"}
                     description={"Waanverse Homepage."}
-                >  <PullToRefresh pullingContent={<p className="text-gray-700 text-center">Refresh</p>} onRefresh={GetAllPosts}>
-
-                    <InfiniteScroll
-                        dataLength={posts?.length || 0}
-                        next={fetchNextPage}
-                        hasMore={hasNextPage}
-                        loader={<PostLoader image />}
-                        scrollThreshold={0.8}
-                        endMessage={
-                            <div className="text-center p-4">
-                                <h5>No more posts.</h5>
-                            </div>
+                >
+                    {" "}
+                    <PullToRefresh
+                        pullingContent={
+                            <p className="text-gray-700 text-center">Refresh</p>
                         }
-                        pullDownToRefresh={false}
-                        refreshFunction={() => GetAllPosts()}
-                        //pullDownToRefreshThreshold={100}
-                        pullDownToRefreshContent={
-                            <div className="flex items-center justify-center  gap-1">
-                                <IoMdRefresh className="w-5 h-5 animate-spin" />
-                            </div>
-                        }
-                        releaseToRefreshContent={
-                            <div className="flex items-center justify-center gap-1">
-                                <IoMdRefresh className="w-5 h-5 animate-spin" />
-                            </div>
-                        }
+                        onRefresh={GetAllPosts}
                     >
-                        <div>
-                            <ul>
-                                {posts?.map((post) => (
-                                    <Suspense
-                                        fallback={<PostLoader />}
-                                        key={post.id}
-                                    >
-                                        <Post post={post} />
-                                    </Suspense>
-                                ))}
-                            </ul>
-                        </div>
+                        <InfiniteScroll
+                            dataLength={posts?.length || 0}
+                            next={fetchNextPage}
+                            hasMore={hasNextPage}
+                            loader={<PostLoader image />}
+                            scrollThreshold={0.8}
+                            endMessage={
+                                <div className="text-center p-4">
+                                    <h5>No more posts.</h5>
+                                </div>
+                            }
+                            pullDownToRefresh={false}
+                            refreshFunction={() => GetAllPosts()}
+                            //pullDownToRefreshThreshold={100}
+                            pullDownToRefreshContent={
+                                <div className="flex items-center justify-center  gap-1">
+                                    <IoMdRefresh className="w-5 h-5 animate-spin" />
+                                </div>
+                            }
+                            releaseToRefreshContent={
+                                <div className="flex items-center justify-center gap-1">
+                                    <IoMdRefresh className="w-5 h-5 animate-spin" />
+                                </div>
+                            }
+                        >
+                            <div>
+                                <ul>
+                                    {posts?.map((post) => (
+                                        <Suspense
+                                            fallback={<PostLoader />}
+                                            key={post.id}
+                                        >
+                                            <Post post={post} />
+                                        </Suspense>
+                                    ))}
+                                </ul>
+                            </div>
                         </InfiniteScroll>
-                        </PullToRefresh>
+                    </PullToRefresh>
                 </Seo>
             </Suspense>
         );
