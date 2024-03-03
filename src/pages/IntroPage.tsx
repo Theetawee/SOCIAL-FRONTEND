@@ -17,7 +17,7 @@ const Intro = () => {
             description="Discover a world of endless possibilities as you navigate through diverse communities, vibrant discussions, and captivating content. From art and culture to technology and lifestyle, there's something for everyone on Waanverse."
         >
             <section className="bg-page-pattern">
-                <section className="bg-white flex items-center justify-between min-h-screen dark:bg-gray-900/50">
+                <section className="bg-white/10 flex items-center justify-between min-h-screen dark:bg-gray-900/20">
                     <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
                         <img
                             className="w-full sm:h-72 h-32 md:h-96  "
@@ -37,7 +37,7 @@ const Intro = () => {
                             <div className="flex justify-center flex-wrap py-8 items-center gap-6">
                                 <Link
                                     to="/accounts/signup"
-                                    className="justify-center flex max-w-sm w-full items-center text-white border border-gray-100 dark:border-gray-600 font-medium rounded text-lg px-5 py-2.5 text-center dark:focus:ring-primary-900"
+                                    className="justify-center text-gray-800 flex max-w-sm w-full items-center dark:text-white border border-gray-300 dark:border-gray-600 font-medium rounded text-lg px-5 py-2.5 text-center dark:focus:ring-primary-900"
                                 >
                                     Create your Account
                                 </Link>
