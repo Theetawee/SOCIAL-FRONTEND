@@ -46,7 +46,7 @@ const UpdateProfilePage = ({ profile }: { profile: UserType }) => {
             <form method="post" onSubmit={handleUpdateInfo}>
                 <div className="grid grid-cols-1 max-w-2xl py-8 mx-auto gap-6">
                     <Input
-                        id={"name"}
+
                         name={"name"}
                         className="dark:bg-gray-900 bg-white"
                         setValue
@@ -57,7 +57,7 @@ const UpdateProfilePage = ({ profile }: { profile: UserType }) => {
                         type={"text"}
                     />
                     <Input
-                        id={"bio"}
+
                         name={"bio"}
                         className="dark:bg-gray-900 bg-white"
                         value={info.bio || ""}
@@ -69,7 +69,7 @@ const UpdateProfilePage = ({ profile }: { profile: UserType }) => {
                         required={false}
                     />
                     <Input
-                        id="location"
+                        
                         setValue
                         onChange={handleChange}
                         className="dark:bg-gray-900 bg-white"

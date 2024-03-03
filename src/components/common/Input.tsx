@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 interface Props {
-    id: string;
+
     name: string;
     disabled: boolean;
     required?: boolean;
@@ -18,7 +18,7 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const Input = ({
-    id,
+
     name,
     disabled,
     required = true,
@@ -46,7 +46,6 @@ const Input = ({
                             type={type === "password" ? passwordType : type}
                             ref={inref}
                             name={name}
-                            id={id}
                             disabled={disabled}
                             required={required}
                             className={textClass}
@@ -64,7 +63,7 @@ const Input = ({
                             type={type === "password" ? passwordType : type}
                             name={name}
                             ref={inref}
-                            id={id}
+
                             disabled={disabled}
                             required={required}
                             className={textClass}
@@ -97,7 +96,7 @@ const Input = ({
                     )}
 
                     <label
-                        htmlFor={id}
+                        
                         className={`absolute  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4   scale-75 top-3 z-10 origin-[0]  ${className} px-2 peer-focus:px-2 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-5 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1`}
                     >
                         {label}

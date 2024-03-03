@@ -67,7 +67,7 @@ const ResetPasswordPage = () => {
                             name="email"
                             label="Email Address"
                             disabled={isLoading}
-                            id="email"
+                            
                             className="bg-gray-50 dark:bg-gray-900"
                         />
                         <button

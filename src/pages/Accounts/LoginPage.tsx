@@ -26,7 +26,17 @@ const LoginPage = () => {
         >
             <section className="flex  items-center flex-col justify-center py-20 px-4">
                 <div className="max-w-md py-6   mx-auto rounded-0   w-full bg-white dark:bg-gray-900 shadow-primary-100 dark:shadow-primary-950  rounded-xl px-2">
-                    <form onSubmit={handleSubmit} method="post">
+                    <form
+                        onSubmit={handleSubmit}
+                        autoComplete="off"
+                        method="post"
+                    >
+                        <input
+                            autoComplete="false"
+                            name="hidden"
+                            type="text"
+                            style={{ display: "none" }}
+                        />
                         <h1 className="text-primary-500 mb-4  font-medium text-center text-2xl">
                             Sign in to Waanverse
                         </h1>
@@ -37,7 +47,7 @@ const LoginPage = () => {
                                     name="username"
                                     label="Username"
                                     disabled={isLoading}
-                                    id="username"
+
                                     auto_on={true}
                                 />
                             </SuspenseLoader>
@@ -47,7 +57,7 @@ const LoginPage = () => {
                                     name="password"
                                     label="Password"
                                     disabled={isLoading}
-                                    id="password"
+                                    
                                     auto_on={false}
                                 />
                             </SuspenseLoader>

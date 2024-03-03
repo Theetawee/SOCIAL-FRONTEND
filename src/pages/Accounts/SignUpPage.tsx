@@ -26,7 +26,11 @@ const SignUpPage = () => {
         >
             <section className="flex h-screen items-center flex-col justify-center py-20 px-2">
                 <div className="max-w-md mx-auto dark:shadow-primary-900 overflow-y-auto rounded-xl bg-white   w-full dark:bg-gray-900 dark:border-gray-800 px-2 py-6">
-                    <form onSubmit={handleSubmit} method="post">
+                    <form onSubmit={handleSubmit} autoComplete="off" method="post">
+                       <input autoComplete="false" name="hidden" type="text" style={{display: "none"}} />
+
+
+
                         <h1 className="text-sky-500 mb-4 font-bold text-center text-2xl">
                             Create Waanverse account
                         </h1>
@@ -53,7 +57,7 @@ const SignUpPage = () => {
                                     name="email"
                                     label="Email"
                                     disabled={isLoading}
-                                    id="email"
+
                                     auto_on={true}
                                 />
                             </SuspenseLoader>
@@ -63,7 +67,7 @@ const SignUpPage = () => {
                                     name="set_name"
                                     label="Name"
                                     disabled={isLoading}
-                                    id="name"
+
                                     auto_on={false}
                                 />
                             </SuspenseLoader>
@@ -74,7 +78,7 @@ const SignUpPage = () => {
                                     name="username"
                                     label="Username"
                                     disabled={isLoading}
-                                    id="username"
+
                                     auto_on={false}
                                 />
                             </SuspenseLoader>
@@ -85,7 +89,7 @@ const SignUpPage = () => {
                                     name="password"
                                     label="Password"
                                     disabled={isLoading}
-                                    id="password"
+                                    
                                     auto_on={false}
                                 />
                             </SuspenseLoader>

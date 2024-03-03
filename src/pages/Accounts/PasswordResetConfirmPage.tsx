@@ -84,7 +84,7 @@ const PasswordResetConfirmPage = () => {
                             name="new_password1"
                             label="New password"
                             disabled={isLoading}
-                            id={"password1"}
+
                             className="bg-gray-50 dark:bg-gray-900"
                         />
                         <Input
@@ -92,7 +92,7 @@ const PasswordResetConfirmPage = () => {
                             name="new_password2"
                             label="Confirm new password"
                             disabled={isLoading}
-                            id={"password2"}
+                            
                             className="bg-gray-50 dark:bg-gray-900"
                         />
                         <button
