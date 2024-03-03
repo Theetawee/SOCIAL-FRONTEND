@@ -8,7 +8,9 @@ import useSuggestions from "../../hooks/Posts/useSuggestions";
 import { useState } from "react";
 import { BsX } from "react-icons/bs";
 import { TagedAccount } from "../../hooks/types";
-
+import Image from "../../components/common/Image";
+import DefaultAvater from "../../assets/default.webp";
+import VerifiedSvg from "../../components/Partials/Account/VerifiedSvg";
 const ComposePage = () => {
     const [taged_accounts, setTaged_accounts] = useState<TagedAccount[]>([]);
 
@@ -72,9 +74,18 @@ const ComposePage = () => {
                         onClick={() => addToList(account.username, account.id)}
                         type="button"
                         key={account.id}
-                        className="block w-full text-left border-b border-gray-100 dark:border-gray-700 rounded-xl p-4"
+                        className="flex w-full items-center   text-left border-b border-gray-100 dark:border-gray-700 rounded-xl py-4 px-2"
                     >
+                        <Image
+                            src={account.image || DefaultAvater}
+                            className="w-9 mr-2 h-9 rounded-full"
+                            hash={account.profile_image_hash}
+                            alt={account.name}
+                        />
                         <p>@{account.username}</p>
+                        {account.verified && (
+                            <VerifiedSvg/>
+                        )}
                     </button>
                 ))}
             </div>
@@ -83,7 +94,7 @@ const ComposePage = () => {
 
     return (
         <Seo title={"Compose"} description={"Compose new post"}>
-            <section className="mb-8">
+            <section className="pb-10">
                 <form
                     method="post"
                     onSubmit={handleSubmit}
@@ -112,26 +123,27 @@ const ComposePage = () => {
                                 value={JSON.stringify(taged_accounts)}
                             />
                             {files !== undefined && files && (
-                                <span className="flex flex-wrap mb-4">
+                                <span className="flex flex-wrap">
                                     {files.map((file) => (
                                         <div className="h-full" key={file}>
                                             <div className="overflow-hidden">
                                                 <div className="flex items-center gap-3">
                                                     <button
+                                                        disabled={isPending}
                                                         onClick={() =>
                                                             cancelPreview(file)
                                                         }
-                                                        className="p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"
+                                                        className="p-1 ml-auto text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"
                                                     >
                                                         <MdClose className="w-6 h-6 dark:text-gray-200" />
                                                     </button>
                                                 </div>
-                                                <div className="w-52 p-2 mx-auto h-52 overflow-hidden flex items-center justify-center">
+                                                <div className="w-52 rounded-xl px-2 pb-2 mx-auto h-52 overflow-hidden  flex items-center justify-center">
                                                     <img
                                                         src={file}
                                                         alt="Preview"
                                                         loading="lazy"
-                                                        className="object-contain w-full h-full"
+                                                        className="object-contain rounded-xl w-full h-full"
                                                     />
                                                 </div>
                                             </div>
@@ -139,6 +151,24 @@ const ComposePage = () => {
                                     ))}
                                 </span>
                             )}
+                            <div className="flex items-center gap-2 px-4 pb-4">
+                                {taged_accounts?.map((account) => (
+                                    <div
+                                        className="mr-2 flex items-center gap-4 justify-between border rounded px-4 py-2"
+                                        key={account.id}
+                                    >
+                                        @{account.username}
+                                        <button
+                                            onClick={() =>
+                                                removeFromList(account.id)
+                                            }
+                                            type="button"
+                                        >
+                                            <BsX className="w-6 h-6" />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                         <div className="flex items-center justify-between px-3 py-2 border-b dark:border-gray-800">
                             <div className="flex flex-wrap items-center divide-gray-200 sm:divide-x sm:rtl:divide-x-reverse dark:divide-gray-800">
@@ -172,32 +202,20 @@ const ComposePage = () => {
                             </button>
                         </div>
                     </div>
-                    <div className="px-4 flex items-center gap-2 flex-wrap">
-                        {taged_accounts?.map((account) => (
-                            <div
-                                className="mr-2 flex items-center gap-4 justify-between border rounded px-4 py-2"
-                                key={account.id}
-                            >
-                                @{account.username}
-                                <button
-                                    onClick={() => removeFromList(account.id)}
-                                    type="button"
-                                >
-                                    <BsX className="w-6 h-6" />
-                                </button>
-                            </div>
-                        ))}
-                        <div className="  relative flex items-center justify-center gap-4">
+                    <div className="px-4 pb-4 pt-4">
+                        <div className="relative flex flex-col items-center justify-between gap-2">
                             <input
                                 type="text"
                                 id="tagged_accounts"
+                                autoComplete="off"
+                                spellCheck="false"
                                 onChange={handleGetSuggestion}
                                 value={suggest}
-                                className="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block  p-2.5 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                className="bg-white border w-full border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block  p-2.5 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="@Tag account"
                             />
                             {suggest && (
-                                <div className="max-w-sm top-16 rounded-md border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800  w-full absolute">
+                                <div className="w-full rounded-md border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800  ">
                                     {content}
                                 </div>
                             )}
