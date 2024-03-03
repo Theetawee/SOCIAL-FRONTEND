@@ -8,6 +8,7 @@ import { IoMdRefresh } from "react-icons/io";
 import Post from "../Post/Post";
 import PostSkelton from "../Post/PostSkeleton";
 import PostLoader from "../Post/PostLoader";
+import PullToRefresh from "react-simple-pull-to-refresh";
 
 const Posts = () => {
     const { GetAllPosts } = Endpoints();
@@ -44,7 +45,8 @@ const Posts = () => {
                 <Seo
                     title={"Home / Waanverse"}
                     description={"Waanverse Homepage."}
-                >
+                >  <PullToRefresh pullingContent={<p className="text-gray-700 text-center">Refresh</p>} onRefresh={GetAllPosts}>
+
                     <InfiniteScroll
                         dataLength={posts?.length || 0}
                         next={fetchNextPage}
@@ -56,9 +58,9 @@ const Posts = () => {
                                 <h5>No more posts.</h5>
                             </div>
                         }
-                        pullDownToRefresh
+                        pullDownToRefresh={false}
                         refreshFunction={() => GetAllPosts()}
-                        pullDownToRefreshThreshold={1000}
+                        //pullDownToRefreshThreshold={100}
                         pullDownToRefreshContent={
                             <div className="flex items-center justify-center  gap-1">
                                 <IoMdRefresh className="w-5 h-5 animate-spin" />
@@ -82,7 +84,8 @@ const Posts = () => {
                                 ))}
                             </ul>
                         </div>
-                    </InfiniteScroll>
+                        </InfiniteScroll>
+                        </PullToRefresh>
                 </Seo>
             </Suspense>
         );
