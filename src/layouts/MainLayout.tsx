@@ -9,7 +9,9 @@ const MainLayout = () => {
         <ContextProvider>
             <ErrorBoundary fallback={<CommonError />}>
                 <SuspenseLoader>
-                    <Outlet />
+                    <main className="bg-page-pattern min-h-screen">
+                        <Outlet />
+                        </main>
                 </SuspenseLoader>
             </ErrorBoundary>
         </ContextProvider>

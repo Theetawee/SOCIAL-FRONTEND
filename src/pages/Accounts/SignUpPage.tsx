@@ -25,7 +25,7 @@ const SignUpPage = () => {
             description="Join our community by creating an account on our signup page! Discover new connections, share your passions, and embark on a journey of exploration."
         >
             <section className="flex h-screen items-center flex-col justify-center py-20 px-2">
-                <div className="max-w-md mx-auto dark:shadow-primary-900 overflow-y-auto rounded-xl bg-white shadow-shadow w-full dark:bg-gray-900 dark:border-gray-800 px-2 py-6">
+                <div className="max-w-md mx-auto dark:shadow-primary-900 overflow-y-auto rounded-xl bg-white   w-full dark:bg-gray-900 dark:border-gray-800 px-2 py-6">
                     <form onSubmit={handleSubmit} method="post">
                         <h1 className="text-sky-500 mb-4 font-bold text-center text-2xl">
                             Create Waanverse account

@@ -4,9 +4,8 @@ import useAxios from "../../hooks/useAxios";
 import toast from "react-hot-toast";
 import { useState } from "react";
 const LogoutPage = () => {
-
     const api = useAxios();
-    const { unauthenticateUser} = useAuth();
+    const { unauthenticateUser } = useAuth();
     const navigate = useNavigate();
     const [logingout, setLogingout] = useState(false);
 
@@ -15,28 +14,33 @@ const LogoutPage = () => {
         try {
             await api.post("/accounts/logout/");
             unauthenticateUser();
-            toast.success('Logout successful');
-            navigate("/")
-        }catch{
-            toast.error('Unable to logout, please try again');
-        }finally{
+            toast.success("Logout successful");
+            navigate("/");
+        } catch {
+            toast.error("Unable to logout, please try again");
+        } finally {
             setLogingout(false);
         }
-    }
-
-
-
+    };
 
     return (
         <section className="flex items-center flex-col justify-center py-24 px-2">
-            <div className="max-w-sm grid grid-cols-1 gap-3 mx-auto rounded-md shadow-shadow w-full dark:bg-gray-800 bg-white px-4 py-10">
+            <div className="max-w-sm grid grid-cols-1 gap-3 mx-auto rounded-md   w-full dark:bg-gray-800 bg-white px-4 py-10">
                 <h1 className="text-xl">Are you sure you want to log out?</h1>
                 <p className="mb-6">You can log in again at any time</p>
                 <div className="grid grid-cols-1 gap-6 font-medium">
-                    <button onClick={handleLogout} disabled={logingout} className="bg-white border border-gray-100 text-gray-700 w-full px-5 py-2 rounded-full hover:bg-white/90">
+                    <button
+                        onClick={handleLogout}
+                        disabled={logingout}
+                        className="bg-white border border-gray-100 text-gray-700 w-full px-5 py-2 rounded-full hover:bg-white/90"
+                    >
                         {logingout ? "Logging out..." : "Log out"}
                     </button>
-                    <button disabled={logingout} onClick={() => navigate(-1)} className="bg-gray-700 text-white px-5 py-2 rounded-full hover:bg-gray-700/90">
+                    <button
+                        disabled={logingout}
+                        onClick={() => navigate(-1)}
+                        className="bg-gray-700 text-white px-5 py-2 rounded-full hover:bg-gray-700/90"
+                    >
                         Cancel
                     </button>
                 </div>
