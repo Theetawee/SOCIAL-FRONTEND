@@ -17,7 +17,7 @@ const Intro = () => {
             description="Discover a world of endless possibilities as you navigate through diverse communities, vibrant discussions, and captivating content. From art and culture to technology and lifestyle, there's something for everyone on Waanverse."
         >
             <section className="bg-page-pattern">
-                <section className="bg-white/10 flex items-center justify-between min-h-screen dark:bg-gray-900/20">
+                <section className="bg-white/70 flex items-center justify-between min-h-screen dark:bg-gray-900/20">
                     <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
                         <img
                             className="w-full sm:h-72 h-32 md:h-96  "
