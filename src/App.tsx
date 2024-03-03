@@ -25,6 +25,7 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const ResetPasswordPage = lazy(
     () => import("./pages/Accounts/ResetPasswordPage")
 );
+const IntroPage = lazy(() => import("./pages/IntroPage"));
 const PasswordResetConfirmPage = lazy(
     () => import("./pages/Accounts/PasswordResetConfirmPage")
 );
@@ -36,8 +37,9 @@ const ComposePage = lazy(() => import("./pages/Posts/ComposePage"));
 const router = createBrowserRouter(
     createRoutesFromElements([
         <Route path="/" element={<FrameLayout />}>
+
             <Route element={<AuthRequired />}>
-                <Route index element={<HomePage />} />
+                <Route path="/home" element={<HomePage />} />
                 <Route path="/friends" element={<Friends />} />
                 <Route path="/compose" element={<ComposePage />} />
                 <Route path="/:username" element={<ProfilePage />} />
@@ -45,8 +47,10 @@ const router = createBrowserRouter(
                 <Route path="/logout" element={<LogoutPage />} />
             </Route>
         </Route>,
-        <Route path="/accounts" element={<MainLayout />}>
+        <Route path="/" element={<MainLayout />}>
+
             <Route element={<ProtectedRoute />}>
+                <Route index element={<IntroPage />} />
                 <Route path="/accounts/login" element={<LoginPage />} />
                 <Route path="/accounts/signup" element={<SignUpPage />} />
                 <Route
@@ -69,7 +73,7 @@ const router = createBrowserRouter(
                     path="/accounts/activate/:token"
                     element={<AccountActivationPage />}
                 />
-            </Route>
+            Ro</Route>
         </Route>,
         <Route path="/" element={<MainLayout />}>
             <Route path="*" element={<NotFoundPage />} />

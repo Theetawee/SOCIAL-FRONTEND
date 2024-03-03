@@ -1,19 +1,16 @@
 import { Link } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
 import { lazy } from "react";
 const Seo = lazy(() => import("../../components/utils/Seo"));
 const Input =lazy(() => import("../../components/common/Input"));
 import useLogin from "../../hooks/Auth/useLogin";
 import { FormEvent} from "react";
-const redirect_url = import.meta.env.VITE_GOOGLE_REDIRECT
-const google_id = import.meta.env.VITE_GOOGLE_ID
 import { HiOutlineUserAdd } from "react-icons/hi";
 import SuspenseLoader from "../../components/utils/SuspenseLoader";
 import Loader from "../../components/common/Loader";
+import GoogleBtn from "../../components/Partials/Account/GoogleBtn";
 
 const LoginPage = () => {
 
-  const GOOGLE_URL=`https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${redirect_url}&prompt=consent&response_type=code&client_id=${google_id}&scope=openid%20email%20profile&access_type=offline`
 
 
     const { loging: isLoading, LoginUser } = useLogin();
@@ -78,14 +75,8 @@ const LoginPage = () => {
                                     or
                                 </span>
                             </div>
-
-                            <Link
-                                to={GOOGLE_URL}
-                                className="w-full flex dark:bg-gray-800 items-center justify-center text-gray-700 dark:text-white border dark:border-gray-800 dark:hover:bg-gray-800/90 font-medium rounded text-sm px-5 py-2.5 text-center"
-                            >
-                                <FcGoogle className="w-5 h-5 mr-3" />
-                                Sign in with Google
-                            </Link></div>
+                            <GoogleBtn/>
+                            </div>
                         </div>
                     </form>
                 </div>
