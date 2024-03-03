@@ -39,7 +39,7 @@ const router = createBrowserRouter(
         <Route path="/" element={<FrameLayout />}>
 
             <Route element={<AuthRequired />}>
-                <Route path="/home" element={<HomePage />} />
+                <Route index path="/home" element={<HomePage />} />
                 <Route path="/friends" element={<Friends />} />
                 <Route path="/compose" element={<ComposePage />} />
                 <Route path="/:username" element={<ProfilePage />} />

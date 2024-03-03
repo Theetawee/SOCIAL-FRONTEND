@@ -16,7 +16,7 @@ const LogoutPage = () => {
             await api.post("/accounts/logout/");
             unauthenticateUser();
             toast.success('Logout successful');
-            navigate("/accounts/login")
+            navigate("/")
         }catch{
             toast.error('Unable to logout, please try again');
         }finally{

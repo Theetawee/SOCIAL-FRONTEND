@@ -6,7 +6,7 @@ const ProtectedRoute = () => {
     const { isAuthenticated } = useContext(AuthContext);
 
     if (isAuthenticated) {
-        return <Navigate to="/" />;
+        return <Navigate to="/home" />;
     } else {
         return <Outlet />;
     }
