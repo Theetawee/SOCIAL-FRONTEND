@@ -2,48 +2,22 @@
 import Seo from "../components/utils/Seo";
 import { Link } from "react-router-dom";
 import GoogleBtn from "../components/Partials/Account/GoogleBtn";
-import useAuth from "../hooks/Auth/useAuth";
-import { useEffect } from "react";
 import Logo from "../components/common/Logo";
-const google_id = import.meta.env.VITE_GOOGLE_ID;
 
 const Intro = () => {
-  const { isAuthenticated } = useAuth();
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      
-      const script = document.createElement("script");
-      script.src = "https://accounts.google.com/gsi/client";
-      script.onload = () => {
-        (window as any).google.accounts.id.initialize({
-          client_id: google_id,
-          callback: () => {
-            console.log("callback");
-          },
-        });
-        (window as any).google.accounts.id.prompt();
-      };
-      document.body.appendChild(script);
-
-      // Cleanup function
-      return () => {
-        document.body.removeChild(script);
-      };
-    }
-  }, [isAuthenticated]);
-
+  
   return (
     <Seo
       title="Belonging without borders - Waanverse"
       description="Discover a world of endless possibilities as you navigate through diverse communities, vibrant discussions, and captivating content. From art and culture to technology and lifestyle, there's something for everyone on Waanverse."
     >
-      <section className="bg-page-pattern">
-        <section className="bg-white/90 flex items-center justify-between min-h-screen dark:bg-gray-900/20">
+      <section>
+        <section className="bg-gray-50 flex items-center justify-between min-h-screen dark:bg-gray-900">
           <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
             <Logo className="w-full sm:h-72 h-32 md:h-96"/>
             <div className="mt-4 md:mt-0">
-              <h1 className="mb-4 md:text-6xl text-center md:text-left text-4xl tracking-tight font-extrabold text-gray-700 dark:text-white">
+              <h1 className="mb-4 md:text-6xl text-center md:text-left text-4xl tracking-tight font-extrabold text-gray-800 dark:text-white">
                 Belonging without borders
               </h1>
               <p className="mb-6 font-light text-center md:text-left text-gray-500 md:text-lg dark:text-gray-300">

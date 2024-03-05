@@ -25,11 +25,12 @@ const LoginPage = () => {
       title="Waanverse - Sign in"
       description="Sign in to access your account and unlock a world of possibilities. Seamlessly connect with friends, explore personalized content, and stay updated on the latest news. Your journey begins here."
     >
-      <section className="flex  items-center flex-col justify-center py-20 px-4">
-        <Link to={"/"} className="block mb-5">
-          <Logo />
-        </Link>
-        <div className="max-w-md py-6   mx-auto rounded-0   w-full bg-white dark:bg-gray-900 shadow-primary-100 dark:shadow-primary-950  rounded-xl px-2">
+      <section className="flex  items-center flex-col justify-center py-16 px-4">
+        <div className="max-w-md py-6   mx-auto rounded-0   w-full bg-white dark:bg-gray-900 shadow  rounded-xl px-2">
+          <Link to={"/"} className="flex items-center justify-center mb-5">
+            <Logo />
+          </Link>
+
           <form onSubmit={handleSubmit} autoComplete="off" method="post">
             <input
               autoComplete="false"
@@ -45,7 +46,7 @@ const LoginPage = () => {
                 <Input
                   type="text"
                   name="username"
-                  label="Username"
+                  label="Username or Email"
                   disabled={isLoading}
                   auto_on={true}
                 />
@@ -84,14 +85,14 @@ const LoginPage = () => {
               </div>
             </div>
           </form>
+          <Link
+            to={"/accounts/signup"}
+            className="text-primary-500 flex justify-center items-center gap-1 text-sm mt-3 hover:underline"
+          >
+            <HiOutlineUserAdd className="w-5 h-5 inline-block" />
+            Create account
+          </Link>
         </div>
-        <Link
-          to={"/accounts/signup"}
-          className="text-primary-500 flex items-center gap-1 text-sm mt-3 hover:underline"
-        >
-          <HiOutlineUserAdd className="w-5 h-5 inline-block" />
-          Create account
-        </Link>
       </section>
     </Seo>
   );

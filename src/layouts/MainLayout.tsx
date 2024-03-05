@@ -7,18 +7,18 @@ import Footer from "../components/Partials/Footer";
 
 const MainLayout = () => {
     return (
-        <ContextProvider>
-            <ErrorBoundary fallback={<CommonError />}>
-                <SuspenseLoader>
-                    <section className="bg-page-pattern min-h-screen">
-                        <main>
-                            <Outlet />
-                        </main>
-                        <Footer />
-                    </section>
-                </SuspenseLoader>
-            </ErrorBoundary>
-        </ContextProvider>
+      <ContextProvider>
+        <ErrorBoundary fallback={<CommonError />}>
+          <SuspenseLoader>
+            <section>
+              <main>
+                <Outlet />
+              </main>
+              <Footer />
+            </section>
+          </SuspenseLoader>
+        </ErrorBoundary>
+      </ContextProvider>
     );
 };
 

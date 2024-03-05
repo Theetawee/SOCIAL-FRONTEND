@@ -25,12 +25,12 @@ const SignUpPage = () => {
       title="Sign Up and Join the Community - Create Your Account Today!"
       description="Join our community by creating an account on our signup page! Discover new connections, share your passions, and embark on a journey of exploration."
     >
-      <section className="flex h-screen items-center flex-col justify-center py-20 px-2">
-        <Link to={"/"} className="block mb-5">
-          <Logo />
-        </Link>
+      <section className="flex  items-center flex-col justify-center py-16 px-2">
+        <div className="max-w-md mx-auto shadow  rounded bg-white  h-full  w-full dark:bg-gray-900 dark:border-gray-800 px-2 py-6">
+          <Link to={"/"} className="flex items-center justify-center mb-5">
+            <Logo />
+          </Link>
 
-        <div className="max-w-md mx-auto dark:shadow-primary-900  rounded bg-white  h-full  w-full dark:bg-gray-900 dark:border-gray-800 px-2 py-6">
           <form onSubmit={handleSubmit} autoComplete="off" method="post">
             <input
               autoComplete="false"
@@ -120,14 +120,14 @@ const SignUpPage = () => {
               </div>
             </div>
           </form>
+          <Link
+            to={"/accounts/login"}
+            className="text-primary-500 flex items-center justify-center text-sm mt-3 hover:underline"
+          >
+            <CgLogIn className="w-5 h-5 inline-block mr-1" />
+            Sign in to an existing account
+          </Link>
         </div>
-        <Link
-          to={"/accounts/login"}
-          className="text-primary-500 flex items-center justify-center text-sm mt-3 hover:underline"
-        >
-          <CgLogIn className="w-5 h-5 inline-block mr-1" />
-          Sign in to an existing account
-        </Link>
       </section>
     </Seo>
   );
