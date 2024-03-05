@@ -1,5 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0.00 0.00 262.00 262.00">
-<path fill="#000000" d="
+import useTheme from "../../hooks/useTheme";
+
+const Logo = ({className="w-10 h-10"}:{className?:string}) => {
+  const { theme} = useTheme();
+    const logoImg = (
+      <>
+        <svg
+          className={`${className} ${theme==="dark"?"text-white":"text-gray-900"}`}
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+          viewBox="0.00 0.00 262.00 262.00"
+        >
+          <path
+            fill="currentColor"
+            d="
   M 106.80 198.21
   C 94.96 213.34 82.80 225.79 65.23 232.93
   Q 56.09 236.65 46.37 234.81
@@ -43,6 +56,26 @@
   C 111.18 220.74 108.63 211.12 107.40 198.38
   Q 107.32 197.54 106.80 198.21
   Z"
-/>
-<ellipse fill="#000000" cx="0.00" cy="0.00" transform="translate(235.20,220.49) rotate(89.9)" rx="13.51" ry="12.46"/>
-</svg>
+          />
+          <ellipse
+            fill="currentColor"
+            cx="0.00"
+            cy="0.00"
+            transform="translate(235.20,220.49) rotate(89.9)"
+            rx="13.51"
+            ry="12.46"
+          />
+        </svg>
+      </>
+    );
+
+
+
+  return (
+      <span className={`${className} ${theme==="dark"?"text-white":"text-gray-900"}`}>
+          {logoImg}
+    </span>
+  )
+}
+
+export default Logo
