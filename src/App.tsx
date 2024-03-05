@@ -33,6 +33,11 @@ const AccountActivationPage = lazy(
     () => import("./pages/Accounts/AccountActivationPage")
 );
 const ComposePage = lazy(() => import("./pages/Posts/ComposePage"));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
+
+
+
+
 
 const router = createBrowserRouter(
     createRoutesFromElements([
@@ -73,7 +78,8 @@ const router = createBrowserRouter(
                     path="/accounts/activate/:token"
                     element={<AccountActivationPage />}
                 />
-            Ro</Route>
+                <Route path="/legal/privacy" element={<PrivacyPage />} />
+            </Route>
         </Route>,
         <Route path="/" element={<MainLayout />}>
             <Route path="*" element={<NotFoundPage />} />
