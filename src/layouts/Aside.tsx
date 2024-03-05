@@ -51,7 +51,7 @@ const Aside = () => {
             </div>
             <div>
                 <SuspenseLoader className="h-auto">
-                    <SideBarLink icon={GoHomeFill} path="/" label="Home" />
+                    <SideBarLink icon={GoHomeFill} path="/home" label="Home" />
                     <SideBarLink
                         icon={FaUser}
                         path={`/${user?.username}`}
