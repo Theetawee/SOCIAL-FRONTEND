@@ -3,6 +3,7 @@ import Seo from "../components/utils/Seo";
 import { Link } from "react-router-dom";
 import GoogleBtn from "../components/Partials/Account/GoogleBtn";
 import Logo from "../components/common/Logo";
+import IntroSearch from "../components/Partials/IntroSearch";
 
 const Intro = () => {
 
@@ -13,6 +14,7 @@ const Intro = () => {
       description="Discover a world of endless possibilities as you navigate through diverse communities, vibrant discussions, and captivating content. From art and culture to technology and lifestyle, there's something for everyone on Waanverse."
     >
       <section>
+        <IntroSearch/>
         <section className="bg-gray-50 flex items-center justify-between min-h-screen dark:bg-gray-950">
           <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
             <Logo className="w-full sm:h-72 h-32 md:h-96"/>

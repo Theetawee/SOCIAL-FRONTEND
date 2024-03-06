@@ -34,7 +34,7 @@ const AccountActivationPage = lazy(
 );
 const ComposePage = lazy(() => import("./pages/Posts/ComposePage"));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
-
+const SearchPage = lazy(() => import('./pages/SearchPage'));
 
 
 
@@ -79,6 +79,7 @@ const router = createBrowserRouter(
                     element={<AccountActivationPage />}
                 />
                 <Route path="/legal/privacy" element={<PrivacyPage />} />
+                <Route path="/search/:query" element={<SearchPage/>} />
             </Route>
         </Route>,
         <Route path="/" element={<MainLayout />}>
