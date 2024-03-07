@@ -14,7 +14,7 @@ const PostResults = ({ data }: { data: PostType[] }) => {
           ))}
         </>
       ) : (
-        <><p className="text-center text-lg">No Posts found.</p></>
+        <><p className="text-center text-lg py-4">No Posts found.</p></>
       )}
     </div>
   );

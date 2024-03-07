@@ -10,7 +10,7 @@ const AccountResults = ({ data }: { data: SuggestedAccount[] }) => {
               </div>
           ))}</>) : (<>
           
-          <p className="text-center text-lg">No Accounts found.</p>
+          <p className="text-center text-lg py-4">No Accounts found.</p>
           
           </>)}
           

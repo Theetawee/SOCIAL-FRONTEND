@@ -4,7 +4,7 @@ import DefaultAvater from "../../../assets/default.webp";
 import VerifiedSvg from "./VerifiedSvg";
 import { useNavigate } from "react-router-dom";
 
-const AccountCard = ({ account, clickable = true }: { account: SuggestedAccount | UserType, clickable: boolean }) => {
+const AccountCard = ({ account, clickable = true }: { account: SuggestedAccount | UserType, clickable?: boolean }) => {
   const navigate = useNavigate();
   const handleClick = () => {
     if (clickable) {
