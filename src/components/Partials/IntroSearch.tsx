@@ -34,7 +34,7 @@ const IntroSearch = () => {
               type="search"
               id="default-search"
               name="query"
-              className="block w-full p-4 ps-16  text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-900 dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              className="block w-full px-4 py-3 ps-16  text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-900 dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="Search Waanverse"
               required
             />

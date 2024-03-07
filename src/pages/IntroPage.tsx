@@ -32,7 +32,7 @@ const Intro = () => {
               <div className="flex justify-center flex-wrap py-8 items-center gap-6">
                 <Link
                   to="/accounts/signup"
-                  className="justify-center text-gray-800 flex max-w-sm w-full items-center dark:text-white border border-gray-300 dark:border-gray-600 font-medium rounded text-lg px-5 py-2.5 text-center dark:focus:ring-primary-900"
+                  className="justify-center text-gray-800 flex max-w-sm w-full items-center dark:text-white border border-gray-500 dark:border-gray-600 font-medium rounded text-lg px-5 py-2.5 text-center dark:focus:ring-primary-900"
                 >
                   Create your Account
                 </Link>
