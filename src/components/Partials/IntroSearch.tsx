@@ -19,9 +19,8 @@ const IntroSearch = () => {
   return (
     <section>
       <div>
-        <form method="GET" onSubmit={handleSubmit} className="max-w-screen-md mx-auto">
+        <form autoComplete="off" method="GET" onSubmit={handleSubmit} className="max-w-screen-md mx-auto">
           <label
-            htmlFor="default-search"
             className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
           >
             Search
@@ -32,7 +31,7 @@ const IntroSearch = () => {
             </div>
             <input
               type="search"
-              id="default-search"
+              autoComplete="off"
               name="query"
               className="block w-full px-4 py-3 ps-16  text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-900 dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="Search Waanverse"
