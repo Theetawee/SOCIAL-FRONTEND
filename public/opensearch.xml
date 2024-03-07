@@ -3,5 +3,5 @@
 <Description>Search Waanverse</Description>
 <InputEncoding>UTF-8</InputEncoding>
 <Image width="16" height="16" type="image/x-icon">https://files.waanverse.com/images/16.png</Image>
-<Url type="text/html" method="get" template="https://www.waanverse.com/search/{searchTerms}"/>
+<Url type="text/html" method="get" template="https://www.waanverse.com/search/?q={searchTerms}"/>
 </OpenSearchDescription>
