@@ -1,15 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
-	xmlns:moz="http://www.mozilla.org/2006/browser/search/">
-  <Description>Waanverse: Belonging without Borders</Description>
-  <SearchForm>https://www.waanverse.com/</SearchForm>
-  <moz:SearchForm>https://www.waanverse.com/</moz:SearchForm>
-  <InputEncoding>UTF-8</InputEncoding>
-  <Language>en</Language>
-
-  <ShortName>Waanverse</ShortName>
-  <Url rel="self" type="application/opensearchdescription+xml" href="https://www.waanverse.com/opensearch.xml" />
-  <Url method="get" type="text/html"
-      template="https://www.waanverse.com/search/{searchTerms}" />
-  <Image width="16" height="16">https://files.waanverse.com/images/16.png</Image>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+<ShortName>Waanverse</ShortName>
+<Description>Search Waanverse</Description>
+<InputEncoding>UTF-8</InputEncoding>
+<Image width="16" height="16" type="image/x-icon">https://files.waanverse.com/images/16.png</Image>
+<Url type="text/html" method="get" template="https://www.waanverse.com/search/{searchTerms}"/>
 </OpenSearchDescription>
