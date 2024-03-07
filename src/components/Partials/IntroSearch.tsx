@@ -9,7 +9,7 @@ const IntroSearch = () => {
     e.preventDefault();
     const query = e.currentTarget.query.value;
     e.currentTarget.query.value = "";
-    return navigate(`/search/${query}`)
+    return navigate(`/search/?q=${query}`)
   }
 
 

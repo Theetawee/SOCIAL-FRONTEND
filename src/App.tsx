@@ -79,7 +79,7 @@ const router = createBrowserRouter(
                     element={<AccountActivationPage />}
                 />
                 <Route path="/legal/privacy" element={<PrivacyPage />} />
-                <Route path="/search/:query" element={<SearchPage/>} />
+                <Route path="/search/" element={<SearchPage/>} />
             </Route>
         </Route>,
         <Route path="/" element={<MainLayout />}>

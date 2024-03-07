@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import IntroSearch from "../components/Partials/IntroSearch";
 import Seo from "../components/utils/Seo";
 import { useQuery } from "@tanstack/react-query";
@@ -12,7 +12,11 @@ const SearchPage = () => {
 
   const { searchWaanverse} = Endpoints();
 
-  const { query } = useParams();
+  const [searchParams] = useSearchParams();
+
+  const query = searchParams.get('q')
+  
+  
 
   const [display, setDisplay] = useState("posts");
   
