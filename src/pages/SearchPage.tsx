@@ -51,7 +51,7 @@ const SearchPage = () => {
       <div className="py-8">
         <IntroSearch />
       </div>
-      <div className="max-w-xl border-x rounded shadow mx-auto">
+      <div className="max-w-xl border-x border-gray-200 dark:border-gray-700 rounded shadow mx-auto">
       <div className="flex text-lg items-center py-2 justify-between max-w-lg mx-auto gap-10">
 
         <div>
@@ -61,7 +61,7 @@ const SearchPage = () => {
           <button className={`text-center ${display==="accounts"?"text-primary-500 font-medium":""}`} onClick={()=>setDisplay("accounts")}>Accounts</button>
         </div>
 
-      </div><hr />
+      </div><hr className="h-px border-t border-gray-200 dark:border-gray-800"/>
       <div>
           {display==="accounts"?(<AccountResults data={data!.accounts}/>):(<PostResults data={data!.posts}/>)}
       </div></div></>
