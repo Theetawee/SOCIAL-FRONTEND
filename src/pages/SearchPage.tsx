@@ -52,7 +52,7 @@ const SearchPage = () => {
           <IntroSearch />
         </div>
         <div className="max-w-xl border border-gray-200 dark:border-gray-800 rounded shadow mx-auto">
-          <div className="flex text-lg px-4 items-center py-2 justify-between max-w-lg mx-auto gap-10">
+          <div className="flex text-lg px-4 items-center py-4 justify-between max-w-lg mx-auto gap-10">
             <div>
               <button
                 className={`text-center flex items-center justify-center mr-2 ${
