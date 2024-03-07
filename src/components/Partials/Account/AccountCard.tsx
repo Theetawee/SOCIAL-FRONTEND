@@ -2,10 +2,19 @@ import { SuggestedAccount, UserType } from "../../../hooks/types"
 import Image from "../../common/Image";
 import DefaultAvater from "../../../assets/default.webp";
 import VerifiedSvg from "./VerifiedSvg";
+import { useNavigate } from "react-router-dom";
 
-const AccountCard = ({account}:{account:SuggestedAccount|UserType}) => {
+const AccountCard = ({ account, clickable = true }: { account: SuggestedAccount | UserType, clickable: boolean }) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    if (clickable) {
+      navigate(`/${account.username}`)
+    }
+  }
+
+
   return (
-    <div className="flex items-center">
+    <div onClick={handleClick} className={`flex ${clickable?"cursor-pointer":""} items-center`}>
       <div>
         <Image
           src={account.image || DefaultAvater}
