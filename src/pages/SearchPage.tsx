@@ -65,7 +65,7 @@ const SearchPage = () => {
                   className={` text-sm h-4 w-4  flex items-center justify-center rounded-full bg-primary-200 ml-2 dark:bg-primary-700 ${
                     display === "posts"
                       ? "text-gray-600 dark:text-white"
-                      : "text-gray-500"
+                      : "dark:text-gray-300 text-gray-500"
                   }`}
                 >
                   {data?.posts.length}
@@ -84,7 +84,7 @@ const SearchPage = () => {
                   className={` text-sm h-4 w-4  flex items-center justify-center rounded-full bg-primary-200 ml-2 dark:bg-primary-700 ${
                     display === "accounts"
                       ? "text-gray-600 dark:text-white"
-                      : "text-gray-500"
+                      : "dark:text-gray-300 text-gray-500"
                   }`}
                 >
                   {" "}
