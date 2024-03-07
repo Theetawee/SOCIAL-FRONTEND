@@ -1,6 +1,7 @@
 import { SuggestedAccount, UserType } from "../../../hooks/types"
 import Image from "../../common/Image";
 import DefaultAvater from "../../../assets/default.webp";
+import VerifiedSvg from "./VerifiedSvg";
 
 const AccountCard = ({account}:{account:SuggestedAccount|UserType}) => {
   return (
@@ -14,7 +15,10 @@ const AccountCard = ({account}:{account:SuggestedAccount|UserType}) => {
         />
       </div>
       <div className="ml-4">
-              <p className="text-xl font-medium">{account.name}</p>
+        <div className="flex items-center">
+          <p className="text-xl font-medium">{account.name}</p>
+          {account.verified && (<VerifiedSvg/>)}
+          </div>
               <p>@{account.username}</p>
       </div>
     </div>
