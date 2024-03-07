@@ -109,3 +109,8 @@ export interface SuggestedAccount{
 
 
 }
+
+export interface SearchResultsType{
+    accounts: SuggestedAccount[];
+    posts: PostType[]
+}
