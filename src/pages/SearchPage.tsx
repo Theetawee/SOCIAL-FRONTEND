@@ -51,18 +51,18 @@ const SearchPage = () => {
         <div className="py-8">
           <IntroSearch />
         </div>
-        <div className="max-w-xl border border-gray-200 dark:border-gray-700 rounded shadow mx-auto">
+        <div className="max-w-xl border border-gray-200 dark:border-gray-800 rounded shadow mx-auto">
           <div className="flex text-lg px-4 items-center py-2 justify-between max-w-lg mx-auto gap-10">
             <div>
               <button
-                className={`text-center ${
+                className={`text-center flex items-center justify-center mr-2 ${
                   display === "posts" ? "text-primary-500 font-medium" : ""
                 }`}
                 onClick={() => setDisplay("posts")}
               >
                 Posts{" "}
                 <span
-                  className={`ml-2 ${
+                  className={` text-sm h-4 w-4  flex items-center justify-center rounded-full bg-primary-200 ml-2 dark:bg-primary-700 ${
                     display === "posts"
                       ? "text-gray-600 dark:text-white"
                       : "text-gray-500"
@@ -74,14 +74,14 @@ const SearchPage = () => {
             </div>
             <div>
               <button
-                className={`text-center ${
+                className={`text-center flex items-center justify-center mr-2 ${
                   display === "accounts" ? "text-primary-500 font-medium" : ""
                 }`}
                 onClick={() => setDisplay("accounts")}
               >
                 Accounts{" "}
                 <span
-                  className={`ml-2 ${
+                  className={` text-sm h-4 w-4  flex items-center justify-center rounded-full bg-primary-200 ml-2 dark:bg-primary-700 ${
                     display === "accounts"
                       ? "text-gray-600 dark:text-white"
                       : "text-gray-500"
