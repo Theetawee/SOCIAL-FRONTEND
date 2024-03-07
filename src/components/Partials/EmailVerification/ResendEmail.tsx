@@ -85,6 +85,7 @@ const ResendEmail = () => {
                             label="Email"
                             disabled={isLoading}
                             required={true}
+                            
                         />
                         <div className="mt-6">
                             <button
