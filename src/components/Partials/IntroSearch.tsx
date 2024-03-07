@@ -17,7 +17,7 @@ const IntroSearch = () => {
 
 
   return (
-    <section className="pt-6 pb-10 px-4">
+    <section>
       <div>
         <form method="GET" onSubmit={handleSubmit} className="max-w-screen-md mx-auto">
           <label

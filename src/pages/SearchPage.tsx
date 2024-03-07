@@ -44,7 +44,9 @@ const SearchPage = () => {
     )
   } else { 
     content = (<>
-      <IntroSearch/>
+      <div className="py-4">
+        <IntroSearch />
+        </div>
       <div className="flex text-lg items-center mb-6 justify-between max-w-lg mx-auto gap-10">
 
         <div>

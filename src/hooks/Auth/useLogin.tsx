@@ -2,11 +2,13 @@
 import { useState } from "react";
 import useAxios from "../useAxios";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import useAuth from "./useAuth";
 
 const useLogin = () => {
     const [loging, setLoging] = useState(false);
+    const [searchParams] = useSearchParams();
+    const redirect = searchParams.get("next");
     const api = useAxios();
     const navigate = useNavigate();
     const { authenticateUser } = useAuth();
@@ -22,7 +24,11 @@ const useLogin = () => {
             const data = response.data;
             toast.success("Login successful");
             authenticateUser(data.user)
-            navigate("/");
+            if (redirect) {
+                navigate(redirect);
+            } else {
+                navigate("/");
+            }
         } catch (error: any) {
             if (error.response.data.non_field_errors) {
                 toast.error(error.response.data.non_field_errors[0]);

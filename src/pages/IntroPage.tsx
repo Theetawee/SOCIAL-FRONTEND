@@ -14,7 +14,7 @@ const Intro = () => {
       description="Discover a world of endless possibilities as you navigate through diverse communities, vibrant discussions, and captivating content. From art and culture to technology and lifestyle, there's something for everyone on Waanverse."
     >
       <section>
-        <div className="py-10">
+        <div className="px-4 py-6">
           <IntroSearch />
           </div>
         <section className="bg-gray-50 flex items-center justify-between min-h-screen dark:bg-gray-950">
