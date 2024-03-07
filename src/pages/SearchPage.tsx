@@ -55,10 +55,10 @@ const SearchPage = () => {
       <div className="flex text-lg items-center py-2 justify-between max-w-lg mx-auto gap-10">
 
         <div>
-          <button className={`text-center ${display==="posts"?"text-primary-500 font-medium":""}`} onClick={()=>setDisplay("posts")}>Posts</button>
+            <button className={`text-center ${display === "posts" ? "text-primary-500 font-medium" : ""}`} onClick={() => setDisplay("posts")}>Posts <span className={ `ml-2 ${display==='posts'?"text-gray-600 dark:text-white":"text-gray-500"}`}>{data?.posts.length }</span></button>
         </div>
         <div>
-          <button className={`text-center ${display==="accounts"?"text-primary-500 font-medium":""}`} onClick={()=>setDisplay("accounts")}>Accounts</button>
+            <button className={`text-center ${display === "accounts" ? "text-primary-500 font-medium" : ""}`} onClick={() => setDisplay("accounts")}>Accounts <span className={ `ml-2 ${display==='accounts'?"text-gray-600 dark:text-white":"text-gray-500"}`}> { data?.accounts.length} </span></button>
         </div>
 
       </div><hr className="h-px border-t border-gray-200 dark:border-gray-800"/>
