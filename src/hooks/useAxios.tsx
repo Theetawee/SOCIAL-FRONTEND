@@ -11,7 +11,7 @@ const useAxios = () => {
         setUser(null);
         localStorage.clear();
         setIsAuthenticated(false);
-        navigate("/login");
+        navigate("/accounts/login");
     };
 
     const axiosInstance: AxiosInstance = axios.create({

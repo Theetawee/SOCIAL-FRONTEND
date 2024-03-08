@@ -1,8 +1,8 @@
 import { SuggestedAccount, UserType } from "../../../hooks/types"
 import Image from "../../common/Image";
 import DefaultAvater from "../../../assets/default.webp";
-import VerifiedSvg from "./VerifiedSvg";
 import { useNavigate } from "react-router-dom";
+import Name from "./Name";
 
 const AccountCard = ({ account, clickable = true }: { account: SuggestedAccount | UserType, clickable?: boolean }) => {
   const navigate = useNavigate();
@@ -24,10 +24,7 @@ const AccountCard = ({ account, clickable = true }: { account: SuggestedAccount 
         />
       </div>
       <div className="ml-4">
-        <div className="flex items-center">
-          <p className="text-xl font-medium">{account.name}</p>
-          {account.verified && (<VerifiedSvg/>)}
-          </div>
+        <Name name={account.name} verified={account.verified}/>
               <p>@{account.username}</p>
       </div>
     </div>

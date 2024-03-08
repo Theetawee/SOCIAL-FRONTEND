@@ -17,7 +17,7 @@ const FrameLayout = () => {
                 <SuspenseLoader className="h-auto">
                     <Frame />
                 </SuspenseLoader>
-                <main className="sm:ml-72 pt-16 lg:mr-[32%] bg-white/90 dark:bg-gray-950 min-h-screen  lg:ml-[25%]">
+                <main className="sm:ml-72 pt-16 lg:mr-[32%] bg-white dark:bg-gray-950 min-h-screen  lg:ml-[25%]">
                     <ErrorBoundary
                         fallback={
                             <SuspenseLoader>

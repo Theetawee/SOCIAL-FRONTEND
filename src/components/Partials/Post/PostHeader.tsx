@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import DefaultAvater from "../../../assets/default.webp";
 import { PostType } from "../../../hooks/types";
 import Image from "../../common/Image";
-import VerifiedSvg from "../Account/VerifiedSvg";
 import HeaderMenu from "./HeaderMenu";
+import Name from "../Account/Name";
 
 const PostHeader = ({ post}: { post: PostType }) => {
     return (
@@ -19,12 +19,8 @@ const PostHeader = ({ post}: { post: PostType }) => {
                         className="w-10 h-10 rounded-full"
                         />
 
-                    <div className="flex flex-col ml-3">
-                        <p className="text-lg font-medium flex items-center">{post.account.name}
-                        {post.account.verified && (
-                            <VerifiedSvg/>
-                        )}
-                        </p>
+                        <div className="flex flex-col ml-3">
+                            <Name name={post.account.name} verified={post.account.verified} />
                         <span className="flex gap-2 items-center">
                             <p className="italic font-light leading-3">
                                 @{post.account.username}

@@ -26,7 +26,7 @@ const AccountActivationPage = () => {
                     );
                     if (resp.ok) {
                         toast.success("Account activated successfully");
-                        return navigate("/login");
+                        return navigate("/accounts/login");
                     } else {
                         await resp.json()
                         toast.error("Unable to activate account");

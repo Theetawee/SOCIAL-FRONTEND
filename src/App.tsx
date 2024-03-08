@@ -13,7 +13,7 @@ import { Toaster } from "react-hot-toast";
 import { ErrorBoundary } from "react-error-boundary";
 import CommonError from "./components/common/CommonError";
 const HomePage = lazy(() => import("./pages/HomePage"));
-const Friends = lazy(() => import("./pages/Friends"));
+const FriendsPage = lazy(() => import("./pages/FriendsPage"));
 const LoginPage = lazy(() => import("./pages/Accounts/LoginPage"));
 const LogoutPage = lazy(() => import("./pages/Accounts/LogoutPage"));
 const SignUpPage = lazy(() => import("./pages/Accounts/SignUpPage"));
@@ -40,52 +40,45 @@ const SearchPage = lazy(() => import('./pages/SearchPage'));
 
 
 const router = createBrowserRouter(
-    createRoutesFromElements([
-        <Route path="/" element={<FrameLayout />}>
+  createRoutesFromElements([
+    <Route path="/" element={<FrameLayout />}>
+      <Route element={<AuthRequired />}>
+        <Route index path="/home" element={<HomePage />} />
+        <Route path="/friends" element={<FriendsPage />} />
+        <Route path="/compose" element={<ComposePage />} />
+        <Route path="/:username" element={<ProfilePage />} />
+        <Route path="/posts/:id" element={<PostDetailPage />} />
+        <Route path="/logout" element={<LogoutPage />} />
+      </Route>
+    </Route>,
+    <Route path="/" element={<MainLayout />}>
+      <Route element={<ProtectedRoute />}>
+        <Route index element={<IntroPage />} />
+        <Route path="/accounts/login" element={<LoginPage />} />
+        <Route path="/accounts/signup" element={<SignUpPage />} />
+        <Route path="/accounts/verify-email" element={<VerifyEmailPage />} />
+        <Route path="/accounts/oauth2/google" element={<GoogleLoginPage />} />
+        <Route
+          path="/accounts/reset-password"
+          element={<ResetPasswordPage />}
+        />
+        <Route
+          path="/accounts/password/reset/confirm/:uid/:token"
+          element={<PasswordResetConfirmPage />}
+        />
+        <Route
+          path="/accounts/activate/:token"
+          element={<AccountActivationPage />}
+        />
+        <Route path="/legal/privacy" element={<PrivacyPage />} />
+      </Route>
+    </Route>,
+    <Route path="/" element={<MainLayout />}>
+      <Route path="/search/" element={<SearchPage />} />
 
-            <Route element={<AuthRequired />}>
-                <Route index path="/home" element={<HomePage />} />
-                <Route path="/friends" element={<Friends />} />
-                <Route path="/compose" element={<ComposePage />} />
-                <Route path="/:username" element={<ProfilePage />} />
-                <Route path="/posts/:id" element={<PostDetailPage />} />
-                <Route path="/logout" element={<LogoutPage />} />
-            </Route>
-        </Route>,
-        <Route path="/" element={<MainLayout />}>
-
-            <Route element={<ProtectedRoute />}>
-                <Route index element={<IntroPage />} />
-                <Route path="/accounts/login" element={<LoginPage />} />
-                <Route path="/accounts/signup" element={<SignUpPage />} />
-                <Route
-                    path="/accounts/verify-email"
-                    element={<VerifyEmailPage />}
-                />
-                <Route
-                    path="/accounts/oauth2/google"
-                    element={<GoogleLoginPage />}
-                />
-                <Route
-                    path="/accounts/reset-password"
-                    element={<ResetPasswordPage />}
-                />
-                <Route
-                    path="/accounts/password/reset/confirm/:uid/:token"
-                    element={<PasswordResetConfirmPage />}
-                />
-                <Route
-                    path="/accounts/activate/:token"
-                    element={<AccountActivationPage />}
-                />
-                <Route path="/legal/privacy" element={<PrivacyPage />} />
-                <Route path="/search/" element={<SearchPage/>} />
-            </Route>
-        </Route>,
-        <Route path="/" element={<MainLayout />}>
-            <Route path="*" element={<NotFoundPage />} />
-        </Route>,
-    ])
+      <Route path="*" element={<NotFoundPage />} />
+    </Route>,
+  ])
 );
 
 const App = () => {

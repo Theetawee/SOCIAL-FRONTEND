@@ -30,7 +30,7 @@ export default {
           950: "#082f49",
         },
         gray: {
-          50: "##fafafa",
+          50: "#fafafa",
           100: "#f5f5f5 ",
           200: "#e5e5e5",
           300: "#d4d4d4 ",

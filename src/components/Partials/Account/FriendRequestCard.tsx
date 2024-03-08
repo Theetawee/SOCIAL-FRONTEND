@@ -4,6 +4,7 @@ import { FriendRequestType } from "../../../hooks/types";
 import useDate from "../../../hooks/useDate";
 import useProfileActions from "../../../hooks/Account/useProfileActions";
 import Loader from "../../common/Loader";
+import Name from "./Name";
 
 
 
@@ -40,8 +41,8 @@ const FriendRequestCard = ({ request }: { request: FriendRequestType }) => {
                         className="w-16 h-16 rounded-full"
                     />
                 </div>
-                <div className="ml-3">
-                    <h3 className="text-sm font-medium">{request.sender.name}</h3>
+              <div className="ml-3">
+                <Name name={ request.sender.name} verified={request.sender.verified} />
                     <p className="text-sm text-gray-500">@{request.sender.username}</p>
                 </div>
             </div>

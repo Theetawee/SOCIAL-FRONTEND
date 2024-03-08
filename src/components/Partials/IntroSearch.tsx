@@ -1,10 +1,15 @@
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 
 const IntroSearch = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [q, setQ] = useState(searchParams.get("q") || "");
+  
+  
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const query = e.currentTarget.query.value;
@@ -31,6 +36,8 @@ const IntroSearch = () => {
             </div>
             <input
               type="search"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
               autoComplete="off"
               name="query"
               className="block w-full px-4 py-3 ps-16  text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-900 dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"

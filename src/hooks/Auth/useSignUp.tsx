@@ -26,6 +26,7 @@ const useSignup = () => {
             await api.post("/accounts/signup/", data);
             navigate("/accounts/verify-email?redirect_login=false");
             toast.success("Signup successful");
+            console.log('set')
 
         } catch (error: any) {
             const errorList=[];

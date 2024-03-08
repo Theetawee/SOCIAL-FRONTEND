@@ -6,7 +6,6 @@ import useFetchUser from "../../hooks/Account/useFetchUser";
 import Loader from "../../components/common/Loader";
 import Seo from "../../components/utils/Seo";
 import NotFound from "../../components/common/NotFound";
-import VerifiedSvg from "../../components/Partials/Account/VerifiedSvg";
 import ProfileActionBtn from "../../components/Partials/Account/ProfileActionBtn";
 import Modal from "../../components/common/Modal";
 import UpdateProfilePage from "./UpdateProfilePage";
@@ -16,6 +15,7 @@ import useAuth from "../../hooks/Auth/useAuth";
 import HobbyChecked from "../../components/Partials/Account/HobbyChecked";
 import { GiGingerbreadMan } from "react-icons/gi";
 import useTopbar from "../../hooks/useTopbar";
+import Name from "../../components/Partials/Account/Name";
 
 
 const ProfilePage = () => {
@@ -64,10 +64,7 @@ const ProfilePage = () => {
                                     />
                                 </div>
                                 <div className="ml-3 sm:ml-5 py-4">
-                                    <h1 className="text-2xl flex items-center font-medium">
-                                        {profile?.name}
-                                        {profile?.verified && <VerifiedSvg />}
-                                    </h1>
+                                    <Name name={profile.name} verified={profile.verified} size="2xl"/>
                                     <p className="leading-4 italic">
                                         @{profile?.username}
                                     </p>

@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import Endpoints from "./Endpoints";
 
-const useFriendRequests = () => {
+const useFriendRequests = (value?:number) => {
 
-    const { getFriendRequests} = Endpoints();
+    const { getFriendRequests } = Endpoints();
+    
 
     const {data:friend_requests,isPending,isError}=useQuery({
         queryKey: ["friend_requests"],
-        queryFn:()=>getFriendRequests(3),
+        queryFn:()=>getFriendRequests(value),
     })
 
     return {

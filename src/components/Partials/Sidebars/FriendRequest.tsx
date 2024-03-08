@@ -4,7 +4,7 @@ import useFriendRequests from "../../../hooks/Account/useFriendRequests";
 import Loader from "../../common/Loader";
 
 const FriendRequest = () => {
-    const { isPending, friend_requests, isError } = useFriendRequests();
+    const { isPending, friend_requests, isError } = useFriendRequests(3);
 
     let content;
     if (isPending) {
@@ -41,7 +41,7 @@ const FriendRequest = () => {
                 <div className="flex p-4 items-center justify-between">
                     <h2>Friend requests</h2>
                     <div>
-                        <Link to={"/"} className="text-primary-500 font-medium">
+                        <Link to={"/friends"} className="text-primary-500 font-medium">
                             See all
                         </Link>
                     </div>

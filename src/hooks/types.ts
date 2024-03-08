@@ -103,7 +103,7 @@ export interface SuggestedAccount{
     username: string
     image: string | null;
     name: string;
-    verified: string;
+    verified: boolean;
     id: number;
     profile_image_hash: string;
 
