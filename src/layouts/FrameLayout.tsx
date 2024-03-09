@@ -7,7 +7,21 @@ const AppBar = lazy(() => import("./AppBar"));
 const Frame = lazy(() => import("./Frame"));
 const SideBar = lazy(() => import("./SideBar"));
 import SuspenseLoader from "../components/utils/SuspenseLoader";
+import PullToRefresh from "react-simple-pull-to-refresh";
 const FrameLayout = () => {
+
+    const handleRefresh = () => {
+      return new Promise<void>((resolve, reject) => {
+        try {
+          window.location.reload();
+          resolve();
+        } catch (error) {
+          reject(error);
+        }
+      });
+    };
+
+
     return (
         <ContextProvider>
             <SuspenseLoader className="h-auto">
@@ -26,7 +40,15 @@ const FrameLayout = () => {
                         }
                     >
                         <SuspenseLoader>
-                            <Outlet />
+                            <PullToRefresh
+                        pullingContent={
+                            <p className="text-gray-700 text-center">Refresh</p>
+                        }
+                        onRefresh={handleRefresh}
+                    >
+                    
+                                <Outlet />
+                                </PullToRefresh>
                         </SuspenseLoader>
                     </ErrorBoundary>
                 </main>

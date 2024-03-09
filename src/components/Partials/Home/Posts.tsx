@@ -8,7 +8,6 @@ import { IoMdRefresh } from "react-icons/io";
 import Post from "../Post/Post";
 import PostSkelton from "../Post/PostSkeleton";
 import PostLoader from "../Post/PostLoader";
-import PullToRefresh from "react-simple-pull-to-refresh";
 
 const Posts = () => {
     const { GetAllPosts } = Endpoints();
@@ -47,12 +46,6 @@ const Posts = () => {
                     description={"Waanverse Homepage."}
                 >
                     {" "}
-                    <PullToRefresh
-                        pullingContent={
-                            <p className="text-gray-700 text-center">Refresh</p>
-                        }
-                        onRefresh={GetAllPosts}
-                    >
                         <InfiniteScroll
                             dataLength={posts?.length || 0}
                             next={fetchNextPage}
@@ -91,7 +84,6 @@ const Posts = () => {
                                 </ul>
                             </div>
                         </InfiniteScroll>
-                    </PullToRefresh>
                 </Seo>
             </Suspense>
         );
