@@ -54,9 +54,9 @@ const ProfilePage = () => {
         </Modal>
 
         <section>
-          <div className="px-2 sm:px-4 pt-4 grid bg-white dark:bg-gray-950 grid-cols-1 gap-3">
+          <div className="pt-4 grid bg-white dark:bg-gray-950 grid-cols-1 gap-3">
             <div className="items-center flex-wrap justify-between flex">
-              <div className="flex px-4 gap-x-2 flex-wrap justify-center items-center">
+              <div className="flex px-4 gap-x-4 flex-wrap justify-center items-center">
                 <div>
                   <Image
                     src={profile.image || DefaultAvater}
@@ -85,7 +85,7 @@ const ProfilePage = () => {
             </div>
             <div className="mt-4">
               <div className="grid grid-cols-2 gap-4 sm:gap-6">
-                <button className="border-b-2 border-primary-600">
+                <button className="border-b-2 border-primary-600 py-2">
                   Profile
                 </button>
                 <button>Posts</button>
