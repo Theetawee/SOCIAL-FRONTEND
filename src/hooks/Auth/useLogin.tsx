@@ -13,14 +13,13 @@ const useLogin = () => {
     const navigate = useNavigate();
     const { authenticateUser } = useAuth();
 
-    const LoginUser = async (username: string, password: string, latitude: number, longitude: number) => {
+    const LoginUser = async (username: string, password: string) => {
         setLoging(true);
         try {
             const response = await api.post("/accounts/login/", {
                 username,
                 password,
-                latitude,
-                longitude
+                
             });
 
             const data = response.data;

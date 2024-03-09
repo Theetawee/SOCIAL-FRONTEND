@@ -17,7 +17,7 @@ const Intro = () => {
         <div className="px-4 py-6">
           <IntroSearch />
           </div>
-        <section className="bg-gray-50 flex items-center justify-between py-4 dark:bg-gray-950">
+        <section className="bg-gray-100 flex items-center justify-between py-4 dark:bg-gray-950">
           <div className="gap-8 items-center  px-4 mx-auto max-w-screen-xl  md:grid md:grid-cols-2  lg:px-6">
             <Logo className="w-full sm:h-72 h-32 md:h-96"/>
             <div className="mt-4 md:mt-0">
