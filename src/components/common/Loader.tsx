@@ -1,7 +1,7 @@
 
 const Loader = () => {
     return (
-        <div className="flex w-full h-full items-center justify-center">
+        <div className="flex w-full py-10 h-full items-center justify-center">
             <span>
                 <svg
                     width="24"

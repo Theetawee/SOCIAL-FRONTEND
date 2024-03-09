@@ -7,6 +7,7 @@ import useSignup from "../../hooks/Auth/useSignUp";
 import { CgLogIn } from "react-icons/cg";
 import SuspenseLoader from "../../components/utils/SuspenseLoader";
 import Logo from "../../components/common/Logo";
+import Button from "../../components/common/Button";
 const SignUpPage = () => {
   const { isLoading, signup, errors } = useSignup();
 
@@ -97,14 +98,12 @@ const SignUpPage = () => {
                   auto_on={false}
                 />
               </SuspenseLoader>
-
-              <button
+              <Button
                 type="submit"
+                label="Create account"
                 disabled={isLoading}
                 className="w-full text-lg text-white dark:bg-sky-700 dark:hover:bg-primary-700/90 bg-primary-600 hover:bg-primary-600/90 font-medium rounded  px-5 py-2.5 text-center"
-              >
-                {isLoading ? "Creating..." : "Create account"}
-              </button>
+              />
               <div>
                 <p className="text-center text-xs ">
                   By creating an account, you agree to our{" "}

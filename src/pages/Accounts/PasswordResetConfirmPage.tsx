@@ -2,8 +2,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useState } from "react";
 import Input from "../../components/common/Input";
-import Loader from "../../components/common/Loader";
 import Seo from "../../components/utils/Seo";
+import Button from "../../components/common/Button";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const PasswordResetConfirmPage = () => {
@@ -65,47 +65,45 @@ const PasswordResetConfirmPage = () => {
     };
 
     return (
-        <Seo title="Change your Password" description="Confirm your new password">
-            <section className="flex items-center justify-center h-screen px-4">
-                <div className="w-full">
-                    <form
-                        method="post"
-                        onSubmit={handleSubmit}
-                        className="max-w-md grid grid-cols-1 gap-8 mx-auto"
-                    >
-                        <h1 className="text-xl">
-                            Almost there...
-                            <br />
-                            Enter your new password.
-                        </h1>
+      <Seo title="Change your Password" description="Confirm your new password">
+        <section className="flex items-center justify-center h-screen px-4">
+          <div className="w-full">
+            <form
+              method="post"
+              onSubmit={handleSubmit}
+              className="max-w-md grid grid-cols-1 gap-8 mx-auto"
+            >
+              <h1 className="text-xl">
+                Almost there...
+                <br />
+                Enter your new password.
+              </h1>
 
-                        <Input
-                            type="password"
-                            name="new_password1"
-                            label="New password"
-                            disabled={isLoading}
-
-                            className="bg-gray-50 dark:bg-gray-900"
-                        />
-                        <Input
-                            type="password"
-                            name="new_password2"
-                            label="Confirm new password"
-                            disabled={isLoading}
-                            
-                            className="bg-gray-50 dark:bg-gray-900"
-                        />
-                        <button
-                            type="submit"
-                            disabled={isLoading}
+              <Input
+                type="password"
+                name="new_password1"
+                label="New password"
+                disabled={isLoading}
+                className="bg-gray-50 dark:bg-gray-900"
+              />
+              <Input
+                type="password"
+                name="new_password2"
+                label="Confirm new password"
+                disabled={isLoading}
+                className="bg-gray-50 dark:bg-gray-900"
+              />
+              <Button
+                type="submit"
+                disabled={isLoading}
                             className="text-white dark:bg-gray-700 hover:bg-gray-900/90 bg-gray-900 py-2 px-5  rounded"
-                        >
-                            {isLoading ? <Loader /> : "Reset"}
-                        </button>
-                    </form>
-                </div>
-            </section>
-        </Seo>
+                            label="Reset"
+              />
+              
+            </form>
+          </div>
+        </section>
+      </Seo>
     );
 };
 

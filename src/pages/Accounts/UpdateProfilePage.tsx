@@ -1,10 +1,10 @@
 import { UserType } from "../../hooks/types";
 import useUpdateProfile from "../../hooks/Account/useUpdateProfile";
-import Loader from "../../components/common/Loader";
 import { useState } from "react";
 import UpdateProfileImage from "../../components/Partials/Account/UpdateProfileImage";
 import Input from "../../components/common/Input";
 import Select from "../../components/common/Select";
+import Button from "../../components/common/Button";
 
 const UpdateProfilePage = ({ profile }: { profile: UserType }) => {
     const { updateInfo, isPending } = useUpdateProfile(profile.username);
@@ -39,70 +39,67 @@ const UpdateProfilePage = ({ profile }: { profile: UserType }) => {
     };
 
     return (
-        <section className="h-full overflow-y-auto">
-            <div>
-                <UpdateProfileImage profile={profile} />
-            </div>
-            <form method="post" onSubmit={handleUpdateInfo}>
-                <div className="grid grid-cols-1 max-w-2xl py-8 mx-auto gap-6">
-                    <Input
-
-                        name={"name"}
-                        className="dark:bg-gray-900 bg-white"
-                        setValue
-                        onChange={handleChange}
-                        value={info.name}
-                        disabled={isPending}
-                        label={"Name"}
-                        type={"text"}
-                    />
-                    <Input
-
-                        name={"bio"}
-                        className="dark:bg-gray-900 bg-white"
-                        value={info.bio || ""}
-                        setValue
-                        onChange={handleChange}
-                        disabled={isPending}
-                        label={"Bio"}
-                        type={"text"}
-                        required={false}
-                    />
-                    <Input
-                        
-                        setValue
-                        onChange={handleChange}
-                        className="dark:bg-gray-900 bg-white"
-                        name="location"
-                        value={info.location || ""}
-                        disabled={isPending}
-                        label="Location"
-                        type="text"
-                        required={false}
-                    />
-                    <Select
-                        defaultValue={info.gender}
-                        disabled={isPending}
-                        label="Gender"
-                        name="gender"
-                        required={false}
-                        options={[
-                            { label: "Male", value: "male" },
-                            { label: "Female", value: "female" },
-                            { label: "Other", value: "other" },
-                        ]}
-                    />
-                </div>
-                <div>
-                    <button
-                        disabled={isPending}
-                        className="bg-white hover:bg-gray-50 border border-gray-100 text-gray-700 py-2 px-8 rounded-full"
-                    >
-                        {isPending ? <Loader /> : "Save"}
-                    </button>
-                </div>
-            </form>
-        </section>
+      <section className="h-full overflow-y-auto">
+        <div>
+          <UpdateProfileImage profile={profile} />
+        </div>
+        <form method="post" onSubmit={handleUpdateInfo}>
+          <div className="grid grid-cols-1 max-w-2xl py-8 mx-auto gap-6">
+            <Input
+              name={"name"}
+              className="dark:bg-gray-900 bg-white"
+              setValue
+              onChange={handleChange}
+              value={info.name}
+              disabled={isPending}
+              label={"Name"}
+              type={"text"}
+            />
+            <Input
+              name={"bio"}
+              className="dark:bg-gray-900 bg-white"
+              value={info.bio || ""}
+              setValue
+              onChange={handleChange}
+              disabled={isPending}
+              label={"Bio"}
+              type={"text"}
+              required={false}
+            />
+            <Input
+              setValue
+              onChange={handleChange}
+              className="dark:bg-gray-900 bg-white"
+              name="location"
+              value={info.location || ""}
+              disabled={isPending}
+              label="Location"
+              type="text"
+              required={false}
+            />
+            <Select
+              defaultValue={info.gender}
+              disabled={isPending}
+              label="Gender"
+              name="gender"
+              required={false}
+              options={[
+                { label: "Male", value: "male" },
+                { label: "Female", value: "female" },
+                { label: "Other", value: "other" },
+              ]}
+            />
+          </div>
+          <div>
+                    <Button
+                        type="submit"
+              disabled={isPending}
+              className="bg-white hover:bg-gray-50 border border-gray-100 text-gray-700 py-2 px-8 rounded-full" label="Save"
+            />
+            
+          </div>
+        </form>
+      </section>
     );
 };
 

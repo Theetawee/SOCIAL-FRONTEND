@@ -3,8 +3,8 @@ import DefaultAvatar from "../../../assets/default.webp";
 import { FriendRequestType } from "../../../hooks/types";
 import useDate from "../../../hooks/useDate";
 import useProfileActions from "../../../hooks/Account/useProfileActions";
-import Loader from "../../common/Loader";
 import Name from "./Name";
+import Button from "../../common/Button";
 
 
 
@@ -34,32 +34,39 @@ const FriendRequestCard = ({ request }: { request: FriendRequestType }) => {
         <div className="flex items-center justify-between">
           <Link to={`/${request.sender.username}`} className="block">
             <div className="flex items-center">
-                <div>
-                    <img
-                        src={DefaultAvatar}
-                        alt="User"
-                        className="w-16 h-16 rounded-full"
-                    />
-                </div>
+              <div>
+                <img
+                  src={DefaultAvatar}
+                  alt="User"
+                  className="w-16 h-16 rounded-full"
+                />
+              </div>
               <div className="ml-3">
-                <Name name={ request.sender.name} verified={request.sender.verified} />
-                    <p className="text-sm text-gray-500">@{request.sender.username}</p>
-                </div>
+                <Name
+                  name={request.sender.name}
+                  verified={request.sender.verified}
+                />
+                <p className="text-sm text-gray-500">
+                  @{request.sender.username}
+                </p>
+              </div>
             </div>
-            </Link>
+          </Link>
           <span className="text-xs  italic ">
             {naturalDay(request.date_sent)}
           </span>
-          </div>
-            <div className="mt-4 flex gap-x-3 items-center">
-                <button onClick={handleAccept} disabled={accepting_friend_request||declining_friend_request} className="bg-primary-600  text-white rounded-full text-sm py-1.5 px-5">
-                  {accepting_friend_request ? (<Loader />) : "Accept"}
-                </button>
-                <button onClick={handleDecline} disabled={accepting_friend_request||declining_friend_request} className="bg-red-600 text-white rounded-full py-1.5 text-sm px-5">
-                  {declining_friend_request ? (<Loader />) : "Decline"}
-                </button>
-            </div>
         </div>
+        <div className="mt-4 flex gap-x-3 items-center">
+          <Button
+            label="Accept"
+            onClick={handleAccept}
+            disabled={accepting_friend_request || declining_friend_request}
+            className="bg-primary-600  text-white rounded-full text-sm py-1.5 px-5"
+          />
+          <Button label="Decline" onClick={handleDecline} disabled={accepting_friend_request || declining_friend_request} className="bg-red-600 text-white rounded-full text-sm py-1.5 px-5" />
+          
+        </div>
+      </div>
     );
 };
 

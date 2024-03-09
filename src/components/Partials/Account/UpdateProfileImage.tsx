@@ -4,12 +4,11 @@ import "cropperjs/dist/cropper.css";
 import DefaultAvater from "../../../assets/default.webp";
 import utils from "../../../hooks/utils";
 import { BsCardImage } from "react-icons/bs";
-import { FaCheck } from "react-icons/fa";
-import { MdClose } from "react-icons/md";
 import Loader from "../../common/Loader";
 import { UserType } from "../../../hooks/types";
 import useUpdateProfile from "../../../hooks/Account/useUpdateProfile";
 import ImageComp from "../../common/Image";
+import Button from "../../common/Button";
 
 function UpdateProfileImage({ profile }: { profile: UserType }): JSX.Element {
     const { dataURLtoBlob } = utils();
@@ -93,23 +92,9 @@ function UpdateProfileImage({ profile }: { profile: UserType }): JSX.Element {
                             ref={cropperRef}
                         />
                         <div className="my-2 px-4 flex items-center gap-x-5 justify-between">
-                            <button
-                                onClick={handleSave}
-                                disabled={updatingImage}
-                                className="py-2 px-5 bg-green-600 rounded"
-                            >
-                                {updatingImage ? (
-                                    "Saving..."
-                                ) : (
-                                    <FaCheck className="w-5 h-5 text-white" />
-                                )}
-                            </button>
-                            <button
-                                onClick={handleCancel}
-                                className="py-2 px-5 bg-white rounded"
-                            >
-                                <MdClose className="w-5 h-5 text-gray-800" />
-                            </button>
+                            <Button onClick={handleSave} disabled={updatingImage} className="bg-green-600 py-2 rounded" label="Save" />
+                            <Button onClick={handleCancel} disabled={updatingImage} className="py-2 px-5 bg-white rounded" label="Cancel"/>
+                            
                         </div>
                     </>
                 ) : (

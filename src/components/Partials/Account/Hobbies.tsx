@@ -3,6 +3,7 @@ import { HobbyType } from "../../../hooks/types";
 import Loader from "../../common/Loader";
 import HobbyChecked from "./HobbyChecked";
 import { GiGingerbreadMan } from "react-icons/gi";
+import Button from "../../common/Button";
 
 interface Props {
     hobbies: HobbyType[] | undefined;
@@ -68,13 +69,8 @@ const Hobbies = ({
                 </div>
                 {changed && (
                     <div className="text-right">
-                        <button
-                            onClick={handleClick}
-                            disabled={isUpdatingHobbies}
-                            className="bg-white hover:bg-gray-50 text-gray-700 py-1.5 px-5 rounded-full"
-                        >
-                            {isUpdatingHobbies ? <Loader /> : "Save"}
-                        </button>
+                        <Button onClick={handleClick} disabled={isUpdatingHobbies} className="bg-white hover:bg-gray-50 text-gray-700 py-1.5 px-5 rounded-full" label="Save"/>
+                        
                     </div>
                 )}
             </div>

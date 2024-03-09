@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { MdRunningWithErrors } from "react-icons/md";
+import Button from "./Button";
 
 const LoadingState = () => {
     const [showRefreshButton, setShowRefreshButton] = useState(false);
@@ -152,12 +153,8 @@ const LoadingState = () => {
                 {text}
             </p>
             {showRefreshButton && (
-                <button
-                    className="mt-4 px-5 py-2 bg-primary-700 text-white rounded-full hover:bg-primary-700/90"
-                    onClick={handleRefresh}
-                >
-                    Refresh
-                </button>
+                <Button disabled={false} label="Refresh" onClick={handleRefresh} className="mt-4 px-5 py-2 bg-primary-700 text-white rounded-full hover:bg-primary-700/90"/>
+                
             )}
         </section>
     );
