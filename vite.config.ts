@@ -156,7 +156,7 @@ export default defineConfig({
         skipWaiting: true,
         cleanupOutdatedCaches: true,
       },
-      devOptions: { enabled: false },
+      devOptions: { enabled: true },
       manifest: ManifestFile,
       injectRegister: "script-defer",
       strategies: "injectManifest",

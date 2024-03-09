@@ -36,7 +36,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
             document
                 .querySelector("meta[name='theme-color']")
-                ?.setAttribute("content", "#1a1a1a");
+                ?.setAttribute("content", "#121212");
         } else {
             root.style.colorScheme = "light";
             document
