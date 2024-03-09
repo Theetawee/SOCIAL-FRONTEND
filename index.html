@@ -32,7 +32,25 @@
             name="viewport"
             content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"
         />        <meta name="theme-color" content="#ffffff" />
+    <script>
+        function setThemeColor() {
+            const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const themeColorFromStorage = localStorage.getItem('themeColor');
+            let color;
 
+            if (themeColorFromStorage) {
+                color = themeColorFromStorage;
+            } else {
+                color = prefersDarkMode ? '#121212' : '#ffffff';
+            }
+          document
+                .querySelector("meta[name='theme-color']")
+                ?.setAttribute("content", color);
+        }
+
+        // Set the theme color when the page loads
+        window.onload = setThemeColor;
+    </script>
             <link
       rel="stylesheet"
       href="https://files.waanverse.com/styles/waanversefont.css"
