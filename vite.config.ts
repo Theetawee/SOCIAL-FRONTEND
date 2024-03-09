@@ -135,16 +135,6 @@ const ManifestFile: Partial<ManifestOptions> = {
       type: "image/png",
     },
     {
-      src: "screenshot2.jpg",
-      sizes: "1080x2400",
-      type: "image/png",
-    },
-    {
-      src: "screenshot3.jpg",
-      sizes: "1080x2400",
-      type: "image/png",
-    },
-    {
       src: "screenshot4.jpeg",
       sizes: "1366x700",
       type: "image/png",
