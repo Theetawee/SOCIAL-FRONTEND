@@ -17,7 +17,7 @@ const Aside = () => {
     <section className="grid grid-cols-1 gap-6">
       <div className="p-4 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-900 rounded-md shadow-sm">
         <div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center flex-wrap justify-between">
             <div className="flex items-center">
               <Link to={`/${user?.username}`} className="block">
                 <Image
@@ -29,15 +29,16 @@ const Aside = () => {
               </Link>
               <Link to={`/${user?.username}`} className="block">
                 <div className="ml-3  flex flex-col">
-                  <Name name={user?.name||""} verified={user?.verified} size="lg"/>
-                                  <p className="leading-3 truncate max-w-32">
+                  <Name
+                    name={user?.name || ""}
+                    verified={user?.verified}
+                    size="lg"
+                  />
+                  <p className="leading-3 truncate max-w-32">
                     @{user?.username}
                   </p>
                 </div>
               </Link>
-            </div>
-            <div className="flex justify-center">
-              <Switch />
             </div>
           </div>
         </div>
@@ -59,16 +60,15 @@ const Aside = () => {
           />
         </SuspenseLoader>
         <SuspenseLoader className="h-auto">
-          <SideBarLink
-            icon={FaSearch}
-            path="/search"
-            label="Search"
-          />
+          <SideBarLink icon={FaSearch} path="/search" label="Search" />
         </SuspenseLoader>
 
         <SuspenseLoader className="h-auto">
           <SideBarLink icon={FaSignOutAlt} path="/logout" label="Logout" />
         </SuspenseLoader>
+        <div className="p-2 ">
+          <Switch />
+        </div>
         <Link
           to={"/compose"}
           className=" bg-primary-600 text-white p-3 w-[80%] mx-auto mt-20 text-lg font-medium rounded-full flex items-center justify-center"
