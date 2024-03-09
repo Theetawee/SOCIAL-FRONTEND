@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { PostType } from "../../../hooks/types";
 import ShareMenu from "./ShareMenu";
 import { FaLink } from "react-icons/fa6";
-
+import { BiMessage } from "react-icons/bi";
 
 const PostFooter = ({postAction,post}:{postAction:JSX.Element,post:PostType}
 ) => {
@@ -25,6 +25,11 @@ const PostFooter = ({postAction,post}:{postAction:JSX.Element,post:PostType}
                 className="flex items-center justify-between"
             >
                 <div>{postAction}</div>
+                <Link to={`/posts/${post.id}`} className="flex items-center">
+                <div className="flex items-center">
+                    <BiMessage className="w-5 h-5 text-gray-500" />
+                    <span className="text-sm text-gray-500 ml-1">{post.total_comments}</span>
+                </div></Link>
                 <div>
                     <ShareMenu post={post}/>
                 </div>

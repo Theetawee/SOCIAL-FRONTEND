@@ -36,7 +36,7 @@ export default function ShareMenu({ post }: { post: PostType }) {
             <div className="w-full text-right">
                 <Menu as="div" className="relative inline-block text-left">
                     <div>
-                        <Menu.Button className="inline-flex w-full justify-center rounded-md p-2 dark:text-white text-gray-700 hover:bg-gray-900/10 focus:outline-none  focus-visible:ring-white/75">
+                        <Menu.Button className="inline-flex w-full justify-center rounded-md p-2  text-gray-500 hover:bg-gray-900/10 focus:outline-none  focus-visible:ring-white/75">
                             <RiShareForward2Fill
                                 className=" h-5 w-5"
                                 aria-hidden="true"

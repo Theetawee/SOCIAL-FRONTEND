@@ -35,7 +35,7 @@ const LikeButton = ({
                 ) : (
                     <span className="animate-pong">
                         <svg
-                            className="w-5 h-5 animate-pong text-gray-300 dark:text-gray-600"
+                            className="w-5 h-5 animate-pong text-gray-500"
                             viewBox="0 0 24 24"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"

@@ -15,7 +15,7 @@ const Post = ({ post }: { post: PostType }) => {
     }
     return (
         <>
-            <article onClick={handleClick} className="p-4 hover:bg-gray-50/20 cursor-pointer grid grid-cols-1 gap-3 transition ease-in-out duration-200 dark:hover:bg-gray-900/50 rounded">
+            <article onClick={handleClick} className="px-4 pt-4 pb-1 hover:bg-gray-50/20 cursor-pointer grid grid-cols-1 gap-3 transition ease-in-out duration-200 dark:hover:bg-gray-900/50 rounded">
                 <PostHeader post={post} />
                 <section>
                     <PostBody files={post.post_images} content={post.content} id={post.id}/>
