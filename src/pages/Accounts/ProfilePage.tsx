@@ -62,13 +62,13 @@ const ProfilePage = () => {
                     src={profile.image || DefaultAvater}
                     alt="User"
                     hash={profile.profile_image_hash}
-                    className="w-28 h-28 border border-gray-300 dark:bg-gray-800 rounded"
+                    className="w-32 h-32 border border-gray-300 dark:bg-gray-900 rounded"
                   />
                 </div>
-                <div className="sm:ml-5 py-4">
+                <div className="py-4">
                   <div className="flex">
                     <h3
-                      className={`text-2xl font-medium text-gray-900 dark:text-white`}
+                      className={`text-2xl font-medium mb-1 text-gray-900 dark:text-white`}
                     >
                       {profile.name}
                     </h3>
@@ -77,7 +77,7 @@ const ProfilePage = () => {
                     <p className="leading-4 italic">@{profile?.username}</p>
                     {profile.verified && <VerifiedSvg />}
                   </span>
-                  <div className="text-center   w-full py-4">
+                  <div className="text-center   w-full pt-6 pb-4">
                     <ProfileActionBtn profile={profile} />
                   </div>
                 </div>
