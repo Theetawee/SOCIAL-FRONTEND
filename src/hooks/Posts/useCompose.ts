@@ -72,7 +72,7 @@ const useCompose = (user_id: number) => {
             toast.success("Post published successfully!");
             queryClient.setQueryData(["posts", post.id], post);
             queryClient.invalidateQueries({ queryKey: ["posts"], exact: true });
-            navigate("/");
+            navigate("/home");
         },
         onError: () => {
             toast.error("Something went wrong! Couldn't publish your post.");
