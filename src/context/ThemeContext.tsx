@@ -22,6 +22,17 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     ).matches;
     const initialTheme = storedTheme || (prefersDarkMode ? "dark" : "light");
 
+    useEffect(() => {
+        document
+          .querySelector("meta[name='theme-color']")
+          ?.setAttribute(
+            "content",
+            initialTheme === "dark" ? "#121212" : "#ffffff"
+          );
+
+    },[initialTheme])
+
+    
     // State for the current theme
     const [theme, setTheme] = useState<string>(initialTheme);
 
