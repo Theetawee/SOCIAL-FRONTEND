@@ -12,11 +12,13 @@ import Image from "../../components/common/Image";
 import DefaultAvater from "../../assets/default.webp";
 import VerifiedSvg from "../../components/Partials/Account/VerifiedSvg";
 import Button from "../../components/common/Button";
+import useAuth from "../../hooks/Auth/useAuth";
 const ComposePage = () => {
-    const [taged_accounts, setTaged_accounts] = useState<TagedAccount[]>([]);
+  const [taged_accounts, setTaged_accounts] = useState<TagedAccount[]>([]);
+  const { user} = useAuth();
 
     useTopbar("Compose", true);
-    const user_id = 1;
+    const user_id = user?.id;
     const {
         isPending,
         cancelPreview,

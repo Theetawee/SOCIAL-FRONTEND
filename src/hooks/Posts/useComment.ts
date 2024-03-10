@@ -3,7 +3,12 @@ import Endpoints from "./Endpoints";
 
 const useComment = (postId:number) => {
 
-    const {getPostComments } = Endpoints();
+    const { getPostComments} = Endpoints();
+    
+
+
+
+
 
 const { data, fetchNextPage, hasNextPage, isPending, isError } =
   useInfiniteQuery({

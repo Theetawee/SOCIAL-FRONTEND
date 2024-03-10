@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
@@ -64,15 +65,19 @@ const useCompose = (user_id: number) => {
     };
 
     const queryClient = useQueryClient();
-    const { createPost } = Endpoints();
+    const { createPost} = Endpoints();
+    
 
+    
     const newPostMutation = useMutation({
         mutationFn: () => createPost(data),
-        onSuccess: (post) => {
+        onSuccess: (post: any) => {
             toast.success("Post published successfully!");
-            queryClient.setQueryData(["posts", post.id], post);
-            queryClient.invalidateQueries({ queryKey: ["posts"], exact: true });
-            navigate("/home");
+            queryClient.setQueryData(["post", post.id], post);
+            queryClient.invalidateQueries({ queryKey: ["post"], exact: true });
+            
+                navigate("/home");
+            
         },
         onError: () => {
             toast.error("Something went wrong! Couldn't publish your post.");
@@ -84,7 +89,6 @@ const useCompose = (user_id: number) => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-
         const taged = formData.get("taged") as string;
 
         const taged_accounts: string[] = JSON.parse(taged);
@@ -103,12 +107,16 @@ const useCompose = (user_id: number) => {
             }
         }
 
+        
         setData({
             content,
             account: user_id.toString(),
             files: filesArray,
             taged_accounts: taged_accounts,
-        });
+        })
+
+           
+        
 
 
 

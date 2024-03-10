@@ -1,4 +1,4 @@
-import { CommentResponseType, ImageDataType, PostFormDataType, PostResponseType, PostType, SuggestedAccount } from "../types";
+import { CommentFormDataType, CommentResponseType, ImageDataType, PostFormDataType, PostResponseType, PostType, SuggestedAccount } from "../types";
 import useAxios from "../useAxios";
 
 
@@ -17,8 +17,6 @@ const Endpoints = () => {
                 formData.append(`files`, file);
             });
         }
-        const datas = Object.fromEntries(formData)
-        console.log(datas)
         const response = await api.post("/compose/", formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
@@ -85,6 +83,28 @@ const Endpoints = () => {
         return response.data;
     }
 
+    //create Comment
+
+    const createComment = async (data: CommentFormDataType) => {
+      const formData = new FormData();
+      formData.append("content", data.content);
+      formData.append("account", data.account);
+      formData.append("post", data.post);
+      if (data.files) {
+        data.files.forEach((file) => {
+          formData.append(`files`, file);
+        });
+      }
+      const response = await api.post(`/comment/`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      return response.data;
+    };
+
+
 
     return {
         createPost,
@@ -94,7 +114,7 @@ const Endpoints = () => {
         getPostById,
         getPostImages,
         getTagSuggestions,
-        getPostComments
+        getPostComments,createComment
     };
 };
 

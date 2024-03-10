@@ -56,7 +56,7 @@ interface BaseStructure {
     content: string;
     account: PostAccountType;
     timestamp: string;
-    last_edited: string;
+    updated_at: string;
     total_likes: number;
     views: number;
     id: number;
@@ -101,9 +101,20 @@ export interface UserResponseType {
 export interface PostFormDataType {
     content: string;
     account: string;
-    files?: Blob[] | File[]; // Updated to handle multiple files
+    files?: Blob[] | File[];
     taged_accounts: string[];
 }
+
+
+export interface CommentFormDataType {
+  content: string;
+  account: string;
+  files?: Blob[] | File[];
+    post: string;
+}
+
+
+
 
 
 export interface SuggestedAccount{

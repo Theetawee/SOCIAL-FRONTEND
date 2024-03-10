@@ -85,7 +85,7 @@ const PostDetailPage = () => {
               </section>
               <section>
                 <SuspenseLoader>
-                  <CommentSection />
+                  <CommentSection postId={post.id}/>
                 </SuspenseLoader>
               </section>
             </Seo>
