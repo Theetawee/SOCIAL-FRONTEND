@@ -1,4 +1,4 @@
-import { ImageDataType, PostFormDataType, PostResponseType, PostType, SuggestedAccount } from "../types";
+import { CommentResponseType, ImageDataType, PostFormDataType, PostResponseType, PostType, SuggestedAccount } from "../types";
 import useAxios from "../useAxios";
 
 
@@ -78,6 +78,14 @@ const Endpoints = () => {
     }
 
 
+    //get Post Comments
+
+    const getPostComments = async (id: number,pageParam=1): Promise<CommentResponseType> => {
+        const response = await api.get(`/post/comments/${id}?page=${pageParam}`);
+        return response.data;
+    }
+
+
     return {
         createPost,
         GetAllPosts,
@@ -85,7 +93,8 @@ const Endpoints = () => {
         dislikePost,
         getPostById,
         getPostImages,
-        getTagSuggestions
+        getTagSuggestions,
+        getPostComments
     };
 };
 

@@ -56,6 +56,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         setIsAuthenticated(false);
     }
 
+    
 
     useEffect(() => {
         const getUserInfo = async () => {

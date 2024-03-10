@@ -1,13 +1,21 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
+import Button from "../../common/Button";
 
 const CommentSection = () => {
 
     const [comment, setComment] = useState("");
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    console.log(comment);
+
+  }
 
 
   return (
     <div>
+      <form method="POST" onSubmit={handleSubmit}>
       <textarea
         id="message"
         value={comment}
@@ -21,10 +29,11 @@ const CommentSection = () => {
           {comment && (
               <div className="p-4 ">
                   <div className="flex items-center justify-between">
-                      <button onClick={() => setComment("")}>Cancel</button>
-                      <button className="bg-primary-600 py-2 rounded hover:bg-primary-600/90 px-5 text-white ">Save</button>
+                      <button onClick={() => setComment("")} type="button">Cancel</button>
+                      <Button type="submit" disabled={false}  label="Save" className="bg-primary-600 py-2 rounded hover:bg-primary-600/90 px-5 text-white "/>
                   </div>
-              </div>)}
+          </div>)}
+        </form>
     </div>
   );
 }

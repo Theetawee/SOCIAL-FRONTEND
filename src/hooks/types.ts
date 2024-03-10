@@ -83,6 +83,13 @@ export interface PostResponseType {
     results: PostType[];
 }
 
+export interface CommentResponseType{
+    next: number | null;
+    previous: number | null;
+    count: number;
+    results: BaseStructure[]
+}
+
 export interface UserResponseType {
     next: number | null;
     previous: number | null;
