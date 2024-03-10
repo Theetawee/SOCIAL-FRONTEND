@@ -2,6 +2,7 @@ import {useEffect, useState } from "react";
 import Button from "../../common/Button";
 import useAuth from "../../../hooks/Auth/useAuth";
 import useCreateComment from "../../../hooks/Posts/useCreateComment";
+import Comments from "./Comments";
 
 const CommentSection = ({postId}:{postId:number}) => {
 
@@ -65,6 +66,9 @@ const {
           </div>
         )}
       </form>
+      <div className="p-4">
+          <Comments postId={postId}/>
+      </div>
     </div>
   );
 }

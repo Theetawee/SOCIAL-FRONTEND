@@ -114,7 +114,9 @@ export interface CommentFormDataType {
 }
 
 
+export interface CommentType extends BaseStructure{
 
+}
 
 
 export interface SuggestedAccount{
