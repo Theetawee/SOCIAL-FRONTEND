@@ -57,7 +57,7 @@ const router = createBrowserRouter(
         <Route path="/accounts/login" element={<LoginPage />} />
         <Route path="/accounts/signup" element={<SignUpPage />} />
         <Route path="/accounts/verify-email" element={<VerifyEmailPage />} />
-        <Route path="/accounts/oauth2/google" element={<GoogleLoginPage />} />
+        <Route path="/accounts/oauth2/google/" element={<GoogleLoginPage />} />
         <Route
           path="/accounts/reset-password"
           element={<ResetPasswordPage />}
