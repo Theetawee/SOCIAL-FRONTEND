@@ -1,16 +1,22 @@
 import { Link } from "react-router-dom";
 import { IconType } from "react-icons";
 import useDrawer from "../hooks/useDrawer";
+import useAuth from "../hooks/Auth/useAuth";
 interface Props {
     icon?: IconType;
     path: string;
     label: string;
-    showIcon?:boolean
+    showIcon?: boolean,
+    enabled?: boolean,
 }
 
-const SideBarLink = ({ icon: Icon, path, label,showIcon=true }: Props) => {
+
+
+const SideBarLink = ({ icon: Icon, path, label, showIcon = true, enabled = true }: Props) => {
+    const { user} = useAuth();
     const { toggleSidebar } = useDrawer();
-    return (
+    return (<>
+        {enabled || user ?(<>
         <div>
             <Link
                 onClick={toggleSidebar}
@@ -20,7 +26,7 @@ const SideBarLink = ({ icon: Icon, path, label,showIcon=true }: Props) => {
                 {showIcon && Icon && <Icon className="w-6 h-6 text-primary-500" />}
                 <span className="ml-3 font-light">{label}</span>
             </Link>
-        </div>
+        </div></>):(<></>)}</>
     );
 };
 

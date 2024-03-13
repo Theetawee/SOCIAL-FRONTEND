@@ -15,11 +15,12 @@ import HobbyChecked from "../../components/Partials/Account/HobbyChecked";
 import { GiGingerbreadMan } from "react-icons/gi";
 import useTopbar from "../../hooks/useTopbar";
 import VerifiedSvg from "../../components/Partials/Account/VerifiedSvg";
+import LoginBtn from "../../components/common/LoginBtn";
 
 const ProfilePage = () => {
   useTopbar("Profile", true);
   const { username } = useParams();
-  const { user } = useAuth();
+  const { user,isAuthenticated } = useAuth();
 
   const user_name = username || "";
 
@@ -56,13 +57,13 @@ const ProfilePage = () => {
         <section>
           <div className="pt-4 grid bg-white dark:bg-gray-950 grid-cols-1 gap-3">
             <div className="items-center flex-wrap justify-between flex">
-              <div className="flex px-4 gap-x-4 flex-wrap justify-center items-center">
+              <div className="flex px-4 gap-x-6 flex-wrap justify-center items-center">
                 <div>
                   <Image
                     src={profile.image || DefaultAvater}
                     alt="User"
                     hash={profile.profile_image_hash}
-                    className="w-32 h-32 border border-gray-300 dark:bg-gray-900 rounded"
+                    className="w-32 h-32 rounded"
                   />
                 </div>
                 <div className="py-4">
@@ -83,6 +84,7 @@ const ProfilePage = () => {
                 </div>
               </div>
             </div>
+
             <div className="mt-4">
               <div className="grid grid-cols-2 gap-4 sm:gap-6">
                 <button className="border-b-2 border-primary-600 py-2">
@@ -92,56 +94,68 @@ const ProfilePage = () => {
               </div>
             </div>
           </div>
-          <div className="px-4 grid grid-cols-1 gap-5 py-8 dark:bg-gray-900 bg-gray-50 h-full">
-            <div className="mb-6">
-              <div className="flex mb-2 items-center">
-                <FaRegQuestionCircle className="w-6 h-6 text-primary-500" />
-                <p className="ml-2 text-lg font-medium">About</p>
-              </div>
-              <div>
-                {profile && profile.bio ? (
-                  <p>{profile.bio}</p>
-                ) : (
-                  <p className="italic">No information</p>
-                )}
-              </div>
-            </div>
-            {profile.username === user?.username ? (
-              <div>
-                <Hobbies
-                  isSuccess={isSuccess}
-                  isUpdatingHobbies={isHobbiesUpdating}
-                  update_hobbies={update_hobbies}
-                  profile_hobbies={profile.hobbies}
-                  hobbies={hobbies}
-                  isHobbiesLoading={isHobbiesLoading}
-                  isHobbiesError={isHobbiesError}
-                />
-              </div>
-            ) : (
-              <>
-                <div className="flex mb-2 items-center">
-                  <GiGingerbreadMan className="w-6 h-6 text-primary-500" />
-                  <p className="ml-2 text-lg font-medium">Hobbies</p>
+          {user && isAuthenticated ? (
+            <>
+              <div className="px-4 grid grid-cols-1 gap-5 py-8 dark:bg-gray-900 bg-gray-50 h-full">
+                <div className="mb-6">
+                  <div className="flex mb-2 items-center">
+                    <FaRegQuestionCircle className="w-6 h-6 text-primary-500" />
+                    <p className="ml-2 text-lg font-medium">About</p>
+                  </div>
+                  <div>
+                    {profile && profile.bio ? (
+                      <p>{profile.bio}</p>
+                    ) : (
+                      <p className="italic">No information</p>
+                    )}
+                  </div>
                 </div>
-
-                {profile.hobbies.length > 0 ? (
-                  <ul className="flex items-center gap-2 flex-wrap">
-                    {profile.hobbies.map((hobby) => (
-                      <HobbyChecked
-                        editable={false}
-                        key={hobby.id}
-                        checked
-                        hobby={hobby}
-                      />
-                    ))}
-                  </ul>
+                {profile.username === user?.username ? (
+                  <div>
+                    <Hobbies
+                      isSuccess={isSuccess}
+                      isUpdatingHobbies={isHobbiesUpdating}
+                      update_hobbies={update_hobbies}
+                      profile_hobbies={profile.hobbies}
+                      hobbies={hobbies}
+                      isHobbiesLoading={isHobbiesLoading}
+                      isHobbiesError={isHobbiesError}
+                    />
+                  </div>
                 ) : (
-                  <></>
+                  <>
+                    <div className="flex mb-2 items-center">
+                      <GiGingerbreadMan className="w-6 h-6 text-primary-500" />
+                      <p className="ml-2 text-lg font-medium">Hobbies</p>
+                    </div>
+
+                    {profile.hobbies.length > 0 ? (
+                      <ul className="flex items-center gap-2 flex-wrap">
+                        {profile.hobbies.map((hobby) => (
+                          <HobbyChecked
+                            editable={false}
+                            key={hobby.id}
+                            checked
+                            hobby={hobby}
+                          />
+                        ))}
+                      </ul>
+                    ) : (
+                      <></>
+                    )}
+                  </>
                 )}
+              </div>
+            </>
+          ) : (
+              <>
+              <div className="flex flex-col py-8 gap-y-4 items-center justify-center">
+                <p>Login to view user profile</p>
+                <LoginBtn/>
+                </div>
+                
               </>
-            )}
-          </div>
+          )}
         </section>
       </Seo>
     );

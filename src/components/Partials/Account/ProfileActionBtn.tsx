@@ -5,9 +5,10 @@ import { IoIosPersonAdd } from "react-icons/io";
 import { LiaUserClockSolid } from "react-icons/lia";
 import { FaHourglassHalf } from "react-icons/fa";
 import useModal from "../../../hooks/useModal";
+import LoginBtn from "../../common/LoginBtn";
 
 const ProfileActionBtn = ({ profile }: { profile: UserType }) => {
-    const { user } = useAuth();
+    const { user,isAuthenticated } = useAuth();
     const { send_friend_request } = useProfileActions(profile.username);
 
     const isSelf = user?.username === profile.username && profile.is_self;
@@ -20,62 +21,70 @@ const ProfileActionBtn = ({ profile }: { profile: UserType }) => {
 
     let content;
 
-    if (isSelf) {
-        content = (
-            <>
-                <button
-                    onClick={toggleModal}
-                    className="dark:bg-gray-900 bg-white text-gray-700 border dark:border-gray-700 border-gray-200 hover:bg-gray-50/40 rounded-md dark:hover:bg-gray-900/70 w-full max-w-52 dark:text-white px-3 py-2"
-                >
-                    Edit profile
-                </button>
-            </>
-        );
-    } else {
-        if (profile.user_is_friend) {
+    if (user && isAuthenticated) {
+        
+        if (isSelf) {
             content = (
                 <>
-                    <button className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-green-300 font-medium rounded text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                        Manage friendship
+                    <button
+                        onClick={toggleModal}
+                        className="dark:bg-gray-900 bg-white text-gray-700 border dark:border-gray-700 border-gray-200 hover:bg-gray-50/40 rounded-md dark:hover:bg-gray-900/70 w-full max-w-52 dark:text-white px-3 py-2"
+                    >
+                        Edit profile
                     </button>
                 </>
-            );
-        } else if (profile.account_is_friend) {
-            content = (
-                <>
-                    <button>Add to friend</button>
-                </>
-            );
-        } else if (profile.account_sent_friend_request) {
-            content = (
-                <div>
-                    <p className="text-lg flex items-center text-gray-600 italic">
-                        <FaHourglassHalf className="mr-1" />
-                        Friend request pending
-                    </p>
-                </div>
-            );
-        } else if (profile.user_sent_friend_request) {
-            content = (
-                <div>
-                    <button className="text-white bg-gray-800  focus:outline-none mx-auto font-medium rounded-md text-sm px-3 py-2.5  dark:bg-gray-800 opacity-90 dark:focus:ring-gray-700 dark:border-gray-700 flex items-center">
-                        <LiaUserClockSolid className="w-5 h-5 mr-1" /> Request
-                        sent
-                    </button>
-                </div>
             );
         } else {
-            content = (
-                <button
-                    onClick={handleSendFriendRequest}
-                    className="text-white flex justify-center mx-auto items-center bg-primary-700 hover:bg-primary-800  focus:ring-primary-300 font-medium rounded-md text-sm px-3 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none "
-                >
-                    <IoIosPersonAdd className="w-5 mr-1 h-5" /> Add friend
-                </button>
-            );
+            if (profile.user_is_friend) {
+                content = (
+                    <>
+                        <button className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-green-300 font-medium rounded text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                            Manage friendship
+                        </button>
+                    </>
+                );
+            } else if (profile.account_is_friend) {
+                content = (
+                    <>
+                        <button>Add to friend</button>
+                    </>
+                );
+            } else if (profile.account_sent_friend_request) {
+                content = (
+                    <div>
+                        <p className="text-lg flex items-center text-gray-600 italic">
+                            <FaHourglassHalf className="mr-1" />
+                            Friend request pending
+                        </p>
+                    </div>
+                );
+            } else if (profile.user_sent_friend_request) {
+                content = (
+                    <div>
+                        <button className="text-white bg-gray-800  focus:outline-none mx-auto font-medium rounded-md text-sm px-3 py-2.5  dark:bg-gray-800 opacity-90 dark:focus:ring-gray-700 dark:border-gray-700 flex items-center">
+                            <LiaUserClockSolid className="w-5 h-5 mr-1" /> Request
+                            sent
+                        </button>
+                    </div>
+                );
+            } else {
+                content = (
+                    <button
+                        onClick={handleSendFriendRequest}
+                        className="text-white flex justify-center mx-auto items-center bg-primary-700 hover:bg-primary-800  focus:ring-primary-300 font-medium rounded-md text-sm px-3 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none "
+                    >
+                        <IoIosPersonAdd className="w-5 mr-1 h-5" /> Add friend
+                    </button>
+                );
+            }
         }
+    } else {
+        content = (
+            <>
+            <LoginBtn/>
+            </>
+        )
     }
-
     return (
         <div className="flex items-center justify-center max-w-sm mx-auto">
             {content}

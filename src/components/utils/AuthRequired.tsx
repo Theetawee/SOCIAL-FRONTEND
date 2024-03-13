@@ -11,6 +11,7 @@ const AuthRequired = () => {
     if (isAuthenticated) {
         return <Outlet />;
     } else {
+        
         return <Navigate to={`/accounts/login?next=${from}`} />;
     }
 };

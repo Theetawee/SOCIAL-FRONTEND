@@ -42,11 +42,11 @@ const SearchPage = lazy(() => import('./pages/SearchPage'));
 const router = createBrowserRouter(
   createRoutesFromElements([
     <Route path="/" element={<FrameLayout />}>
+      <Route path="/:username" element={<ProfilePage />} />
       <Route element={<AuthRequired />}>
         <Route index path="/home" element={<HomePage />} />
         <Route path="/friends" element={<FriendsPage />} />
         <Route path="/compose" element={<ComposePage />} />
-        <Route path="/:username" element={<ProfilePage />} />
         <Route path="/posts/:id" element={<PostDetailPage />} />
         <Route path="/logout" element={<LogoutPage />} />
       </Route>
