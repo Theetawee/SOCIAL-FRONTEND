@@ -79,18 +79,6 @@ workbox.routing.registerRoute(
   })
 );
 
-workbox.routing.registerRoute(
-  new RegExp("https://api.waanverse.com"),
-  new workbox.strategies.NetworkFirst({
-    cacheName: "api-cache",
-    plugins: [
-      new workbox.expiration.ExpirationPlugin({
-        maxEntries: 50,
-        maxAgeSeconds: 60 * 60,
-      }),
-    ],
-  })
-);
 
 workbox.routing.registerRoute(
   new RegExp("https://files.waanverse.com"),
@@ -102,12 +90,6 @@ workbox.routing.registerRoute(
         maxAgeSeconds: 60 * 60,
       }),
     ],
-  })
-);
-workbox.routing.registerRoute(
-  new RegExp("/*"),
-  new workbox.strategies.NetworkFirst({
-    cacheName: "rest_cache",
   })
 );
 
