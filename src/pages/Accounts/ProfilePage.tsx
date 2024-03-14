@@ -1,21 +1,25 @@
 import Image from "../../components/common/Image";
+import { lazy } from "react";
 import DefaultAvater from "../../assets/default.webp";
-import { FaRegQuestionCircle } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import useFetchUser from "../../hooks/Account/useFetchUser";
 import Loader from "../../components/common/Loader";
 import Seo from "../../components/utils/Seo";
-import NotFound from "../../components/common/NotFound";
-import ProfileActionBtn from "../../components/Partials/Account/ProfileActionBtn";
-import Modal from "../../components/common/Modal";
-import UpdateProfilePage from "./UpdateProfilePage";
-import Hobbies from "../../components/Partials/Account/Hobbies";
+const NotFound = lazy(() => import('../../components/common/NotFound'));
+const ProfileActionBtn = lazy(() => import('../../components/Partials/Account/ProfileActionBtn'));
+const Modal = lazy(() => import('../../components/common/Modal'));
+const UpdateProfilePage = lazy(() => import('./UpdateProfilePage'));
+const Hobbies = lazy(() => import('../../components/Partials/Account/Hobbies'));
+const HobbyChecked = lazy(() => import('../../components/Partials/Account/HobbyChecked'));
 import useAuth from "../../hooks/Auth/useAuth";
-import HobbyChecked from "../../components/Partials/Account/HobbyChecked";
 import { GiGingerbreadMan } from "react-icons/gi";
 import useTopbar from "../../hooks/useTopbar";
-import VerifiedSvg from "../../components/Partials/Account/VerifiedSvg";
-import LoginBtn from "../../components/common/LoginBtn";
+const VerifiedSvg = lazy(() => import("../../components/Partials/Account/VerifiedSvg"));
+const LoginBtn = lazy(() => import("../../components/common/LoginBtn"));
+const ProfileInfo = lazy(() => import("../../components/Partials/Account/ProfileInfo"));
+
+
+
 
 const ProfilePage = () => {
   useTopbar("Profile", true);
@@ -86,10 +90,11 @@ const ProfilePage = () => {
             </div>
 
             <div className="mt-4">
-              <div className="grid grid-cols-2 gap-4 sm:gap-6">
+              <div className="grid grid-cols-3 gap-4 sm:gap-6">
                 <button className="border-b-2 border-primary-600 py-2">
                   Profile
                 </button>
+                <button>Friends</button>
                 <button>Posts</button>
               </div>
             </div>
@@ -97,19 +102,11 @@ const ProfilePage = () => {
           {user && isAuthenticated ? (
             <>
               <div className="px-4 grid grid-cols-1 gap-5 py-8 dark:bg-gray-900 bg-gray-50 h-full">
-                <div className="mb-6">
-                  <div className="flex mb-2 items-center">
-                    <FaRegQuestionCircle className="w-6 h-6 text-primary-500" />
-                    <p className="ml-2 text-lg font-medium">About</p>
-                  </div>
-                  <div>
-                    {profile && profile.bio ? (
-                      <p>{profile.bio}</p>
-                    ) : (
-                      <p className="italic">No information</p>
-                    )}
-                  </div>
-                </div>
+                
+                <div>
+                  <ProfileInfo profile={profile}/>
+              </div>
+
                 {profile.username === user?.username ? (
                   <div>
                     <Hobbies
