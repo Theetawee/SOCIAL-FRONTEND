@@ -3,7 +3,8 @@ import ContextProvider from "../context/ContextProvider";
 import { ErrorBoundary } from "react-error-boundary";
 import CommonError from "../components/common/CommonError";
 import SuspenseLoader from "../components/utils/SuspenseLoader";
-import Footer from "../components/Partials/Footer";
+import { lazy } from "react";
+const Footer = lazy(() => import('../components/Partials/Footer'));
 
 const MainLayout = () => {
     return (

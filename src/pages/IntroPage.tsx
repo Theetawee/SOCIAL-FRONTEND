@@ -1,9 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { lazy } from "react";
 import Seo from "../components/utils/Seo";
 import { Link } from "react-router-dom";
-import GoogleBtn from "../components/Partials/Account/GoogleBtn";
-import Logo from "../components/common/Logo";
-import IntroSearch from "../components/Partials/IntroSearch";
+import SuspenseLoader from "../components/utils/SuspenseLoader";
+const GoogleBtn = lazy(() => import('../components/Partials/Account/GoogleBtn'));
+const Logo = lazy(() => import('../components/common/Logo'));
+const IntroSearch = lazy(() => import("../components/Partials/IntroSearch"));
+
+
+
+
 
 const Intro = () => {
 
@@ -15,11 +21,15 @@ const Intro = () => {
     >
       <section>
         <div className="px-4 py-6">
-          <IntroSearch />
-          </div>
+          <SuspenseLoader>
+            <IntroSearch />
+          </SuspenseLoader>
+        </div>
         <section className="bg-gray-100 flex items-center justify-between py-4 dark:bg-gray-950">
           <div className="gap-8 items-center  px-4 mx-auto max-w-screen-xl  md:grid md:grid-cols-2  lg:px-6">
-            <Logo className="w-full sm:h-72 h-32 md:h-96"/>
+            <SuspenseLoader>
+              <Logo className="w-full sm:h-72 h-32 md:h-96" />
+            </SuspenseLoader>
             <div className="mt-4 md:mt-0">
               <h1 className="mb-4 md:text-6xl text-center md:text-left text-4xl tracking-tight font-extrabold text-gray-800 dark:text-white">
                 Belonging without borders
@@ -43,7 +53,9 @@ const Intro = () => {
                   Login to your Account
                 </Link>
                 <div className="max-w-sm mx-auto w-full">
-                  <GoogleBtn />
+                  <SuspenseLoader>
+                    <GoogleBtn />
+                    </SuspenseLoader>
                 </div>
               </div>
             </div>
