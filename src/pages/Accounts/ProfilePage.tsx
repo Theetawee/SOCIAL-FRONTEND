@@ -1,5 +1,5 @@
 import Image from "../../components/common/Image";
-import { lazy } from "react";
+import { lazy, useState } from "react";
 import DefaultAvater from "../../assets/default.webp";
 import { useParams } from "react-router-dom";
 import useFetchUser from "../../hooks/Account/useFetchUser";
@@ -14,6 +14,8 @@ const HobbyChecked = lazy(() => import('../../components/Partials/Account/HobbyC
 import useAuth from "../../hooks/Auth/useAuth";
 import { GiGingerbreadMan } from "react-icons/gi";
 import useTopbar from "../../hooks/useTopbar";
+import FriendsList from "./FriendsList";
+import Posts from "./Posts";
 const VerifiedSvg = lazy(() => import("../../components/Partials/Account/VerifiedSvg"));
 const LoginBtn = lazy(() => import("../../components/common/LoginBtn"));
 const ProfileInfo = lazy(() => import("../../components/Partials/Account/ProfileInfo"));
@@ -24,7 +26,11 @@ const ProfileInfo = lazy(() => import("../../components/Partials/Account/Profile
 const ProfilePage = () => {
   useTopbar("Profile", true);
   const { username } = useParams();
-  const { user,isAuthenticated } = useAuth();
+  const { user, isAuthenticated } = useAuth();
+  
+  const [view, setView] = useState<"profile" | "friends" | "posts">("profile")
+  
+  const setClass="border-b-2 border-primary-600 py-2"
 
   const user_name = username || "";
 
@@ -91,67 +97,92 @@ const ProfilePage = () => {
 
             <div className="mt-4">
               <div className="grid grid-cols-3 gap-4 sm:gap-6">
-                <button className="border-b-2 border-primary-600 py-2">
+                <button
+                  onClick={() => setView("profile")}
+                  className={`${view === "profile" ? setClass : ""}`}
+                >
                   Profile
                 </button>
-                <button>Friends</button>
-                <button>Posts</button>
+                <button
+                  onClick={() => setView("friends")}
+                  className={`${view === "friends" ? setClass : ""}`}
+                >
+                  Friends
+                </button>
+                <button
+                  onClick={() => setView("posts")}
+                  className={`${view === "posts" ? setClass : ""}`}
+                >
+                  Posts
+                </button>
               </div>
             </div>
           </div>
           {user && isAuthenticated ? (
             <>
-              <div className="px-4 grid grid-cols-1 gap-5 py-8 dark:bg-gray-900 bg-gray-50 h-full">
-                
-                <div>
-                  <ProfileInfo profile={profile}/>
-              </div>
-
-                {profile.username === user?.username ? (
-                  <div>
-                    <Hobbies
-                      isSuccess={isSuccess}
-                      isUpdatingHobbies={isHobbiesUpdating}
-                      update_hobbies={update_hobbies}
-                      profile_hobbies={profile.hobbies}
-                      hobbies={hobbies}
-                      isHobbiesLoading={isHobbiesLoading}
-                      isHobbiesError={isHobbiesError}
-                    />
-                  </div>
-                ) : (
-                  <>
-                    <div className="flex mb-2 items-center">
-                      <GiGingerbreadMan className="w-6 h-6 text-primary-500" />
-                      <p className="ml-2 text-lg font-medium">Hobbies</p>
+              {view === "profile" ? (
+                <>
+                  <div className="px-4 grid grid-cols-1 gap-5 py-8 dark:bg-gray-900 bg-gray-50 h-full">
+                    <div>
+                      <ProfileInfo profile={profile} />
                     </div>
 
-                    {profile.hobbies.length > 0 ? (
-                      <ul className="flex items-center gap-2 flex-wrap">
-                        {profile.hobbies.map((hobby) => (
-                          <HobbyChecked
-                            editable={false}
-                            key={hobby.id}
-                            checked
-                            hobby={hobby}
-                          />
-                        ))}
-                      </ul>
+                    {profile.username === user?.username ? (
+                      <div>
+                        <Hobbies
+                          isSuccess={isSuccess}
+                          isUpdatingHobbies={isHobbiesUpdating}
+                          update_hobbies={update_hobbies}
+                          profile_hobbies={profile.hobbies}
+                          hobbies={hobbies}
+                          isHobbiesLoading={isHobbiesLoading}
+                          isHobbiesError={isHobbiesError}
+                        />
+                      </div>
                     ) : (
-                      <></>
+                      <>
+                        <div className="flex mb-2 items-center">
+                          <GiGingerbreadMan className="w-6 h-6 text-primary-500" />
+                          <p className="ml-2 text-lg font-medium">Hobbies</p>
+                        </div>
+
+                        {profile.hobbies.length > 0 ? (
+                          <ul className="flex items-center gap-2 flex-wrap">
+                            {profile.hobbies.map((hobby) => (
+                              <HobbyChecked
+                                editable={false}
+                                key={hobby.id}
+                                checked
+                                hobby={hobby}
+                              />
+                            ))}
+                          </ul>
+                        ) : (
+                          <></>
+                        )}
+                      </>
                     )}
+                  </div>
+                </>
+              ) : (
+                  <>
+                    {view === "friends" ? (<>
+                    
+                    <FriendsList/>
+                    </>) : (<>
+                    <Posts/>
+                    </>)}
+                  
                   </>
-                )}
-              </div>
+              )}
             </>
           ) : (
-              <>
+            <>
               <div className="flex flex-col py-8 gap-y-4 items-center justify-center">
                 <p>Login to view user profile</p>
-                <LoginBtn/>
-                </div>
-                
-              </>
+                <LoginBtn />
+              </div>
+            </>
           )}
         </section>
       </Seo>
