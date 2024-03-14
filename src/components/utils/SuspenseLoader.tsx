@@ -1,6 +1,6 @@
 import { ReactNode, Suspense } from "react";
 
-const SuspenseLoader = ({ children,className="h-screen" }: { children: ReactNode,className?:string }) => {
+const SuspenseLoader = ({ children,className="min-h-32" }: { children: ReactNode,className?:string }) => {
     return (
         <>
             <Suspense
