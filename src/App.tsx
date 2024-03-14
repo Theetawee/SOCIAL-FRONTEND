@@ -74,7 +74,7 @@ const router = createBrowserRouter(
       </Route>
     </Route>,
     <Route path="/" element={<MainLayout />}>
-      <Route path="/search/" element={<SearchPage />} />
+      <Route path="/search" element={<SearchPage />} />
 
       <Route path="*" element={<NotFoundPage />} />
     </Route>,

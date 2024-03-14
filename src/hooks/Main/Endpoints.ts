@@ -5,7 +5,8 @@ const Endpoints = () => {
 
     const api = useAxios();
 
-    const searchWaanverse=async(serachTerm:string):Promise<SearchResultsType>=>{
+  const searchWaanverse = async (serachTerm: string): Promise<SearchResultsType|void> => {
+      if(serachTerm.replace(" ", "") === "" || serachTerm === null) return;
         const response = await api.get(`/search/?query=${serachTerm}`)
         
         return response.data;
