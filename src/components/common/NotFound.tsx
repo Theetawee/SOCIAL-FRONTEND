@@ -7,14 +7,14 @@ const NotFound = ({ type }: { type: "post" | "profile" }) => {
             description:
                 "We couldn't find the profile you were looking for. This may be due to a misspelled username or the profile may have been deleted or made private. You can try searching for the profile again, or explore other profiles you might be interested in.",
             callToAction: "Go Back",
-            linkTo: "/",
+            linkTo: "/home",
         },
         post: {
             title: "Uh oh, that post seems to be missing!",
             description:
                 "The post you're looking for might have been deleted, or there may have been a temporary issue. You can try searching for the post again, or browse similar posts that might catch your eye.",
             callToAction: "Browse Posts",
-            linkTo: "/", // Replace with appropriate redirect link
+            linkTo: "/home", // Replace with appropriate redirect link
         },
     };
 
