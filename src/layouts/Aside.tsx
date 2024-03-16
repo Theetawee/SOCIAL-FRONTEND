@@ -84,7 +84,7 @@ const Aside = () => {
         <SuspenseLoader className="h-auto">
           <SideBarLink icon={FaSignOutAlt} enabled={isAuthenticated} path="/logout" label="Logout" />
         </SuspenseLoader>
-        <div className="p-2 ">
+        <div className="py-2 px-4 ">
           <Switch />
         </div>
         {isAuthenticated && user && (
