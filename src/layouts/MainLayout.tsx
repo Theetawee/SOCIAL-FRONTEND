@@ -12,7 +12,7 @@ const MainLayout = () => {
         <ErrorBoundary fallback={<CommonError />}>
           <SuspenseLoader>
             <section className="bg-gray-100 dark:bg-gray-950">
-              <main>
+              <main className="min-h-[80vh]">
                 <Outlet />
               </main>
               <Footer />
