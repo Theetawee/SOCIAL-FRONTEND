@@ -5,7 +5,7 @@ import Image from "../../common/Image";
 import HeaderMenu from "./HeaderMenu";
 import Name from "../Account/Name";
 
-const PostHeader = ({ post}: { post: PostType }) => {
+const PostHeader = ({ post }: { post: PostType }) => {
     return (
         <header onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between">
@@ -34,7 +34,7 @@ const PostHeader = ({ post}: { post: PostType }) => {
                     </div>
                     </Link>
                 <div>
-                    <HeaderMenu />
+                    <HeaderMenu post={post} />
                 </div>
             </div>
         </header>

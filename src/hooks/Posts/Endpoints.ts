@@ -104,6 +104,12 @@ const Endpoints = () => {
       return response.data;
     };
 
+    //delete a post
+
+    const deletePost = async (id: number) => {
+        const response = await api.post(`/post/delete/${id}/`);
+        return response.data;
+    };
 
 
     return {
@@ -114,7 +120,7 @@ const Endpoints = () => {
         getPostById,
         getPostImages,
         getTagSuggestions,
-        getPostComments,createComment
+        getPostComments,createComment,deletePost
     };
 };
 

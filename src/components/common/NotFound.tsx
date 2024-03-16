@@ -14,7 +14,7 @@ const NotFound = ({ type }: { type: "post" | "profile" }) => {
             description:
                 "The post you're looking for might have been deleted, or there may have been a temporary issue. You can try searching for the post again, or browse similar posts that might catch your eye.",
             callToAction: "Browse Posts",
-            linkTo: "/posts", // Replace with appropriate redirect link
+            linkTo: "/", // Replace with appropriate redirect link
         },
     };
 
