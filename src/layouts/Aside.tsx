@@ -16,7 +16,7 @@ const Aside = () => {
 
   return (
     <section className="grid grid-cols-1 gap-6">
-      <div className="p-4 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-900 rounded-md shadow-sm">
+      <div className="p-4 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-900 rounded-md shadow-sm">
         <div>{user ? (
               <>
             

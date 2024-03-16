@@ -21,7 +21,7 @@ const SideBarLink = ({ icon: Icon, path, label, showIcon = true, enabled = true 
             <Link
                 onClick={toggleSidebar}
                 to={path}
-                className="flex hover:bg-white dark:hover:bg-gray-800 rounded-md transition ease-in-out duration-500 hover:shadow p-4 items-center "
+                className="flex hover:bg-white dark:hover:bg-gray-800 rounded-md hover:shadow-sm p-4 items-center "
             >
                 {showIcon && Icon && <Icon className="w-6 h-6 text-primary-500" />}
                 <span className="ml-3 font-light">{label}</span>
