@@ -40,12 +40,12 @@ const PostBody = ({ files, cut = true, content,open_image=false,id }: Props): JS
             <div>
                 {cut ? (
                     <div className="mb-2">
-                        <p className="whitespace-pre-wrap line-clamp-3">
+                        <p className="whitespace-pre-wrap break-words line-clamp-3">
                             {content}
                         </p>
                     </div>
                 ) : (
-                    <div className="mb-2 whitespace-pre-wrap">{content}</div>
+                    <div className="mb-2 break-words whitespace-pre-wrap">{content}</div>
                 )}
                 {files && files.length > 0 && (
                     <span

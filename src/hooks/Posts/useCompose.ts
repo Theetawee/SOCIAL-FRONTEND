@@ -107,7 +107,6 @@ const useCompose = (user_id: number) => {
             }
         }
 
-        
         setData({
             content,
             account: user_id.toString(),
@@ -119,9 +118,13 @@ const useCompose = (user_id: number) => {
         
 
 
-
-        mutate();
+            mutate();
+        
     };
+
+
+    
+
 
     return {
         isPending,
