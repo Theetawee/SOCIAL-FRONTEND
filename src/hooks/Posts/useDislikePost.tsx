@@ -5,7 +5,7 @@ interface OnError {
     previousPost: PostType;
 }
 
-const useDislikePost = (postId: number, type: string) => {
+const useDislikePost = (postId: number, type: "post"|"comment") => {
     const queryClient = useQueryClient();
     const { dislikePost } = Endpoints();
     let queryName: string;

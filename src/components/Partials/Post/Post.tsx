@@ -8,7 +8,7 @@ import usePostAction from "../../../hooks/Posts/usePostActions";
 const Post = ({ post }: { post: PostType }) => {
 
 
-    const {likeStatus } = usePostAction(post.id, post.total_likes, post.is_liked);
+    const {likeStatus } = usePostAction(post.id, post.total_likes, post.is_liked,"post");
     const navigate = useNavigate();
     const handleClick = () => {
         navigate(`/posts/${post.id}`)

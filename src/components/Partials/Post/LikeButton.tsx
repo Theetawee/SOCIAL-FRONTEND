@@ -5,7 +5,7 @@ const LikeButton = ({
 }: {
     likes: number;
     onclick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-    type: string;
+    type: "like"|"dislike";
 }): JSX.Element => {
     return (
         <span className="flex  like_frame items-center">

@@ -6,7 +6,7 @@ const usePostAction = (
     post_id: number,
     total_likes: number,
     is_liked: boolean,
-    type = "post"
+    type : "post"|"comment"
 ) => {
     const { dislikePending, handleDisLike,dislikeError } = useDislikePost(
         post_id,

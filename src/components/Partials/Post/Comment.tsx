@@ -3,8 +3,11 @@ import { CommentType } from "../../../hooks/types";
 import Image from "../../common/Image";
 import DefaultAvater from "../../../assets/default.webp";
 import Name from "../Account/Name";
+import usePostAction from "../../../hooks/Posts/usePostActions";
+import CommentFooter from "./CommentFooter";
 
 const Comment = ({ comment }: { comment: CommentType }) => {
+  const { likeStatus} = usePostAction(comment.id,comment.total_likes,comment.is_liked,"comment");
   return (
     <>
       <article className="pl-2">
@@ -40,7 +43,8 @@ const Comment = ({ comment }: { comment: CommentType }) => {
           </div>
         </header>
         <div className="ml-5 border-l-2 dark:border-gray-700">
-          <div className="py-6 pl-4">{comment.content}</div>
+          <div className="pt-6 pb-3 pl-4">{comment.content}</div>
+          <CommentFooter postAction={likeStatus} comment={comment}/>
           <hr className="h-0.5 bg-gray-200 mb-4 border-0 dark:bg-gray-700" />
         </div>
       </article>

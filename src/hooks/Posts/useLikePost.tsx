@@ -6,7 +6,7 @@ interface OnError {
     previousPost: PostType;
 }
 
-const useLikePost = (postId: number, type: string) => {
+const useLikePost = (postId: number, type: "post"|"comment") => {
     const queryClient = useQueryClient();
     const { likePost } = Endpoints();
 

@@ -17,7 +17,7 @@ const usePostDetail = (postId: number) => {
     const postLikes = post?.total_likes || 0;
     const postIsLiked = post?.is_liked || false;
 
-    const { likeStatus } = usePostAction(postId, postLikes, postIsLiked);
+    const { likeStatus } = usePostAction(postId, postLikes, postIsLiked,"post");
 
     return {
         likeStatus,
