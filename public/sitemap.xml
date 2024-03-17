@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+		
+		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+	<loc>https://www.waanverse.com/</loc>
+	<lastmod>2024-03-18T01:09:37+01:00</lastmod>
+	<priority>0.2</priority>
+</url>
+<url>
+	<loc>https://www.waanverse.com/home</loc>
+	<lastmod>2024-03-18T01:09:37+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://www.waanverse.com/accounts/login</loc>
+	<lastmod>2024-03-18T01:09:37+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://www.waanverse.com/accounts/signup</loc>
+	<lastmod>2024-03-18T01:09:37+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://www.waanverse.com/legal/privacy</loc>
+	<lastmod>2024-03-18T01:09:37+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://www.waanverse.com/search</loc>
+	<lastmod>2024-03-18T01:09:37+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+</urlset>

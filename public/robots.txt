@@ -1,5 +1,7 @@
 User-agent: *
-Disallow: 
+Disallow: /accounts/verify-email
 Crawl-delay: 1
 Disallow: /cgi-bin/
+Disallow: /accounts/oauth2/google/
+Disallow: /accounts/reset-password
 Sitemap: https://www.waanverse.com/sitemap.xml
