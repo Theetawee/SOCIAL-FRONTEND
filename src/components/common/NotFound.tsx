@@ -30,7 +30,7 @@ const NotFound = ({ type }: { type: "post" | "profile" }) => {
                 <div>
                 <Link
                     to={linkTo}
-                    className="border border-gray-100 rounded-full hover:bg-gray-50 dark:hover:bg-gray-900 w-52 dark:border-gray-800 items-center justify-center px-6 py-3  flex"
+                    className="border border-gray-300 rounded-full hover:bg-gray-50 dark:hover:bg-gray-900 w-52 dark:border-gray-800 items-center justify-center px-6 py-3  flex"
                 >
                     <IoMdArrowRoundBack className="w-4 h-4 mr-2"/>
                     {callToAction}
