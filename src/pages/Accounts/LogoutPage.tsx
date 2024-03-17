@@ -36,12 +36,10 @@ const LogoutPage = () => {
             label="Log out"
             className="bg-white border text-lg border-gray-300 text-gray-900  px-5 py-2 rounded hover:bg-white/90"
           />
-          <Button
-            disabled={logingout}
-            label="Cancel"
+          <button
             className="bg-gray-900 border-gray-500 border text-white px-5 text-lg py-2 rounded hover:bg-gray-900/90"
-            onClick={() => navigate(-1)}
-          />
+            onClick={() => navigate(-1)}>Cancel</button>
+          
         </div>
       </div>
     </section>
