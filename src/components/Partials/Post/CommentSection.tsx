@@ -59,7 +59,7 @@ const {
               <Button
                 type="submit"
                 disabled={isPending}
-                label="Save"
+                label="Comment"
                 className="bg-primary-600 py-2 rounded hover:bg-primary-600/90 px-5 text-white "
               />
             </div>

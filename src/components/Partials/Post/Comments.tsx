@@ -50,8 +50,8 @@ const Comments = ({postId}:{postId:number}) => {
                 <IoMdRefresh className="w-5 h-5 animate-spin" />
               </div>
             }
-          >
-            <div>
+          ><hr className="h-px bg-gray-200 border-0 dark:bg-gray-700" />
+            <div className="pt-6">
               <ul>
                 {comments?.map((comment) => (
                   <Suspense fallback={<PostLoader />} key={comment.id}>
