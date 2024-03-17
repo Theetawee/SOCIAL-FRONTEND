@@ -69,7 +69,7 @@ const useCreateComment = (user_id: number,postId:number) => {
     mutationFn: () => createComment(data),
     onSuccess: () => {
       toast.success("Comment published successfully!");
-      queryClient.invalidateQueries({ queryKey: ["posts",postId]});
+      queryClient.invalidateQueries({ queryKey: ["comments",postId]});
       
     },
     onError: () => {

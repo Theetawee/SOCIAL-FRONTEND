@@ -12,7 +12,7 @@ const useComment = (postId:number) => {
 
 const { data, fetchNextPage, hasNextPage, isPending, isError } =
   useInfiniteQuery({
-    queryKey: ["comments"],
+    queryKey: ["comments",postId],
     networkMode: "offlineFirst",
     queryFn: (pageNum) => getPostComments(postId,pageNum.pageParam || 1),
     initialPageParam: 1,

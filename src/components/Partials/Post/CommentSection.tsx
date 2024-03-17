@@ -66,7 +66,7 @@ const {
           </div>
         )}
       </form>
-      <div className="p-4">
+      <div>
           <Comments postId={postId}/>
       </div>
     </div>

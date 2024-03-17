@@ -28,8 +28,6 @@ const Comments = ({postId}:{postId:number}) => {
   } else {
     return (
       <Suspense fallback={<PostLoader />}>
-        <Seo title={"Home / Waanverse"} description={"Waanverse Homepage."}>
-          {" "}
           <InfiniteScroll
             dataLength={comments?.length || 0}
             next={fetchNextPage}
@@ -63,7 +61,7 @@ const Comments = ({postId}:{postId:number}) => {
               </ul>
             </div>
           </InfiniteScroll>
-        </Seo>
+        
       </Suspense>
     );
   }

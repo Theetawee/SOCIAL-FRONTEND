@@ -87,7 +87,7 @@ export interface CommentResponseType{
     next: number | null;
     previous: number | null;
     count: number;
-    results: BaseStructure[]
+    results: CommentType[]
 }
 
 export interface UserResponseType {
@@ -129,6 +129,7 @@ export interface SuggestedAccount{
 
 
 }
+
 
 export interface SearchResultsType{
     accounts: SuggestedAccount[];

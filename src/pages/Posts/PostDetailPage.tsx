@@ -35,8 +35,7 @@ const PostDetailPage = () => {
       return (
         <Seo
           title={"Post not found!!  / Waanverse"}
-          description={"Something went wrong."}
-        >
+          description={"Something went wrong."}>
           <NotFound type="post" />
         </Seo>
       );
@@ -44,24 +43,21 @@ const PostDetailPage = () => {
       return (
         <Seo
           title={"Error!!  / Waanverse"}
-          description={"Something went wrong."}
-        >
+          description={"Something went wrong."}>
           <CommonError />
         </Seo>
       );
     }
   } else {
-    return (
-      <section className="py-4">
-        {post ? (
-          <>
+      return (
+        <>
+          {post ? (
             <Seo
               title={`${post.account?.name} on Waanverse: ${post.content.slice(
                 0,
                 30
               )}...`}
-              description={post.content}
-            >
+              description={post.content}>
               <section className="pt-4">
                 <article className="grid grid-cols-1 gap-y-4 rounded w-full">
                   <header className="px-4">
@@ -84,16 +80,15 @@ const PostDetailPage = () => {
               </section>
               <section>
                 <SuspenseLoader>
-                  <CommentSection postId={post.id}/>
+                  <CommentSection postId={post.id} />
                 </SuspenseLoader>
               </section>
             </Seo>
-          </>
-        ) : (
-          <PostLoader />
-        )}
-      </section>
-    );
+          ) : (
+            <PostLoader />
+          )}
+        </>
+      );
   }
 };
 
