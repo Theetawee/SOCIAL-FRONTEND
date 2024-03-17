@@ -69,7 +69,6 @@ const PostDetailPage = () => {
                   </header>
                   <main className="px-4">
                     <PostBody
-                      // taged={post.taged_accounts}
                       files={post.post_images}
                       open_image
                       content={post.content}

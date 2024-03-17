@@ -3,7 +3,6 @@ import Seo from "../../utils/Seo";
 import CommonError from "../../common/CommonError";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { IoMdRefresh } from "react-icons/io";
-import PostSkelton from "../Post/PostSkeleton";
 import PostLoader from "../Post/PostLoader";
 import useComment from "../../../hooks/Posts/useComment";
 import Comment from "./Comment";
@@ -17,7 +16,7 @@ const Comments = ({postId}:{postId:number}) => {
   if (isPending) {
     return (
       <Seo title={"Loading... / Waanverse"} description={"Loading..."}>
-        <PostSkelton />
+        <PostLoader />
       </Seo>
     );
   } else if (isError) {
@@ -28,18 +27,18 @@ const Comments = ({postId}:{postId:number}) => {
     );
   } else {
     return (
-      <Suspense fallback={<PostSkelton />}>
+      <Suspense fallback={<PostLoader />}>
         <Seo title={"Home / Waanverse"} description={"Waanverse Homepage."}>
           {" "}
           <InfiniteScroll
             dataLength={comments?.length || 0}
             next={fetchNextPage}
             hasMore={hasNextPage}
-            loader={<PostLoader image />}
+            loader={<PostLoader />}
             scrollThreshold={0.8}
             endMessage={
               <div className="text-center p-4">
-                <h5>No more posts.</h5>
+                <h5>No more comments.</h5>
               </div>
             }
             pullDownToRefresh={false}

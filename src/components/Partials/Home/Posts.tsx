@@ -59,7 +59,6 @@ const Posts = () => {
                             }
                             pullDownToRefresh={false}
                             refreshFunction={() => GetAllPosts()}
-                            //pullDownToRefreshThreshold={100}
                             pullDownToRefreshContent={
                                 <div className="flex items-center justify-center  gap-1">
                                     <IoMdRefresh className="w-5 h-5 animate-spin" />
@@ -74,12 +73,11 @@ const Posts = () => {
                             <div>
                                 <ul>
                                     {posts?.map((post) => (
-                                        <Suspense
-                                            fallback={<PostLoader />}
+                                        <div
                                             key={post.id}
                                         >
                                             <Post post={post} />
-                                        </Suspense>
+                                        </div>
                                     ))}
                                 </ul>
                             </div>
