@@ -5,6 +5,7 @@ import useDate from "../../../hooks/useDate";
 import useProfileActions from "../../../hooks/Account/useProfileActions";
 import Name from "./Name";
 import Button from "../../common/Button";
+import Image from "../../common/Image";
 
 
 
@@ -35,9 +36,10 @@ const FriendRequestCard = ({ request }: { request: FriendRequestType }) => {
           <Link to={`/${request.sender.username}`} className="block">
             <div className="flex items-center">
               <div>
-                <img
-                  src={DefaultAvatar}
-                  alt="User"
+                <Image
+                  hash={request.sender.profile_image_hash}
+                  src={request.sender.image||DefaultAvatar}
+                  alt={request.sender.name}
                   className="w-16 h-16 rounded-full"
                 />
               </div>
