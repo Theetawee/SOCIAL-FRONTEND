@@ -15,7 +15,7 @@ const NotificationProvider = ({ children }: { children: ReactNode }) => {
     const { isAuthenticated} = useAuth();
 
     
-    const [notifications,setNotifications] = useState<number>(1);
+    const [notifications,setNotifications] = useState<number>(0);
 
     useEffect(() => {   
         if (isAuthenticated) {
