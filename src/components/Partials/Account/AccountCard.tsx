@@ -14,7 +14,7 @@ const AccountCard = ({ account, clickable = true }: { account: SuggestedAccount 
 
 
   return (
-    <div onClick={handleClick} className={`flex ${clickable?"cursor-pointer":""} items-center`}>
+    <div onClick={handleClick} className={`flex ${clickable?"cursor-pointer":""} border border-gray-300 dark:border-gray-700 rounded-md p-4 items-center`}>
       <div>
         <Image
           src={account.image || DefaultAvater}

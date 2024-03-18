@@ -1,4 +1,4 @@
-import { FriendRequestType, HobbyType, UserType } from "../types";
+import { FriendRequestType, HobbyType, UserResponseType, UserType } from "../types";
 import useAxios from "../useAxios";
 
 const Endpoints = () => {
@@ -99,6 +99,12 @@ const Endpoints = () => {
         return response.data;
     }
 
+    //get Friends
+    const getFriends = async (pageNum=1,username:string): Promise<UserResponseType> => {
+        const response = await api.get(`/accounts/friends/${username}/?page=${pageNum}`);
+        return response.data;
+    }
+
     return {
         getUserInfo,
         sendFriendRequest,
@@ -109,7 +115,8 @@ const Endpoints = () => {
         updateProfileImage,
         getHobbies,
         updateHobbies,
-        unFriendAccount
+        unFriendAccount,
+        getFriends
     };
 };
 

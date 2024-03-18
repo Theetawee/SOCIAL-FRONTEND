@@ -5,32 +5,38 @@ import { useParams } from "react-router-dom";
 import useFetchUser from "../../hooks/Account/useFetchUser";
 import Loader from "../../components/common/Loader";
 import Seo from "../../components/utils/Seo";
-const NotFound = lazy(() => import('../../components/common/NotFound'));
-const ProfileActionBtn = lazy(() => import('../../components/Partials/Account/ProfileActionBtn'));
-const Modal = lazy(() => import('../../components/common/Modal'));
-const UpdateProfilePage = lazy(() => import('./UpdateProfilePage'));
-const Hobbies = lazy(() => import('../../components/Partials/Account/Hobbies'));
-const HobbyChecked = lazy(() => import('../../components/Partials/Account/HobbyChecked'));
+const NotFound = lazy(() => import("../../components/common/NotFound"));
+const ProfileActionBtn = lazy(
+  () => import("../../components/Partials/Account/ProfileActionBtn")
+);
+const Modal = lazy(() => import("../../components/common/Modal"));
+const UpdateProfilePage = lazy(() => import("./UpdateProfilePage"));
+const Hobbies = lazy(() => import("../../components/Partials/Account/Hobbies"));
+const HobbyChecked = lazy(
+  () => import("../../components/Partials/Account/HobbyChecked")
+);
 import useAuth from "../../hooks/Auth/useAuth";
 import { GiGingerbreadMan } from "react-icons/gi";
 import useTopbar from "../../hooks/useTopbar";
-import FriendsList from "./FriendsList";
+const FriendsList=lazy(()=>import('../../components/Partials/Account/FriendsList'))
 import Posts from "./Posts";
-const VerifiedSvg = lazy(() => import("../../components/Partials/Account/VerifiedSvg"));
+import SuspenseLoader from "../../components/utils/SuspenseLoader";
+const VerifiedSvg = lazy(
+  () => import("../../components/Partials/Account/VerifiedSvg")
+);
 const LoginBtn = lazy(() => import("../../components/common/LoginBtn"));
-const ProfileInfo = lazy(() => import("../../components/Partials/Account/ProfileInfo"));
-
-
-
+const ProfileInfo = lazy(
+  () => import("../../components/Partials/Account/ProfileInfo")
+);
 
 const ProfilePage = () => {
   useTopbar("Profile", true);
   const { username } = useParams();
   const { user, isAuthenticated } = useAuth();
-  
-  const [view, setView] = useState<"profile" | "friends" | "posts">("profile")
-  
-  const setClass="border-b-2 border-primary-600 py-2"
+
+  const [view, setView] = useState<"profile" | "friends" | "posts">("profile");
+
+  const setClass = "border-b-2 border-primary-600 py-2";
 
   const user_name = username || "";
 
@@ -58,8 +64,7 @@ const ProfilePage = () => {
     return (
       <Seo
         title={`${profile.name}(@${profile.username})`}
-        description={`Profile Page for @${profile.username}`}
-      >
+        description={`Profile Page for @${profile.username}`}>
         <Modal title="Edit Profile">
           <UpdateProfilePage profile={profile} />
         </Modal>
@@ -79,8 +84,7 @@ const ProfilePage = () => {
                 <div className="py-4">
                   <div className="flex">
                     <h3
-                      className={`text-2xl font-medium mb-1 text-gray-900 dark:text-white`}
-                    >
+                      className={`text-2xl font-medium mb-1 text-gray-900 dark:text-white`}>
                       {profile.name}
                     </h3>
                   </div>
@@ -99,30 +103,27 @@ const ProfilePage = () => {
               <div className="grid grid-cols-3 gap-4 sm:gap-6">
                 <button
                   onClick={() => setView("profile")}
-                  className={`${view === "profile" ? setClass : ""}`}
-                >
+                  className={`${view === "profile" ? setClass : ""}`}>
                   Profile
                 </button>
                 <button
                   onClick={() => setView("friends")}
-                  className={`${view === "friends" ? setClass : ""}`}
-                >
+                  className={`${view === "friends" ? setClass : ""}`}>
                   Friends
                 </button>
                 <button
                   onClick={() => setView("posts")}
-                  className={`${view === "posts" ? setClass : ""}`}
-                >
+                  className={`${view === "posts" ? setClass : ""}`}>
                   Posts
                 </button>
               </div>
             </div>
           </div>
           {user && isAuthenticated ? (
-            <>
+            <div className="py-8 dark:bg-gray-800/70 px-4 bg-gray-100 h-full">
               {view === "profile" ? (
                 <>
-                  <div className="px-4 grid grid-cols-1 gap-5 py-8 dark:bg-gray-900 bg-gray-50 h-full">
+                  <div className="grid grid-cols-1 gap-5 ">
                     <div>
                       <ProfileInfo profile={profile} />
                     </div>
@@ -165,17 +166,19 @@ const ProfilePage = () => {
                   </div>
                 </>
               ) : (
-                  <>
-                    {view === "friends" ? (<>
-                    
-                    <FriendsList/>
-                    </>) : (<>
-                    <Posts/>
-                    </>)}
-                  
-                  </>
+                <>
+                  {view === "friends" ? (
+                    <SuspenseLoader>
+                      <FriendsList username={profile.username} />
+                    </SuspenseLoader>
+                  ) : (
+                    <>
+                      <Posts />
+                    </>
+                  )}
+                </>
               )}
-            </>
+            </div>
           ) : (
             <>
               <div className="flex flex-col py-8 gap-y-4 items-center justify-center">
