@@ -30,7 +30,13 @@ const FriendsList = ({username}:{username:string}) => {
         <CommonError />
       
     );
-  } else {
+  } else if (accounts?.length === 0) {
+    return (
+      <div className="text-center">
+        <p>No friends found.</p>
+      </div>
+    )
+  } else{
     return (
       <SuspenseLoader>
           <InfiniteScroll
