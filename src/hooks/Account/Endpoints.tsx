@@ -93,6 +93,12 @@ const Endpoints = () => {
         return response.data;
     };
 
+    //unfriend a person
+    const unFriendAccount = async (username: string) => {
+        const response =await api.post(`/accounts/unfriend/${username}/`)
+        return response.data;
+    }
+
     return {
         getUserInfo,
         sendFriendRequest,
@@ -103,6 +109,7 @@ const Endpoints = () => {
         updateProfileImage,
         getHobbies,
         updateHobbies,
+        unFriendAccount
     };
 };
 

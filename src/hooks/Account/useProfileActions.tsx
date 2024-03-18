@@ -9,7 +9,7 @@ interface ErrorType {
 
 const useProfileActions = (username: string) => {
     const client = useQueryClient();
-    const { sendFriendRequest, acceptFriendRequest, declineFriendRequest } =
+    const { sendFriendRequest, acceptFriendRequest, declineFriendRequest,unFriendAccount } =
         Endpoints();
 
     const {
@@ -69,6 +69,18 @@ const useProfileActions = (username: string) => {
         },
     });
 
+    const { mutateAsync: unFriend_account, isPending:unfriending,isError:unfriend_error} = useMutation({
+        mutationFn: () => unFriendAccount(username),
+        mutationKey: ["unFriendAccount", username],
+        onSuccess: async () => {
+            await client.invalidateQueries({ queryKey: ["profile", username] });
+            toast.success("Unfriended account");
+        },
+        onError: async () => {
+            toast.error("Failed to unfriend");
+        },
+    })
+
     return {
         send_friend_request,
         sending_friend_request,
@@ -78,6 +90,7 @@ const useProfileActions = (username: string) => {
         decline_friend_request,
         declining_friend_request,
         declining_friend_request_error,
+        unFriend_account,unfriending,unfriend_error
     };
 };
 

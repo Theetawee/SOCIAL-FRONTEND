@@ -6,16 +6,22 @@ import { LiaUserClockSolid } from "react-icons/lia";
 import { FaHourglassHalf } from "react-icons/fa";
 import useModal from "../../../hooks/useModal";
 import LoginBtn from "../../common/LoginBtn";
+import Button from "../../common/Button";
 
 const ProfileActionBtn = ({ profile }: { profile: UserType }) => {
     const { user,isAuthenticated } = useAuth();
-    const { send_friend_request } = useProfileActions(profile.username);
+    const { send_friend_request,unFriend_account,unfriending } = useProfileActions(profile.username);
 
     const isSelf = user?.username === profile.username && profile.is_self;
 
     const handleSendFriendRequest = async () => {
         await send_friend_request();
     };
+
+    const handleUnfriend = async () => {
+        await unFriend_account();
+    }
+
 
     const { toggleModal } = useModal();
 
@@ -35,18 +41,13 @@ const ProfileActionBtn = ({ profile }: { profile: UserType }) => {
                 </>
             );
         } else {
-            if (profile.user_is_friend) {
+            if (profile.user_is_friend || profile.account_is_friend) {
                 content = (
                     <>
-                        <button className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-green-300 font-medium rounded text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                            Manage friendship
-                        </button>
-                    </>
-                );
-            } else if (profile.account_is_friend) {
-                content = (
-                    <>
-                        <button>Add to friend</button>
+                        
+                        <Button disabled={unfriending} onClick={handleUnfriend} className="focus:outline-none flex items-center justify-center text-white bg-red-700 hover:bg-red-800 focus:ring-red-300 font-medium rounded-full px-5 py-2 dark:bg-red-800 dark:hover:bg-red-700 dark:focus:ring-red-800"
+                            label="Unfriend"/>
+                        
                     </>
                 );
             } else if (profile.account_sent_friend_request) {
