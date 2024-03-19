@@ -11,10 +11,12 @@ const LikeNotification = ({
 }: {
   notification: NotificationType;
 }) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const { naturalDay } = useDate();
   return (
-    <div onClick={()=>navigate(`/posts/${notification.post}`)} className="flex cursor-pointer items-center justify-between relative gap-x-4 p-4 border border-gray-300 dark:border-gray-800 rounded-md mb-4">
+    <div
+      onClick={() => navigate(`/posts/${notification.post}`)}
+      className="flex cursor-pointer items-center justify-between relative gap-x-4 p-4 border border-gray-300 dark:border-gray-800 rounded-md mb-4">
       {!notification.seen && (
         <span className="w-2 h-2 bg-primary-600 absolute -top-1 z-10 -right-1 rounded-full"></span>
       )}
