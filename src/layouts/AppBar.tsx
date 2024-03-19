@@ -58,14 +58,14 @@ const AppBar = () => {
                         </>
                     )}
                     <div className="grid sm:grid-cols-1 grid-cols-3 gap-3">
-                        <div className="bg-gray-300 relative dark:bg-gray-800 p-1 flex items-center justify-center rounded-full">
+                        <Link to={"/notifications"} className="bg-gray-300 relative dark:bg-gray-800 p-1 flex items-center justify-center rounded-full">
                             {notifications > 0 && (
                                 <span className="absolute -top-1 -right-1 bg-rose-500 text-white w-4 h-4 p-0.5 rounded-full flex items-center justify-center text-xs">
                                     {notifications}
                                 </span>
                             )}
                             <RiNotification3Fill className="w-5 h-5 text-gray-700 dark:text-gray-100" />
-                        </div>
+                        </Link>
                         <div className="flex items-center sm:hidden justify-center p-1 bg-gray-300 dark:bg-gray-800 rounded-full">
                             <Link to={"/compose"}>
                                 <IoMdAdd className="w-6 h-6" />

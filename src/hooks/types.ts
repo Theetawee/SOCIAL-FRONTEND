@@ -130,6 +130,22 @@ export interface SuggestedAccount{
 
 }
 
+export interface NotificationType{
+    id: number;
+    from_user: SuggestedAccount
+    to_user: SuggestedAccount
+    notification_type:"like"|"comment"|"follow"
+    seen: boolean;
+    created_at: string
+    post:number|null
+}
+
+export interface NotificationResponseType{
+    next: number | null;
+    previous: number | null;
+    count: number;
+    results: NotificationType[]
+}
 
 export interface SearchResultsType{
     accounts: SuggestedAccount[];
