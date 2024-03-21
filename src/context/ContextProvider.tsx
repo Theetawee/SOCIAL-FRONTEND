@@ -6,7 +6,7 @@ import { ThemeProvider } from "./ThemeContext";
 import NotificationProvider from "./NotificationContext";
 import SideBarContextProvider from "./SidebarContext";
 import ModalProvider from "./ModalContext";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import TopBarProvider from "./TopBarContext";
 
 
@@ -23,7 +23,7 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
                                 <NotificationProvider>
                                     <ModalProvider>{children}</ModalProvider>
                                 </NotificationProvider>
-                                <ReactQueryDevtools initialIsOpen={false} />
+                                {/* <ReactQueryDevtools initialIsOpen={false} /> */}
                             </QueryClientProvider>
                         </HelmetProvider>
                     </SideBarContextProvider>
