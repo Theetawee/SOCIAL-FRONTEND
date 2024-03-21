@@ -11,7 +11,7 @@ module.exports = {
     "!src/i18n/**",
     "!**/node_modules/**",
   ],
-  output: "./",
+  output: "D:/WAANVERSE/waanverse/",
   options: {
     debug: process.env.NODE_ENV==="development",
     func: {
