@@ -1,7 +1,7 @@
 * {
     user-select: none;
     -webkit-tap-highlight-color: transparent;
-    font-family: "Roboto", sans-serif !important;
+    font-family: "Roboto","K2D", sans-serif !important;
 }
 @tailwind base;
 @tailwind components;
