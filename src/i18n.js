@@ -22,7 +22,7 @@ const langCookieValue = getLangCookieValue();
     .init({
       lng: langCookieValue || "en",
       fallbacklng: "en",
-      debug: process.env.NODE_ENV==='development',
+      debug: false,
       interpolation: {
         escapeValue: false,
       },
