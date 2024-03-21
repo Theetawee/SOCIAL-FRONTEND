@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
+import  './i18n';
+
+
 
 if (process.env.NODE_ENV === "production") {
   disableReactDevTools();
