@@ -25,3 +25,4 @@ dist-ssr
 .env
 dev-dist
 i18n
+i18n-dev.js
