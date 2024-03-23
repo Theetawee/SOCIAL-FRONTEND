@@ -48,21 +48,13 @@ const LoginPage = () => {
                 <div className="flex items-center justify-center mb-4">
                   <p>Or </p>
                 </div>
-                <GoogleBtn />
-                <div className="my-4">
-                  <p className="text-center text-gray-500">
-                    or{" "}
-                    <Link
-                      to={"/accounts/signup"}
-                      className="text-primary-500 hover:underline">
-                      create an account
-                    </Link>
-                  </p>
+                <div className="px-10">
+                  <GoogleBtn />
                 </div>
               </div>
               <div>
                 <div>
-                  <div className="grid grid-cols-1 gap-6 p-4 sm:p-6">
+                  <div className="grid grid-cols-1 gap-6 p-10 sm:p-6">
                     <SuspenseLoader>
                       <Input
                         type="text"
@@ -101,6 +93,15 @@ const LoginPage = () => {
               </div>
             </div>
           </form>
+          <div className="py-2">
+            <p className="text-center text-gray-500">
+              <Link
+                to={"/accounts/signup"}
+                className="text-primary-500 italic hover:underline">
+                Create an account
+              </Link>
+            </p>
+          </div>
         </div>
       </section>
     </Seo>
