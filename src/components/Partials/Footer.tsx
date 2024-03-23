@@ -7,7 +7,7 @@ const Footer = () => {
   
     return (
       <div>
-        <footer className="flex bg-gray-100  justify-center text-sm border-t border-gray-300 dark:border-gray-800  px-8 py-4  dark:bg-gray-900 w-full  items-center gap-x-8 flex-wrap sm:justify-between  gap-y-2 mx-auto p-4">
+        <footer className="flex max-w-screen-md mx-auto  justify-center text-sm border-t-0 border-gray-300 dark:border-gray-800  px-8 py-4  w-full  items-center gap-x-8 flex-wrap sm:justify-between  gap-y-2 mx-auto p-4">
           <span>
             <Link to={"/"} className="hover:underline hover:text-primary-600">
               {t("Home")}

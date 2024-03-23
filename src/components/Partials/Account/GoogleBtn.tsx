@@ -18,7 +18,7 @@ const GOOGLE_URL = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${
     return (
         <Link
             to={GOOGLE_URL}
-            className="w-full flex dark:bg-gray-800 items-center justify-center text-gray-700 dark:text-white border dark:border-gray-800 border-gray-500 dark:hover:bg-gray-800/70 font-medium rounded text-lg px-5 py-2.5 text-center"
+            className="w-full flex dark:bg-white items-center justify-center text-gray-700 dark:text-gray-800 border  dark:border-gray-900 hover:bg-gray-100 border-gray-400  font-medium rounded-md max-w-[250px] mx-auto text-lg py-2.5 text-center"
         >
             <FcGoogle className="w-5 h-5 mr-3" />
             {t("Sign in with Google")}

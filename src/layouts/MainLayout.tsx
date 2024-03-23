@@ -11,8 +11,8 @@ const MainLayout = () => {
       <ContextProvider>
         <ErrorBoundary fallback={<CommonError />}>
           <SuspenseLoader>
-            <section className="bg-gray-100 dark:bg-gray-950">
-              <main className="min-h-screen">
+            <section className="bg-gray-100 min-h-screen dark:bg-gray-950">
+              <main>
                 <Outlet />
               </main>
               <Footer />

@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import plugin from "tailwindcss/plugin";
 
-
-
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
@@ -17,8 +15,9 @@ export default {
       },
       colors: {
         primary: {
+          // Assuming "LightBlue" is a good name for your primary color
           50: "#f0f9ff",
-          100: "#e0f2fe",
+          100: "#E1F5FE",
           200: "#bae6fd",
           300: "#7dd3fc",
           400: "#38bdf8",
@@ -30,16 +29,17 @@ export default {
           950: "#082f49",
         },
         gray: {
-          50: "#fafafa",
-          100: "#f5f5f5 ",
-          200: "#e5e5e5",
-          300: "#d4d4d4 ",
-          400: "#a3a3a3 ",
-          500: "#737373 ",
-          600: "#525252 ",
-          700: "#404040 ",
-          800: "#262626 ",
-          900: "#171717 ",
+          // Keeping "gray" as the name
+          50: "#FAFAFA",
+          100: "#F5F5F5 ",
+          200: "#EEEEEE",
+          300: "#E0E0E0 ",
+          400: "#BDBDBD ",
+          500: "#9E9E9E ",
+          600: "#757575 ",
+          700: "#616161 ",
+          800: "#424242 ",
+          900: "#212121 ",
           950: "#121212",
         },
       },
