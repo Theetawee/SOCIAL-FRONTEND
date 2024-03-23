@@ -52,12 +52,12 @@ const AppBar = () => {
                                         theme === "light" ? DarkLogo : LightLogo
                                     }
                                     alt="Waanverse plus"
-                                    className="w-8 h-8"
+                                    className="w-10 h-10"
                                 />
                             </div>
                         </>
                     )}
-                    <div className="grid sm:grid-cols-1 grid-cols-3 gap-3">
+                    <div className="grid sm:grid-cols-1 grid-cols-3 gap-x-3">
                         <Link to={"/notifications"} className="bg-gray-300 relative dark:bg-gray-800 p-1 flex items-center justify-center rounded-full">
                             {notifications > 0 && (
                                 <span className="absolute -top-1 -right-1 bg-rose-500 text-white w-4 h-4 p-0.5 rounded-full flex items-center justify-center text-xs">
