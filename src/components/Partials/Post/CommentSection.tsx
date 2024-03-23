@@ -9,7 +9,12 @@ const CommentSection = ({postId}:{postId:number}) => {
   const [comment, setComment] = useState("");
   const { user } = useAuth();
   
-  
+  let user_id;
+  if (user) {
+    user_id = user.id;
+  } else {
+    user_id = 0;
+  }
 
 
 const {
@@ -20,7 +25,7 @@ const {
   isSuccess
   // handleChange,
   // files,
-} = useCreateComment(user!.id,postId);
+} = useCreateComment(user_id,postId);
 
   useEffect(() => {
     if (isSuccess) {
@@ -32,17 +37,18 @@ const {
   return (
     <div>
       <form method="POST" onSubmit={handleSubmit}>
-        <textarea
-          id="message"
-          value={comment}
-          name="content"
-          onChange={(e) => {
-            setComment(e.target.value);
-          }}
-          rows={4}
-          className="block p-2.5 w-full text-sm text-gray-900 bg-white  border-b resize-none border-0 border-gray-300 focus:ring-0 focus:border-gray-300 dark:focus:border-gray-800  dark:bg-gray-950 dark:border-gray-800 dark:placeholder-gray-400 dark:text-white "
-          placeholder="Add a comment."
-        ></textarea>
+        {user && (
+          <textarea
+            id="message"
+            value={comment}
+            name="content"
+            onChange={(e) => {
+              setComment(e.target.value);
+            }}
+            rows={4}
+            className="block p-2.5 w-full text-sm text-gray-900 bg-white  border-b resize-none border-0 border-gray-300 focus:ring-0 focus:border-gray-300 dark:focus:border-gray-800  dark:bg-gray-950 dark:border-gray-800 dark:placeholder-gray-400 dark:text-white "
+            placeholder="Add a comment."
+          ></textarea>)}
         <input
           type="hidden"
           name="taged"

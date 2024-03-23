@@ -43,12 +43,12 @@ const router = createBrowserRouter(
   createRoutesFromElements([
     <Route path="/" element={<FrameLayout />}>
       <Route path="/:username" element={<ProfilePage />} />
+      <Route path="/posts/:id" element={<PostDetailPage />} />
       <Route element={<AuthRequired />}>
         <Route index path="/home" element={<HomePage />} />
         <Route path="/friends" element={<FriendsPage />} />
         <Route path="/compose" element={<ComposePage />} />
-        <Route path="/notifications" element={<NotificationsPage/>}/>
-        <Route path="/posts/:id" element={<PostDetailPage />} />
+        <Route path="/notifications" element={<NotificationsPage />} />
         <Route path="/logout" element={<LogoutPage />} />
       </Route>
     </Route>,
