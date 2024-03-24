@@ -25,7 +25,13 @@ const LoginPage = () => {
       description="Sign in to access your account and unlock a world of possibilities. Seamlessly connect with friends, explore personalized content, and stay updated on the latest news. Your journey begins here.">
       <section className="py-16 px-6">
         <div className="bg-white shadow  dark:bg-gray-900 max-w-screen-lg rounded-3xl mx-auto">
-          <div className="px-4 py-2">
+          <div className="px-4 flex items-center gap-4 py-4">
+            <div>
+              <Link to={"/"}>
+                <Logo className="w-9" />
+              </Link>
+            </div>
+
             <h1>Log in to your Waanverse Account</h1>
           </div>
           <hr className="h-px dark:bg-gray-800 border-0 bg-gray-200" />
@@ -37,24 +43,21 @@ const LoginPage = () => {
               style={{ display: "none" }}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 py-20 gap-x-20">
-              <div>
-                <div>
-                  <Link
-                    to={"/"}
-                    className="flex items-center justify-center w-1/2 mx-auto mb-5">
-                    <Logo className="w-20" />
-                  </Link>
+              <div className="py-4">
+                <div className="flex items-center px-4 justify-center mb-10">
+                  <p className="text-3xl text-center">
+                    Ready to Connect with Your Crew?{" "}
+                    <span className="text-4xl">&#129311;&#129309;</span>
+                  </p>
                 </div>
-                <div className="flex items-center justify-center mb-4">
-                  <p>Or </p>
-                </div>
-                <div className="px-10">
+
+                <div className="px-4 max-w-md mx-auto">
                   <GoogleBtn />
                 </div>
               </div>
               <div>
                 <div>
-                  <div className="grid grid-cols-1 gap-6 p-10 sm:p-6">
+                  <div className="grid grid-cols-1 gap-6 max-w-md px-4 mx-auto py-4">
                     <SuspenseLoader>
                       <Input
                         type="text"
@@ -73,6 +76,14 @@ const LoginPage = () => {
                         auto_on={false}
                       />
                     </SuspenseLoader>
+                    <div>
+                      <Button
+                        type="submit"
+                        disabled={isLoading}
+                        className="w-full text-white bg-primary-600 hover:bg-primary-600/90 dark:bg-primary-700 dark:hover:bg-primary-700/90 font-medium rounded  px-5 py-2.5 text-center"
+                        label="Log in"
+                      />
+                    </div>
                     <div className="flex items-center gap-4 justify-between">
                       <div>
                         <Link
@@ -81,27 +92,21 @@ const LoginPage = () => {
                           Forgot Password?
                         </Link>
                       </div>
-                      <Button
-                        type="submit"
-                        disabled={isLoading}
-                        className="w-1/2 text-white bg-primary-600 hover:bg-primary-600/90 dark:bg-primary-700 dark:hover:bg-primary-700/90 font-medium rounded  px-5 py-2.5 text-center"
-                        label="Sign in"
-                      />
+                      <div>
+                        <p className="text-center text-gray-500">
+                          <Link
+                            to={"/accounts/signup"}
+                            className="text-primary-500 italic hover:underline">
+                            Create an account
+                          </Link>
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </form>
-          <div className="py-2">
-            <p className="text-center text-gray-500">
-              <Link
-                to={"/accounts/signup"}
-                className="text-primary-500 italic hover:underline">
-                Create an account
-              </Link>
-            </p>
-          </div>
         </div>
       </section>
     </Seo>
