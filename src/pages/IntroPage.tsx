@@ -23,7 +23,7 @@ const Intro = () => {
             <IntroSearch />
           </SuspenseLoader>
         </div>
-        <section className="bg-gray-100 flex min-h-screen items-center justify-between py-4 dark:bg-gray-950">
+        <section className="bg-gray-100 flex  items-center justify-between py-4 dark:bg-gray-950">
           <div className="gap-8 items-center  px-4 mx-auto max-w-screen-xl  md:grid md:grid-cols-2  lg:px-6">
             <SuspenseLoader>
               <Logo className="w-full sm:h-72 h-32 md:h-96" />
