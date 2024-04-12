@@ -1,14 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { lazy } from "react";
 import Seo from "../components/utils/Seo";
 import { Link } from "react-router-dom";
-import SuspenseLoader from "../components/utils/SuspenseLoader";
 import Bg from "../assets/bg.webp";
 import { useTranslation } from "react-i18next";
-const GoogleBtn = lazy(
-  () => import("../components/Partials/Account/GoogleBtn")
-);
 import Waan from "../assets/waan.webp";
+import GoogleBtn from "../components/Partials/Account/GoogleBtn";
 
 
 const Intro = () => {
@@ -18,13 +14,13 @@ const Intro = () => {
     <Seo
       title="Belonging without borders - Waanverse"
       description="Discover a world of endless possibilities as you navigate through diverse communities, vibrant discussions, and captivating content. From art and culture to technology and lifestyle, there's something for everyone on Waanverse.">
-      <section className="bg-cover bg-center bg-no-repeat min-h-screen sm:h-screen flex items-center justify-center" style={{backgroundImage: `url(${Bg})`}}>
-        <div className="bg-black/20 px-6 h-full  py-24 w-full">
-        <section  className="flex items-center max-w-screen-lg mx-auto justify-between">
-          <div className="flex flex-wrap sm:flex-nowrap gap-y-20 items-center h-full justify-center gap-x-10">
+      <section className="bg-cover bg-center bg-no-repeat  flex items-center justify-center" style={{backgroundImage: `url(${Bg})`}}>
+        <div className="bg-black/20 px-6 h-full sm:h-screen min-h-screen  w-full">
+        <section  className="flex items-center max-w-screen-lg py-32 sm:py-24 mx-auto justify-between">
+          <div className="flex flex-wrap sm:flex-nowrap gap-y-10 items-center h-full justify-center gap-x-10">
             <img src={Waan} alt="" className="w-80 mx-auto h-full rounded-xl shadow" />
             <div className="mt-4 md:mt-0">
-              <h1 className="mb-20 md:text-4xl text-center text-3xl text-gray-800 dark:text-white">
+              <h1 className="mb-10 md:text-4xl text-center text-3xl text-gray-800 dark:text-white">
                 Connecting people through meaningful connections
               </h1>
               <div className="grid grid-cols-3 gap-5">
@@ -39,9 +35,7 @@ const Intro = () => {
                   {t("Login")}
                 </Link>
                 <div className="max-w-sm mx-auto w-full">
-                  <SuspenseLoader>
                     <GoogleBtn />
-                  </SuspenseLoader>
                 </div>
               </div>
             </div>
