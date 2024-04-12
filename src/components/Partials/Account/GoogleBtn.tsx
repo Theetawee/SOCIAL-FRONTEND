@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 const redirect_url = import.meta.env.VITE_GOOGLE_REDIRECT;
 const google_id = import.meta.env.VITE_GOOGLE_ID;
 
 
 const GoogleBtn = () => {
 
-    const {t } = useTranslation();
 
 
 const GOOGLE_URL = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${redirect_url}&prompt=consent&response_type=code&client_id=${google_id}&scope=openid%20email%20profile&access_type=offline`;
@@ -18,12 +16,11 @@ const GOOGLE_URL = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${
       <>
         <Link to={GOOGLE_URL}
           aria-label="Sign in with Google"
-          className="flex items-center gap-3 bg-google-button-blue border border-primary-800 rounded-md p-0 pr-3 transition-colors duration-300 hover:bg-google-button-blue-hover">
-          <div className="flex items-center py-2 justify-center bg-white w-12 h-12 rounded-l">
+          className="rounded w-full bg-white h-full flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
-              className="w-5 h-5">
+              className="w-8 h-8">
               <title>Sign in with Google</title>
               <desc>Google G Logo</desc>
               <path
@@ -43,10 +40,7 @@ const GOOGLE_URL = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${
                 className="fill-google-logo-red"
               />
             </svg>
-          </div>
-          <span className="text-lg py-2 text-white tracking-wider">
-            {t("Sign in with Google")}
-          </span>
+          
         </Link>
         
       </>

@@ -3,12 +3,13 @@ import { lazy } from "react";
 import Seo from "../components/utils/Seo";
 import { Link } from "react-router-dom";
 import SuspenseLoader from "../components/utils/SuspenseLoader";
+import Bg from "../assets/bg.jpg";
 import { useTranslation } from "react-i18next";
 const GoogleBtn = lazy(
   () => import("../components/Partials/Account/GoogleBtn")
 );
-const Logo = lazy(() => import("../components/common/Logo"));
-const IntroSearch = lazy(() => import("../components/Partials/IntroSearch"));
+import Waan from "../assets/waan.png";
+
 
 const Intro = () => {
   const { t } = useTranslation();
@@ -17,36 +18,25 @@ const Intro = () => {
     <Seo
       title="Belonging without borders - Waanverse"
       description="Discover a world of endless possibilities as you navigate through diverse communities, vibrant discussions, and captivating content. From art and culture to technology and lifestyle, there's something for everyone on Waanverse.">
-      <section className="bg-gray-100 dark:bg-gray-950">
-        <div className="px-4 py-6">
-          <SuspenseLoader>
-            <IntroSearch />
-          </SuspenseLoader>
-        </div>
-        <section className="bg-gray-100 flex  items-center justify-between py-4 dark:bg-gray-950">
-          <div className="gap-8 items-center  px-4 mx-auto max-w-screen-xl  md:grid md:grid-cols-2  lg:px-6">
-            <SuspenseLoader>
-              <Logo className="w-full sm:h-72 h-32 md:h-96" />
-            </SuspenseLoader>
+      <section className="bg-cover bg-center bg-no-repeat min-h-screen sm:h-screen flex items-center justify-center" style={{backgroundImage: `url(${Bg})`}}>
+        <div className="bg-black/20 px-6 h-full  py-24 w-full">
+        <section  className="flex items-center max-w-screen-lg mx-auto justify-between">
+          <div className="flex flex-wrap sm:flex-nowrap gap-y-20 items-center h-full justify-center gap-x-10">
+            <img src={Waan} alt="" className="w-80 mx-auto h-full rounded-xl shadow" />
             <div className="mt-4 md:mt-0">
-              <h1 className="mb-4 md:text-6xl text-center md:text-left text-4xl tracking-tight font-extrabold text-gray-800 dark:text-white">
-                {t("Belonging without borders")}
+              <h1 className="mb-20 md:text-4xl text-center text-3xl text-gray-800 dark:text-white">
+                Connecting people through meaningful connections
               </h1>
-              <p className="mb-6 font-light text-center md:text-left text-gray-500 md:text-lg dark:text-gray-300">
-                {t(
-                  "Ready to embark on a journey to belonging ? Waanverse is where friendships transcend boundaries and connections flourish.Join us today and explore a world without borders.")}
-                
-              </p>
-              <div className="flex justify-center flex-wrap py-8 items-center gap-6">
+              <div className="grid grid-cols-3 gap-5">
                 <Link
                   to="/accounts/signup"
                   className="justify-center text-gray-800 flex max-w-sm w-full items-center dark:text-white border border-gray-500 dark:border-gray-600 font-medium rounded text-lg px-5 py-2.5 text-center dark:focus:ring-primary-900">
-                  {t("Create your Account")}
+                  {t("Join")}
                 </Link>
                 <Link
                   to="/accounts/login"
                   className="justify-center flex max-w-sm w-full  items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded text-lg px-5 py-2.5 text-center dark:focus:ring-primary-900">
-                  {t("Login to your Account")}
+                  {t("Login")}
                 </Link>
                 <div className="max-w-sm mx-auto w-full">
                   <SuspenseLoader>
@@ -57,6 +47,7 @@ const Intro = () => {
             </div>
           </div>
         </section>
+        </div>
       </section>
     </Seo>
   );

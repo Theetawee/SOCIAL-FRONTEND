@@ -11,7 +11,7 @@ export default {
         shadow: "3px 5px 60px -10px rgba(14, 165, 233, 0.3)",
       },
       backgroundImage: {
-        "page-pattern": "url('https://files.waanverse.com/images/gradbg.svg')",
+        "page-pattern": "url('https://files.waanverse.com/images/bg.jpg')",
       },
       colors: {
         primary: {
