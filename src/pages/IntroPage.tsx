@@ -3,12 +3,12 @@ import { lazy } from "react";
 import Seo from "../components/utils/Seo";
 import { Link } from "react-router-dom";
 import SuspenseLoader from "../components/utils/SuspenseLoader";
-import Bg from "../assets/bg.jpg";
+import Bg from "../assets/bg.webp";
 import { useTranslation } from "react-i18next";
 const GoogleBtn = lazy(
   () => import("../components/Partials/Account/GoogleBtn")
 );
-import Waan from "../assets/waan.png";
+import Waan from "../assets/waan.webp";
 
 
 const Intro = () => {
