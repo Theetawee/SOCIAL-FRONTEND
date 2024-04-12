@@ -5,6 +5,7 @@ import Bg from "../assets/bg.webp";
 import { useTranslation } from "react-i18next";
 import Waan from "../assets/waan.webp";
 import GoogleBtn from "../components/Partials/Account/GoogleBtn";
+import Logo from "../components/common/Logo";
 
 
 const Intro = () => {
@@ -19,7 +20,8 @@ const Intro = () => {
         <section  className="flex items-center max-w-screen-lg py-32 sm:py-24 mx-auto justify-between">
           <div className="flex flex-wrap sm:flex-nowrap gap-y-10 items-center h-full justify-center gap-x-10">
             <img src={Waan} alt="" className="w-80 mx-auto h-full rounded-xl shadow" />
-            <div className="mt-4 md:mt-0">
+            <div className="mt-4 flex items-center justify-center flex-col gap-y-3 md:mt-0">
+              <Logo/>
               <h1 className="mb-10 md:text-4xl text-center text-3xl text-gray-800 dark:text-white">
                 Connecting people through meaningful connections
               </h1>
