@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
-import { lazy } from "react";
-const Seo = lazy(() => import("../../components/utils/Seo"));
-const Input = lazy(() => import("../../components/common/Input"));
 import useLogin from "../../hooks/Auth/useLogin";
 import { FormEvent } from "react";
-import SuspenseLoader from "../../components/utils/SuspenseLoader";
 import GoogleBtn from "../../components/Partials/Account/GoogleBtn";
 import Logo from "../../components/common/Logo";
 import Button from "../../components/common/Button";
+import Seo from "../../components/utils/Seo";
+import Input from "../../components/common/Input";
 
 const LoginPage = () => {
   const { loging: isLoading, LoginUser } = useLogin();
@@ -23,18 +21,8 @@ const LoginPage = () => {
     <Seo
       title="Waanverse - Sign in"
       description="Sign in to access your account and unlock a world of possibilities. Seamlessly connect with friends, explore personalized content, and stay updated on the latest news. Your journey begins here.">
-      <section className="py-16 px-6">
-        <div className="bg-white shadow  dark:bg-gray-900 max-w-screen-lg rounded-3xl mx-auto">
-          <div className="px-4 flex items-center gap-4 py-4">
-            <div>
-              <Link to={"/"}>
-                <Logo className="w-9" />
-              </Link>
-            </div>
-
-            <h1>Log in to your Waanverse Account</h1>
-          </div>
-          <hr className="h-px dark:bg-gray-800 border-0 bg-gray-200" />
+      <section className="p-6">
+        <div className="">
           <form onSubmit={handleSubmit} autoComplete="off" method="post">
             <input
               autoComplete="false"
@@ -42,40 +30,45 @@ const LoginPage = () => {
               type="text"
               style={{ display: "none" }}
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 py-20 gap-x-20">
+            <div className="grid grid-cols-1 max-w-md bg-gray-900/20 p-8 rounded-md shadow border border-gray-700/40 mx-auto">
               <div className="py-4">
-                <div className="flex items-center px-4 justify-center mb-10">
-                  <p className="text-3xl text-center">
-                    Ready to Connect with Your Crew?{" "}
-                    <span className="text-4xl">&#129311;&#129309;</span>
+                <div className="mb-8">
+                  <p className="text-3xl mb-2">
+                    Sign in
                   </p>
+                  <p>Stay updated on your social life</p>
                 </div>
 
-                <div className="px-4 max-w-md mx-auto">
-                  <GoogleBtn />
+                <div className=" bg-white flex items-center gap-x-2 justify-center px-4 py-2 rounded-md">
+                  <GoogleBtn text/>
                 </div>
               </div>
               <div>
                 <div>
-                  <div className="grid grid-cols-1 gap-6 max-w-md px-4 mx-auto py-4">
-                    <SuspenseLoader>
+                  <div className="grid grid-cols-1 gap-6 py-4">
                       <Input
                         type="text"
                         name="username"
                         label="Username or Email"
                         disabled={isLoading}
                         auto_on={true}
+                        className="mx-2 rounded-full bg-gray-900"
                       />
-                    </SuspenseLoader>
-                    <SuspenseLoader>
                       <Input
                         type="password"
                         name="password"
                         label="Password"
                         disabled={isLoading}
                         auto_on={false}
+                        className="bg-gray-900 mx-2 rounded-full"
                       />
-                    </SuspenseLoader>
+                      <div>
+                      <Link
+                          to={"/accounts/reset-password"}
+                          className=" text-primary-500 hover:underline">
+                          Forgot Password?
+                        </Link>
+                      </div>
                     <div>
                       <Button
                         type="submit"
@@ -84,27 +77,17 @@ const LoginPage = () => {
                         label="Log in"
                       />
                     </div>
-                    <div className="flex items-center gap-4 justify-between">
-                      <div>
-                        <Link
-                          to={"/accounts/reset-password"}
-                          className="text-sm italic text-primary-500 hover:underline">
-                          Forgot Password?
-                        </Link>
-                      </div>
-                      <div>
-                        <p className="text-center text-gray-500">
-                          <Link
-                            to={"/accounts/signup"}
-                            className="text-primary-500 italic hover:underline">
-                            Create an account
-                          </Link>
-                        </p>
-                      </div>
                     </div>
-                  </div>
                 </div>
               </div>
+            </div>
+            <div className="flex items-center justify-center my-4 gap-x-2">
+              <p>New to Waanverse?</p>
+              <Link
+                            to={"/accounts/signup"}
+                            className="text-primary-500 hover:underline">
+                            Join now
+                          </Link>
             </div>
           </form>
         </div>

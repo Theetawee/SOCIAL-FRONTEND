@@ -3,7 +3,7 @@ const redirect_url = import.meta.env.VITE_GOOGLE_REDIRECT;
 const google_id = import.meta.env.VITE_GOOGLE_ID;
 
 
-const GoogleBtn = () => {
+const GoogleBtn = ({text}:{text?:boolean}) => {
 
 
 
@@ -16,7 +16,7 @@ const GOOGLE_URL = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${
       <>
         <Link to={GOOGLE_URL}
           aria-label="Sign in with Google"
-          className="rounded w-full bg-white h-full flex items-center justify-center">
+          className="rounded bg-white h-full flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -40,6 +40,7 @@ const GOOGLE_URL = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${
                 className="fill-google-logo-red"
               />
             </svg>
+{text && <span className="text-gray-800 ml-2">Sign in with Google</span>}
           
         </Link>
         
