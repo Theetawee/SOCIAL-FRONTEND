@@ -20,7 +20,7 @@ const LoginPage = () => {
     <Seo
       title="Waanverse - Sign in"
       description="Sign in to access your account and unlock a world of possibilities. Seamlessly connect with friends, explore personalized content, and stay updated on the latest news. Your journey begins here.">
-      <section className="p-6">
+      <section className="py-6">
         <div className="">
           <form onSubmit={handleSubmit} autoComplete="off" method="post">
             <input
