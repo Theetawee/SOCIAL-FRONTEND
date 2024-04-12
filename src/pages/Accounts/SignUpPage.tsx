@@ -97,10 +97,6 @@ const SignUpPage = () => {
               <div>
                 <p className="text-center text-xs ">
                   By creating an account, you agree to our{" "}
-                  <Link className="text-primary-500 hover:underline" to={"/"}>
-                    terms
-                  </Link>{" "}
-                  and{" "}
                   <Link to={"/legal/privacy"} className="text-primary-500 hover:underline">
                     privacy policy
                   </Link>
