@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
-import { lazy } from "react";
-const Input = lazy(() => import("../../components/common/Input"));
-const Seo = lazy(() => import("../../components/utils/Seo"));
 import { FormEvent } from "react";
 import useSignup from "../../hooks/Auth/useSignUp";
 import { CgLogIn } from "react-icons/cg";
 import SuspenseLoader from "../../components/utils/SuspenseLoader";
-import Logo from "../../components/common/Logo";
 import Button from "../../components/common/Button";
+import Seo from "../../components/utils/Seo";
+import Input from "../../components/common/Input";
 const SignUpPage = () => {
   const { isLoading, signup, errors } = useSignup();
 
@@ -24,14 +22,9 @@ const SignUpPage = () => {
   return (
     <Seo
       title="Sign Up and Join the Community - Create Your Account Today!"
-      description="Join our community by creating an account on our signup page! Discover new connections, share your passions, and embark on a journey of exploration."
-    >
-      <section className="flex  items-center flex-col justify-center py-16 px-2">
-        <div className="max-w-md mx-auto shadow  rounded bg-white  h-full  w-full dark:bg-gray-900 dark:border-gray-800 px-2 py-6">
-          <Link to={"/"} className="flex items-center justify-center mb-5">
-            <Logo />
-          </Link>
-
+      description="Join our community by creating an account on our signup page! Discover new connections, share your passions, and embark on a journey of exploration.">
+      <section className="flex  items-center flex-col justify-center py-8 px-2">
+        <div className="max-w-md mx-auto shadow  rounded border border-gray-600/20  h-full  w-full bg-gray-900/20 dark:border-gray-800 px-2 py-6">
           <form onSubmit={handleSubmit} autoComplete="off" method="post">
             <input
               autoComplete="false"
@@ -39,10 +32,12 @@ const SignUpPage = () => {
               type="text"
               style={{ display: "none" }}
             />
-
-            <h1 className="text-sky-500 mb-4 font-bold text-center text-2xl">
+<div className="px-4">
+            <h1 className="text-white mb-2 font-bold text-2xl">
               Create Waanverse account
             </h1>
+            <p>It's Quick and easy</p>
+            </div>
             <div className="grid grid-cols-1 gap-6 p-4 ">
               <div>
                 {errors && errors.length > 0 && (
@@ -51,8 +46,7 @@ const SignUpPage = () => {
                       {errors.map((error) => (
                         <li
                           className="text-sm font-medium"
-                          key={errors.indexOf(error)}
-                        >
+                          key={errors.indexOf(error)}>
                           {error}
                         </li>
                       ))}
@@ -60,44 +54,40 @@ const SignUpPage = () => {
                   </div>
                 )}
               </div>
-              <SuspenseLoader>
-                <Input
-                  type="email"
-                  name="email"
-                  label="Email"
-                  disabled={isLoading}
-                  auto_on={true}
-                />
-              </SuspenseLoader>
-              <SuspenseLoader>
+              <Input
+                type="email"
+                name="email"
+                label="Email"
+                disabled={isLoading}
+                className="mx-2 bg-gray-900 rounded-full"
+                auto_on={true}
+              />
                 <Input
                   type="text"
                   name="set_name"
+                  className="mx-2 bg-gray-900 rounded-full"
                   label="Name"
                   disabled={isLoading}
                   auto_on={false}
                 />
-              </SuspenseLoader>
-              <SuspenseLoader>
                 {" "}
                 <Input
                   type="text"
                   name="username"
+                  className="mx-2 bg-gray-900 rounded-full"
                   label="Username"
                   disabled={isLoading}
                   auto_on={false}
                 />
-              </SuspenseLoader>
-              <SuspenseLoader>
                 {" "}
                 <Input
                   type="password"
                   name="password"
+                  className="mx-2 bg-gray-900 rounded-full"
                   label="Password"
                   disabled={isLoading}
                   auto_on={false}
                 />
-              </SuspenseLoader>
               <Button
                 type="submit"
                 label="Create account"
@@ -111,7 +101,7 @@ const SignUpPage = () => {
                     terms
                   </Link>{" "}
                   and{" "}
-                  <Link to={"/"} className="text-primary-500 hover:underline">
+                  <Link to={"/legal/privacy"} className="text-primary-500 hover:underline">
                     privacy policy
                   </Link>
                   .
@@ -121,8 +111,7 @@ const SignUpPage = () => {
           </form>
           <Link
             to={"/accounts/login"}
-            className="text-primary-500 flex items-center justify-center text-sm mt-3 hover:underline"
-          >
+            className="text-white flex items-center mt-3 hover:underline">
             <CgLogIn className="w-5 h-5 inline-block mr-1" />
             Sign in to an existing account
           </Link>
