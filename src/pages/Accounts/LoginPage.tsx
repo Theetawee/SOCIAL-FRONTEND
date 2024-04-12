@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import useLogin from "../../hooks/Auth/useLogin";
 import { FormEvent } from "react";
 import GoogleBtn from "../../components/Partials/Account/GoogleBtn";
-import Logo from "../../components/common/Logo";
 import Button from "../../components/common/Button";
 import Seo from "../../components/utils/Seo";
 import Input from "../../components/common/Input";
