@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { FormEvent } from "react";
 import useSignup from "../../hooks/Auth/useSignUp";
 import { CgLogIn } from "react-icons/cg";
-import SuspenseLoader from "../../components/utils/SuspenseLoader";
 import Button from "../../components/common/Button";
 import Seo from "../../components/utils/Seo";
 import Input from "../../components/common/Input";
