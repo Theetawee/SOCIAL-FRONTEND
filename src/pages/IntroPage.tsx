@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Waan from "../assets/waan.webp";
 import GoogleBtn from "../components/Partials/Account/GoogleBtn";
+import LoginDrawer from "../components/Partials/Account/LoginDrawer";
 
 
 const Intro = () => {
@@ -42,6 +43,7 @@ const Intro = () => {
         </section>
         </div>
       </section>
+      <LoginDrawer/>
     </Seo>
   );
 };
