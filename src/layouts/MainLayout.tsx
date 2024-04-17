@@ -16,7 +16,7 @@ const MainLayout = () => {
             className="bg-cover bg-center bg-no-repeat">
             <div className="w-full min-h-screen bg-black/20 px-6">
               <header>
-                <div className="flex items-center gap-4 mb-4 py-4">
+                <div className="flex items-center gap-4 py-4">
                   <div>
                     <Link to={"/"} className="flex text-white items-end gap-x-1">
                       <Logo className="w-9 text-white" />
