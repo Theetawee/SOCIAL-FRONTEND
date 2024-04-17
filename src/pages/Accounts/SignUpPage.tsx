@@ -31,7 +31,7 @@ const SignUpPage = () => {
               style={{ display: "none" }}
             />
 <div className="px-4">
-            <h1 className="text-gray-700 mb-2 font-bold text-2xl">
+            <h1 className="text-gray-700 mb-2 text-2xl">
               Create Waanverse account
             </h1>
             <p>It's Quick and easy</p>
