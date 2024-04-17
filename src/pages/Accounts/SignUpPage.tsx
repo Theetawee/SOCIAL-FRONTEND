@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { FormEvent } from "react";
 import useSignup from "../../hooks/Auth/useSignUp";
-import { CgLogIn } from "react-icons/cg";
 import Button from "../../components/common/Button";
 import Seo from "../../components/utils/Seo";
 import Input from "../../components/common/Input";
@@ -104,12 +103,7 @@ const SignUpPage = () => {
               </div>
             </div>
           </form>
-          <Link
-            to={"/accounts/login"}
-            className="flex items-center mt-3 pl-4 hover:underline">
-            <CgLogIn className="w-5 h-5 inline-block mr-1" />
-            Sign in to an existing account
-          </Link>
+          
         </div>
       </section>
     </Seo>
