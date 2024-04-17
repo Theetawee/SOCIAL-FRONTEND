@@ -1,7 +1,6 @@
 import AuthContextProvider from "./AuthContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import DrawerProvider from "./DrawerContext";
-import NotificationProvider from "./NotificationContext";
 import SideBarContextProvider from "./SidebarContext";
 import ModalProvider from "./ModalContext";
 // import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -18,9 +17,7 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
                     <HelmetProvider>
                     <SideBarContextProvider>
                             <QueryClientProvider client={new QueryClient()}>
-                                <NotificationProvider>
                                     <ModalProvider>{children}</ModalProvider>
-                                </NotificationProvider>
                                 {/* <ReactQueryDevtools initialIsOpen={false} /> */}
                             </QueryClientProvider>
                     </SideBarContextProvider>

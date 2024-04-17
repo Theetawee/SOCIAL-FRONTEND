@@ -7,11 +7,13 @@ const AppBar = lazy(() => import("./AppBar"));
 const Frame = lazy(() => import("./Frame"));
 const SideBar = lazy(() => import("./SideBar"));
 import SuspenseLoader from "../components/utils/SuspenseLoader";
+import { ThemeProvider } from "../context/ThemeContext";
 const FrameLayout = () => {
 
     
 
     return (
+        <ThemeProvider>
         <ContextProvider>
             <SuspenseLoader className="h-auto">
                 <AppBar />
@@ -40,6 +42,7 @@ const FrameLayout = () => {
                 </SuspenseLoader>
             </section>
         </ContextProvider>
+        </ThemeProvider>
     );
 };
 
