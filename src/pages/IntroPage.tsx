@@ -26,13 +26,13 @@ const Intro = () => {
                 className="w-80 mx-auto h-full rounded-xl shadow"
               />
               <div className="mt-4 flex items-center justify-center flex-col gap-y-3 md:mt-0">
-                <h1 className="mb-10 md:text-4xl text-center text-3xl text-gray-800 dark:text-white">
+                <h1 className="mb-10 md:text-4xl text-center text-3xl text-white">
                   Connecting people through meaningful connections
                 </h1>
                 <div className="grid grid-cols-3 gap-5">
                   <Link
                     to="/accounts/signup"
-                    className="justify-center text-gray-800 flex max-w-sm w-full items-center dark:text-white border border-gray-500 dark:border-gray-600 font-medium rounded text-lg px-5 py-2.5 text-center dark:focus:ring-primary-900">
+                    className="justify-center flex max-w-sm w-full items-center text-white border border-gray-500 dark:border-gray-600 font-medium rounded text-lg px-5 py-2.5 text-center dark:focus:ring-primary-900">
                     {t("Join")}
                   </Link>
                   <button

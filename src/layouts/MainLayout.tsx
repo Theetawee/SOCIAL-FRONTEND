@@ -18,8 +18,8 @@ const MainLayout = () => {
               <header>
                 <div className="flex items-center gap-4 mb-4 py-4">
                   <div>
-                    <Link to={"/"} className="flex items-end gap-x-1">
-                      <Logo className="w-9" />
+                    <Link to={"/"} className="flex text-white items-end gap-x-1">
+                      <Logo className="w-9 text-white" />
                       <span className="text-lg">
                         <span className="sr-only">W</span> aanverse
                       </span>

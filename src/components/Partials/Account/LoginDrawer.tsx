@@ -53,7 +53,7 @@ const LoginDrawer = () => {
                         label="Username or Email"
                         disabled={isLoading}
                         auto_on={true}
-                        className="mx-2 rounded-full bg-white"
+                        className="bg-white"
                       />
                       <Input
                         type="password"
@@ -61,7 +61,7 @@ const LoginDrawer = () => {
                         label="Password"
                         disabled={isLoading}
                         auto_on={false}
-                        className="bg-white mx-2 rounded"
+                        className="bg-white"
                       />
                       <div>
                       <Link

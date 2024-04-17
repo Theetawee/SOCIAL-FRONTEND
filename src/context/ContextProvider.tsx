@@ -1,7 +1,6 @@
 import AuthContextProvider from "./AuthContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import DrawerProvider from "./DrawerContext";
-import { ThemeProvider } from "./ThemeContext";
 import NotificationProvider from "./NotificationContext";
 import SideBarContextProvider from "./SidebarContext";
 import ModalProvider from "./ModalContext";
@@ -13,7 +12,6 @@ import { HelmetProvider } from "react-helmet-async";
 
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
     return (
-        <ThemeProvider>
             <AuthContextProvider>
                 <TopBarProvider>
                 <DrawerProvider>
@@ -30,7 +28,6 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
                     </DrawerProvider>
                 </TopBarProvider>
             </AuthContextProvider>
-        </ThemeProvider>
     );
 };
 
