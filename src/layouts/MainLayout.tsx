@@ -14,7 +14,7 @@ const MainLayout = () => {
           <section
             style={{ backgroundImage: `url(${Bg})` }}
             className="bg-cover bg-center bg-no-repeat">
-            <div className="w-full min-h-screen bg-black/20 px-6">
+            <div className="w-full min-h-screen bg-black/40 px-6">
               <header>
                 <div className="flex items-center gap-4 py-4">
                   <div>
