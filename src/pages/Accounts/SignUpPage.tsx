@@ -23,7 +23,7 @@ const SignUpPage = () => {
       title="Sign Up and Join the Community - Create Your Account Today!"
       description="Join our community by creating an account on our signup page! Discover new connections, share your passions, and embark on a journey of exploration.">
       <section className="flex  items-center flex-col justify-center py-8 px-2">
-        <div className="max-w-md mx-auto shadow  rounded border border-gray-600/20  h-full  w-full bg-gray-900/20 dark:border-gray-800 px-2 py-6">
+        <div className="max-w-md mx-auto shadow  rounded border border-gray-600/20  h-full  w-full bg-white text-gray-800 dark:border-gray-800 px-2 py-6">
           <form onSubmit={handleSubmit} autoComplete="off" method="post">
             <input
               autoComplete="false"
@@ -32,7 +32,7 @@ const SignUpPage = () => {
               style={{ display: "none" }}
             />
 <div className="px-4">
-            <h1 className="text-white mb-2 font-bold text-2xl">
+            <h1 className="text-gray-700 mb-2 font-bold text-2xl">
               Create Waanverse account
             </h1>
             <p>It's Quick and easy</p>
@@ -58,13 +58,13 @@ const SignUpPage = () => {
                 name="email"
                 label="Email"
                 disabled={isLoading}
-                className="mx-2 bg-gray-900 rounded-full"
+                className=" bg-white"
                 auto_on={true}
               />
                 <Input
                   type="text"
                   name="set_name"
-                  className="mx-2 bg-gray-900 rounded-full"
+                  className=" bg-white"
                   label="Name"
                   disabled={isLoading}
                   auto_on={false}
@@ -73,7 +73,7 @@ const SignUpPage = () => {
                 <Input
                   type="text"
                   name="username"
-                  className="mx-2 bg-gray-900 rounded-full"
+                  className=" bg-white"
                   label="Username"
                   disabled={isLoading}
                   auto_on={false}
@@ -82,7 +82,7 @@ const SignUpPage = () => {
                 <Input
                   type="password"
                   name="password"
-                  className="mx-2 bg-gray-900 rounded-full"
+                  className=" bg-white"
                   label="Password"
                   disabled={isLoading}
                   auto_on={false}
@@ -106,7 +106,7 @@ const SignUpPage = () => {
           </form>
           <Link
             to={"/accounts/login"}
-            className="text-white flex items-center mt-3 hover:underline">
+            className="flex items-center mt-3 pl-4 hover:underline">
             <CgLogIn className="w-5 h-5 inline-block mr-1" />
             Sign in to an existing account
           </Link>
