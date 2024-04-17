@@ -52,7 +52,7 @@ const ResetPasswordPage = () => {
         title="Reset Password - Waanverse"
         description="Reset your password securely and regain access to your account. Follow the simple steps to reset your password and ensure the security of your account on Waanverse. Don't worry if you've forgotten your password; we've got you covered."
       >
-        <section className="flex items-center justify-center h-screen px-4">
+        <section className="flex text-white items-center justify-center px-4">
           <div className="w-full max-w-md">
             <h1 className="mb-10 text-xl">
               Forgot your password? Dont fret we got your back.
@@ -63,7 +63,7 @@ const ResetPasswordPage = () => {
             <form
               method="post"
               onSubmit={handleSubmit}
-              className="max-w-md mx-auto"
+              className="max-w-md bg-white p-4 rounded-xl mx-auto"
             >
               <Input
                 type="email"
