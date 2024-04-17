@@ -7,6 +7,7 @@ import SideBarContextProvider from "./SidebarContext";
 import ModalProvider from "./ModalContext";
 // import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import TopBarProvider from "./TopBarContext";
+import { HelmetProvider } from "react-helmet-async";
 
 
 
@@ -16,6 +17,7 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
             <AuthContextProvider>
                 <TopBarProvider>
                 <DrawerProvider>
+                    <HelmetProvider>
                     <SideBarContextProvider>
                             <QueryClientProvider client={new QueryClient()}>
                                 <NotificationProvider>
@@ -24,6 +26,7 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
                                 {/* <ReactQueryDevtools initialIsOpen={false} /> */}
                             </QueryClientProvider>
                     </SideBarContextProvider>
+                    </HelmetProvider>
                     </DrawerProvider>
                 </TopBarProvider>
             </AuthContextProvider>

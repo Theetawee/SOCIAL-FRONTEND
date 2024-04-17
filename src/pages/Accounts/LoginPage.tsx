@@ -59,7 +59,7 @@ const LoginPage = () => {
                         label="Password"
                         disabled={isLoading}
                         auto_on={false}
-                        className="bg-gray-900 mx-2 rounded-full"
+                        className="bg-white mx-2 rounded"
                       />
                       <div>
                       <Link
