@@ -40,7 +40,6 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-  //cache .css files
   /\.css$/,
   new workbox.strategies.CacheFirst({
     cacheName: "css-cache",
@@ -64,6 +63,7 @@ workbox.routing.registerRoute(
       }),
     ],
   })
+  
 );
 
 workbox.routing.registerRoute(
