@@ -2,14 +2,14 @@
 import Seo from "../components/utils/Seo";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Waan from "../assets/waan.webp";
 import GoogleBtn from "../components/Partials/Account/GoogleBtn";
 import LoginDrawer from "../components/Partials/Account/LoginDrawer";
 import { useState } from "react";
+import utils from "../hooks/utils";
 
 const Intro = () => {
   const { t } = useTranslation();
-
+  const {WaanPic}=utils();
   const [loginOpen, setLoginOpen] = useState(false);
 
   return (
@@ -19,16 +19,15 @@ const Intro = () => {
       <section>
         <div className="px-6 h-full  w-full">
           <section className="flex items-center max-w-screen-lg py-20 mx-auto justify-between">
-            <div className="flex flex-wrap sm:flex-nowrap gap-y-10 items-center h-full justify-center gap-x-10">
+            <div className="flex flex-wrap md:flex-nowrap gap-y-10 items-center h-full justify-center gap-x-10">
               <img
-                src={Waan}
+                src={WaanPic}
                 alt="Waanverse Post"
                 className="w-80 mx-auto h-full rounded-xl shadow"
               />
               <div className="mt-4 flex items-center justify-center flex-col gap-y-3 md:mt-0">
                 <h1 className="mb-10 md:text-4xl text-center text-3xl text-white">
-                  Connecting people through meaningful connections
-                </h1>
+                Elevate Your Experience: Dive into a Community Built for Success and Support!                </h1>
                 <div className="grid grid-cols-3 gap-5">
                   <Link
                     to="/accounts/signup"

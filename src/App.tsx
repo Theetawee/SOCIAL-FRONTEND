@@ -12,20 +12,19 @@ import MainLayout from "./layouts/MainLayout";
 import { Toaster } from "react-hot-toast";
 import { ErrorBoundary } from "react-error-boundary";
 import CommonError from "./components/common/CommonError";
-const HomePage = lazy(() => import("./pages/HomePage"));
+import HomePage from "./pages/HomePage";
+import GoogleLoginPage from "./pages/Accounts/GoogleLoginPage";
+import LoginPage from "./pages/Accounts/LoginPage";
+import ResetPasswordPage from "./pages/Accounts/ResetPasswordPage";
+import SignUpPage from "./pages/Accounts/SignUpPage";
+import IntroPage from "./pages/IntroPage";
+import PrivacyPage from "./pages/PrivacyPage";
 const FriendsPage = lazy(() => import("./pages/FriendsPage"));
-const LoginPage = lazy(() => import("./pages/Accounts/LoginPage"));
 const LogoutPage = lazy(() => import("./pages/Accounts/LogoutPage"));
-const SignUpPage = lazy(() => import("./pages/Accounts/SignUpPage"));
 const VerifyEmailPage = lazy(() => import("./pages/Accounts/VerifyEmailPage"));
-const GoogleLoginPage = lazy(() => import("./pages/Accounts/GoogleLoginPage"));
 const ProfilePage = lazy(() => import("./pages/Accounts/ProfilePage"));
 const PostDetailPage = lazy(() => import("./pages/Posts/PostDetailPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
-const ResetPasswordPage = lazy(
-    () => import("./pages/Accounts/ResetPasswordPage")
-);
-const IntroPage = lazy(() => import("./pages/IntroPage"));
 const PasswordResetConfirmPage = lazy(
     () => import("./pages/Accounts/PasswordResetConfirmPage")
 );
@@ -33,7 +32,6 @@ const AccountActivationPage = lazy(
     () => import("./pages/Accounts/AccountActivationPage")
 );
 const ComposePage = lazy(() => import("./pages/Posts/ComposePage"));
-const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
 const SearchPage = lazy(() => import('./pages/SearchPage'));
 const NotificationsPage = lazy(() => import('./pages/NotificationsPage'));
 
