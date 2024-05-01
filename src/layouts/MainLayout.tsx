@@ -9,8 +9,8 @@ const MainLayout = () => {
     <ContextProvider>
       <section
         style={{ backgroundImage: `url(${BgUrl})` }}
-        className="bg-cover bg-center bg-no-repeat">
-        <div className="w-full bg-black/40 px-6">
+        className="bg-cover bg-center bg-no-repeat min-h-screen md:h-screen overflow-hidden">
+        <div className="w-full min-h-screen md:h-screen overflow-hidden bg-black/40 px-6">
           <header>
             <div className="flex items-center gap-4 py-4">
               <div>
