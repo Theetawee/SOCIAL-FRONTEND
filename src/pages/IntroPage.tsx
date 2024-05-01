@@ -23,11 +23,11 @@ const Intro = () => {
         <div className="px-6 h-full  w-full">
           <section className="flex items-center max-w-screen-lg py-20 mx-auto justify-between">
             <div className="flex flex-wrap md:flex-nowrap gap-y-10 items-center h-full justify-center gap-x-10">
-              <div className="w-full md:w-1/2 flex items-center justify-center">
+              <div className="w-80 md:w-1/2 flex items-center justify-center">
               <img
                 src={WaanPic}
                 alt="Waanverse Post"
-                className="w-[28rem] object-cover  rounded-xl shadow"
+                className="w-[28rem] object-cover  rounded-2xl shadow"
               />
               </div>
               <div className="mt-4 flex items-center justify-center flex-col gap-y-3 md:mt-0">

@@ -8,7 +8,7 @@
 @tailwind components;
 @tailwind utilities;
 *:disabled {
-  @apply cursor-not-allowed opacity-50;
+  @apply cursor-not-allowed opacity-80;
 }
 
 /* Top bar styles */
