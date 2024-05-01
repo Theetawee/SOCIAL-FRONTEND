@@ -6,12 +6,15 @@ import GoogleBtn from "../components/Partials/Account/GoogleBtn";
 import LoginDrawer from "../components/Partials/Account/LoginDrawer";
 import { useState } from "react";
 import utils from "../hooks/utils";
+import Sheet from 'react-modal-sheet';
+
+
+
 
 const Intro = () => {
   const { t } = useTranslation();
   const {WaanPic}=utils();
   const [loginOpen, setLoginOpen] = useState(false);
-
   return (
     <Seo
       title="Belonging without borders - Waanverse"
@@ -20,11 +23,13 @@ const Intro = () => {
         <div className="px-6 h-full  w-full">
           <section className="flex items-center max-w-screen-lg py-20 mx-auto justify-between">
             <div className="flex flex-wrap md:flex-nowrap gap-y-10 items-center h-full justify-center gap-x-10">
+              <div className="w-full md:w-1/2 flex items-center justify-center">
               <img
                 src={WaanPic}
                 alt="Waanverse Post"
-                className="w-80 mx-auto h-full rounded-xl shadow"
+                className="w-[28rem] object-cover  rounded-xl shadow"
               />
+              </div>
               <div className="mt-4 flex items-center justify-center flex-col gap-y-3 md:mt-0">
                 <h1 className="mb-10 md:text-4xl text-center text-3xl text-white">
                 Elevate Your Experience: Dive into a Community Built for Success and Support!                </h1>
@@ -48,9 +53,12 @@ const Intro = () => {
           </section>
         </div>
       </section>
-      <div onClick={()=>{setLoginOpen((prev) => !prev)}} className={`${loginOpen ? "block" : "hidden"} fixed top-0 left-0 z-10 w-full h-screen bg-black/50 ` }>
+      <Sheet isOpen={loginOpen} onClose={() => setLoginOpen(false)}>
+<Sheet.Container>
+  <Sheet.Header/>
         <LoginDrawer />
-      </div>
+        </Sheet.Container>
+        </Sheet>
     </Seo>
   );
 };

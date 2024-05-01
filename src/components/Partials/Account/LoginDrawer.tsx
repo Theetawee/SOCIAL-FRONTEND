@@ -3,6 +3,13 @@ import Button from '../../common/Button';
 import Input from '../../common/Input';
 import useLogin from '../../../hooks/Auth/useLogin';
 import { FormEvent } from 'react';
+
+
+
+
+
+
+
 const LoginDrawer = () => {
 
 
@@ -23,7 +30,7 @@ const LoginDrawer = () => {
       {/* drawer component */}
       <div
         id="drawer-bottom-example"
-        className="fixed bottom-0 text-gray-800 left-0 right-0 z-40 w-full p-4 overflow-y-auto transition-transform bg-gray-100 transform-none"
+        className="fixed bottom-0 text-gray-800  left-0 right-0 z-40 w-full p-4 overflow-y-auto transition-transform bg-white transform-none"
         tabIndex={-1}
         aria-labelledby="drawer-bottom-label">
             <form onSubmit={handleSubmit} autoComplete="off" method="post">
