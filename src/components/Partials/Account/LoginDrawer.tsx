@@ -30,7 +30,7 @@ const LoginDrawer = () => {
       {/* drawer component */}
       <div
         id="drawer-bottom-example"
-        className="fixed bottom-0 text-gray-800  left-0 right-0 z-40 w-full p-4 overflow-y-auto transition-transform bg-white transform-none"
+        className="fixed bottom-0 text-gray-800  left-0 right-0 z-40 w-full px-4 pb-10 overflow-y-auto transition-transform  bg-white transform-none"
         tabIndex={-1}
         aria-labelledby="drawer-bottom-label">
             <form onSubmit={handleSubmit} autoComplete="off" method="post">
@@ -40,7 +40,7 @@ const LoginDrawer = () => {
               type="text"
               style={{ display: "none" }}
             />
-            <div className="grid grid-cols-1 max-w-md bg-white py-4 px-8 rounded-md shadow border border-gray-100 mx-auto">
+            <div className="grid grid-cols-1 max-w-md bg-white py-4 px-8 rounded-md shadow border border-gray-200 mx-auto">
               <div className="py-4">
                 <div className='text-gray-700'>
                   <p className="text-3xl mb-2">
