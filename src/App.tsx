@@ -14,7 +14,6 @@ import { ErrorBoundary } from "react-error-boundary";
 import CommonError from "./components/common/CommonError";
 import HomePage from "./pages/HomePage";
 import GoogleLoginPage from "./pages/Accounts/GoogleLoginPage";
-import LoginPage from "./pages/Accounts/LoginPage";
 import ResetPasswordPage from "./pages/Accounts/ResetPasswordPage";
 import SignUpPage from "./pages/Accounts/SignUpPage";
 import IntroPage from "./pages/IntroPage";
@@ -53,7 +52,6 @@ const router = createBrowserRouter(
     <Route path="/" element={<MainLayout />}>
       <Route element={<ProtectedRoute />}>
         <Route index element={<IntroPage />} />
-        <Route path="/accounts/login" element={<LoginPage />} />
         <Route path="/accounts/signup" element={<SignUpPage />} />
         <Route path="/accounts/verify-email" element={<VerifyEmailPage />} />
         <Route path="/accounts/oauth2/google/" element={<GoogleLoginPage />} />

@@ -47,7 +47,7 @@ interface PostAccountType{
     username: string
     id: number
     name: string
-    profile_image: string | null
+    image: string | null
     profile_image_hash: string
     verified: boolean
 }
@@ -64,6 +64,7 @@ interface BaseStructure {
     is_likes:boolean
     post_images: ImageDataType[];
     taged_accounts: PostAccountType[];
+    likes:PostAccountType[]
 }
 
 export interface PostType extends BaseStructure {

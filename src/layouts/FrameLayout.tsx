@@ -7,6 +7,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import CommonError from "../components/common/CommonError";
 import MainSuspense from "../components/common/MainSuspense";
 import AppBar from "./AppBar";
+import VerifiedMsg from "../components/Account/VerifiedMsg";
 
 
 
@@ -25,6 +26,7 @@ const FrameLayout = () => {
           </div>
           <div className="fixed hidden md:block xl:w-[35%] top-0  dark:border-gray-900 right-0 md:w-[30%]    h-screen ">
           <HomeSidebar />
+          <VerifiedMsg/>
           </div>
           </MainSuspense>
           </ErrorBoundary>
