@@ -14,7 +14,7 @@ const Frame = () => {
             )}
 
             <aside
-                className={`fixed top-0 border-r border-gray-300 dark:border-gray-800 left-0 z-50 sm:z-0 w-5/6 sm:w-72 lg:w-[25%]   h-screen transition-transform -translate-x-full ${
+                className={`fixed top-0 border-r border-gray-300 dark:border-gray-900 left-0 z-50 sm:z-0 w-5/6 sm:w-72 lg:w-[25%]   h-screen transition-transform -translate-x-full ${
                     isOpen ? "translate-x-0" : "sm:translate-x-0"
                 } `}
                 aria-label="Sidebar"

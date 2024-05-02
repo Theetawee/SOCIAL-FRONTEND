@@ -1,0 +1,8 @@
+.normal_footer_icons{
+    @apply w-5 text-stone-700 h-5 dark:text-stone-400;
+}
+
+
+.normal_footer_text{
+    @apply text-sm text-stone-700 dark:text-stone-400;
+}

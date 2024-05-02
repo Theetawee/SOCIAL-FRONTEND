@@ -22,7 +22,7 @@ const AppBar = () => {
   const { title, back } = useContext(TopBarContext);
 
   return (
-    <header className="sticky">
+    <header className="fixed top-0  w-full">
       <nav className="px-4 py-2  w-full">
         <div className="flex justify-between items-center">
           {title ? (

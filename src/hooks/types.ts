@@ -47,7 +47,7 @@ interface PostAccountType{
     username: string
     id: number
     name: string
-    image: string | null
+    profile_image: string | null
     profile_image_hash: string
     verified: boolean
 }
@@ -55,19 +55,21 @@ interface PostAccountType{
 interface BaseStructure {
     content: string;
     account: PostAccountType;
-    timestamp: string;
+    creation_date: string;
     updated_at: string;
     total_likes: number;
+    is_liked:boolean;
     views: number;
     id: number;
-    is_liked: boolean;
-    is_disliked: boolean;
+    is_likes:boolean
     post_images: ImageDataType[];
     taged_accounts: PostAccountType[];
 }
 
 export interface PostType extends BaseStructure {
     total_comments: number;
+    total_bookmarks:number;
+    bookmarked:boolean
     
 }
 
