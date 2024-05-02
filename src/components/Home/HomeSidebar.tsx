@@ -35,16 +35,15 @@ const HomeSidebar = () => {
     <section
       className={`${
         !friend_requests || friend_requests.length === 0 ? "hidden" : ""
-      } py-16`}>
+      } py-2`}>
       <div className="w-full rounded-lg  shadow">
-        <div className="flex p-4 items-center justify-between">
+        <div className="flex p-2.5 items-center justify-between">
           <h2 className="text-xl">Friend requests</h2>
-          <div>
-            <Link to={"/friends"} className="text-primary-500 font-medium">
-              See all
-            </Link>
-          </div>
+          <Link to={"/friends"} className="text-primary-500 font-medium">
+            See all
+          </Link>
         </div>
+
         <div>{content}</div>
       </div>
     </section>

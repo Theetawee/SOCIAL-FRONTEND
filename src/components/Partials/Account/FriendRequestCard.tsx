@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import DefaultAvatar from "../../../assets/default.webp";
 import { FriendRequestType } from "../../../hooks/types";
-import useDate from "../../../hooks/useDate";
 import useProfileActions from "../../../hooks/Account/useProfileActions";
 import Name from "./Name";
 import Button from "../../common/Button";
@@ -13,7 +12,6 @@ import Image from "../../common/Image";
 
 
 const FriendRequestCard = ({ request }: { request: FriendRequestType }) => {
-  const { naturalDay } = useDate();
   const { accept_friend_request, accepting_friend_request,decline_friend_request,declining_friend_request } = useProfileActions(request.sender.username);
 
   const handleAccept=async()=>{
@@ -31,7 +29,7 @@ const FriendRequestCard = ({ request }: { request: FriendRequestType }) => {
 
 
     return (
-      <div className="rounded-xl shadow border border-gray-100 dark:border-gray-800/50 bg-gray-100 dark:bg-gray-900 p-4">
+      <div className="rounded-xl shadow border border-gray-100 dark:border-gray-800/50 bg-gray-100 dark:bg-gray-900 p-4 lg:p-8">
         <div className="flex items-center justify-between">
           <Link to={`/${request.sender.username}`} className="block">
             <div className="flex items-center">
@@ -54,9 +52,7 @@ const FriendRequestCard = ({ request }: { request: FriendRequestType }) => {
               </div>
             </div>
           </Link>
-          <span className="text-xs  italic ">
-            {naturalDay(request.date_sent)}
-          </span>
+          
         </div>
         <div className="mt-4 flex gap-x-3 items-center">
           <Button
