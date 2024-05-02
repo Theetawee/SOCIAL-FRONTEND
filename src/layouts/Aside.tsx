@@ -8,20 +8,20 @@ import { FaUserFriends, FaUser, FaSignOutAlt, FaSearch } from "react-icons/fa";
 import Switch from "../components/common/Switch";
 import SuspenseLoader from "../components/utils/SuspenseLoader";
 import { GoHomeFill } from "react-icons/go";
-import Name from "../components/Partials/Account/Name";
 import LoginBtn from "../components/common/LoginBtn";
+import VerifiedSvg from "../components/Partials/Account/VerifiedSvg";
 
 const Aside = () => {
-  const { user,isAuthenticated } = useAuth();
+  const { user, isAuthenticated } = useAuth();
 
   return (
     <section className="grid grid-cols-1 gap-6">
       <div className="p-4 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-900 rounded-md shadow-sm">
-        <div>{user ? (
-              <>
-            
-          <div className="flex items-center flex-wrap justify-between">
-                <div className="flex items-center">
+        <div>
+          {user ? (
+            <>
+              <div className="flex items-center justify-center flex-wrap lg:justify-between">
+                <div className="flex items-center justify-center">
                   <Link to={`/${user?.username}`} className="block">
                     <Image
                       src={user?.image || DefaultAvater}
@@ -30,37 +30,38 @@ const Aside = () => {
                       className="w-12 h-12 rounded-full"
                     />
                   </Link>
-                  <Link to={`/${user?.username}`} className="block">
-                    <div className="ml-3  flex flex-col">
-                      <Name
-                        name={user?.name || ""}
-                        verified={user?.verified}
-                        size="lg"
-                      />
+                  <Link to={`/${user?.username}`} className=" hidden md:block">
+                    <div className="ml-3 hidden  lg:flex flex-col">
+                      <div className="flex items-center">
+                        <h3
+                          className={`text-lg font-medium text-gray-900 dark:text-white truncate max-w-20`}>
+                          {user.name}
+                        </h3>
+                        {user.verified && <VerifiedSvg />}
+                      </div>
                       <p className="leading-3 truncate max-w-32">
                         @{user?.username}
                       </p>
                     </div>
                   </Link>
                 </div>
-              
-            
-          </div></>) : (
-                <>
-                  <div className="flex items-center justify-center flex-col">
-                    <h1>Login to Waanverse</h1>
-                    <div className="py-4">
-                      <LoginBtn/>
-                    </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="flex items-center justify-center flex-col">
+                <h1>Login to Waanverse</h1>
+                <div className="py-4">
+                  <LoginBtn />
                 </div>
-                
-                </>
-            )}
+              </div>
+            </>
+          )}
         </div>
       </div>
       <div>
         <SuspenseLoader className="h-auto">
-          <SideBarLink  icon={GoHomeFill} path="/home" label="Home" />
+          <SideBarLink icon={GoHomeFill} path="/home" label="Home" />
 
           <SideBarLink
             enabled={isAuthenticated}
@@ -82,19 +83,23 @@ const Aside = () => {
         </SuspenseLoader>
 
         <SuspenseLoader className="h-auto">
-          <SideBarLink icon={FaSignOutAlt} enabled={isAuthenticated} path="/logout" label="Logout" />
+          <SideBarLink
+            icon={FaSignOutAlt}
+            enabled={isAuthenticated}
+            path="/logout"
+            label="Logout"
+          />
         </SuspenseLoader>
-        <div className="py-2 px-4 ">
+        <div className="py-2 flex items-center md:justify-start justify-center px-4 ">
           <Switch />
         </div>
         {isAuthenticated && user && (
           <Link
             to={"/compose"}
-          
-            className=" bg-primary-600 text-white sm:flex hidden p-3 w-[80%] mx-auto mt-20 text-lg font-medium rounded-full items-center justify-center"
-          >
+            className=" bg-primary-600 text-white sm:flex hidden p-3 w-[80%] mx-auto mt-20 text-lg font-medium rounded-full items-center justify-center">
             Compose
-          </Link>)}
+          </Link>
+        )}
       </div>
     </section>
   );

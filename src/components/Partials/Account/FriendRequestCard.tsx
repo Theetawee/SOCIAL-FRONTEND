@@ -31,7 +31,7 @@ const FriendRequestCard = ({ request }: { request: FriendRequestType }) => {
 
 
     return (
-      <div className="pb-2">
+      <div className="rounded-xl shadow border border-gray-100 dark:border-gray-800/50 bg-gray-100 dark:bg-gray-900 p-4">
         <div className="flex items-center justify-between">
           <Link to={`/${request.sender.username}`} className="block">
             <div className="flex items-center">

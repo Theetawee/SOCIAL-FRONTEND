@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import useSidebar from "../hooks/useSidebar";
-import FriendRequest from "../components/Partials/Sidebars/FriendRequest";
+import FriendRequest from "../components/Home/HomeSidebar";
 import PopularHashtags from "../components/Partials/Sidebars/PopularHashtags";
-import Posts from "../components/Posts";
+import Posts from "../components/Home/Posts";
 
 const HomePage = () => {
   const { setComponent } = useSidebar();
@@ -21,11 +21,13 @@ const HomePage = () => {
 
   return (
     <section className="px-4">
-      <div className="p-4">
-        <h1 className="text-3xl">Community Posts</h1>
-      </div>
-      <div>
-        <Posts />
+      <div className="w-full">
+        <div className="py-4 max-w-lg mx-auto">
+          <h1 className="text-3xl">Community Posts</h1>
+        </div>
+        <div>
+          <Posts />
+        </div>
       </div>
     </section>
   );

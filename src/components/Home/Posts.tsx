@@ -1,13 +1,13 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import Endpoints from "../hooks/Posts/Endpoints";
+import Endpoints from "../../hooks/Posts/Endpoints";
 import { Suspense } from "react";
-import Seo from "./utils/Seo";
-import CommonError from "./common/CommonError";
+import Seo from "../utils/Seo";
+import CommonError from "../common/CommonError";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { IoMdRefresh } from "react-icons/io";
-import PostSkelton from "./Partials/Post/PostSkeleton";
-import PostLoader from "./Partials/Post/PostLoader";
-import Post from "./Post/Post";
+import PostSkelton from "../Partials/Post/PostSkeleton";
+import PostLoader from "../Partials/Post/PostLoader";
+import Post from "../Post/Post";
 
 const Posts = () => {
   const { GetAllPosts } = Endpoints();
