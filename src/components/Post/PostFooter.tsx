@@ -71,7 +71,7 @@ const PostFooter = ({ post }: Props) => {
                 <div className="flex -space-x-4 rtl:space-x-reverse">
                   <a href="">
                     <img
-                      className="w-10 h-10  rounded-full"
+                      className="w-8 h-8  rounded-full"
                       src={post.likes[0].image||DefaultAvater}
                       alt={post.likes[0].name}
                     />
@@ -82,12 +82,12 @@ const PostFooter = ({ post }: Props) => {
               <>
                 <div className="flex -space-x-4 rtl:space-x-reverse">
                   <img
-                    className="w-10 h-10  rounded-full"
+                    className="w-8 h-8  rounded-full"
                     src={post.likes[1].image||DefaultAvater}
                     alt={post.likes[0].name}
                   />
                   <a
-                    className="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700  rounded-full hover:bg-gray-600"
+                    className="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-gray-700  rounded-full hover:bg-gray-600"
                     href="#">
                     +{total_likes-1}
                   </a>
@@ -97,7 +97,7 @@ const PostFooter = ({ post }: Props) => {
           </div>
         </>
       )}
-      <Link to={"/"} className="py-2 flex items-center justify-center border border-gray-100 dark:border-gray-800 rounded-2xl px-5">View Post</Link>
+      <Link to={"/"} className="py-2 justify-items-end flex items-center justify-center border border-gray-200 dark:border-gray-800 rounded-md px-5">View Post</Link>
       </div>
     </footer>
   );

@@ -8,7 +8,7 @@ import "./Post.css"
 
 const Post = ({post}:{post:PostType}) => {
   return (
-    <article className="grid w-full max-w-screen-md mx-auto border dark:border-gray-900 border-gray-300 p-4 rounded-xl shadow-sm grid-cols-1 gap-4">
+    <article className="grid w-full max-w-screen-md mx-auto border dark:border-gray-900 border-gray-100 p-4 rounded-xl shadow-sm grid-cols-1 gap-4">
       <PostHeader post={post}/>
       <PostBody post={post}/>
       <PostFooter post={post}/>
