@@ -35,7 +35,7 @@ const Input = ({
     const [passwordType, setPasswordType] = useState("password");
 
     const textClass =
-        "block px-2 pb-2  pt-4 w-full text-sm text-gray-900 bg-transparent rounded border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary-500 focus:outline-none focus:ring-1 focus:border-primary-600 peer";
+        "block px-2 pb-2  pt-4 w-full text-sm text-gray-900 bg-transparent rounded border border-gray-400 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary-500 focus:outline-none focus:ring-1 focus:border-primary-600 peer";
 
     return (
         <>

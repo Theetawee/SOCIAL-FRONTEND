@@ -1,5 +1,4 @@
 import {
-  AppBar,
   Banner,
   TableOfContent,
   InformationWeCollect,
@@ -26,10 +25,9 @@ const PrivacyPage = () => {
       title="Privacy Policy: Your Privacy Matters to Us"
       description="We are committed to protecting your privacy and ensuring the security of your personal information. This page outlines how we collect, use, and safeguard your data when you interact with our website or services. We value transparency and want you to feel confident about how your information is handled."
     >
-      <AppBar />
       <Banner />
 
-      <section className="bg-white dark:bg-gray-950 min-h-screen">
+      <section className="bg-white overflow-y-auto dark:bg-gray-950 min-h-screen">
         <div className="max-w-screen-xl mx-auto px-6">
           <Intro />
         </div>

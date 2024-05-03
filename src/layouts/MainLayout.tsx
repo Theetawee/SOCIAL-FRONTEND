@@ -2,15 +2,17 @@ import { Link, Outlet } from "react-router-dom";
 import ContextProvider from "../context/ContextProvider";
 import Logo from "../components/common/Logo";
 import utils from "../hooks/utils";
+import MainSuspense from "../components/common/MainSuspense";
 
 const MainLayout = () => {
   const { BgUrl } = utils();
   return (
     <ContextProvider>
+      <MainSuspense>
       <section
         style={{ backgroundImage: `url(${BgUrl})` }}
-        className="bg-cover bg-center bg-no-repeat min-h-screen md:h-screen overflow-hidden">
-        <div className="w-full min-h-screen md:h-screen overflow-hidden bg-black/40 px-6">
+        className="bg-cover bg-center bg-no-repeat min-h-screen">
+        <div className="w-full min-h-screen   bg-black/40 px-6">
           <header>
             <div className="flex items-center gap-4 py-4">
               <div>
@@ -28,6 +30,7 @@ const MainLayout = () => {
           </main>
         </div>
       </section>
+      </MainSuspense>
     </ContextProvider>
   );
 };

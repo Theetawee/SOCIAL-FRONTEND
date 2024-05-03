@@ -2,7 +2,7 @@ import { FaPrint } from "react-icons/fa6";
 
 const Banner = () => {
     return (
-        <section className="bg-gray-50 dark:bg-gray-950">
+        <section className="bg-white rounded-t-2xl dark:bg-gray-950">
             <div className="px-6 max-w-screen-xl mx-auto py-8">
                 <div className="flex items-center justify-between">
                     <div>

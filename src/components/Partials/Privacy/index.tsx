@@ -1,5 +1,4 @@
 export { default as Banner } from "./Banner";
-export { default as AppBar } from "./AppBar";
 export { default as Intro } from "./Intro";
 export { default as ContentLink } from "./ContentLink";
 export { default as InformationWeCollect } from "./InformationWeCollect";

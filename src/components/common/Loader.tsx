@@ -1,12 +1,13 @@
 
-const Loader = () => {
+const Loader = ({size="sm"}: {size?:"lg"|"sm"}) => {
     return (
-        <div className="flex w-full py-10 h-full items-center justify-center">
+        <div className="flex items-center justify-center">
             <span>
                 <svg
+                
                     width="24"
                     height="24"
-                    className="text-primary-500"
+                    className={`${size==="sm"?"w-6 h-6 ":"w-10 h-10 "} text-primary-500`}
                     fill="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
