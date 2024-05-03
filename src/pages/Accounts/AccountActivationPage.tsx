@@ -26,20 +26,20 @@ const AccountActivationPage = () => {
                     );
                     if (resp.ok) {
                         toast.success("Account activated successfully");
-                        return navigate("/accounts/login");
+                        return navigate("/?login=true");
                     } else {
                         await resp.json()
                         toast.error("Unable to activate account");
-                        return navigate("/verify-email?redirect_login=true");
+                        return navigate("/accounts/verify-email?redirect_login=true");
                     }
                 } catch (error) {
                     toast.error("Unable to activate account");
-                    return navigate("/verify-email?redirect_login=true");
+                    return navigate("/accounts/verify-email?redirect_login=true");
                 }
             };
             activate();
         } else {
-            navigate("/verify-email?redirect_login=true");
+            navigate("/accounts/verify-email?redirect_login=true");
         }
         effectRan.current=true
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Seo from "../components/utils/Seo";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import GoogleBtn from "../components/Partials/Account/GoogleBtn";
 import LoginDrawer from "../components/Partials/Account/LoginDrawer";
@@ -12,9 +12,15 @@ import Sheet from 'react-modal-sheet';
 
 
 const Intro = () => {
+  const [searchParams]=useSearchParams();
   const { t } = useTranslation();
   const {WaanPic}=utils();
-  const [loginOpen, setLoginOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(()=>{
+    if(searchParams.get("login")=="true"){
+      return true
+    }
+    return false
+  });
   return (
     <Seo
       title="Belonging without borders - Waanverse"
