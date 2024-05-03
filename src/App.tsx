@@ -1,3 +1,4 @@
+import { lazy } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -7,7 +8,6 @@ import {
 const FrameLayout= lazy(() => import("./layouts/FrameLayout"));
 const MainLayout= lazy(() => import("./layouts/MainLayout"));
 import AuthRequired from "./components/utils/AuthRequired";
-import { lazy } from "react";
 import ProtectedRoute from "./components/utils/ProtectedRoute";
 import { Toaster } from "react-hot-toast";
 import { ErrorBoundary } from "react-error-boundary";
