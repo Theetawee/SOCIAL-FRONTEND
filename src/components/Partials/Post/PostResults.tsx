@@ -1,5 +1,5 @@
 import { PostType } from "../../../hooks/types"
-import Post from "./Post";
+import Post from "../../Post/Post";
 
 const PostResults = ({ data }: { data: PostType[] }) => {
   return (
