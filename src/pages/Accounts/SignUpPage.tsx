@@ -11,7 +11,7 @@ const SignUpPage = () => {
     e.preventDefault();
     const username = e.currentTarget.username.value;
     const password1 = e.currentTarget.password.value;
-    const password2 = e.currentTarget.password.value;
+    const password2 = e.currentTarget.password2.value;
     const email = e.currentTarget.email.value;
     const name = e.currentTarget.set_name.value;
     await signup({ email, password1, password2, username, name });
