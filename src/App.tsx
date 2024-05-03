@@ -4,29 +4,27 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import FrameLayout from "./layouts/FrameLayout";
+const FrameLayout= lazy(() => import("./layouts/FrameLayout"));
+const MainLayout= lazy(() => import("./layouts/MainLayout"));
 import AuthRequired from "./components/utils/AuthRequired";
 import { lazy } from "react";
 import ProtectedRoute from "./components/utils/ProtectedRoute";
-import MainLayout from "./layouts/MainLayout";
 import { Toaster } from "react-hot-toast";
 import { ErrorBoundary } from "react-error-boundary";
 import CommonError from "./components/common/CommonError";
-import HomePage from "./pages/HomePage";
-import GoogleLoginPage from "./pages/Accounts/GoogleLoginPage";
-import ResetPasswordPage from "./pages/Accounts/ResetPasswordPage";
-import SignUpPage from "./pages/Accounts/SignUpPage";
-import IntroPage from "./pages/IntroPage";
-import PrivacyPage from "./pages/PrivacyPage";
-const FriendsPage = lazy(() => import("./pages/FriendsPage"));
-const LogoutPage = lazy(() => import("./pages/Accounts/LogoutPage"));
-const VerifyEmailPage = lazy(() => import("./pages/Accounts/VerifyEmailPage"));
-const ProfilePage = lazy(() => import("./pages/Accounts/ProfilePage"));
-const PostDetailPage = lazy(() => import("./pages/Posts/PostDetailPage"));
-const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
-const PasswordResetConfirmPage = lazy(
-  () => import("./pages/Accounts/PasswordResetConfirmPage")
-);
+const HomePage= lazy(() => import("./pages/HomePage"));
+const GoogleLoginPage= lazy(() => import("./pages/Accounts/GoogleLoginPage"));
+const ResetPasswordPage= lazy(() => import("./pages/Accounts/ResetPasswordPage"));
+const SignUpPage= lazy(() => import("./pages/Accounts/SignUpPage"));
+const IntroPage= lazy(() => import("./pages/IntroPage"));
+const PrivacyPage= lazy(() => import("./pages/PrivacyPage"));
+const FriendsPage= lazy(() => import("./pages/FriendsPage"));
+const LogoutPage= lazy(() => import("./pages/Accounts/LogoutPage"));
+const VerifyEmailPage= lazy(() => import("./pages/Accounts/VerifyEmailPage"));
+const ProfilePage= lazy(() => import("./pages/Accounts/ProfilePage"));
+const PostDetailPage= lazy(() => import("./pages/Posts/PostDetailPage"));
+const NotFoundPage= lazy(() => import("./pages/NotFoundPage"));
+const PasswordResetConfirmPage= lazy(() => import("./pages/Accounts/PasswordResetConfirmPage"));
 const AccountActivationPage = lazy(
   () => import("./pages/Accounts/AccountActivationPage")
 );
