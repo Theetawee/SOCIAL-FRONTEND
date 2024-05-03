@@ -1,15 +1,15 @@
+import VerifiedMsg from "../components/Account/VerifiedMsg";
+import HomeSidebar from "../components/Home/HomeSidebar";
 import useSidebar from "../hooks/useSidebar";
 
 const SideBar = () => {
     const { component } = useSidebar();
     return (
-        <aside
-            style={{
-                paddingTop: `calc(env(safe-area-inset-top, 0px) + 5rem)`,
-            }}
-            className="lg:w-[32%] lg:block  hidden p-4 h-screen fixed right-0 border-l-2 border-gray-300 dark:border-gray-800 dark:bg-gray-950 bg-white top-0"
-        >
-            <div className="h-full overflow-y-auto">{component}</div>
+        <aside className="h-full py-8 overflow-y-auto">
+                        <div>{component}</div>
+
+          <VerifiedMsg/>
+          <HomeSidebar/>
         </aside>
     );
 };

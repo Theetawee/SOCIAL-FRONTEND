@@ -1,12 +1,11 @@
 import { Outlet } from "react-router-dom";
 import ContextProvider from "../context/ContextProvider";
 import Frame from "./Frame";
-import HomeSidebar from "../components/Home/HomeSidebar";
 import { ErrorBoundary } from "react-error-boundary";
 import CommonError from "../components/common/CommonError";
 import MainSuspense from "../components/common/MainSuspense";
 import AppBar from "./AppBar";
-import VerifiedMsg from "../components/Account/VerifiedMsg";
+import SideBar from "./SideBar";
 
 
 
@@ -24,8 +23,7 @@ const FrameLayout = () => {
             </MainSuspense>
           </div>
           <div className="fixed hidden md:block xl:w-[35%] top-0  dark:border-gray-900 right-0 md:w-[30%]    h-screen ">
-          <HomeSidebar />
-          <VerifiedMsg/>
+            <SideBar/>
           </div>
           </ErrorBoundary>
       </ContextProvider>
