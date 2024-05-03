@@ -7,8 +7,11 @@ import useAxios from "../../hooks/useAxios";
 import { SuggestedAccount } from "../../hooks/types";
 import Loader from "../common/Loader";
 
-const TagPeople = () => {
+const TagPeople = ({handleMentionedAccounts}: {handleMentionedAccounts: (accounts: string[]) => void}) => {
   const api = useAxios();
+
+  const [mentionedAccounts, setMentionedAccounts] = useState<string[]>([]);
+
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,6 +24,20 @@ const TagPeople = () => {
   const [suggestions, setSuggestions] = useState<SuggestedAccount[]>([]);
 
   const debouncedValue = useDebounce(value, 1000);
+
+    const addToMentionedAccounts = (username: string) => {
+        setMentionedAccounts((prev) => [...prev, username]);
+
+        setValue("");
+    }
+
+
+useEffect(() => {
+    handleMentionedAccounts(mentionedAccounts);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [mentionedAccounts]);
+
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsLoading(true);
@@ -113,7 +130,7 @@ const TagPeople = () => {
                               <ul>
                                 {suggestions.map((suggestion) => (
                                   <li key={suggestion.id}>
-                                    <button className="mb-3">
+                                    <button className="mb-3 w-full" onClick={() => addToMentionedAccounts(suggestion.username)}>
                                       <div className="flex items-start justify-start flex-col">
                                         <div className="flex items-start justify-between gap-x-2">
                                           <Image

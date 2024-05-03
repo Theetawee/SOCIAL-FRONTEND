@@ -8,10 +8,11 @@ import Button from "../../components/common/Button";
 import useAuth from "../../hooks/Auth/useAuth";
 import { IoMdAdd } from "react-icons/io";
 import TagPeople from "../../components/Post/TagPeople";
+import { BsX } from "react-icons/bs";
 
 const ComposePage = () => {
   const { user } = useAuth();
-
+  const [mentioned, setMentioned] = useState<string[]>([]);
   const [is_thread, setIsThread] = useState("false");
 
   useTopbar("Compose", true);
@@ -28,6 +29,13 @@ const ComposePage = () => {
   const [post_content, setPostContent] = useState("");
   const [content_number, setContent_number] = useState(100);
   const [color, setColor] = useState("primary");
+
+
+  const handleMentionedAccounts = (data: string[]) => {
+    // first make sure the data is unique
+    setMentioned(Array.from(new Set([...mentioned, ...data])));
+  };
+
 
   const handlePostContentChange = (
     e: React.ChangeEvent<HTMLTextAreaElement>
@@ -49,6 +57,12 @@ const ComposePage = () => {
       setContent_number(percentageDiff);
     }
   };
+
+const RemoveFromMentioned=(mention:string)=>{
+  setMentioned(mentioned.filter((m)=>m!==mention))
+}
+
+
 
   const handleThread = (set: boolean) => {
     if (set) {
@@ -109,6 +123,18 @@ const ComposePage = () => {
                   ))}
                 </span>
               )}
+              {mentioned.length > 0 && (
+                <div className="py-2 flex items-center gap-x-2 gap-y-2 flex-wrap">
+                  {mentioned.map((account) => (
+                    <div key={account} className="flex rounded items-center p-2 bg-gray-900 gap-x-2">
+                      @{account}
+                      <button onClick={()=>RemoveFromMentioned(account)} type="button">
+                      <BsX className="w-5 h-5 text-red-500"/>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
               <div className="flex items-center justify-center">
                 <div className={`w-full bg-gray-200  h-1 dark:bg-gray-800`}>
                   <div className="hidden dark:bg-yellow-500 bg-yellow-600 h-0 "></div>
@@ -118,6 +144,7 @@ const ComposePage = () => {
                 </div>
               </div>
             </div>
+            
             <div className="flex items-center justify-between px-3 py-4">
               <div className="flex flex-wrap items-center divide-gray-200 sm:divide-x sm:rtl:divide-x-reverse dark:divide-gray-800">
                 <div className="flex items-center space-x-1 rtl:space-x-reverse sm:pe-4">
@@ -161,8 +188,9 @@ const ComposePage = () => {
               />
             </div>
           </div>
+          <input type="hidden" name="mentioned_users" value={JSON.stringify(mentioned)} />
         </form>
-        <TagPeople/>
+        <TagPeople handleMentionedAccounts={handleMentionedAccounts}/>
       </section>
     </Seo>
   );
