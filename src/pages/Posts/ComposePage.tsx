@@ -134,15 +134,15 @@ const ComposePage = () => {
 
   return (
     <Seo title={"Compose"} description={"Compose new post"}>
-      <section className="pb-10">
+      <section className="pb-10 pt-6">
         <form
           method="post"
           onSubmit={handleSubmit}
           className="w-full"
           encType="multipart/form-data"
         >
-          <div className="w-full mb-4 rounded bg-white dark:bg-gray-900">
-            <div className="border-b border-gray-100 dark:border-gray-800 ">
+          <div className="w-full mb-4 max-w-xl mx-auto ">
+            <div>
               <label htmlFor="editor" className="sr-only">
                 Publish post
               </label>
@@ -154,7 +154,7 @@ const ComposePage = () => {
                 value={post_content}
                 style={{ whiteSpace: "pre-line" }}
                 name="content"
-                className="block w-full  px-2 py-4 resize-none focus:dark:border-gray-800 focus:border-gray-100 text-lg text-gray-800 bg-white border-0 dark:bg-gray-900 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+                className="block rounded-t-2xl w-full  px-2 py-4 resize-none focus:dark:border-gray-800 focus:border-gray-100 text-lg bg-transparent text-gray-800 border-0 focus:ring-0 dark:text-white dark:placeholder-gray-400"
                 placeholder="What's on your mind?"
                 required
               ></textarea>
@@ -207,7 +207,7 @@ const ComposePage = () => {
                   </div>
                 ))}
               </div>
-              <div className="flex items-center justify-center border-b dark:border-gray-800">
+              <div className="flex items-center justify-center">
                 <div className={`w-full bg-gray-200  h-1 dark:bg-gray-800`}>
                   <div className="hidden dark:bg-yellow-500 bg-yellow-600 h-0 "></div>
                   <div
@@ -217,7 +217,7 @@ const ComposePage = () => {
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-between px-3 py-2 border-b dark:border-gray-800">
+            <div className="flex items-center justify-between px-3 py-4">
               <div className="flex flex-wrap items-center divide-gray-200 sm:divide-x sm:rtl:divide-x-reverse dark:divide-gray-800">
                 <div className="flex items-center space-x-1 rtl:space-x-reverse sm:pe-4">
                   <input

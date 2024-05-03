@@ -14,7 +14,7 @@ const FrameLayout = () => {
       <ContextProvider>
         <ErrorBoundary fallback={<CommonError />}>
           <Frame />
-          <div className="w-full mx-auto md:mr-[30%] md:w-[50%] sm:ml-[30%]  sm:w-[70%] xl:mr-[35%] xl:w-[45%]  md:ml-[20%]">
+          <div className="w-full mx-auto sm:px-2 md:mr-[30%] md:w-[50%] sm:ml-[30%]  sm:w-[70%] xl:mr-[35%] xl:w-[45%]  md:ml-[20%]">
             <div className="mb-16 block sm:hidden">
               <AppBar/>
             </div>
