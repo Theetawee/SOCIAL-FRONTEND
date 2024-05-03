@@ -1,11 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
 import ContextProvider from "../context/ContextProvider";
 import Logo from "../components/common/Logo";
-import utils from "../hooks/utils";
 import MainSuspense from "../components/common/MainSuspense";
+import BgUrl from "../assets/bg.webp";
+
+
 
 const MainLayout = () => {
-  const { BgUrl } = utils();
   return (
     <ContextProvider>
       <MainSuspense>

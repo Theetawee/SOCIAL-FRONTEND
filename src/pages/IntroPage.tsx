@@ -5,13 +5,13 @@ import { useTranslation } from "react-i18next";
 import GoogleBtn from "../components/Partials/Account/GoogleBtn";
 import LoginDrawer from "../components/Account/LoginDrawer";
 import { useState } from "react";
-import utils from "../hooks/utils";
 import Sheet from "react-modal-sheet";
+import WaanPic from "../assets/waan.webp";
+
 
 const Intro = () => {
   const [searchParams] = useSearchParams();
   const { t } = useTranslation();
-  const { WaanPic } = utils();
   const [loginOpen, setLoginOpen] = useState(() => {
     if (searchParams.get("login") == "true") {
       return true;
