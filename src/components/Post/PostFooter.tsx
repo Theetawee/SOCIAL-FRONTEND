@@ -9,6 +9,8 @@ import { PostType } from "../../hooks/types";
 import { MdAutoGraph } from "react-icons/md";
 import utils from "../../hooks/utils";
 import { Link } from "react-router-dom";
+import { FcLike } from "react-icons/fc";
+
 
 interface Props {
   post: PostType;
@@ -68,7 +70,7 @@ const PostFooter = ({ post }: Props) => {
           <div className="pt-3 flex items-center gap-x-1">
             {total_likes === 1 ? (
               <>
-                <div className="flex -space-x-4 rtl:space-x-reverse">
+                <div className="flex relative -space-x-4 rtl:space-x-reverse">
                   <a href="">
                     <img
                       className="w-8 h-8  rounded-full"
@@ -76,11 +78,15 @@ const PostFooter = ({ post }: Props) => {
                       alt={post.likes[0].name}
                     />
                   </a>
+                  <span>
+                    <FcLike className="w-4 absolute bottom-0 -right-6 h-4" />
+                  </span>
                 </div>
+                
               </>
             ) : (
               <>
-                <div className="flex -space-x-4 rtl:space-x-reverse">
+                <div className="flex relative -space-x-4 rtl:space-x-reverse">
                   <img
                     className="w-8 h-8  rounded-full"
                     src={post.likes[1].image||DefaultAvater}
@@ -91,6 +97,10 @@ const PostFooter = ({ post }: Props) => {
                     href="#">
                     +{total_likes-1}
                   </a>
+                  <span>
+                  <FcLike className="w-4 absolute bottom-0 -right-6 h-4" />
+
+                  </span>
                 </div>
               </>
             )}

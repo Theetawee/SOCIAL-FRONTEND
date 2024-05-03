@@ -89,8 +89,8 @@ const useCompose = (user_id: number) => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-
-        const taged_accounts:string[]=[];
+        const taged=formData.get("mentioned_users");
+        const taged_accounts:string[]=JSON.parse(taged as string);
 
         const content = formData.get("content") as string;
 
