@@ -11,7 +11,7 @@ const PostHeader = ({ post }: { post: PostType }) => {
         <Image
           className="inline-block h-9 w-9 rounded-full"
           src={
-            post.account.profile_image ||DefaultAvater
+            post.account.image ||DefaultAvater
           }
           alt={post.account.name}
         />

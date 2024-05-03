@@ -34,7 +34,7 @@ const Comment = ({ comment }: { comment: CommentType }) => {
                     </p>
                     <p className="w-1 h-1 bg-gray-500 dark:bg-gray-500 rounded-full"></p>
                     <span className="text-xs font-light">
-                      {comment.timestamp}
+                      {comment.creation_date}
                     </span>
                   </span>
                 </div>
