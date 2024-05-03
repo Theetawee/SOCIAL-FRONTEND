@@ -16,7 +16,7 @@ const useLogin = () => {
   const LoginUser = async (username: string, password: string) => {
     setLoging(true);
     try {
-      const response = await api.post("/?login=true/", {
+      const response = await api.post("/accounts/login/", {
         username,
         password,
       });
