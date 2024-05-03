@@ -33,7 +33,7 @@ const PasswordResetConfirmPage = () => {
             );
             if (response.ok) {
                 toast.success("Password reset successful. You can now log in.");
-                navigate("/accounts/login/");
+                navigate("/?login=true");
                 return;
             } else {
                 toast.error("Something went wrong. Please try again later.");
