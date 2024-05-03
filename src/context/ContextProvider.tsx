@@ -6,11 +6,13 @@ import ModalProvider from "./ModalContext";
 // import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import TopBarProvider from "./TopBarContext";
 import { HelmetProvider } from "react-helmet-async";
+import { ThemeProvider } from "./ThemeContext";
 
 
 
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
     return (
+        <ThemeProvider>
             <AuthContextProvider>
                 <TopBarProvider>
                 <DrawerProvider>
@@ -25,6 +27,7 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
                     </DrawerProvider>
                 </TopBarProvider>
             </AuthContextProvider>
+            </ThemeProvider>
     );
 };
 

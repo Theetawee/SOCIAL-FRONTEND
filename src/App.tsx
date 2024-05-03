@@ -81,7 +81,7 @@ const App = () => {
   return (
     <ErrorBoundary fallback={<CommonError />}>
       <RouterProvider router={router} />
-      <Toaster />
+      <Toaster containerStyle={{ zIndex: 99999999 }} toastOptions={{style: {fontFamily: "Outline, sans-serif",zIndex: 99999999}}}/>
     </ErrorBoundary>
   );
 };

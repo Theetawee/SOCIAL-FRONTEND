@@ -27,7 +27,7 @@ const ResetPasswordPage = () => {
                 toast.success(
                     "Password reset email sent. Please check your inbox."
                 );
-                navigate("/accounts/login/");
+                navigate("/?login=true");
                 return;
             } else {
                 toast.error("Something went wrong. Please try again later.");
@@ -52,9 +52,9 @@ const ResetPasswordPage = () => {
         title="Reset Password - Waanverse"
         description="Reset your password securely and regain access to your account. Follow the simple steps to reset your password and ensure the security of your account on Waanverse. Don't worry if you've forgotten your password; we've got you covered."
       >
-        <section className="flex text-white items-center justify-center px-4">
-          <div className="w-full max-w-md">
-            <h1 className="mb-10 text-xl">
+        <section className="flex text-white py-16 items-center justify-center px-4">
+          <div className="w-full max-w-screen-lg mx-auto">
+            <h1 className="mb-4 text-xl text-center">
               Forgot your password? Dont fret we got your back.
               <br />
               Enter your email and we will send you a link to reset your
@@ -63,7 +63,7 @@ const ResetPasswordPage = () => {
             <form
               method="post"
               onSubmit={handleSubmit}
-              className="max-w-md bg-white p-4 rounded-xl mx-auto"
+              className="max-w-md bg-white p-6 dark:bg-gray-900 rounded-xl mx-auto"
             >
               <Input
                 type="email"

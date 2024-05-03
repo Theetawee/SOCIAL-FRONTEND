@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-import { ThemeProvider } from "../context/ThemeContext";
 import ContextProvider from "../context/ContextProvider";
 import Frame from "./Frame";
 import HomeSidebar from "../components/Home/HomeSidebar";
@@ -13,7 +12,6 @@ import VerifiedMsg from "../components/Account/VerifiedMsg";
 
 const FrameLayout = () => {
   return (
-    <ThemeProvider>
       <ContextProvider>
         <ErrorBoundary fallback={<CommonError />}>
           <MainSuspense>
@@ -31,7 +29,6 @@ const FrameLayout = () => {
           </MainSuspense>
           </ErrorBoundary>
       </ContextProvider>
-    </ThemeProvider>
   );
 };
 

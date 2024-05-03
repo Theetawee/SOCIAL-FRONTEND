@@ -3,23 +3,20 @@ import Seo from "../components/utils/Seo";
 import { Link, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import GoogleBtn from "../components/Partials/Account/GoogleBtn";
-import LoginDrawer from "../components/Partials/Account/LoginDrawer";
+import LoginDrawer from "../components/Account/LoginDrawer";
 import { useState } from "react";
 import utils from "../hooks/utils";
-import Sheet from 'react-modal-sheet';
-
-
-
+import Sheet from "react-modal-sheet";
 
 const Intro = () => {
-  const [searchParams]=useSearchParams();
+  const [searchParams] = useSearchParams();
   const { t } = useTranslation();
-  const {WaanPic}=utils();
-  const [loginOpen, setLoginOpen] = useState(()=>{
-    if(searchParams.get("login")=="true"){
-      return true
+  const { WaanPic } = utils();
+  const [loginOpen, setLoginOpen] = useState(() => {
+    if (searchParams.get("login") == "true") {
+      return true;
     }
-    return false
+    return false;
   });
   return (
     <Seo
@@ -30,15 +27,17 @@ const Intro = () => {
           <section className="flex items-center max-w-screen-lg py-20 mx-auto justify-between">
             <div className="flex flex-wrap md:flex-nowrap gap-y-10 items-center h-full justify-center gap-x-10">
               <div className="w-80 md:w-1/2 flex items-center justify-center">
-              <img
-                src={WaanPic}
-                alt="Waanverse Post"
-                className="w-[28rem] object-cover  rounded-2xl shadow"
-              />
+                <img
+                  src={WaanPic}
+                  alt="Waanverse Post"
+                  className="w-[28rem] object-cover  rounded-2xl shadow"
+                />
               </div>
               <div className="mt-4 flex items-center justify-center flex-col gap-y-3 md:mt-0">
                 <h1 className="mb-10 md:text-4xl text-center text-3xl text-white">
-                Elevate Your Experience: Dive into a Community Built for Success and Support!                </h1>
+                  Elevate Your Experience: Dive into a Community Built for
+                  Success and Support!{" "}
+                </h1>
                 <div className="grid grid-cols-3 gap-5">
                   <Link
                     to="/accounts/signup"
@@ -46,7 +45,9 @@ const Intro = () => {
                     {t("Join")}
                   </Link>
                   <button
-                    onClick={()=>{setLoginOpen((prev) => !prev)}}
+                    onClick={() => {
+                      setLoginOpen((prev) => !prev);
+                    }}
                     className="justify-center flex max-w-sm w-full  items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded text-lg px-5 py-2.5 text-center dark:focus:ring-primary-900">
                     Login
                   </button>
@@ -59,12 +60,12 @@ const Intro = () => {
           </section>
         </div>
       </section>
-      <Sheet isOpen={loginOpen} onClose={() => setLoginOpen(false)}>
-<Sheet.Container>
-  <Sheet.Header/>
-        <LoginDrawer />
+      <Sheet isOpen={loginOpen}  onClose={() => setLoginOpen(false)}>
+        <Sheet.Container style={{backgroundColor:"none"}} className="bg-white dark:bg-gray-900">
+          <Sheet.Header className="bg-white dark:bg-gray-900"/>
+          <LoginDrawer />
         </Sheet.Container>
-        </Sheet>
+      </Sheet>
     </Seo>
   );
 };
