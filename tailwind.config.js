@@ -39,6 +39,7 @@ export default {
           700: "#4d4d4d",
           800: "#333333",
           900: "#1a1a1a",
+          950: "#1a1a1a",
         },
         google: {
           "text-gray": "#3c4043",
