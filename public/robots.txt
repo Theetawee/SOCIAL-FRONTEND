@@ -4,4 +4,4 @@ Crawl-delay: 1
 Disallow: /cgi-bin/
 Disallow: /accounts/oauth2/google/
 Disallow: /accounts/reset-password
-Sitemap: https://api.waanverse.com/sitemap.xml
+Sitemap: https://www.waanverse.com/sitemap.xml
