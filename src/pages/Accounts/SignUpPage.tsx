@@ -109,6 +109,16 @@ const SignUpPage = () => {
                 </>
               )}
               <div>
+                <p className="text-center ">
+                  Already have an account?{" "}
+                  <Link
+                    to={"/?login=true"}
+                    className="text-primary-500 hover:underline">
+                    Login
+                  </Link>
+                </p>
+              </div>
+              <div>
                 <p className="text-center text-xs ">
                   By creating an account, you agree to our
                   <Link
