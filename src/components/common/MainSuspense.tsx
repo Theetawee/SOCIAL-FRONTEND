@@ -4,7 +4,7 @@ import Logo from "./Logo";
 
 const MainSuspense = ({children}: {children: React.ReactNode}) => {
     const fallBack=(
-        <div className="fixed flex items-center justify-center top-0 left-0 w-full h-screen z-30 bg-white dark:bg-gray-950">
+        <div className="flex items-center justify-center h-screen max-w-sm mx-auto z-30 bg-white dark:bg-gray-950">
         <span className="animate-ping"><Logo/></span>
         </div>
     )
