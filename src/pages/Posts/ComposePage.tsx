@@ -7,6 +7,7 @@ import { useState } from "react";
 import Button from "../../components/common/Button";
 import useAuth from "../../hooks/Auth/useAuth";
 import { IoMdAdd } from "react-icons/io";
+import TagPeople from "../../components/Post/TagPeople";
 
 const ComposePage = () => {
   const { user } = useAuth();
@@ -59,7 +60,7 @@ const ComposePage = () => {
 
   return (
     <Seo title={"Compose"} description={"Compose new post"}>
-      <section className="pb-10 pt-6">
+      <section className="pb-10 px-3 pt-6">
         <form
           method="post"
           onSubmit={handleSubmit}
@@ -161,6 +162,7 @@ const ComposePage = () => {
             </div>
           </div>
         </form>
+        <TagPeople/>
       </section>
     </Seo>
   );
