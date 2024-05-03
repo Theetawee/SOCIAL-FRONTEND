@@ -12,7 +12,7 @@ const AuthRequired = () => {
         return <Outlet />;
     } else {
         
-        return <Navigate to={`/accounts/login?next=${from}`} />;
+        return <Navigate to={`/?login=true&next=${from}`} />;
     }
 };
 
